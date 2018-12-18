@@ -1,0 +1,9 @@
+hashdeep: Audit passed
+   Input files examined: 0
+  Known files expecting: 0
+          Files matched: 1978463
+Files partially matched: 0
+            Files moved: 0
+        New files found: 0
+  Known files not found: 0
+
