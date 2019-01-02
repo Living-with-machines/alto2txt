@@ -1,0 +1,54 @@
+./0000488/1834/1227/LAGER-1834-12-27-0004.xml:1: parser error : Document is empty
+
+^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Char 0x0 out of allowed range
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag TextLine line 1493
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag TextBlock line 69
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag PrintSpace line 57
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag Page line 52
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag Layout line 51
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0007.xml:1499: parser error : Premature end of data in tag alto line 2
+						
+						^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Char 0x0 out of allowed range
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : AttValue: ' expected
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : attributes construct error
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Couldn't find end of Start Tag String line 24087
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag TextLine line 24072
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag TextBlock line 23985
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag PrintSpace line 57
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag Page line 52
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag Layout line 51
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
+./0000153/1890/0329/BLSD-1890-03-29-0008.xml:24087: parser error : Premature end of data in tag alto line 2
+						<String ID="P8_ST11196" HPOS="4829" VPOS="6016" WIDTH="59" HEIGHT="15
+						                                                                     ^
