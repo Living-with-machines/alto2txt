@@ -1,4 +1,4 @@
-#writes the coordinates and cord confidence scores to a text file
+#writes the coordinates and word confidence scores to a text file
 
 from bs4 import BeautifulSoup
 
