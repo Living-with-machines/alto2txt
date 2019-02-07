@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+# Use to convert (in parallel-ish) many newspapers' worth of XML
+# (in alto or bl_newspaper format) to plain text alongside minimal metadata.
+# Downsample can be used to do every nth issue. One article per txt file.
+#
+# This tool will also perform quality assurance on:
+# - unexpected directories
+# - unexpected files
+# - un well-formed xml
+# - empty files
+# - files that otherwise do not expose content
+#
+# Expected structure:
+# xml_dir
+# ├── newspaper_id
+# │   ├── year
+# │   │   ├── issue
+# │   │   │   ├── xml_content
+# ├── newspaper_id
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+err() {
+  echo -e $@ >&2
+  exit 1
+}
+
+# Validate arguments
+if [[ $# -lt 2 ]] || [[ $# -gt 3 ]]; then
+  err "Usage: ${0} xml_dir txt_out_dir [downsample=1]"
+fi
+
+xml_dir=${1%/}
+txt_out_dir=${2%/}
+
+if [[ $# -eq 3 ]]; then
+  if [[ ${3} =~ ^[0-9]+$ ]]; then
+    downsample=${3}
+  else
+    err 'downsample must be positive integer'
+  fi
+else
+  downsample=1
+fi
+
+if [[ ! -d ${xml_dir} ]]; then
+  err 'xml_dir not found'
+fi
+
+if [[ ! -d ${txt_out_dir} ]]; then
+  err 'txt_out_dir not found'
+fi
+
+if [[ ${xml_dir} == ${txt_out_dir} ]]; then
+  err "xml_dir and txt_out_dir are the same, bad things will probably happen"
+fi
+
+# Check needed script is there
+if [[ ! -f extracttext ]]; then
+  err "extracttext is reqired"
+fi
+
+# Report any unexpected files
+find "${xml_dir}" -maxdepth 1 -mindepth 1 -not -type d -printf "%f\n" \
+  | parallel --no-notice --max-args 1 "echo \"WARN: unexpected file: {1}\""
+
+# For each publication, extract text (using one publication per core)
+find "${xml_dir}" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" \
+  | parallel --no-notice --max-args 1 "mkdir \"${txt_out_dir}/{1}\"; \
+  ./extracttext \"${xml_dir}/{1}\" \"${txt_out_dir}/{1}\" \"${downsample}\""

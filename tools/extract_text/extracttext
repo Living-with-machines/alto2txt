@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+
+# Use to convert a single newspaper's worth of XML
+# (in alto or bl_newspaper format) to plain text alongside minimal metadata.
+# Downsample can be used to do every nth issue. One article per txt file.
+#
+# This tool will also perform quality assurance on:
+# - unexpected directories
+# - unexpected files
+# - un well-formed xml
+# - empty files
+# - files that otherwise do not expose content
+#
+# Expected structure:
+# publication_dir
+# ├── year
+# │   ├── issue
+# │   │   ├── xml_content
+# ├── year
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+err() {
+  echo $@ >&2
+  exit 1
+}
+
+# Validate arguments
+if [[ $# -lt 2 ]] || [[ $# -gt 3 ]]; then
+  err "Usage: ${0} publication_dir txt_out_dir [downsample=1]"
+fi
+
+publication_dir=${1%/}
+txt_out_dir=${2%/}
+
+if [[ $# -eq 3 ]]; then
+  if [[ ${3} =~ ^[0-9]+$ ]]; then
+    downsample=${3}
+  else
+    err 'downsample must be positive integer'
+  fi
+else
+  downsample=1
+fi
+
+if [[ ! -d ${publication_dir} ]]; then
+  err 'publication_dir not found'
+fi
+
+if [[ ! -d ${txt_out_dir} ]]; then
+  err 'txt_out_dir not found'
+fi
+
+if [[ ${publication_dir} == ${txt_out_dir} ]]; then
+  err "publication_dir and txt_out_dir are the same, bad things will probably happen"
+fi
+
+# Check needed script is there
+if [[ ! -f extracttext.xslt ]]; then
+  err "extracttext.xslt is reqired"
+fi
+
+issue_counter=0
+publication=$(basename ${publication_dir})
+
+echo "INFO: processing publication: ${publication}"
+
+# For each year...
+for year_dir in ${publication_dir}/*; do
+  if [[ -d ${year_dir} ]]; then
+    year=$(basename ${year_dir})
+
+    # For each issue insde each year
+    for issue_dir in ${year_dir}/*; do
+      if [[ -d ${issue_dir} ]]; then
+
+        # Only process every nth (when using downsample)
+        if (( issue_counter++ % downsample == 0 )); then
+          echo "INFO: processing issue in dir: ${issue_dir}"
+
+          issue=$(basename ${issue_dir})
+
+          # Reset per issue stats
+          files_counter=0
+          converted_ok=0
+          converted_empty=0
+          converted_nofile=0
+          skipped_mets=0
+          skipped_bl_page=0
+          skipped_ukp=0
+          unexpected=0
+
+          # Make output directories to receive plain text and metadata
+          if ! [[ -d ${txt_out_dir}/${year} ]]; then
+            mkdir ${txt_out_dir}/${year}
+          fi
+
+          if ! [[ -d ${txt_out_dir}/${year}/${issue} ]]; then
+            mkdir ${txt_out_dir}/${year}/${issue}
+          fi
+
+          # For each page insude issue insde each year
+          for page in ${issue_dir}/*; do
+            if [[ -f  ${page} ]]; then
+              ((++files_counter))
+
+              # Report any unexpected files
+              if ! [[ ${page} =~ ^.*\.xml$ ]]; then
+                ((++unexpected))
+                echo "WARN: unexpected file: ${page}"
+
+              # Skip .mets files - they contain layout not text
+              elif [[ ${page} =~ ^.*_mets\.xml$ ]]; then
+                ((++skipped_mets))
+
+              # Skip BL_page files - they contain layout not text
+              elif head -5 ${page} | grep -q '<BL_page'; then
+                ((++skipped_bl_page))
+
+              # Skip UKP files - they contain layout not text
+              elif head -5 ${page} | grep -q '<UKP'; then
+                ((++skipped_ukp))
+              else
+                input_filename=$(basename ${page})
+                output_file=${txt_out_dir}/${year}/${issue}/${input_filename%.xml}.metadata
+                page_filename=${input_filename%.xml}
+
+                # Run XSLT transformation, which extracts plain text
+                xsltproc --novalid --stringparam pagefilename "${page_filename}" \
+                  -o "${output_file}" extracttext.xslt "${page}"
+
+                # Report result of transformation
+                if [[ -f ${output_file} ]]; then
+                  if [[ -s ${output_file} ]]; then
+                    echo "INFO: ${page} gave XSLT output: ${output_file}"
+                    ((++converted_ok))
+                  else
+                    rm ${output_file}
+                    echo "WARN: ${page} gave empty XSLT output, was deleted: ${output_file}"
+                    ((++converted_empty))
+                  fi
+                else
+                  echo "WARN: ${page} gave no XSLT output file: ${output_file}"
+                  ((++converted_nofile))
+                fi
+              fi
+            else
+              echo "WARN: unexpected dir: ${page}"
+            fi
+          done
+
+          message="${issue_dir} total: ${files_counter}; unexpected: ${unexpected}; skipped_mets: ${skipped_mets}; skipped_bl_page: ${skipped_bl_page}; skipped_ukp: ${skipped_ukp}; ok: ${converted_ok}; empty: ${converted_empty}; nofile: ${converted_nofile}"
+
+          # Report summary of issue
+          if (( converted_ok > 0 )) && (( converted_ok == files_counter - skipped_mets - skipped_bl_page - skipped_ukp )); then
+            echo "INFO: ${message}"
+          else
+            echo "WARN: ${message}"
+          fi
+        fi
+      else
+        # Report any unexpected files
+        echo "WARN: unexpected file: ${issue_dir}"
+      fi
+    done
+  else
+    # Report any unexpected files
+    err "WARN: unexpected file: ${year_dir}"
+  fi
+done
