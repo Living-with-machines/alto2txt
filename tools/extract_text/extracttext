@@ -93,13 +93,7 @@ for year_dir in ${publication_dir}/*; do
           unexpected=0
 
           # Make output directories to receive plain text and metadata
-          if ! [[ -d ${txt_out_dir}/${year} ]]; then
-            mkdir ${txt_out_dir}/${year}
-          fi
-
-          if ! [[ -d ${txt_out_dir}/${year}/${issue} ]]; then
-            mkdir ${txt_out_dir}/${year}/${issue}
-          fi
+          mkdir -p ${txt_out_dir}/${year}/${issue}
 
           # For each page insude issue insde each year
           for page in ${issue_dir}/*; do
