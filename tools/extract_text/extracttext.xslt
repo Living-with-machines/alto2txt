@@ -35,7 +35,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 </xsl:text>
 <xsl:text>date: </xsl:text><xsl:value-of select="//normalisedDate/text()" /><xsl:text>
 </xsl:text>
-<xsl:text>article_title: </xsl:text><xsl:value-of select="//dc:Title/text()" />
+<xsl:text>article_title: </xsl:text><xsl:value-of select="//dc:Title/text()" /><xsl:text>
+</xsl:text>
 </xsl:template>
 
 <xsl:template match="articleWord">
