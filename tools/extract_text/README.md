@@ -1,4 +1,4 @@
-# extract_text v0.1
+# extract_text v0.2
 # Extract plain text from newspapers
 
 ## Requirements
