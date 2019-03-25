@@ -4,7 +4,7 @@
 ## Requirements
 
 * xsltproc
-* parallel
+* GNU parallel
 * GNU find
 
 ## extractbatch
@@ -77,7 +77,7 @@ review output in `err`
 
 * Do this in python, it seemed like a good idea to be moving files around in a shell script, it isn't
 * Spark-ify this
-* Use xml libraries to do the heavy lifting
+* Use XML libraries to do the heavy lifting
 * Use XML tech to review the doc types, looking for strings is naff
 * Export more metadata from the alto, probably by parsing the mets first
 * Documentation could use more detail

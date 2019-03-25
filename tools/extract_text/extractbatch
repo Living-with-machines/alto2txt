@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# extract_text v0.1
+# extract_text v0.2
 #
 # Use to convert (in parallel-ish) many newspapers' worth of XML
 # (in alto or bln format) to plain text alongside minimal metadata.
@@ -67,8 +67,8 @@ fi
 
 # Report any unexpected files
 find "${xml_dir}" -maxdepth 1 -mindepth 1 -not -type d -printf "%f\n" \
-  | parallel --jobs 200% --no-notice --max-args 1 echo WARN: unexpected file: ${xml_dir}/{1}
+  | parallel --no-notice --max-args 1 echo WARN: unexpected file: ${xml_dir}/{1}
 
 # For each publication, extract text (using one publication per core)
 find "${xml_dir}" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" \
-  | parallel --jobs 200% --no-notice --max-args 1 mkdir -p \"${txt_out_dir}/{1}\"\; ./extracttext \"${xml_dir}/{1}\" \"${txt_out_dir}/{1}\" ${downsample}
+  | parallel  --no-notice --max-args 1 mkdir -p \"${txt_out_dir}/{1}\"\; ./extracttext \"${xml_dir}/{1}\" \"${txt_out_dir}/{1}\" ${downsample}
