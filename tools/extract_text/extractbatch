@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# extract_text v0.2
+# extract_text v0.2.1
 #
 # Use to convert (in parallel-ish) many newspapers' worth of XML
 # (in alto or bln format) to plain text alongside minimal metadata.

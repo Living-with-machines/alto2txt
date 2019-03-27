@@ -51,9 +51,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <xsl:variable name="pagearea_unhash" select="substring($pagearea, 2)" />
         <xsl:variable name="key_out" select="key('structMap', $pagearea_unhash)" />
         <xsl:for-each select="$key_out[@TYPE='pagearea']|$key_out/mets:div[@TYPE='pagearea']">
-          <xsl:variable name="pagearea_sub" select="@ID" />
-          <!-- LABEL="Illustration may have no IDREF -->
-          <xsl:if test="mets:fptr/mets:area[@BETYPE='IDREF']/@FILEID!= ''">
+          <xsl:if test="mets:fptr/mets:area[@BETYPE='IDREF']">
+            <xsl:variable name="pagearea_sub" select="@ID" />
             <xsl:for-each select="$page_docs">
               <xsl:copy-of select="key('page_doc_area', $pagearea_sub)" />
             </xsl:for-each>
@@ -65,12 +64,19 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <xsl:variable name="item_page_areas" select="exsl:node-set($item_page_areas_rt)" />
 
       <exsl:document method="text" href="{$output_document_stub}_{$item_ID}.txt">
-        <xsl:for-each select="$item_page_areas//TextBlock">
-          <xsl:apply-templates select="TextLine" />
-          <xsl:if test="position()!=last()">
+        <xsl:choose>
+          <xsl:when test="$item_page_areas//String|$item_page_areas//HYP">
+            <xsl:for-each select="$item_page_areas//TextBlock">
+              <xsl:apply-templates select="TextLine" />
+              <xsl:if test="position()!=last()">
+                <xsl:text>&#xA;</xsl:text>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
             <xsl:text>&#xA;</xsl:text>
-          </xsl:if>
-        </xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
       </exsl:document>
 
       <xsl:variable name="item_word_confidences_rt">
@@ -100,7 +106,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <process>
             <lwm_tool>
               <name>extract_text</name>
-              <version>0.2</version>
+              <version>0.2.1</version>
               <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
             </lwm_tool>
             <source_type>newspaper</source_type>
@@ -124,8 +130,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$item_DMDID]//mods:title" /></title>
                 <item_type><xsl:value-of select="@TYPE" /></item_type>
                 <word_count><xsl:value-of select="format-number(($word_count), '0')" /></word_count>
-                <ocr_quality_mean><xsl:value-of select="format-number($ocr_quality_mean, '0.0000')" /></ocr_quality_mean>
-                <ocr_quality_sd><xsl:value-of select="format-number($standard_deviation, '0.0000')" /></ocr_quality_sd>
+                <!-- ocr_quality summary -->
+                <ocr_quality_mean>
+                  <xsl:if test="number($ocr_quality_mean) = number($ocr_quality_mean)">
+                    <xsl:value-of select="format-number($ocr_quality_mean, '0.0000')" />
+                  </xsl:if>
+                </ocr_quality_mean>
+                <ocr_quality_sd>
+                  <xsl:if test="number($standard_deviation) = number($standard_deviation)">
+                    <xsl:value-of select="format-number($standard_deviation, '0.0000')" />
+                  </xsl:if>
+                </ocr_quality_sd>
               </item>
             </issue>
           </publication>
@@ -164,7 +179,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <process>
         <lwm_tool>
           <name>extract_text</name>
-          <version>0.2</version>
+          <version>0.2.1</version>
           <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
         </lwm_tool>
         <source_type>newspaper</source_type>

@@ -1,4 +1,4 @@
-# extract_text v0.2
+# extract_text v0.2.1
 # Extract plain text from newspapers
 
 ## Requirements
@@ -81,4 +81,3 @@ review output in `err`
 * Use XML tech to review the doc types, looking for strings is naff
 * Export more metadata from the alto, probably by parsing the mets first
 * Documentation could use more detail
-

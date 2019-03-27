@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# extract_text v0.2
+# extract_text v0.2.1
 #
 # Use to convert a single newspaper's worth of XML
 # (in alto or bln format) to plain text alongside minimal metadata.
@@ -101,7 +101,7 @@ for year_dir in ${publication_dir}/*; do
 
           # For each page insude issue insde each year
           for page in ${issue_dir}/*; do
-            if [[ -f  ${page} ]]; then
+            if [[ -f ${page} ]]; then
               ((++files_counter))
 
               # Report any unexpected files
@@ -136,7 +136,7 @@ for year_dir in ${publication_dir}/*; do
                   --stringparam input_sub_path "${publication}/${year}/${issue}" \
                   --stringparam input_filename "${input_filename}" \
                   --stringparam output_document_stub "${output_document_stub}" \
-                  --output "${txt_out_dir}/${year}/${issue}/" \
+                  --output "${output_path}/" \
                   extracttext.xslt "${page}"
 
                 # Report result of transformation
