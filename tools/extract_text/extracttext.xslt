@@ -2,10 +2,8 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:exsl="http://exslt.org/common"
-xmlns:str="http://exslt.org/strings"
 xmlns:math="http://exslt.org/math"
-extension-element-prefixes="exsl str"
-exclude-result-prefixes="str"
+extension-element-prefixes="exsl"
 xmlns:dc="http://purl.org/dc/elements/1.1/"
 xmlns:mets="http://www.loc.gov/METS/"
 xmlns:mods="http://www.loc.gov/mods/v3"
@@ -22,83 +20,102 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xsl:apply-templates select="/BL_newspaper/BL_article" />
 </xsl:template>
 
-<xsl:template match="/mets:mets">
-  <xsl:for-each select="mets:structMap[@TYPE='LOGICAL']/mets:div">
-    <xsl:variable name="issue_DMDID"><xsl:value-of select="@DMDID"/></xsl:variable>
-    <xsl:for-each select="mets:div">
-      <xsl:variable name="item_ID"><xsl:value-of select="@ID"/></xsl:variable>
-      <xsl:variable name="item_ID_hash">#<xsl:value-of select="$item_ID"/></xsl:variable>
-      <xsl:variable name="item_DMDID"><xsl:value-of select="@DMDID"/></xsl:variable>
-      <xsl:variable name="first_alto"><xsl:value-of select="$input_path" />/<xsl:value-of select="/mets:mets/mets:fileSec//mets:fileGrp[@USE='Fulltext']/mets:file[@MIMETYPE='text/xml']/mets:FLocat/@xlink:href" /></xsl:variable>
+<xsl:key name="page_doc_area" match="/doc/alto/Layout//ComposedBlock|doc/alto/Layout//TextBlock" use="@ID" />
+<xsl:key name="smLocatorLink_href" match="/mets:mets/mets:structLink/mets:smLinkGrp/mets:smLocatorLink" use="@xlink:href" />
+<xsl:key name="smLocatorLink_label" match="/mets:mets/mets:structLink/mets:smLinkGrp/mets:smLocatorLink" use="@xlink:label" />
+<xsl:key name="structMap" match="/mets:mets/mets:structMap[@TYPE='PHYSICAL']//mets:div" use="@ID" />
 
-      <xsl:variable name="item_page_areas">
-      <xsl:for-each select="/mets:mets/mets:structLink/mets:smLinkGrp/mets:smLocatorLink[@xlink:href=$item_ID_hash]/../mets:smArcLink">
-        <xsl:variable name="link"><xsl:value-of select="@xlink:to" /></xsl:variable>
-        <xsl:variable name="pagearea"><xsl:value-of select="../mets:smLocatorLink[@xlink:label=$link]/@xlink:href" /></xsl:variable>
-        <xsl:variable name="pagearea_unhash"><xsl:value-of select="substring($pagearea, 2)" /></xsl:variable>
-        <xsl:for-each select="/mets:mets/mets:structMap[@TYPE='PHYSICAL']//mets:div[@ID=$pagearea_unhash][@TYPE='pagearea']|/mets:mets/mets:structMap[@TYPE='PHYSICAL']//mets:div[@ID=$pagearea_unhash]//mets:div[@TYPE='pagearea']">
-          <xsl:variable name="pagearea_sub"><xsl:value-of select="@ID" /></xsl:variable>
-          <xsl:variable name="fileid"><xsl:value-of select="mets:fptr/mets:area[@BETYPE='IDREF']/@FILEID" /></xsl:variable>
-          <!-- LABEL="Illustration" has no IDFEF -->
-          <xsl:if test="$fileid != ''">
-            <xsl:variable name ="fileref"><xsl:value-of select="/mets:mets/mets:fileSec//mets:file[@ID=$fileid]/mets:FLocat/@xlink:href" /></xsl:variable>
-            <!--
-            <xsl:variable name="filename">
-              <xsl:value-of select="str:replace($fileref, 'file://./', '')" />
-            </xsl:variable>
-            -->
-            <xsl:variable name="filename"><xsl:value-of select="$fileref" /></xsl:variable>
-            <xsl:variable name="fileloc"><xsl:value-of select="$input_path" />/<xsl:value-of select="$filename" /></xsl:variable>
-            <xsl:copy-of select="document($fileloc)/alto/Layout//*[@ID=$pagearea_sub]" />
+<xsl:template match="/mets:mets">
+  <xsl:variable name="page_docs_rt">
+    <xsl:for-each select="mets:fileSec//mets:fileGrp[@USE='Fulltext']/mets:file">
+      <doc>
+        <xsl:attribute name="ID"><xsl:value-of select="@ID" /></xsl:attribute>
+        <xsl:variable name="fileloc2"><xsl:value-of select="$input_path" />/<xsl:value-of select="mets:FLocat/@xlink:href" /></xsl:variable>
+        <xsl:copy-of select="document($fileloc2)" />
+      </doc>
+    </xsl:for-each>
+  </xsl:variable>
+
+<xsl:variable name="page_docs" select="exsl:node-set($page_docs_rt)" />
+
+  <xsl:for-each select="mets:structMap[@TYPE='LOGICAL']/mets:div">
+    <xsl:variable name="issue_DMDID" select="@DMDID" />
+    <xsl:for-each select="mets:div">
+      <xsl:variable name="item_ID" select="@ID" />
+      <xsl:variable name="item_ID_hash">#<xsl:value-of select="$item_ID" /></xsl:variable>
+      <xsl:variable name="item_DMDID" select="@DMDID" />
+
+      <xsl:variable name="item_page_areas_rt">
+      <xsl:for-each select="key('smLocatorLink_href', $item_ID_hash)/../mets:smArcLink/@xlink:to">
+        <xsl:variable name="pagearea" select="key('smLocatorLink_label', .)/@xlink:href" />
+        <xsl:variable name="pagearea_unhash" select="substring($pagearea, 2)" />
+        <xsl:variable name="key_out" select="key('structMap', $pagearea_unhash)" />
+        <xsl:for-each select="$key_out[@TYPE='pagearea']|$key_out/mets:div[@TYPE='pagearea']">
+          <xsl:if test="mets:fptr/mets:area[@BETYPE='IDREF']">
+            <xsl:variable name="pagearea_sub" select="@ID" />
+            <xsl:for-each select="$page_docs">
+              <xsl:copy-of select="key('page_doc_area', $pagearea_sub)" />
+            </xsl:for-each>
           </xsl:if>
         </xsl:for-each>
       </xsl:for-each>
       </xsl:variable>
 
+      <xsl:variable name="item_page_areas" select="exsl:node-set($item_page_areas_rt)" />
+
       <exsl:document method="text" href="{$output_document_stub}_{$item_ID}.txt">
-        <xsl:for-each select="exsl:node-set($item_page_areas)//TextBlock">
-          <xsl:apply-templates select="TextLine" />
-          <xsl:if test="position()!=last()">
-            <xsl:text>
-</xsl:text>
-          </xsl:if>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="$item_page_areas//String|$item_page_areas//HYP">
+            <xsl:for-each select="$item_page_areas//TextBlock">
+              <xsl:apply-templates select="TextLine" />
+              <xsl:if test="position()!=last()">
+                <xsl:text>&#xA;</xsl:text>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>&#xA;</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
       </exsl:document>
 
-      <xsl:variable name="item_word_confidences">
-        <xsl:for-each select="exsl:node-set($item_page_areas)//String/@WC">
-          <wc><xsl:value-of select="." /></wc>
+      <xsl:variable name="item_word_confidences_rt">
+        <xsl:for-each select="$item_page_areas//String/@WC">
+          <w><xsl:value-of select="." /></w>
         </xsl:for-each>
       </xsl:variable>
 
-      <xsl:variable name="word_count"><xsl:value-of select="count(exsl:node-set($item_word_confidences)/wc)" /></xsl:variable>
-      <xsl:variable name="ocr_quality_sum"><xsl:value-of select="sum(exsl:node-set($item_word_confidences)/wc)" /></xsl:variable>
-      <xsl:variable name="ocr_quality_mean"><xsl:value-of select="$ocr_quality_sum div $word_count" /></xsl:variable>
+      <xsl:variable name="item_word_confidences" select="exsl:node-set($item_word_confidences_rt)" />
 
-      <xsl:variable name="sub_mean_and_square">
-        <xsl:for-each select="exsl:node-set($item_word_confidences)/wc">
-          <wc><xsl:value-of select="math:power(. - $ocr_quality_mean, 2)" /></wc>
+      <xsl:variable name="word_count" select="count($item_word_confidences/w)" />
+      <xsl:variable name="ocr_quality_sum" select="sum($item_word_confidences/w)" />
+      <xsl:variable name="ocr_quality_mean" select="$ocr_quality_sum div $word_count" />
+
+      <xsl:variable name="standard_deviation_square_and_mean_rt">
+        <xsl:for-each select="$item_word_confidences/w">
+          <w><xsl:value-of select="math:power(. - $ocr_quality_mean, 2)" /></w>
         </xsl:for-each>
       </xsl:variable>
 
-      <xsl:variable name="standard_deviation">
-        <xsl:value-of select="math:sqrt((sum(exsl:node-set($sub_mean_and_square)/wc)) div $word_count)"/>
-      </xsl:variable>
+      <xsl:variable name="standard_deviation_square_and_mean" select="exsl:node-set($standard_deviation_square_and_mean_rt)" />
+
+      <xsl:variable name="standard_deviation" select="math:sqrt(sum($standard_deviation_square_and_mean/w) div $word_count)" />
 
       <exsl:document method="xml" href="{$output_document_stub}_{$item_ID}_metadata.xml" indent="yes">
         <lwm>
           <process>
             <lwm_tool>
               <name>extract_text</name>
-              <version>0.1</version>
+              <version>0.2.1</version>
               <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
             </lwm_tool>
             <source_type>newspaper</source_type>
             <xml_flavour>alto</xml_flavour>
+            <software><xsl:value-of select="/mets:mets/mets:metsHdr/mets:agent/mets:name" /></software>
             <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
             <input_filename><xsl:value-of select="$input_filename" /></input_filename>
             <mets_namespace><xsl:value-of select="/mets:mets/@xsi:schemaLocation" /></mets_namespace>
-            <alto_namespace><xsl:value-of select="document($first_alto)/alto/@xsi:noNamespaceSchemaLocation" /></alto_namespace>
+            <alto_namespace><xsl:value-of select="$page_docs/doc[1]/alto/@xsi:noNamespaceSchemaLocation" /></alto_namespace>
           </process>
           <publication>
             <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:relatedItem/mods:identifier" /></xsl:attribute>
@@ -113,8 +130,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                 <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$item_DMDID]//mods:title" /></title>
                 <item_type><xsl:value-of select="@TYPE" /></item_type>
                 <word_count><xsl:value-of select="format-number(($word_count), '0')" /></word_count>
-                <ocr_quality_mean><xsl:value-of select="format-number($ocr_quality_mean, '0.0000')" /></ocr_quality_mean>
-                <ocr_quality_sd><xsl:value-of select="format-number($standard_deviation, '0.0000')" /></ocr_quality_sd>
+                <!-- ocr_quality summary -->
+                <ocr_quality_mean>
+                  <xsl:if test="number($ocr_quality_mean) = number($ocr_quality_mean)">
+                    <xsl:value-of select="format-number($ocr_quality_mean, '0.0000')" />
+                  </xsl:if>
+                </ocr_quality_mean>
+                <ocr_quality_sd>
+                  <xsl:if test="number($standard_deviation) = number($standard_deviation)">
+                    <xsl:value-of select="format-number($standard_deviation, '0.0000')" />
+                  </xsl:if>
+                </ocr_quality_sd>
               </item>
             </issue>
           </publication>
@@ -126,36 +152,39 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 </xsl:template>
 
 <xsl:template match="TextLine">
-  <xsl:for-each select="String|HYP">
-    <xsl:value-of select="@CONTENT" />
-    <xsl:if test="following-sibling::SP">
-      <xsl:if test="position()!=last()">
-        <xsl:text> </xsl:text>
-      </xsl:if>
-    </xsl:if>
-  </xsl:for-each>
-  <xsl:text>
-</xsl:text>
+  <xsl:apply-templates select="String|HYP|SP" />
+  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
+
+<xsl:template match="String|HYP">
+  <xsl:value-of select="@CONTENT" />
+</xsl:template>
+
+<xsl:template match="SP">
+  <xsl:if test="position()!=last()">
+    <xsl:text> </xsl:text>
+  </xsl:if>
+</xsl:template>
+
+
 
 <xsl:template match="BL_newspaper/BL_article">
   <exsl:document method="text" href="{$output_document_stub}.txt">
     <xsl:apply-templates select="image_metadata/articleImage/articleText/articleWord" />
-    <xsl:text>
-</xsl:text>
+    <xsl:text>&#xA;</xsl:text>
   </exsl:document>
-
 
   <exsl:document method="xml" href="{$output_document_stub}_metadata.xml" indent="yes">
     <lwm>
       <process>
         <lwm_tool>
           <name>extract_text</name>
-          <version>0.1</version>
+          <version>0.2.1</version>
           <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
         </lwm_tool>
         <source_type>newspaper</source_type>
         <xml_flavour>bln</xml_flavour>
+        <software><xsl:value-of select="article_metadata/additional_metadata/conversionCredit" /></software>
         <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
         <input_filename><xsl:value-of select="$input_filename" /></input_filename>
         <!-- namespaces -->
@@ -186,9 +215,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xsl:value-of select="." />
   <xsl:if test="position()!=last()">
     <xsl:choose>
-      <xsl:when test="position() mod 10 = 0 ">
-        <xsl:text>
-</xsl:text>
+      <xsl:when test="position() mod 10 = 0">
+        <xsl:text>&#xA;</xsl:text>
       </xsl:when>
         <xsl:otherwise>
           <xsl:text> </xsl:text>
