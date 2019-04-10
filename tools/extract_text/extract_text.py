@@ -281,21 +281,21 @@ def xml_to_plaintext(publication_dir,
                     print("ERROR: {} failed to give XSLT output: {}".format(
                         page, str(e)), file=sys.stderr)
                     continue
-        summary = {}
-        summary["num_files"] = num_files
-        summary["bad_xml"] = bad_xml
-        summary["converted_ok"] = converted_ok
-        summary["converted_bad"] = converted_bad
-        summary["skipped_alto"] = skipped_alto
-        summary["skipped_bl_page"] = skipped_bl_page
-        summary["skipped_ukp"] = skipped_ukp
-        summary["non_xml"] = non_xml
-        check_convert = num_files - skipped_alto - \
-            skipped_bl_page - skipped_ukp
-        if (converted_ok > 0) and (converted_ok == check_convert):
-            print("INFO: {} {}".format(issue_dir, str(summary)))
-        else:
-            print("WARN: {} {}".format(issue_dir, str(summary)))
+            summary = {}
+            summary["num_files"] = num_files
+            summary["bad_xml"] = bad_xml
+            summary["converted_ok"] = converted_ok
+            summary["converted_bad"] = converted_bad
+            summary["skipped_alto"] = skipped_alto
+            summary["skipped_bl_page"] = skipped_bl_page
+            summary["skipped_ukp"] = skipped_ukp
+            summary["non_xml"] = non_xml
+            check_convert = num_files - skipped_alto - \
+                            skipped_bl_page - skipped_ukp
+            if (converted_ok > 0) and (converted_ok == check_convert):
+                print("INFO: {} {}".format(issue_dir, str(summary)))
+            else:
+                print("WARN: {} {}".format(issue_dir, str(summary)))
 
 
 def main():
