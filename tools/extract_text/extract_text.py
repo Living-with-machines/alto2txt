@@ -1,0 +1,317 @@
+"""
+Convert a single newspaper's XML (in ALTO or BLN format) to plaintext
+articles and generate minimal metadata. Downsampling can be used to
+convert only every Nth issue of the newspaper. One text file is output
+per article.
+
+This tool will also perform quality assurance on:
+
+* Unexpected directories.
+* Unexpected files.
+* Malformed XML.
+* Empty files.
+* Files that otherwise do not expose content.
+
+Usage:
+
+    usage: extract_text.py [-h] [-d [DOWNSAMPLE]] publication_dir
+    txt_out_dir
+
+    Extract plaintext articles from newspaper XML
+
+    positional arguments:
+      publication_dir       Publication directory with XML
+      txt_out_dir           Output directory with plaintext
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                            Downsample
+
+publication_dir is expected to have structure:
+
+    publication_dir
+    |-- year
+    |   |-- issue
+    |   |   |-- xml_content
+    |-- year
+
+txt_out_dir is created with an analogous structure.
+
+downsample must be a positive integer, default 1.
+"""
+
+
+from __future__ import print_function
+from argparse import ArgumentParser
+import os
+import os.path
+import re
+import sys
+from lxml import etree
+
+XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
+""" XML Schema Instance namespace """
+SCHEMA_LOCATION = etree.QName(XSI_NS, "schemaLocation")
+""" schemaLocation element """
+NO_NS_SCHEMA_LOCATION = etree.QName(XSI_NS,
+                                    "noNamespaceSchemaLocation")
+""" noNamespaceSchemaLocation element """
+
+UKP_NS = "http://tempuri.org/ncbpissue"
+""" UKP namespace """
+METS_NS = "http://www.loc.gov/METS/"
+""" METS namespace """
+LWM_NS = {
+    'ukp': UKP_NS,
+    'mets': METS_NS
+}
+""" Namespaces of documents within Living with Machines datasets. """
+
+XML_ROOT = "root"
+""" XML metadata key. """
+XML_DOCTYPE = "doctype"
+""" XML metadata key. """
+XML_NS = "namespaces"
+""" XML metadata key. """
+XML_NO_NS_SCHEMA_LOCATION = "no_ns_schema_location"
+""" XML metadata key. """
+XML_SCHEMA_LOCATIONS = "schema_locations"
+""" XML metadata key. """
+
+RE_METS = "(.*)[-|_](mets|METS).xml$"
+""" Regular expression for METS file """
+
+
+def get_xml(filename):
+    """
+    Get XML document tree from file.
+
+    :param filename: XML filename
+    :type filename: str or unicode
+    :return: Document tree
+    :rtype: lxml.etree._ElementTree
+    """
+    with open(filename, "r") as f:
+        document_tree = None
+        parser = etree.XMLParser()
+        document_tree = etree.parse(f, parser)
+    return document_tree
+
+
+def get_xml_metadata(document_tree):
+    """
+    Extract information (root element, namespaces, schema locations,
+    default schema location) from XML file. Returns dict of form:
+
+        {
+            doctype: <DOCTYPE>,
+            namespaces: {TAG: URL, TAG: URL, ...},
+            no_ns_schema_location: <URL> | None,
+            root: <ROOT_ELEMENT>,
+            schema_locations: [URL, URL, ...] | None
+        }
+
+    :param document_tree: Document tree
+    :type document_tree: lxml.etree._ElementTree
+    :return: metadata
+    :rtype: dict
+    """
+    root_element = document_tree.getroot()
+    root_element_tag = str(root_element.tag)
+    doctype = str(document_tree.docinfo.doctype)
+    namespaces = root_element.nsmap
+    no_ns_schema_location = root_element.get(NO_NS_SCHEMA_LOCATION.text)
+    schema_locations = root_element.get(SCHEMA_LOCATION.text)
+    if schema_locations is not None:
+        schema_locations = schema_locations.split(" ")
+
+    metadata = {}
+    metadata[XML_ROOT] = root_element_tag
+    metadata[XML_DOCTYPE] = doctype
+    metadata[XML_NS] = namespaces
+    metadata[XML_NO_NS_SCHEMA_LOCATION] = no_ns_schema_location
+    metadata[XML_SCHEMA_LOCATIONS] = schema_locations
+    return metadata
+
+
+def query_xml(document_tree, query):
+    """
+    Run XPath query and return results.
+
+    Query string can use namespace prefixes of "ukp" and "mets"
+    (as defined in LWM_NS).
+
+    :param document_tree: Document tree
+    :type document_tree: lxml.etree._ElementTree
+    :param query: XPath query
+    :type query: str or unicode
+    :return: Query results
+    :rtype: Query-specific
+    """
+    root_element = document_tree.getroot()
+    result = root_element.xpath(query, namespaces=LWM_NS)
+    return result
+
+
+def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
+    """
+    Convert a single newspaper's XML (in ALTO or BLN format) to
+    plaintext articles and generate minimal metadata.
+
+    :param publication_dir: Publication directory with XML
+    :type publication_dir: str or unicode
+    :param txt_out_dir: Output directory with plaintext
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample
+    :type downsample: int
+    """
+    # TODO: Allow user to provide XSLT file name.
+    xsl_filename = "extract_text.xslt"
+    xslt_dom = etree.parse(xsl_filename)
+    xslt = etree.XSLT(xslt_dom)
+    issue_counter = 0
+    publication = os.path.basename(publication_dir)
+    print("INFO: processing publication: {}".format(publication))
+    for year in os.listdir(publication_dir):
+        year_dir = os.path.join(publication_dir, year)
+        if not os.path.isdir(year_dir):
+            print("WARN: unexpected file: {}".format(year))
+            continue
+        for issue in os.listdir(year_dir):
+            issue_dir = os.path.join(year_dir, issue)
+            if not os.path.isdir(issue_dir):
+                print("WARN: unexpected file: {}".format(issue))
+                continue
+            # Only process every nth (when using downsample).
+            issue_counter += 1
+            if (issue_counter % downsample) != 0:
+                continue
+            print("INFO: processing issue in dir: {}".format(issue_dir))
+            # Reset per issue stats
+            num_files = 0
+            bad_xml = 0
+            converted_ok = 0
+            converted_bad = 0
+            skipped_alto = 0
+            skipped_bl_page = 0
+            skipped_ukp = 0
+            unexpected = 0
+            # Make output directories for plain text and metadata.
+            output_path = os.path.join(txt_out_dir, year, issue)
+            assert not os.path.exists(output_path) or\
+                not os.path.isfile(output_path),\
+                "ERROR: {} exists and is not a file".format(output_path)
+            if not os.path.exists(output_path):
+                os.makedirs(output_path)
+            assert os.path.exists(output_path),\
+                "ERROR: Create {} failed".format(output_path)
+
+            for page in os.listdir(issue_dir):
+                page_path = os.path.join(issue_dir, page)
+                if os.path.isdir(page_path):
+                    print("WARN: unexpected directory: {}".format(page))
+                    continue
+                num_files += 1
+                if os.path.splitext(page)[1].lower() != ".xml":
+                    unexpected += 1
+                    print("WARN: unexpected file: {}".format(page))
+                    continue
+                try:
+                    dom = get_xml(page_path)
+                except Exception as e:
+                    bad_xml += 1
+                    print("WARN: problematic file {}: {}".format(page, str(e)))
+                    continue
+                metadata = get_xml_metadata(dom)
+                if metadata[XML_ROOT] == "UKP":
+                    # Skip UKP files, we can't handle those yet.
+                    skipped_ukp += 1
+                    continue
+                if metadata[XML_ROOT] == "alto":
+                    # Skip alto files, we access them via mets.
+                    skipped_alto += 1
+                    continue
+                if query_xml(dom, "/BL_newspaper/BL_page"):
+                    # Skip BL_page files, they contain layout not text.
+                    skipped_bl_page += 1
+                    continue
+                input_filename = os.path.basename(page)
+                mets_match = re.findall(RE_METS, input_filename)
+                if mets_match:
+                    output_document_stub = mets_match[0][0]
+                else:
+                    output_document_stub = os.path.splitext(input_filename)[0]
+                try:
+                    xslt(dom,
+                         input_path=etree.XSLT.strparam(issue_dir),
+                         input_sub_path=etree.XSLT.strparam(
+                             os.path.join(publication, year, issue)),
+                         input_filename=etree.XSLT.strparam(input_filename),
+                         output_document_stub=etree.XSLT.strparam(
+                             output_document_stub),
+                         output_path=etree.XSLT.strparam(
+                             os.path.join(output_path,
+                                          output_document_stub)))
+                    converted_ok += 1
+                    print("INFO: {} gave XSLT output".format(page))
+                except Exception as e:
+                    converted_bad += 1
+                    print("ERROR: {} failed to give XSLT output: {}".format(
+                        page, str(e)), file=sys.stderr)
+                    continue
+        summary = {}
+        summary["num_files"] = num_files
+        summary["bad_xml"] = bad_xml
+        summary["converted_ok"] = converted_ok
+        summary["converted_bad"] = converted_bad
+        summary["skipped_alto"] = skipped_alto
+        summary["skipped_bl_page"] = skipped_bl_page
+        summary["skipped_ukp"] = skipped_ukp
+        summary["unexpected"] = unexpected
+        check_convert = num_files - skipped_alto - \
+            skipped_bl_page - skipped_ukp
+        if (converted_ok > 0) and (converted_ok == check_convert):
+            print("INFO: {} {}".format(issue_dir, str(summary)))
+        else:
+            print("WARN: {} {}".format(issue_dir, str(summary)))
+
+
+def main():
+    """
+    Convert a single newspaper's XML (in ALTO or BLN format) to
+    plaintext articles and generate minimal metadata.
+
+    Parse command-line arguments and call xml_to_plaintext.
+    """
+    parser = ArgumentParser(
+        description="Extract plaintext articles from newspaper XML")
+    parser.add_argument("publication_dir",
+                        help="Publication directory with XML")
+    parser.add_argument("txt_out_dir",
+                        help="Output directory with plaintext")
+    parser.add_argument("-d",
+                        "--downsample",
+                        type=int,
+                        nargs="?",
+                        default=1,
+                        help="Downsample")
+    args = parser.parse_args()
+    publication_dir = args.publication_dir
+    txt_out_dir = args.txt_out_dir
+    downsample = args.downsample
+    assert downsample > 0, "downsample must be a positive integer"
+    assert os.path.exists(publication_dir),\
+        "publication_dir not found"
+    assert os.path.isdir(publication_dir),\
+        "publication_dir is not a directory"
+    assert not os.path.isfile(txt_out_dir),\
+        "txt_out_dir is not a directory"
+    assert os.path.normpath(publication_dir) !=\
+        os.path.normpath(txt_out_dir),\
+        "publication_dir and txt_out_dir should be different directories"
+    xml_to_plaintext(publication_dir, txt_out_dir, downsample)
+
+
+if __name__ == "__main__":
+    main()
