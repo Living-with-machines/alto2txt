@@ -12,10 +12,8 @@ This tool will also perform quality assurance on:
 * Empty files.
 * Files that otherwise do not expose content.
 
-Usage:
-
-    usage: extract_text.py [-h] [-d [DOWNSAMPLE]] publication_dir
-    txt_out_dir
+    usage: extract_text.py [-h] [-d [DOWNSAMPLE]] [-x [XSLT_FILE]]
+                           publication_dir txt_out_dir
 
     Extract plaintext articles from newspaper XML
 
@@ -27,6 +25,8 @@ Usage:
       -h, --help            show this help message and exit
       -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                             Downsample
+      -x [XSLT_FILE], --xslt_file [XSLT_FILE]
+                            XSLT file to convert XML to plaintext
 
 publication_dir is expected to have structure:
 
@@ -38,7 +38,9 @@ publication_dir is expected to have structure:
 
 txt_out_dir is created with an analogous structure.
 
-downsample must be a positive integer, default 1.
+XSLT_FILE must be an XSLT file, default, "extract_text.xslt".
+
+DOWNSAMPLE must be a positive integer, default 1.
 """
 
 
@@ -49,6 +51,9 @@ import os.path
 import re
 import sys
 from lxml import etree
+
+XSLT_FILENAME = "extract_text.xslt"
+""" Default XSL filename """
 
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
 """ XML Schema Instance namespace """
@@ -154,7 +159,10 @@ def query_xml(document_tree, query):
     return result
 
 
-def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
+def xml_to_plaintext(publication_dir,
+                     txt_out_dir,
+                     xslt_file=XSLT_FILENAME,
+                     downsample=1):
     """
     Convert a single newspaper's XML (in ALTO or BLN format) to
     plaintext articles and generate minimal metadata.
@@ -163,12 +171,12 @@ def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
     :type publication_dir: str or unicode
     :param txt_out_dir: Output directory with plaintext
     :type txt_out_dir: str or unicode
+    :param xslt_file: XSLT file to convert XML to plaintext
+    :type xslt_file: str or unicode
     :param downsample: Downsample
     :type downsample: int
     """
-    # TODO: Allow user to provide XSLT file name.
-    xsl_filename = "extract_text.xslt"
-    xslt_dom = etree.parse(xsl_filename)
+    xslt_dom = etree.parse(xslt_file)
     xslt = etree.XSLT(xslt_dom)
     issue_counter = 0
     publication = os.path.basename(publication_dir)
@@ -193,15 +201,16 @@ def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
             bad_xml = 0
             converted_ok = 0
             converted_bad = 0
+            non_xml = 0
             skipped_alto = 0
             skipped_bl_page = 0
             skipped_ukp = 0
-            unexpected = 0
             # Make output directories for plain text and metadata.
             output_path = os.path.join(txt_out_dir, year, issue)
             assert not os.path.exists(output_path) or\
                 not os.path.isfile(output_path),\
-                "ERROR: {} exists and is not a file".format(output_path)
+                "ERROR: {} exists and is not a file".format(
+                    output_path)
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
             assert os.path.exists(output_path),\
@@ -214,16 +223,17 @@ def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
                     continue
                 num_files += 1
                 if os.path.splitext(page)[1].lower() != ".xml":
-                    unexpected += 1
-                    print("WARN: unexpected file: {}".format(page))
+                    non_xml += 1
+                    print("WARN: file with no .xml suffic: {}".format(page))
                     continue
                 try:
-                    dom = get_xml(page_path)
+                    document_tree = get_xml(page_path)
                 except Exception as e:
                     bad_xml += 1
-                    print("WARN: problematic file {}: {}".format(page, str(e)))
+                    print("WARN: problematic file {}: {}".format(
+                        page, str(e)))
                     continue
-                metadata = get_xml_metadata(dom)
+                metadata = get_xml_metadata(document_tree)
                 if metadata[XML_ROOT] == "UKP":
                     # Skip UKP files, we can't handle those yet.
                     skipped_ukp += 1
@@ -232,29 +242,31 @@ def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
                     # Skip alto files, we access them via mets.
                     skipped_alto += 1
                     continue
-                if query_xml(dom, "/BL_newspaper/BL_page"):
+                if query_xml(document_tree, "/BL_newspaper/BL_page"):
                     # Skip BL_page files, they contain layout not text.
                     skipped_bl_page += 1
                     continue
                 input_filename = os.path.basename(page)
+                input_sub_path = os.path.join(publication, year, issue)
                 mets_match = re.findall(RE_METS, input_filename)
                 if mets_match:
                     output_document_stub = mets_match[0][0]
                 else:
                     output_document_stub = os.path.splitext(input_filename)[0]
+                output_document_path = os.path.join(output_path,
+                                                    output_document_stub)
                 try:
-                    xslt(dom,
+                    xslt(document_tree,
                          input_path=etree.XSLT.strparam(issue_dir),
                          input_sub_path=etree.XSLT.strparam(
-                             os.path.join(publication, year, issue)),
+                             input_sub_path),
                          input_filename=etree.XSLT.strparam(input_filename),
                          output_document_stub=etree.XSLT.strparam(
                              output_document_stub),
                          output_path=etree.XSLT.strparam(
-                             os.path.join(output_path,
-                                          output_document_stub)))
+                             output_document_path))
                     converted_ok += 1
-                    print("INFO: {} gave XSLT output".format(page))
+                    print("INFO: {} gave XSLT output".format(page_path))
                 except Exception as e:
                     converted_bad += 1
                     print("ERROR: {} failed to give XSLT output: {}".format(
@@ -268,7 +280,7 @@ def xml_to_plaintext(publication_dir, txt_out_dir, downsample=1):
         summary["skipped_alto"] = skipped_alto
         summary["skipped_bl_page"] = skipped_bl_page
         summary["skipped_ukp"] = skipped_ukp
-        summary["unexpected"] = unexpected
+        summary["non_xml"] = non_xml
         check_convert = num_files - skipped_alto - \
             skipped_bl_page - skipped_ukp
         if (converted_ok > 0) and (converted_ok == check_convert):
@@ -296,21 +308,31 @@ def main():
                         nargs="?",
                         default=1,
                         help="Downsample")
+    parser.add_argument("-x",
+                        "--xslt_file",
+                        nargs="?",
+                        default=XSLT_FILENAME,
+                        help="XSLT file to convert XML to plaintext")
     args = parser.parse_args()
     publication_dir = args.publication_dir
     txt_out_dir = args.txt_out_dir
+    xslt_file = args.xslt_file
     downsample = args.downsample
     assert downsample > 0, "downsample must be a positive integer"
     assert os.path.exists(publication_dir),\
-        "publication_dir not found"
+        "publication_dir, {}, not found".format(publication_dir)
     assert os.path.isdir(publication_dir),\
-        "publication_dir is not a directory"
+        "publication_dir, {}, is not a directory".format(publication_dir)
     assert not os.path.isfile(txt_out_dir),\
-        "txt_out_dir is not a directory"
+        "txt_out_dir, {}, is not a directory".format(txt_out_dir)
     assert os.path.normpath(publication_dir) !=\
         os.path.normpath(txt_out_dir),\
-        "publication_dir and txt_out_dir should be different directories"
-    xml_to_plaintext(publication_dir, txt_out_dir, downsample)
+        "publication_dir and txt_out_dir, {}, should be different directories".format(publication_dir)
+    assert os.path.exists(xslt_file),\
+        "xslt_file {} not found".format(xslt_file)
+    assert os.path.isfile(xslt_file),\
+        "xslt_file {} is not a file".format(xslt_file)
+    xml_to_plaintext(publication_dir, txt_out_dir, xslt_file, downsample)
 
 
 if __name__ == "__main__":
