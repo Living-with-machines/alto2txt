@@ -1,13 +1,14 @@
-# extract_text v0.2.1
 # Extract plain text from newspapers
 
-## Requirements
+## extract_text v0.2.1
+
+### Requirements
 
 * xsltproc
 * GNU parallel
 * GNU find
 
-## extractbatch
+### extractbatch
 
 Usage: `extractbatch xml_dir txt_out_dir [downsample=1]`
 
@@ -34,7 +35,7 @@ This tool will also perform quality assurance on:
 
 `extractbatch` uses `extracttext` to do the hard work...
 
-## extracttext
+### extracttext
 
 Usage: `extracttext publication_dir txt_out_dir [downsample=1]`
 
@@ -60,7 +61,7 @@ This tool will also perform quality assurance on:
 
 `extracttext` uses `extracttext.xslt` to do the transform
 
-## Example
+### Example
 
 Assume `BNA` exists and matches the structure above
 
@@ -73,7 +74,7 @@ see results in `txt`
 
 review output in `err`
 
-## Improvements to be made
+### Improvements to be made
 
 * Do this in python, it seemed like a good idea to be moving files around in a shell script, it isn't
 * Spark-ify this
@@ -81,3 +82,92 @@ review output in `err`
 * Use XML tech to review the doc types, looking for strings is naff
 * Export more metadata from the alto, probably by parsing the mets first
 * Documentation could use more detail
+
+---
+
+## extract_text.py
+
+A Python version of the `extracttext` script.
+
+### Requirements
+
+See `requirements.txt`.
+
+### Usage
+
+```
+usage: extract_text.py [-h] [-d [DOWNSAMPLE]] [-x [XSLT_FILE]]
+                       publication_dir txt_out_dir
+
+Extract plaintext articles from newspaper XML
+
+positional arguments:
+  publication_dir       Publication directory with XML
+  txt_out_dir           Output directory with plaintext
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                        Downsample
+  -x [XSLT_FILE], --xslt_file [XSLT_FILE]
+                        XSLT file to convert XML to plaintext
+```
+
+Convert a single newspaper's XML (in ALTO or BLN format) to plaintext
+articles and generate minimal metadata. Downsampling can be used to
+convert only every Nth issue of the newspaper. One text file is output
+per article.
+
+This tool will also perform quality assurance on:
+
+* Unexpected directories.
+* Unexpected files.
+* Malformed XML.
+* Empty files.
+* Files that otherwise do not expose content.
+
+`publication_dir` is expected to have structure:
+
+```
+publication_dir
+|-- year
+|   |-- issue
+|   |   |-- xml_content
+|-- year
+```
+
+`txt_out_dir` is created with an analogous structure.
+
+`XSLT_FILE` must be an XSLT file, default, `extract_text.xslt`.
+
+`DOWNSAMPLE` must be a positive integer, default 1.
+
+### Examples
+
+Assume `BNA` exists and matches the structure above.
+
+Extract text from every issue:
+
+```bash
+./extract_text.py ../BNA txt > out.log 2> err.log
+```
+
+Extract text from every 100th issue:
+
+```bash
+./extract_text.py ../BNA txt -d 100 > out.log 2> err.log
+```
+
+While running, in another screen, run:
+
+```
+less +F out.log
+```
+
+and look for `WARN` messages.
+
+On completion:
+
+* Plaintext and XML metadat files are in `txt`.
+* Logs are in `out.log`.
+* Errors are in `err.log`.
