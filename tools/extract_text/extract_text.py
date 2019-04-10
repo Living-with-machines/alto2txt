@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Convert a single newspaper's XML (in ALTO or BLN format) to plaintext
 articles and generate minimal metadata. Downsampling can be used to
