@@ -65,8 +65,17 @@ NO_NS_SCHEMA_LOCATION = etree.QName(XSI_NS,
 
 UKP_NS = "http://tempuri.org/ncbpissue"
 """ UKP namespace """
+UKP_ROOT = etree.QName(UKP_NS, "UKP")
+""" UKP root element """
 METS_NS = "http://www.loc.gov/METS/"
 """ METS namespace """
+METS_ROOT = etree.QName(METS_NS, "mets")
+""" METS root element """
+ALTO_ROOT = "alto"
+""" ALTO root element """
+BLN_PAGE_XPATH = "/BL_newspaper/BL_page"
+""" XPath for BLN BL_page element """
+
 LWM_NS = {
     'ukp': UKP_NS,
     'mets': METS_NS
@@ -234,22 +243,22 @@ def xml_to_plaintext(publication_dir,
                         page, str(e)))
                     continue
                 metadata = get_xml_metadata(document_tree)
-                if metadata[XML_ROOT] == "UKP":
-                    # Skip UKP files, we can't handle those yet.
+                if metadata[XML_ROOT] == UKP_ROOT:
+                    # Can't handle UKP files yet.
                     skipped_ukp += 1
                     continue
-                if metadata[XML_ROOT] == "alto":
-                    # Skip alto files, we access them via mets.
+                if metadata[XML_ROOT] == ALTO_ROOT:
+                    # alto files are accessed via mets.
                     skipped_alto += 1
                     continue
-                if query_xml(document_tree, "/BL_newspaper/BL_page"):
-                    # Skip BL_page files, they contain layout not text.
+                if query_xml(document_tree, BLN_PAGE_XPATH):
+                    # BL_page files contain layout not text.
                     skipped_bl_page += 1
                     continue
                 input_filename = os.path.basename(page)
                 input_sub_path = os.path.join(publication, year, issue)
-                mets_match = re.findall(RE_METS, input_filename)
-                if mets_match:
+                if metadata[XML_ROOT] == METS_ROOT:
+                    mets_match = re.findall(RE_METS, input_filename)
                     output_document_stub = mets_match[0][0]
                 else:
                     output_document_stub = os.path.splitext(input_filename)[0]
