@@ -288,7 +288,7 @@ def xml_to_plaintext(publication_dir,
             summary["skipped_ukp"] = skipped_ukp
             summary["non_xml"] = non_xml
             check_convert = num_files - skipped_alto - \
-                            skipped_bl_page - skipped_ukp
+                skipped_bl_page - skipped_ukp
             if (converted_ok > 0) and (converted_ok == check_convert):
                 print("INFO: {} {}".format(issue_dir, str(summary)))
             else:
