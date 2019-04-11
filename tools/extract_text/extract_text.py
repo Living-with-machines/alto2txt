@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
-Convert a single newspaper's XML (in ALTO or BLN format) to plaintext
-articles and generate minimal metadata. Downsampling can be used to
-convert only every Nth issue of the newspaper. One text file is output
-per article.
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
+format) to plaintext articles and generate minimal
+metadata. Downsampling can be used to convert only every Nth issue of
+the newspaper. One text file is output per article.
 
 This tool will also perform quality assurance on:
 
@@ -174,8 +174,8 @@ def xml_to_plaintext(publication_dir,
                      xslt_file=XSLT_FILENAME,
                      downsample=1):
     """
-    Convert a single newspaper's XML (in ALTO or BLN format) to
-    plaintext articles and generate minimal metadata.
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
+    format) to plaintext articles and generate minimal metadata.
 
     :param publication_dir: Publication directory with XML
     :type publication_dir: str or unicode
@@ -244,10 +244,6 @@ def xml_to_plaintext(publication_dir,
                         page, str(e)))
                     continue
                 metadata = get_xml_metadata(document_tree)
-                if metadata[XML_ROOT] == UKP_ROOT:
-                    # Can't handle UKP files yet.
-                    skipped_ukp += 1
-                    continue
                 if metadata[XML_ROOT] == ALTO_ROOT:
                     # alto files are accessed via mets.
                     skipped_alto += 1
@@ -301,8 +297,8 @@ def xml_to_plaintext(publication_dir,
 
 def main():
     """
-    Convert a single newspaper's XML (in ALTO or BLN format) to
-    plaintext articles and generate minimal metadata.
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
+    format) to plaintext articles and generate minimal metadata.
 
     Parse command-line arguments and call xml_to_plaintext.
     """

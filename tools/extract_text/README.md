@@ -113,10 +113,10 @@ optional arguments:
                         XSLT file to convert XML to plaintext
 ```
 
-Convert a single newspaper's XML (in ALTO or BLN format) to plaintext
-articles and generate minimal metadata. Downsampling can be used to
-convert only every Nth issue of the newspaper. One text file is output
-per article.
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
+format) to plaintext articles and generate minimal
+metadata. Downsampling can be used to convert only every Nth issue of
+the newspaper. One text file is output per article.
 
 This tool will also perform quality assurance on:
 
