@@ -10,12 +10,20 @@ xmlns:mods="http://www.loc.gov/mods/v3"
 xmlns:ukp="http://tempuri.org/ncbpissue"
 xmlns:xlink="http://www.w3.org/1999/xlink"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<xsl:output method="text" />
+
+<!-- Metadata about plaintext extraction code -->
+<xsl:param name="name">extract_text</xsl:param>
+<xsl:param name="version">0.2.1</xsl:param>
+<xsl:param name="source">https://github.com/alan-turing-institute/Living-with-Machines-code</xsl:param>
+
+<!-- Input parameters to be set by caller -->
 <xsl:param name="input_path" />
 <xsl:param name="input_sub_path" />
 <xsl:param name="input_filename" />
 <xsl:param name="output_document_stub" />
 <xsl:param name="output_path" />
+
+<xsl:output method="text" />
 
 <xsl:template match="/">
   <xsl:apply-templates select="/mets:mets" />
@@ -112,9 +120,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <lwm>
           <process>
             <lwm_tool>
-              <name>extract_text</name>
-              <version>0.2.1</version>
-              <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
+              <name><xsl:value-of select="$name" /></name>
+              <version><xsl:value-of select="$version" /></version>
+              <source><xsl:value-of select="$source" /></source>
             </lwm_tool>
             <source_type>newspaper</source_type>
             <xml_flavour>alto</xml_flavour>
@@ -187,9 +195,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <lwm>
       <process>
         <lwm_tool>
-          <name>extract_text</name>
-          <version>0.2.1</version>
-          <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
+          <name><xsl:value-of select="$name" /></name>
+          <version><xsl:value-of select="$version" /></version>
+          <source><xsl:value-of select="$source" /></source>
         </lwm_tool>
         <source_type>newspaper</source_type>
         <xml_flavour>bln</xml_flavour>
@@ -245,13 +253,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <xsl:template match="ukp:article">
   <xsl:variable name="article_id"><xsl:value-of select="ukp:id" /></xsl:variable>
   <exsl:document method="text" href="{$output_path}-{$article_id}.txt">
-    <xsl:text></xsl:text>
     <xsl:apply-templates select="ukp:text/ukp:text.title/ukp:p/ukp:wd" />
     <xsl:text>&#xA;</xsl:text>
-    <xsl:text></xsl:text>
     <xsl:apply-templates select="ukp:text/ukp:text.preamble/ukp:p/ukp:wd" />
     <xsl:text>&#xA;</xsl:text>
-    <xsl:text></xsl:text>
     <xsl:apply-templates select="ukp:text/ukp:text.cr/ukp:p/ukp:wd" />
     <xsl:text>&#xA;</xsl:text>
   </exsl:document>
@@ -259,9 +264,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <lwm>
       <process>
         <lwm_tool>
-          <name>extract_text</name>
-          <version>0.2.1</version>
-          <source>https://github.com/alan-turing-institute/Living-with-Machines-code</source>
+          <name><xsl:value-of select="$name" /></name>
+          <version><xsl:value-of select="$version" /></version>
+          <source><xsl:value-of select="$source" /></source>
         </lwm_tool>
         <source_type>newspaper</source_type>
         <xml_flavour>ukp</xml_flavour>
