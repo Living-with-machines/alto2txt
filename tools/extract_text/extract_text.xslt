@@ -28,7 +28,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <xsl:template match="/">
   <xsl:apply-templates select="/mets:mets" />
   <xsl:apply-templates select="/BL_newspaper/BL_article" />
-  <xsl:apply-templates select="/ukp:UKP/ukp:Periodical/ukp:issue/ukp:page" />
+  <xsl:apply-templates select="/ukp:UKP/ukp:Periodical/ukp:issue" />
 </xsl:template>
 
 <xsl:key name="page_doc_area" match="/doc/alto/Layout//ComposedBlock|doc/alto/Layout//TextBlock" use="@ID" />
@@ -246,11 +246,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <!-- UKP -->
 <!--     -->
 
-<xsl:template match="/ukp:UKP/ukp:Periodical/ukp:issue/ukp:page" >
-  <xsl:apply-templates select="ukp:article" />
+<xsl:template match="/ukp:UKP/ukp:Periodical/ukp:issue" >
+  <xsl:apply-templates select="ukp:page/ukp:article" >
+    <xsl:with-param name="issue_id"><xsl:value-of select="ukp:id" /></xsl:with-param>
+    <xsl:with-param name="issue_number"><xsl:value-of select="ukp:is" /></xsl:with-param>
+    <xsl:with-param name="issue_volume"><xsl:value-of select="ukp:volNum" /></xsl:with-param>
+    <xsl:with-param name="issue_date"><xsl:value-of select="ukp:pf" /></xsl:with-param>
+  </xsl:apply-templates>
 </xsl:template>
 
-<xsl:template match="ukp:article">
+<xsl:template match="ukp:page/ukp:article">
+  <xsl:param name="issue_id" />
+  <xsl:param name="issue_number" />
+  <xsl:param name="issue_volume" />
+  <xsl:param name="issue_date" />
   <xsl:variable name="article_id"><xsl:value-of select="ukp:id" /></xsl:variable>
   <exsl:document method="text" href="{$output_path}-{$article_id}.txt">
     <xsl:apply-templates select="ukp:text/ukp:text.title/ukp:p/ukp:wd" />
@@ -274,22 +283,18 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <input_filename><xsl:value-of select="$input_filename" /></input_filename>
       </process>
      <publication>
-        <!-- TODO this currently is BL_newspaper/BL_article/... -->
-        <xsl:attribute name="id"><xsl:value-of select="title_metadata/titleAbbreviation" /></xsl:attribute>
-        <!-- TODO this currently is BL_newspaper/BL_article/... -->
-        <title><xsl:value-of select="title_metadata/title" /></title>
-        <!-- TODO this currently is BL_newspaper/BL_article/... -->
-        <location><xsl:value-of select="title_metadata/placeOfPublication" /></location>
+        <xsl:attribute name="id"></xsl:attribute>
+        <title/>
+        <location/>
         <issue>
-          <!-- TODO this currently is BL_newspaper/BL_article/... -->
-          <xsl:attribute name="id"><xsl:value-of select="issue_metadata/issueNumber" /></xsl:attribute>
-          <!-- TODO this currently is BL_newspaper/BL_article/... -->
-          <date><xsl:value-of select="translate(issue_metadata/normalisedDate, '.', '-')" /></date>
+          <xsl:attribute name="id"><xsl:value-of select="$issue_id" /></xsl:attribute>
+          <number><xsl:value-of select="$issue_number" /></number>
+          <volume><xsl:value-of select="$issue_volume" /></volume>
+          <!-- Convert YYYYMMDD to YYYY-MM-DD -->
+          <date><xsl:value-of select="concat(substring($issue_date, 1, 4), '-', substring($issue_date, 5, 2), '-', substring($issue_date, 7, 2))"/></date>
           <item>
-          <!-- TODO this formerly is BL_newspaper/BL_article/pageImage/pageSequence... -->
             <xsl:attribute name="id"><xsl:value-of select="ukp:id" /></xsl:attribute>
-            <plain_text_file><xsl:value-of select="$output_document_stub" />.txt</plain_text_file>
-          <!-- TODO this formerly is BL_newspaper/BL_article/article_metadata/dc_metadata/dc:Title ... -->
+            <plain_text_file><xsl:value-of select="$output_document_stub" />-<xsl:value-of select="$article_id" />.txt</plain_text_file>
             <title><xsl:value-of select="ukp:ti" /></title>
             <word_count><xsl:value-of select="format-number(count(ukp:text//ukp:wd), '0')" /></word_count>
             <ocr_quality><xsl:value-of select="ukp:ocr" /></ocr_quality>
