@@ -15,6 +15,13 @@
   <xsl:param name="name">extract_text</xsl:param>
   <xsl:param name="version">0.2.1</xsl:param>
   <xsl:param name="source">https://github.com/alan-turing-institute/Living-with-Machines-code</xsl:param>
+  <xsl:variable name="lwm_tool">
+    <lwm_tool>
+      <name><xsl:value-of select="$name" /></name>
+      <version><xsl:value-of select="$version" /></version>
+      <source><xsl:value-of select="$source" /></source>
+    </lwm_tool>
+  </xsl:variable>
 
   <!-- Input parameters to be set by caller -->
   <xsl:param name="input_path" />
@@ -119,11 +126,7 @@
         <exsl:document method="xml" href="{$output_path}_{$item_ID}_metadata.xml" indent="yes">
           <lwm>
             <process>
-              <lwm_tool>
-                <name><xsl:value-of select="$name" /></name>
-                <version><xsl:value-of select="$version" /></version>
-                <source><xsl:value-of select="$source" /></source>
-              </lwm_tool>
+              <xsl:copy-of select="$lwm_tool" />
               <source_type>newspaper</source_type>
               <xml_flavour>alto</xml_flavour>
               <software><xsl:value-of select="/mets:mets/mets:metsHdr/mets:agent/mets:name" /></software>
@@ -194,11 +197,7 @@
     <exsl:document method="xml" href="{$output_path}_metadata.xml" indent="yes">
       <lwm>
         <process>
-          <lwm_tool>
-            <name><xsl:value-of select="$name" /></name>
-            <version><xsl:value-of select="$version" /></version>
-            <source><xsl:value-of select="$source" /></source>
-          </lwm_tool>
+          <xsl:copy-of select="$lwm_tool" />
           <source_type>newspaper</source_type>
           <xml_flavour>bln</xml_flavour>
           <software><xsl:value-of select="article_metadata/additional_metadata/conversionCredit" /></software>
@@ -272,11 +271,7 @@
     <exsl:document method="xml" href="{$output_path}-{$article_id}_metadata.xml" indent="yes">
       <lwm>
         <process>
-          <lwm_tool>
-            <name><xsl:value-of select="$name" /></name>
-            <version><xsl:value-of select="$version" /></version>
-            <source><xsl:value-of select="$source" /></source>
-          </lwm_tool>
+          <xsl:copy-of select="$lwm_tool" />
           <source_type>newspaper</source_type>
           <xml_flavour>ukp</xml_flavour>
           <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
