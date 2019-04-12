@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-format) to plaintext articles and generate minimal
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
+1.4, BLN or UKP format) to plaintext articles and generate minimal
 metadata. Downsampling can be used to convert only every Nth issue of
 the newspaper. One text file is output per article.
 
@@ -14,7 +14,7 @@ Quality assurance will also be performed to check:
 * Files that otherwise do not expose content.
 
     usage: extract_publication_text.py [-h]
-                           [-d [DOWNSAMPLE]] [-x [XSLT_FILE]]
+                           [-d [DOWNSAMPLE]]
                            publication_dir txt_out_dir
 
     Extract plaintext articles from newspaper XML
@@ -27,8 +27,6 @@ Quality assurance will also be performed to check:
       -h, --help            show this help message and exit
       -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                             Downsample
-      -x [XSLT_FILE], --xslt_file [XSLT_FILE]
-                            XSLT file to convert XML to plaintext
 
 publication_dir is expected to have structure:
 
@@ -40,20 +38,25 @@ publication_dir is expected to have structure:
 
 txt_out_dir is created with an analogous structure.
 
-XSLT_FILE must be an XSLT file, default, "extract_text.xslt".
-
 DOWNSAMPLE must be a positive integer, default 1.
+
+The following XSLT files need to be in the current directory:
+
+* extract_text_mets18.xslt: METS 1.8 XSL file.
+* extract_text_mets13.xslt: METS 1.3 XSL file.
+* extract_text_bln.xslt: BLN XSL file.
+* extract_text_ukp.xslt: UKP XSL file.
 """
 
 from argparse import ArgumentParser
-from extract_text import XSLT_FILENAME
 from extract_text import xml_publication_to_text
 
 
 def main():
     """
-    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-    format) to plaintext articles and generate minimal metadata.
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata.
 
     Parse command-line arguments and call
     extract_text.xml_publication_to_text.
@@ -70,19 +73,12 @@ def main():
                         nargs="?",
                         default=1,
                         help="Downsample")
-    parser.add_argument("-x",
-                        "--xslt_file",
-                        nargs="?",
-                        default=XSLT_FILENAME,
-                        help="XSLT file to convert XML to plaintext")
     args = parser.parse_args()
     publication_dir = args.publication_dir
     txt_out_dir = args.txt_out_dir
-    xslt_file = args.xslt_file
     downsample = args.downsample
     xml_publication_to_text(publication_dir,
                             txt_out_dir,
-                            xslt_file,
                             downsample)
 
 

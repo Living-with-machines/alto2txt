@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
 Functions to convert a single newspaper's XML (in METS 1.8/ALTO 1.4,
-BLN or UKP format) to plaintext articles and generate minimal
-metadata.
+METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+generate minimal metadata.
 """
 
 from __future__ import print_function
@@ -12,8 +12,23 @@ import re
 import sys
 from lxml import etree
 
-XSLT_FILENAME = "extract_text.xslt"
-""" Default XSL filename """
+METS_18_XSLT_FILENAME = "extract_text_mets18.xslt"
+""" METS 1.8 XSL filename """
+METS_13_XSLT_FILENAME = "extract_text_mets13.xslt"
+""" METS 1.3 XSL filename """
+BLN_XSLT_FILENAME = "extract_text_bln.xslt"
+""" BLN XSL filename """
+UKP_XSLT_FILENAME = "extract_text_ukp.xslt"
+""" UKP XSL filename """
+
+METS_18_XSLT = "METS 1.8"
+""" METS 1.8 XSLT ID """
+METS_13_XSLT = "METS 1.3"
+""" METS 1.3 XSLT ID """
+BLN_XSLT = "BLN"
+""" BLN XSLT ID """
+UKP_XSLT = "UKP"
+""" UKP XSLT ID """
 
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
 """ XML Schema Instance namespace """
@@ -23,10 +38,6 @@ NO_NS_SCHEMA_LOCATION = etree.QName(XSI_NS,
                                     "noNamespaceSchemaLocation")
 """ noNamespaceSchemaLocation element """
 
-UKP_NS = "http://tempuri.org/ncbpissue"
-""" UKP namespace """
-UKP_ROOT = etree.QName(UKP_NS, "UKP")
-""" UKP root element """
 METS_NS = "http://www.loc.gov/METS/"
 """ METS namespace """
 METS_18_URI = "http://www.loc.gov/standards/mets/version18/mets.xsd"
@@ -37,8 +48,14 @@ METS_ROOT = etree.QName(METS_NS, "mets")
 """ METS root element """
 ALTO_ROOT = "alto"
 """ ALTO root element """
+BLN_ROOT = "BL_newspaper"
+""" BLN root element """
 BLN_PAGE_XPATH = "/BL_newspaper/BL_page"
 """ XPath for BLN BL_page element """
+UKP_NS = "http://tempuri.org/ncbpissue"
+""" UKP namespace """
+UKP_ROOT = etree.QName(UKP_NS, "UKP")
+""" UKP root element """
 
 LWM_NS = {
     'ukp': UKP_NS,
@@ -139,13 +156,13 @@ def query_xml(document_tree, query):
 
 def xml_publication_to_text(publication_dir,
                             txt_out_dir,
-                            xslt_file=XSLT_FILENAME,
                             downsample=1):
     """
-    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-    format) to plaintext articles and generate minimal metadata.
-    Downsampling can be used to convert only every Nth issue of the
-    newspaper. One text file is output per article.
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata. Downsampling can be used to convert
+    only every Nth issue of the newspaper. One text file is output per
+    article.
 
     Quality assurance will also be performed to check:
 
@@ -165,27 +182,30 @@ def xml_publication_to_text(publication_dir,
 
     txt_out_dir is created with an analogous structure.
 
-    xslt_file must be an XSLT file, default, "extract_text.xslt".
-
     downsample must be a positive integer, default 1.
+
+    The following XSLT files need to be in the current directory:
+
+    * extract_text_mets18.xslt: METS 1.8 XSL file.
+    * extract_text_mets13.xslt: METS 1.3 XSL file.
+    * extract_text_bln.xslt: BLN XSL file.
+    * extract_text_ukp.xslt: BLN UKP file.
 
     :param publication_dir: Publication directory with XML
     :type publication_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext
     :type txt_out_dir: str or unicode
-    :param xslt_file: XSLT file to convert XML to plaintext
-    :type xslt_file: str or unicode
     :param downsample: Downsample
     :type downsample: int
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    check_parameters(publication_dir,
-                     txt_out_dir,
-                     xslt_file,
-                     downsample)
-    xslt_dom = etree.parse(xslt_file)
-    xslt = etree.XSLT(xslt_dom)
+    check_parameters(publication_dir, txt_out_dir, downsample)
+    xslts = {}
+    xslts[METS_18_XSLT] = etree.XSLT(etree.parse(METS_18_XSLT_FILENAME))
+    xslts[METS_13_XSLT] = etree.XSLT(etree.parse(METS_13_XSLT_FILENAME))
+    xslts[BLN_XSLT] = etree.XSLT(etree.parse(BLN_XSLT_FILENAME))
+    xslts[UKP_XSLT] = etree.XSLT(etree.parse(UKP_XSLT_FILENAME))
     issue_counter = 0
     publication = os.path.basename(publication_dir)
     print("INFO: processing publication: {}".format(publication))
@@ -208,7 +228,7 @@ def xml_publication_to_text(publication_dir,
                               issue,
                               issue_dir,
                               txt_out_dir,
-                              xslt)
+                              xslts)
 
 
 def xml_issue_to_text(publication,
@@ -216,10 +236,11 @@ def xml_issue_to_text(publication,
                       issue,
                       issue_dir,
                       txt_out_dir,
-                      xslt):
+                      xslts):
     """
-    Convert a single issue's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-    format) to plaintext articles and generate minimal metadata.
+    Convert a single issue's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
+    1.4, BLN or UKP format) to plaintext articles and generate minimal
+    metadata.
 
     Quality assurance will also be performed to check:
 
@@ -239,8 +260,8 @@ def xml_issue_to_text(publication,
     :type issue_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext
     :type txt_out_dir: str or unicode
-    :param xslt: XSLT to convert XML to plaintext
-    :type xslt: str or unicode
+    :param xslts: XSLTs to convert XML to plaintext
+    :type xslts: dict(str: lxml.etree.XSLT)
     """
     print("INFO: processing issue in dir: {}".format(issue_dir))
     summary = {}
@@ -250,9 +271,8 @@ def xml_issue_to_text(publication,
     summary["converted_bad"] = 0
     summary["skipped_alto"] = 0
     summary["skipped_bl_page"] = 0
-    summary["skipped_mets13"] = 0
+    summary["skipped_mets_unknown"] = 0
     summary["non_xml"] = 0
-
     output_path = os.path.join(txt_out_dir, year, issue)
     assert not os.path.exists(output_path) or\
         not os.path.isfile(output_path),\
@@ -287,11 +307,20 @@ def xml_issue_to_text(publication,
             # BL_page files contain layout not text.
             summary["skipped_bl_page"] += 1
             continue
-        if METS_NS in metadata[XML_SCHEMA_LOCATIONS]:
-            mets_location = metadata[XML_SCHEMA_LOCATIONS][METS_NS]
-            if mets_location == METS_13_URI:
-                # XSLT can't handle METS 1.3 yet.
-                summary["skipped_mets13"] += 1
+        if metadata[XML_ROOT] == BLN_ROOT:
+            xslt = xslts[BLN_XSLT]
+        elif metadata[XML_ROOT] == UKP_ROOT:
+            xslt = xslts[UKP_XSLT]
+        else:
+            mets_uri = metadata[XML_SCHEMA_LOCATIONS][METS_NS]
+            if mets_uri == METS_18_URI:
+                xslt = xslts[METS_18_XSLT]
+            elif mets_uri == METS_13_URI:
+                xslt = xslts[METS_13_XSLT]
+            else:
+                # Unknown METS.
+                print("WARN: unknown METS schema {}: {}".format(page, mets_uri))
+                summary["skipped_mets_unknown"] += 1
                 continue
         input_filename = os.path.basename(page)
         input_sub_path = os.path.join(publication, year, issue)
@@ -321,7 +350,7 @@ def xml_issue_to_text(publication,
     if (summary["converted_ok"] > 0) and\
        (summary["converted_ok"] == (summary["num_files"] -
                                     summary["skipped_alto"] -
-                                    summary["skipped_mets13"] -
+                                    summary["skipped_mets_unknown"] -
                                     summary["skipped_bl_page"])):
         print("INFO: {} {}".format(issue_dir, str(summary)))
     else:
@@ -330,7 +359,6 @@ def xml_issue_to_text(publication,
 
 def check_parameters(publication_dir,
                      txt_out_dir,
-                     xslt_file,
                      downsample):
     """
     Check parameters. The following checks are done:
@@ -338,15 +366,12 @@ def check_parameters(publication_dir,
     * publication_dir exists and is a directory.
     * txt_out_dir either does not exists or exists and is a directory.
     * publication_dir and txt_out_dir are not the same directory.
-    * xslt_file exists and is a file.
     * downsample is a positive integer.
 
     :param publication_dir: Publication directory with XML
     :type publication_dir: str or unicode
     :param txt_out_dir: Output directory with plaintext
     :type txt_out_dir: str or unicode
-    :param xslt_file: XSLT file to convert XML to plaintext
-    :type xslt_file: str or unicode
     :param downsample: Downsample
     :type downsample: int
     :raise AssertionError: if any check fails
@@ -361,7 +386,3 @@ def check_parameters(publication_dir,
     assert os.path.normpath(publication_dir) !=\
         os.path.normpath(txt_out_dir),\
         "publication_dir and txt_out_dir, {}, should be different directories".format(publication_dir)
-    assert os.path.exists(xslt_file),\
-        "xslt_file {} not found".format(xslt_file)
-    assert os.path.isfile(xslt_file),\
-        "xslt_file {} is not a file".format(xslt_file)

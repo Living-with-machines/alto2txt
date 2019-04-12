@@ -7,45 +7,19 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:mets="http://www.loc.gov/METS/"
   xmlns:mods="http://www.loc.gov/mods/v3"
-  xmlns:ukp="http://tempuri.org/ncbpissue"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <!-- Metadata about plaintext extraction code -->
-  <xsl:param name="name">extract_text</xsl:param>
-  <xsl:param name="version">0.2.1</xsl:param>
-  <xsl:param name="source">https://github.com/alan-turing-institute/Living-with-Machines-code</xsl:param>
-  <xsl:variable name="lwm_tool">
-    <lwm_tool>
-      <name><xsl:value-of select="$name" /></name>
-      <version><xsl:value-of select="$version" /></version>
-      <source><xsl:value-of select="$source" /></source>
-    </lwm_tool>
-  </xsl:variable>
-
-  <!-- Input parameters to be set by caller -->
-  <xsl:param name="input_path" />
-  <xsl:param name="input_sub_path" />
-  <xsl:param name="input_filename" />
-  <xsl:param name="output_document_stub" />
-  <xsl:param name="output_path" />
-
-  <xsl:output method="text" />
+  <xsl:include href="extract_text_common.xslt"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="/mets:mets" />
-    <xsl:apply-templates select="/BL_newspaper/BL_article" />
-    <xsl:apply-templates select="/ukp:UKP/ukp:Periodical/ukp:issue" />
   </xsl:template>
 
   <xsl:key name="page_doc_area" match="/doc/alto/Layout//ComposedBlock|doc/alto/Layout//TextBlock" use="@ID" />
   <xsl:key name="smLocatorLink_href" match="/mets:mets/mets:structLink/mets:smLinkGrp/mets:smLocatorLink" use="@xlink:href" />
   <xsl:key name="smLocatorLink_label" match="/mets:mets/mets:structLink/mets:smLinkGrp/mets:smLocatorLink" use="@xlink:label" />
   <xsl:key name="structMap" match="/mets:mets/mets:structMap[@TYPE='PHYSICAL']//mets:div" use="@ID" />
-
-<!--                   -->
-<!-- METS 1.8/ALTO 1.4 -->
-<!--                   -->
 
   <xsl:template match="/mets:mets">
     <xsl:variable name="page_docs_rt">
@@ -181,136 +155,6 @@
   <xsl:template match="SP">
     <xsl:if test="position()!=last()">
       <xsl:text> </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-<!--              -->
-<!-- BL Newspaper -->
-<!--              -->
-
-  <xsl:template match="BL_newspaper/BL_article">
-    <exsl:document method="text" href="{$output_path}.txt">
-      <xsl:apply-templates select="image_metadata/articleImage/articleText/articleWord" />
-     <xsl:text>&#xA;</xsl:text>
-    </exsl:document>
-
-    <exsl:document method="xml" href="{$output_path}_metadata.xml" indent="yes">
-      <lwm>
-        <process>
-          <xsl:copy-of select="$lwm_tool" />
-          <source_type>newspaper</source_type>
-          <xml_flavour>bln</xml_flavour>
-          <software><xsl:value-of select="article_metadata/additional_metadata/conversionCredit" /></software>
-          <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
-          <input_filename><xsl:value-of select="$input_filename" /></input_filename>
-          <!-- namespaces -->
-        </process>
-        <publication>
-          <xsl:attribute name="id"><xsl:value-of select="title_metadata/titleAbbreviation" /></xsl:attribute>
-          <title><xsl:value-of select="title_metadata/title" /></title>
-          <location><xsl:value-of select="title_metadata/placeOfPublication" /></location>
-          <issue>
-            <xsl:attribute name="id"><xsl:value-of select="issue_metadata/issueNumber" /></xsl:attribute>
-            <date><xsl:value-of select="translate(issue_metadata/normalisedDate, '.', '-')" /></date>
-            <item>
-              <xsl:attribute name="id"><xsl:value-of select="image_metadata/pageImage/pageSequence" /></xsl:attribute>
-              <plain_text_file><xsl:value-of select="$output_document_stub" />.txt</plain_text_file>
-              <title><xsl:value-of select="article_metadata/dc_metadata/dc:Title" /></title>
-              <!-- item_type -->
-              <word_count><xsl:value-of select="format-number(count(image_metadata/articleImage/articleText/articleWord), '0')" /></word_count>
-              <!-- ocr_quality stats -->
-              <ocr_quality_summary><xsl:value-of select="issue_metadata/qualityRating" /></ocr_quality_summary>
-            </item>
-          </issue>
-        </publication>
-      </lwm>
-    </exsl:document>
-  </xsl:template>
-
-  <xsl:template match="articleWord">
-    <xsl:value-of select="." />
-    <xsl:if test="position()!=last()">
-      <xsl:choose>
-        <xsl:when test="position() mod 10 = 0">
-          <xsl:text>&#xA;</xsl:text>
-        </xsl:when>
-          <xsl:otherwise>
-            <xsl:text> </xsl:text>
-          </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-  </xsl:template>
-
-<!--     -->
-<!-- UKP -->
-<!--     -->
-
-  <xsl:template match="/ukp:UKP/ukp:Periodical/ukp:issue" >
-    <xsl:apply-templates select="ukp:page/ukp:article" >
-      <xsl:with-param name="issue_id"><xsl:value-of select="ukp:id" /></xsl:with-param>
-      <xsl:with-param name="issue_number"><xsl:value-of select="ukp:is" /></xsl:with-param>
-      <xsl:with-param name="issue_volume"><xsl:value-of select="ukp:volNum" /></xsl:with-param>
-      <xsl:with-param name="issue_date"><xsl:value-of select="ukp:pf" /></xsl:with-param>
-    </xsl:apply-templates>
-  </xsl:template>
-
-  <xsl:template match="ukp:page/ukp:article">
-    <xsl:param name="issue_id" />
-    <xsl:param name="issue_number" />
-    <xsl:param name="issue_volume" />
-    <xsl:param name="issue_date" />
-    <xsl:variable name="article_id"><xsl:value-of select="ukp:id" /></xsl:variable>
-    <exsl:document method="text" href="{$output_path}-{$article_id}.txt">
-      <xsl:apply-templates select="ukp:text/ukp:text.title/ukp:p/ukp:wd" />
-      <xsl:text>&#xA;</xsl:text>
-      <xsl:apply-templates select="ukp:text/ukp:text.preamble/ukp:p/ukp:wd" />
-      <xsl:text>&#xA;</xsl:text>
-      <xsl:apply-templates select="ukp:text/ukp:text.cr/ukp:p/ukp:wd" />
-      <xsl:text>&#xA;</xsl:text>
-    </exsl:document>
-    <exsl:document method="xml" href="{$output_path}-{$article_id}_metadata.xml" indent="yes">
-      <lwm>
-        <process>
-          <xsl:copy-of select="$lwm_tool" />
-          <source_type>newspaper</source_type>
-          <xml_flavour>ukp</xml_flavour>
-          <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
-          <input_filename><xsl:value-of select="$input_filename" /></input_filename>
-        </process>
-       <publication>
-          <xsl:attribute name="id"></xsl:attribute>
-          <title/>
-          <location/>
-          <issue>
-            <xsl:attribute name="id"><xsl:value-of select="$issue_id" /></xsl:attribute>
-            <number><xsl:value-of select="$issue_number" /></number>
-            <volume><xsl:value-of select="$issue_volume" /></volume>
-            <!-- Convert YYYYMMDD to YYYY-MM-DD -->
-            <date><xsl:value-of select="concat(substring($issue_date, 1, 4), '-', substring($issue_date, 5, 2), '-', substring($issue_date, 7, 2))"/></date>
-            <item>
-              <xsl:attribute name="id"><xsl:value-of select="ukp:id" /></xsl:attribute>
-              <plain_text_file><xsl:value-of select="$output_document_stub" />-<xsl:value-of select="$article_id" />.txt</plain_text_file>
-              <title><xsl:value-of select="ukp:ti" /></title>
-              <word_count><xsl:value-of select="format-number(count(ukp:text//ukp:wd), '0')" /></word_count>
-              <ocr_quality><xsl:value-of select="ukp:ocr" /></ocr_quality>
-            </item>
-          </issue>
-       </publication>
-      </lwm>
-    </exsl:document>
-  </xsl:template>
-
-  <xsl:template match="ukp:wd">
-    <xsl:value-of select="." />
-    <xsl:if test="position()!=last()">
-      <xsl:choose>
-        <xsl:when test="position() mod 10 = 0">
-          <xsl:text>&#xA;</xsl:text>
-        </xsl:when>
-          <xsl:otherwise>
-            <xsl:text> </xsl:text>
-          </xsl:otherwise>
-      </xsl:choose>
     </xsl:if>
   </xsl:template>
 

@@ -96,7 +96,7 @@ See `requirements.txt`.
 ### Usage
 
 ```
-usage: extract_text.py [-h] [-d [DOWNSAMPLE]] [-x [XSLT_FILE]]
+usage: extract_text.py [-h] [-d [DOWNSAMPLE]]
                        publication_dir txt_out_dir
 
 Extract plaintext articles from newspaper XML
@@ -109,16 +109,14 @@ optional arguments:
   -h, --help            show this help message and exit
   -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                         Downsample
-  -x [XSLT_FILE], --xslt_file [XSLT_FILE]
-                        XSLT file to convert XML to plaintext
 ```
 
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-format) to plaintext articles and generate minimal
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
+1.4, BLN or UKP format) to plaintext articles and generate minimal
 metadata. Downsampling can be used to convert only every Nth issue of
 the newspaper. One text file is output per article.
 
-This tool will also perform quality assurance on:
+Quality assurance will also be performed to check:
 
 * Unexpected directories.
 * Unexpected files.
@@ -138,9 +136,14 @@ publication_dir
 
 `txt_out_dir` is created with an analogous structure.
 
-`XSLT_FILE` must be an XSLT file, default, `extract_text.xslt`.
-
 `DOWNSAMPLE` must be a positive integer, default 1.
+
+The following XSLT files need to be in the current directory:
+
+* extract_text_mets18.xslt: METS 1.8 XSL file.
+* extract_text_mets13.xslt: METS 1.3 XSL file.
+* extract_text_bln.xslt: BLN XSL file.
+* extract_text_ukp.xslt: UKP XSL file.
 
 ### Examples
 
