@@ -29,6 +29,10 @@ UKP_ROOT = etree.QName(UKP_NS, "UKP")
 """ UKP root element """
 METS_NS = "http://www.loc.gov/METS/"
 """ METS namespace """
+METS_18_URI = "http://www.loc.gov/standards/mets/version18/mets.xsd"
+""" METS 1.8 schemaLocation """
+METS_13_URI = "http://schema.ccs-gmbh.com/docworks/mets-metae.xsd"
+""" METS 1.3 schemaLocation """
 METS_ROOT = etree.QName(METS_NS, "mets")
 """ METS root element """
 ALTO_ROOT = "alto"
@@ -83,7 +87,7 @@ def get_xml_metadata(document_tree):
             namespaces: {TAG: URL, TAG: URL, ...},
             no_ns_schema_location: <URL> | None,
             root: <ROOT_ELEMENT>,
-            schema_locations: [URL, URL, ...] | None
+            schema_locations: {URL:URL, ...}
         }
 
     :param document_tree: Document tree
@@ -98,8 +102,13 @@ def get_xml_metadata(document_tree):
     no_ns_schema_location = root_element.get(NO_NS_SCHEMA_LOCATION.text)
     schema_locations = root_element.get(SCHEMA_LOCATION.text)
     if schema_locations is not None:
-        schema_locations = schema_locations.split(" ")
-
+        # Convert schema_locations from "namespaceURI schemaURI ..."
+        # to dictionary with namespaceURI:schemaURI
+        uris = schema_locations.split(" ")
+        schema_locations = {uris[i]: uris[i+1]
+                            for i in range(0, len(uris), 2)}
+    else:
+        schema_locations = {}
     metadata = {}
     metadata[XML_ROOT] = root_element_tag
     metadata[XML_DOCTYPE] = doctype
@@ -241,6 +250,7 @@ def xml_issue_to_text(publication,
     summary["converted_bad"] = 0
     summary["skipped_alto"] = 0
     summary["skipped_bl_page"] = 0
+    summary["skipped_mets13"] = 0
     summary["non_xml"] = 0
 
     output_path = os.path.join(txt_out_dir, year, issue)
@@ -277,6 +287,12 @@ def xml_issue_to_text(publication,
             # BL_page files contain layout not text.
             summary["skipped_bl_page"] += 1
             continue
+        if METS_NS in metadata[XML_SCHEMA_LOCATIONS]:
+            mets_location = metadata[XML_SCHEMA_LOCATIONS][METS_NS]
+            if mets_location == METS_13_URI:
+                # XSLT can't handle METS 1.3 yet.
+                summary["skipped_mets13"] += 1
+                continue
         input_filename = os.path.basename(page)
         input_sub_path = os.path.join(publication, year, issue)
         if metadata[XML_ROOT] == METS_ROOT:
@@ -305,6 +321,7 @@ def xml_issue_to_text(publication,
     if (summary["converted_ok"] > 0) and\
        (summary["converted_ok"] == (summary["num_files"] -
                                     summary["skipped_alto"] -
+                                    summary["skipped_mets13"] -
                                     summary["skipped_bl_page"])):
         print("INFO: {} {}".format(issue_dir, str(summary)))
     else:
