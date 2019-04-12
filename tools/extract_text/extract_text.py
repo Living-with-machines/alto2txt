@@ -162,7 +162,7 @@ def xml_publication_to_text(publication_dir,
 
     :param publication_dir: Publication directory with XML
     :type publication_dir: str or unicode
-    :param txt_out_dir: Output directory with plaintext
+    :param txt_out_dir: Output directory for plaintext
     :type txt_out_dir: str or unicode
     :param xslt_file: XSLT file to convert XML to plaintext
     :type xslt_file: str or unicode
@@ -190,95 +190,125 @@ def xml_publication_to_text(publication_dir,
             if not os.path.isdir(issue_dir):
                 print("WARN: unexpected file: {}".format(issue))
                 continue
-            # Only process every nth (when using downsample).
+            # Only process every Nth issue (when using downsample).
             issue_counter += 1
             if (issue_counter % downsample) != 0:
                 continue
-            print("INFO: processing issue in dir: {}".format(issue_dir))
-            # Reset per issue stats
-            num_files = 0
-            bad_xml = 0
-            converted_ok = 0
-            converted_bad = 0
-            non_xml = 0
-            skipped_alto = 0
-            skipped_bl_page = 0
-            # Make output directories for plain text and metadata.
-            output_path = os.path.join(txt_out_dir, year, issue)
-            assert not os.path.exists(output_path) or\
-                not os.path.isfile(output_path),\
-                "ERROR: {} exists and is not a file".format(
-                    output_path)
-            if not os.path.exists(output_path):
-                os.makedirs(output_path)
-            assert os.path.exists(output_path),\
-                "ERROR: Create {} failed".format(output_path)
+            xml_issue_to_text(publication,
+                              year,
+                              issue,
+                              issue_dir,
+                              txt_out_dir,
+                              xslt)
 
-            for page in os.listdir(issue_dir):
-                page_path = os.path.join(issue_dir, page)
-                if os.path.isdir(page_path):
-                    print("WARN: unexpected directory: {}".format(page))
-                    continue
-                num_files += 1
-                if os.path.splitext(page)[1].lower() != ".xml":
-                    non_xml += 1
-                    print("WARN: file with no .xml suffic: {}".format(page))
-                    continue
-                try:
-                    document_tree = get_xml(page_path)
-                except Exception as e:
-                    bad_xml += 1
-                    print("WARN: problematic file {}: {}".format(
-                        page, str(e)))
-                    continue
-                metadata = get_xml_metadata(document_tree)
-                if metadata[XML_ROOT] == ALTO_ROOT:
-                    # alto files are accessed via mets.
-                    skipped_alto += 1
-                    continue
-                if query_xml(document_tree, BLN_PAGE_XPATH):
-                    # BL_page files contain layout not text.
-                    skipped_bl_page += 1
-                    continue
-                input_filename = os.path.basename(page)
-                input_sub_path = os.path.join(publication, year, issue)
-                if metadata[XML_ROOT] == METS_ROOT:
-                    mets_match = re.findall(RE_METS, input_filename)
-                    output_document_stub = mets_match[0][0]
-                else:
-                    output_document_stub = os.path.splitext(input_filename)[0]
-                output_document_path = os.path.join(output_path,
-                                                    output_document_stub)
-                try:
-                    xslt(document_tree,
-                         input_path=etree.XSLT.strparam(issue_dir),
-                         input_sub_path=etree.XSLT.strparam(
-                             input_sub_path),
-                         input_filename=etree.XSLT.strparam(input_filename),
-                         output_document_stub=etree.XSLT.strparam(
-                             output_document_stub),
-                         output_path=etree.XSLT.strparam(
-                             output_document_path))
-                    converted_ok += 1
-                    print("INFO: {} gave XSLT output".format(page_path))
-                except Exception as e:
-                    converted_bad += 1
-                    print("ERROR: {} failed to give XSLT output: {}".format(
-                        page, str(e)), file=sys.stderr)
-                    continue
-            summary = {}
-            summary["num_files"] = num_files
-            summary["bad_xml"] = bad_xml
-            summary["converted_ok"] = converted_ok
-            summary["converted_bad"] = converted_bad
-            summary["skipped_alto"] = skipped_alto
-            summary["skipped_bl_page"] = skipped_bl_page
-            summary["non_xml"] = non_xml
-            check_convert = num_files - skipped_alto - skipped_bl_page
-            if (converted_ok > 0) and (converted_ok == check_convert):
-                print("INFO: {} {}".format(issue_dir, str(summary)))
-            else:
-                print("WARN: {} {}".format(issue_dir, str(summary)))
+
+def xml_issue_to_text(publication,
+                      year,
+                      issue,
+                      issue_dir,
+                      txt_out_dir,
+                      xslt):
+    """
+    Convert a single issue's XML (in METS 1.8/ALTO 1.4, BLN or UKP
+    format) to plaintext articles and generate minimal metadata.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    :param publication: Publication directory local name e.g. 0000151
+    :type publication: str or unicode
+    :param year: Year directory local name e.g. 1835
+    :type year: str or unicode
+    :param issue: Issue directory local name e.g. 0121
+    :type issue: str or unicode
+    :param issue_dir: Issue directory e.g. .../0000151/1835/0121
+    :type issue_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext
+    :type txt_out_dir: str or unicode
+    :param xslt: XSLT to convert XML to plaintext
+    :type xslt: str or unicode
+    """
+    print("INFO: processing issue in dir: {}".format(issue_dir))
+    summary = {}
+    summary["num_files"] = 0
+    summary["bad_xml"] = 0
+    summary["converted_ok"] = 0
+    summary["converted_bad"] = 0
+    summary["skipped_alto"] = 0
+    summary["skipped_bl_page"] = 0
+    summary["non_xml"] = 0
+
+    output_path = os.path.join(txt_out_dir, year, issue)
+    assert not os.path.exists(output_path) or\
+        not os.path.isfile(output_path),\
+        "ERROR: {} exists and is not a file".format(output_path)
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+    assert os.path.exists(output_path),\
+        "ERROR: Create {} failed".format(output_path)
+
+    for page in os.listdir(issue_dir):
+        page_path = os.path.join(issue_dir, page)
+        if os.path.isdir(page_path):
+            print("WARN: unexpected directory: {}".format(page))
+            continue
+        summary["num_files"] += 1
+        if os.path.splitext(page)[1].lower() != ".xml":
+            summary["non_xml"] += 1
+            print("WARN: file with no .xml suffix: {}".format(page))
+            continue
+        try:
+            document_tree = get_xml(page_path)
+        except Exception as e:
+            summary["bad_xml"] += 1
+            print("WARN: problematic file {}: {}".format(page, str(e)))
+            continue
+        metadata = get_xml_metadata(document_tree)
+        if metadata[XML_ROOT] == ALTO_ROOT:
+            # alto files are accessed via mets file.
+            summary["skipped_alto"] += 1
+            continue
+        if query_xml(document_tree, BLN_PAGE_XPATH):
+            # BL_page files contain layout not text.
+            summary["skipped_bl_page"] += 1
+            continue
+        input_filename = os.path.basename(page)
+        input_sub_path = os.path.join(publication, year, issue)
+        if metadata[XML_ROOT] == METS_ROOT:
+            mets_match = re.findall(RE_METS, input_filename)
+            output_document_stub = mets_match[0][0]
+        else:
+            output_document_stub = os.path.splitext(input_filename)[0]
+        output_document_path = os.path.join(output_path,
+                                            output_document_stub)
+        try:
+            xslt(document_tree,
+                 input_path=etree.XSLT.strparam(issue_dir),
+                 input_sub_path=etree.XSLT.strparam(input_sub_path),
+                 input_filename=etree.XSLT.strparam(input_filename),
+                 output_document_stub=etree.XSLT.strparam(
+                     output_document_stub),
+                 output_path=etree.XSLT.strparam(
+                     output_document_path))
+            summary["converted_ok"] += 1
+            print("INFO: {} gave XSLT output".format(page_path))
+        except Exception as e:
+            summary["converted_bad"] += 1
+            print("ERROR: {} failed to give XSLT output: {}".format(
+                page, str(e)), file=sys.stderr)
+            continue
+    if (summary["converted_ok"] > 0) and\
+       (summary["converted_ok"] == (summary["num_files"] -
+                                    summary["skipped_alto"] -
+                                    summary["skipped_bl_page"])):
+        print("INFO: {} {}".format(issue_dir, str(summary)))
+    else:
+        print("WARN: {} {}".format(issue_dir, str(summary)))
 
 
 def check_parameters(publication_dir,
