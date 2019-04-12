@@ -144,18 +144,18 @@ publication_dir
 
 ### Examples
 
-Assume `BNA` exists and matches the structure above.
+Assume `~/BNA/0000151` exists and matches the structure above.
 
 Extract text from every issue:
 
 ```bash
-./extract_text.py ../BNA txt > out.log 2> err.log
+./extract_publication_text.py ~/BNA/0000151 txt > out.log 2> err.log
 ```
 
 Extract text from every 100th issue:
 
 ```bash
-./extract_text.py ../BNA txt -d 100 > out.log 2> err.log
+./extract_publication_text.py ~/BNA/0000151 txt -d 100 > out.log 2> err.log
 ```
 
 While running, in another screen, run:

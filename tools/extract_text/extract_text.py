@@ -1,52 +1,11 @@
 #!/usr/bin/env python
 """
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-format) to plaintext articles and generate minimal
-metadata. Downsampling can be used to convert only every Nth issue of
-the newspaper. One text file is output per article.
-
-This tool will also perform quality assurance on:
-
-* Unexpected directories.
-* Unexpected files.
-* Malformed XML.
-* Empty files.
-* Files that otherwise do not expose content.
-
-    usage: extract_text.py [-h] [-d [DOWNSAMPLE]] [-x [XSLT_FILE]]
-                           publication_dir txt_out_dir
-
-    Extract plaintext articles from newspaper XML
-
-    positional arguments:
-      publication_dir       Publication directory with XML
-      txt_out_dir           Output directory with plaintext
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                            Downsample
-      -x [XSLT_FILE], --xslt_file [XSLT_FILE]
-                            XSLT file to convert XML to plaintext
-
-publication_dir is expected to have structure:
-
-    publication_dir
-    |-- year
-    |   |-- issue
-    |   |   |-- xml_content
-    |-- year
-
-txt_out_dir is created with an analogous structure.
-
-XSLT_FILE must be an XSLT file, default, "extract_text.xslt".
-
-DOWNSAMPLE must be a positive integer, default 1.
+Functions to convert a single newspaper's XML (in METS 1.8/ALTO 1.4,
+BLN or UKP format) to plaintext articles and generate minimal
+metadata.
 """
 
-
 from __future__ import print_function
-from argparse import ArgumentParser
 import os
 import os.path
 import re
@@ -169,13 +128,37 @@ def query_xml(document_tree, query):
     return result
 
 
-def xml_to_plaintext(publication_dir,
-                     txt_out_dir,
-                     xslt_file=XSLT_FILENAME,
-                     downsample=1):
+def xml_publication_to_text(publication_dir,
+                            txt_out_dir,
+                            xslt_file=XSLT_FILENAME,
+                            downsample=1):
     """
     Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
     format) to plaintext articles and generate minimal metadata.
+    Downsampling can be used to convert only every Nth issue of the
+    newspaper. One text file is output per article.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    publication_dir is expected to have structure:
+
+        publication_dir
+        |-- year
+        |   |-- issue
+        |   |   |-- xml_content
+        |-- year
+
+    txt_out_dir is created with an analogous structure.
+
+    xslt_file must be an XSLT file, default, "extract_text.xslt".
+
+    downsample must be a positive integer, default 1.
 
     :param publication_dir: Publication directory with XML
     :type publication_dir: str or unicode
@@ -185,7 +168,13 @@ def xml_to_plaintext(publication_dir,
     :type xslt_file: str or unicode
     :param downsample: Downsample
     :type downsample: int
+    :raise AssertionError: if any parameter check fails (see
+    check_parameters)
     """
+    check_parameters(publication_dir,
+                     txt_out_dir,
+                     xslt_file,
+                     downsample)
     xslt_dom = etree.parse(xslt_file)
     xslt = etree.XSLT(xslt_dom)
     issue_counter = 0
@@ -292,35 +281,29 @@ def xml_to_plaintext(publication_dir,
                 print("WARN: {} {}".format(issue_dir, str(summary)))
 
 
-def main():
+def check_parameters(publication_dir,
+                     txt_out_dir,
+                     xslt_file,
+                     downsample):
     """
-    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, BLN or UKP
-    format) to plaintext articles and generate minimal metadata.
+    Check parameters. The following checks are done:
 
-    Parse command-line arguments and call xml_to_plaintext.
+    * publication_dir exists and is a directory.
+    * txt_out_dir either does not exists or exists and is a directory.
+    * publication_dir and txt_out_dir are not the same directory.
+    * xslt_file exists and is a file.
+    * downsample is a positive integer.
+
+    :param publication_dir: Publication directory with XML
+    :type publication_dir: str or unicode
+    :param txt_out_dir: Output directory with plaintext
+    :type txt_out_dir: str or unicode
+    :param xslt_file: XSLT file to convert XML to plaintext
+    :type xslt_file: str or unicode
+    :param downsample: Downsample
+    :type downsample: int
+    :raise AssertionError: if any check fails
     """
-    parser = ArgumentParser(
-        description="Extract plaintext articles from newspaper XML")
-    parser.add_argument("publication_dir",
-                        help="Publication directory with XML")
-    parser.add_argument("txt_out_dir",
-                        help="Output directory with plaintext")
-    parser.add_argument("-d",
-                        "--downsample",
-                        type=int,
-                        nargs="?",
-                        default=1,
-                        help="Downsample")
-    parser.add_argument("-x",
-                        "--xslt_file",
-                        nargs="?",
-                        default=XSLT_FILENAME,
-                        help="XSLT file to convert XML to plaintext")
-    args = parser.parse_args()
-    publication_dir = args.publication_dir
-    txt_out_dir = args.txt_out_dir
-    xslt_file = args.xslt_file
-    downsample = args.downsample
     assert downsample > 0, "downsample must be a positive integer"
     assert os.path.exists(publication_dir),\
         "publication_dir, {}, not found".format(publication_dir)
@@ -335,8 +318,3 @@ def main():
         "xslt_file {} not found".format(xslt_file)
     assert os.path.isfile(xslt_file),\
         "xslt_file {} is not a file".format(xslt_file)
-    xml_to_plaintext(publication_dir, txt_out_dir, xslt_file, downsample)
-
-
-if __name__ == "__main__":
-    main()
