@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-Functions to convert a single newspaper's XML (in METS 1.8/ALTO 1.4,
-METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
-generate minimal metadata.
+Functions to convert newspaper XML (in METS 1.8/ALTO 1.4, METS
+1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and generate
+minimal metadata.
 """
 
 from __future__ import print_function
@@ -76,6 +76,28 @@ XML_SCHEMA_LOCATIONS = "schema_locations"
 
 RE_METS = "(.*)[-|_](mets|METS).xml$"
 """ Regular expression for METS file """
+
+
+def load_xslts():
+    """
+    Load XSLTs and return in a dictionary.
+
+    The following XSLT files need to be in the current directory:
+
+    * extract_text_mets18.xslt: METS 1.8 XSL file.
+    * extract_text_mets13.xslt: METS 1.3 XSL file.
+    * extract_text_bln.xslt: BLN XSL file.
+    * extract_text_ukp.xslt: BLN UKP file.
+
+    :return: XSLTs to convert XML to plaintext
+    :rtype: dict(str: lxml.etree.XSLT)
+    """
+    xslts = {}
+    xslts[METS_18_XSLT] = etree.XSLT(etree.parse(METS_18_XSLT_FILENAME))
+    xslts[METS_13_XSLT] = etree.XSLT(etree.parse(METS_13_XSLT_FILENAME))
+    xslts[BLN_XSLT] = etree.XSLT(etree.parse(BLN_XSLT_FILENAME))
+    xslts[UKP_XSLT] = etree.XSLT(etree.parse(UKP_XSLT_FILENAME))
+    return xslts
 
 
 def get_xml(filename):
@@ -154,89 +176,12 @@ def query_xml(document_tree, query):
     return result
 
 
-def xml_publication_to_text(publication_dir,
-                            txt_out_dir,
-                            downsample=1):
-    """
-    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS
-    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
-    generate minimal metadata. Downsampling can be used to convert
-    only every Nth issue of the newspaper. One text file is output per
-    article, each complemented by one XML metadata file.
-
-    Quality assurance will also be performed to check:
-
-    * Unexpected directories.
-    * Unexpected files.
-    * Malformed XML.
-    * Empty files.
-    * Files that otherwise do not expose content.
-
-    publication_dir is expected to have structure:
-
-        publication_dir
-        |-- year
-        |   |-- issue
-        |   |   |-- xml_content
-        |-- year
-
-    txt_out_dir is created with an analogous structure.
-
-    downsample must be a positive integer, default 1.
-
-    The following XSLT files need to be in the current directory:
-
-    * extract_text_mets18.xslt: METS 1.8 XSL file.
-    * extract_text_mets13.xslt: METS 1.3 XSL file.
-    * extract_text_bln.xslt: BLN XSL file.
-    * extract_text_ukp.xslt: BLN UKP file.
-
-    :param publication_dir: Publication directory with XML
-    :type publication_dir: str or unicode
-    :param txt_out_dir: Output directory for plaintext
-    :type txt_out_dir: str or unicode
-    :param downsample: Downsample
-    :type downsample: int
-    :raise AssertionError: if any parameter check fails (see
-    check_parameters)
-    """
-    check_parameters(publication_dir, txt_out_dir, downsample)
-    xslts = {}
-    xslts[METS_18_XSLT] = etree.XSLT(etree.parse(METS_18_XSLT_FILENAME))
-    xslts[METS_13_XSLT] = etree.XSLT(etree.parse(METS_13_XSLT_FILENAME))
-    xslts[BLN_XSLT] = etree.XSLT(etree.parse(BLN_XSLT_FILENAME))
-    xslts[UKP_XSLT] = etree.XSLT(etree.parse(UKP_XSLT_FILENAME))
-    issue_counter = 0
-    publication = os.path.basename(publication_dir)
-    print("INFO: processing publication: {}".format(publication))
-    for year in os.listdir(publication_dir):
-        year_dir = os.path.join(publication_dir, year)
-        if not os.path.isdir(year_dir):
-            print("WARN: unexpected file: {}".format(year))
-            continue
-        for issue in os.listdir(year_dir):
-            issue_dir = os.path.join(year_dir, issue)
-            if not os.path.isdir(issue_dir):
-                print("WARN: unexpected file: {}".format(issue))
-                continue
-            # Only process every Nth issue (when using downsample).
-            issue_counter += 1
-            if (issue_counter % downsample) != 0:
-                continue
-            xml_issue_to_text(publication,
-                              year,
-                              issue,
-                              issue_dir,
-                              txt_out_dir,
-                              xslts)
-
-
-def xml_issue_to_text(publication,
-                      year,
-                      issue,
-                      issue_dir,
-                      txt_out_dir,
-                      xslts):
+def issue_to_text(publication,
+                  year,
+                  issue,
+                  issue_dir,
+                  txt_out_dir,
+                  xslts):
     """
     Convert a single issue's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
     1.4, BLN or UKP format) to plaintext articles and generate minimal
@@ -357,19 +302,139 @@ def xml_issue_to_text(publication,
         print("WARN: {} {}".format(issue_dir, str(summary)))
 
 
-def check_parameters(publication_dir,
+def publication_to_text(publication_dir,
+                        txt_out_dir,
+                        xslts,
+                        downsample=1):
+    """
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata. Downsampling can be used to convert
+    only every Nth issue of the newspaper. One text file is output per
+    article, each complemented by one XML metadata file.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    publication_dir is expected to have structure:
+
+        publication_dir
+        |-- year
+        |   |-- issue
+        |   |   |-- xml_content
+        |-- year
+
+    txt_out_dir is created with an analogous structure.
+
+    downsample must be a positive integer, default 1.
+
+    :param publication_dir: Publication directory with XML
+    :type publication_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext
+    :type txt_out_dir: str or unicode
+    :param xslts: XSLTs to convert XML to plaintext
+    :type xslts: dict(str: lxml.etree.XSLT)
+    :param downsample: Downsample
+    :type downsample: int
+    """
+    issue_counter = 0
+    publication = os.path.basename(publication_dir)
+    print("INFO: processing publication: {}".format(publication))
+    for year in os.listdir(publication_dir):
+        year_dir = os.path.join(publication_dir, year)
+        if not os.path.isdir(year_dir):
+            print("WARN: unexpected file: {}".format(year))
+            continue
+        for issue in os.listdir(year_dir):
+            issue_dir = os.path.join(year_dir, issue)
+            if not os.path.isdir(issue_dir):
+                print("WARN: unexpected file: {}".format(issue))
+                continue
+            # Only process every Nth issue (when using downsample).
+            issue_counter += 1
+            if (issue_counter % downsample) != 0:
+                continue
+            issue_to_text(publication,
+                          year,
+                          issue,
+                          issue_dir,
+                          txt_out_dir,
+                          xslts)
+
+
+def publications_to_text(publications_dir,
+                         txt_out_dir,
+                         xslts,
+                         downsample=1):
+    """
+    Convert multiple newspapers' XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata. Downsampling can be used to convert
+    only every Nth issue of the newspaper. One text file is output per
+    article, each complemented by one XML metadata file.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    publications_dir is expected to have structure:
+
+        publications_dir
+        |-- publication
+        |   |-- year
+        |   |   |-- issue
+        |   |   |   |-- xml_content
+        |   |-- year
+
+    txt_out_dir is created with an analogous structure.
+
+    downsample must be a positive integer, default 1.
+
+    :param publication_dir: Publications directory with XML
+    :type publications_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext
+    :type txt_out_dir: str or unicode
+    :param xslts: XSLTs to convert XML to plaintext
+    :type xslts: dict(str: lxml.etree.XSLT)
+    :param downsample: Downsample
+    :type downsample: int
+    """
+    publications = os.path.basename(publications_dir)
+    print("INFO: processing publications: {}".format(publications))
+    for publication in os.listdir(publications_dir):
+        publication_dir = os.path.join(publications_dir, publication)
+        if not os.path.isdir(publication_dir):
+            print("WARN: unexpected file: {}".format(publication))
+            continue
+        publication_txt_out_dir = os.path.join(txt_out_dir, publication)
+        publication_to_text(publication_dir,
+                            publication_txt_out_dir,
+                            xslts,
+                            downsample)
+
+
+def check_parameters(input_dir,
                      txt_out_dir,
                      downsample):
     """
     Check parameters. The following checks are done:
 
-    * publication_dir exists and is a directory.
+    * input_dir exists and is a directory.
     * txt_out_dir either does not exists or exists and is a directory.
-    * publication_dir and txt_out_dir are not the same directory.
+    * input_dir and txt_out_dir are not the same directory.
     * downsample is a positive integer.
 
-    :param publication_dir: Publication directory with XML
-    :type publication_dir: str or unicode
+    :param input_dir: Input directory with XML
+    :type input_dir: str or unicode
     :param txt_out_dir: Output directory with plaintext
     :type txt_out_dir: str or unicode
     :param downsample: Downsample
@@ -377,12 +442,121 @@ def check_parameters(publication_dir,
     :raise AssertionError: if any check fails
     """
     assert downsample > 0, "downsample must be a positive integer"
-    assert os.path.exists(publication_dir),\
-        "publication_dir, {}, not found".format(publication_dir)
-    assert os.path.isdir(publication_dir),\
-        "publication_dir, {}, is not a directory".format(publication_dir)
+    assert os.path.exists(input_dir),\
+        "{} not found".format(input_dir)
+    assert os.path.isdir(input_dir),\
+        "{} is not a directory".format(input_dir)
     assert not os.path.isfile(txt_out_dir),\
-        "txt_out_dir, {}, is not a directory".format(txt_out_dir)
-    assert os.path.normpath(publication_dir) !=\
+        "{} is not a directory".format(txt_out_dir)
+    assert os.path.normpath(input_dir) !=\
         os.path.normpath(txt_out_dir),\
-        "publication_dir and txt_out_dir, {}, should be different directories".format(publication_dir)
+        "{}, {} should be different directories".format(input_dir, txt_out_dir)
+
+
+def xml_publication_to_text(publication_dir,
+                            txt_out_dir,
+                            downsample=1):
+    """
+    Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata. Downsampling can be used to convert
+    only every Nth issue of the newspaper. One text file is output per
+    article, each complemented by one XML metadata file.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    publication_dir is expected to have structure:
+
+        publication_dir
+        |-- year
+        |   |-- issue
+        |   |   |-- xml_content
+        |-- year
+
+    txt_out_dir is created with an analogous structure.
+
+    downsample must be a positive integer, default 1.
+
+    The following XSLT files need to be in the current directory:
+
+    * extract_text_mets18.xslt: METS 1.8 XSL file.
+    * extract_text_mets13.xslt: METS 1.3 XSL file.
+    * extract_text_bln.xslt: BLN XSL file.
+    * extract_text_ukp.xslt: BLN UKP file.
+
+    :param publication_dir: Publication directory with XML
+    :type publication_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample
+    :type downsample: int
+    :raise AssertionError: if any parameter check fails (see
+    check_parameters)
+    """
+    check_parameters(publication_dir, txt_out_dir, downsample)
+    xslts = load_xslts()
+    publication_to_text(publication_dir,
+                        txt_out_dir,
+                        xslts,
+                        downsample)
+
+
+def xml_publications_to_text(publications_dir,
+                             txt_out_dir,
+                             downsample=1):
+    """
+    Convert multiple newspaper's XML (in METS 1.8/ALTO 1.4, METS
+    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
+    generate minimal metadata. Downsampling can be used to convert
+    only every Nth issue of the newspaper. One text file is output per
+    article, each complemented by one XML metadata file.
+
+    Quality assurance will also be performed to check:
+
+    * Unexpected directories.
+    * Unexpected files.
+    * Malformed XML.
+    * Empty files.
+    * Files that otherwise do not expose content.
+
+    publication_dir is expected to have structure:
+
+        publications_dir
+        |-- publication
+        |   |-- year
+        |   |   |-- issue
+        |   |   |   |-- xml_content
+        |   |-- year
+
+    txt_out_dir is created with an analogous structure.
+
+    downsample must be a positive integer, default 1.
+
+    The following XSLT files need to be in the current directory:
+
+    * extract_text_mets18.xslt: METS 1.8 XSL file.
+    * extract_text_mets13.xslt: METS 1.3 XSL file.
+    * extract_text_bln.xslt: BLN XSL file.
+    * extract_text_ukp.xslt: BLN UKP file.
+
+    :param publications_dir: Publications directory with XML
+    :type publications_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample
+    :type downsample: int
+    :raise AssertionError: if any parameter check fails (see
+    check_parameters)
+    """
+    check_parameters(publications_dir, txt_out_dir, downsample)
+    xslts = load_xslts()
+    publications_to_text(publications_dir,
+                         txt_out_dir,
+                         xslts,
+                         downsample)
