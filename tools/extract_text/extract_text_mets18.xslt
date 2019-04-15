@@ -114,7 +114,15 @@
               <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:title" /></title>
               <location><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:placeTerm" /></location>
               <issue>
-                <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:part//mods:number" /></xsl:attribute>
+                <xsl:choose>
+                  <xsl:when test="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:part//mods:number != ''" >
+                    <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:part//mods:number" /></xsl:attribute>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <!-- If missing then use date as issue ID -->
+                    <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:dateIssued" /></xsl:attribute>
+                  </xsl:otherwise>
+     	        </xsl:choose>
                 <date><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:dateIssued" /></date>
                 <item>
                   <xsl:attribute name="id"><xsl:value-of select="$item_ID" /></xsl:attribute>
