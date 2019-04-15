@@ -46,8 +46,6 @@
         </process>
        <publication>
           <xsl:attribute name="id"></xsl:attribute>
-          <title/>
-          <location/>
           <issue>
             <xsl:attribute name="id"><xsl:value-of select="$issue_id" /></xsl:attribute>
             <number><xsl:value-of select="$issue_number" /></number>
