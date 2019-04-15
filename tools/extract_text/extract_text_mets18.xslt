@@ -103,7 +103,7 @@
               <xsl:copy-of select="$lwm_tool" />
               <source_type>newspaper</source_type>
               <xml_flavour>alto</xml_flavour>
-              <software><xsl:value-of select="/mets:mets/mets:metsHdr/mets:agent/mets:name" /></software>
+              <software><xsl:value-of select="/mets:mets/mets:metsHdr/mets:agent[@OTHERTYPE='SOFTWARE']/mets:name" /></software>
               <input_sub_path><xsl:value-of select="$input_sub_path" /></input_sub_path>
               <input_filename><xsl:value-of select="$input_filename" /></input_filename>
               <mets_namespace><xsl:value-of select="/mets:mets/@xsi:schemaLocation" /></mets_namespace>
