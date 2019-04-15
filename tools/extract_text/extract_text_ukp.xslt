@@ -28,7 +28,14 @@
     <xsl:param name="issue_number" />
     <xsl:param name="issue_volume" />
     <xsl:param name="issue_date" />
-    <xsl:variable name="article_id"><xsl:value-of select="ukp:id" /></xsl:variable>
+    <!--
+      Issue ID, ukp:issue/ukp:id, has form: <PREFIX>-<YYYY>-<MM><DD>.
+      Article ID, ukp:issue/uk:page:/ukp:article/ukp:id, has form:
+      <PREFIX>-<YYYY>-<MM>-<DD>-<PAGE>-<ARTICLE>.
+      To reduce verbosity of IDs and file names, trim off issue id
+      from article ID.
+    -->
+    <xsl:variable name="article_id"><xsl:value-of select="substring(ukp:id, string-length($issue_id) + 2)" /></xsl:variable>
     <exsl:document method="text" href="{$output_path}-{$article_id}.txt">
       <xsl:apply-templates select="ukp:text/ukp:text.title/ukp:p/ukp:wd" />
       <xsl:text>&#xA;</xsl:text>
@@ -55,7 +62,7 @@
             <!-- Convert YYYYMMDD to YYYY-MM-DD -->
             <date><xsl:value-of select="concat(substring($issue_date, 1, 4), '-', substring($issue_date, 5, 2), '-', substring($issue_date, 7, 2))"/></date>
             <item>
-              <xsl:attribute name="id"><xsl:value-of select="ukp:id" /></xsl:attribute>
+              <xsl:attribute name="id"><xsl:value-of select="$article_id" /></xsl:attribute>
               <plain_text_file><xsl:value-of select="$output_document_stub" />-<xsl:value-of select="$article_id" />.txt</plain_text_file>
               <title><xsl:value-of select="ukp:ti" /></title>
               <item_type><xsl:value-of select="ukp:ct" /></item_type>
