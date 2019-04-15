@@ -89,9 +89,11 @@ review output in `err`
 
 A Python version of the `extracttext` script.
 
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and generate minimal metadata.
+
 ### Requirements
 
-See `requirements.txt`.
+Python 2.7 plus Python packages listed in `requirements.txt`.
 
 ### Usage
 
@@ -111,10 +113,7 @@ optional arguments:
                         Downsample
 ```
 
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
-1.4, BLN or UKP format) to plaintext articles and generate minimal
-metadata. Downsampling can be used to convert only every Nth issue of
-the newspaper. One text file is output per article.
+Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and generate minimal metadata. Downsampling can be used to convert only every Nth issue of the newspaper. One text file is output per article, each complemented by one XML metadata file.
 
 Quality assurance will also be performed to check:
 
@@ -174,3 +173,25 @@ On completion:
 * Plaintext and XML metadat files are in `txt`.
 * Logs are in `out.log`.
 * Errors are in `err.log`.
+
+### XML metadata
+
+Metadata about `extract_text.py` itself is inserted into the XML metadata files. The current values, including version, are defined in `extract_text_common.xslt`.
+
+The following metadata for the following dataset types are **not** output, due to it not being present in the XML for those datasets:
+
+METS1.3/ALTO1.4:
+
+* `/lwm/publication/location`
+
+BLN:
+
+* `/lwm/process/namespace`
+* `/lwm/publication/issue/item/item_type`
+
+UKP:
+
+* `/lwm/process/software`
+* `/lwm/process/namespace`
+* `/lwm/publication/title`
+* `/lwm/publication/location`
