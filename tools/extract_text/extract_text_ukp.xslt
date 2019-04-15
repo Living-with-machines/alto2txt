@@ -17,7 +17,6 @@
       <xsl:with-param name="publication_id"><xsl:value-of select="ukp:metadatainfo/ukp:newspaperID" /></xsl:with-param>
       <xsl:with-param name="issue_id"><xsl:value-of select="ukp:id" /></xsl:with-param>
       <xsl:with-param name="issue_number"><xsl:value-of select="ukp:is" /></xsl:with-param>
-      <xsl:with-param name="issue_volume"><xsl:value-of select="ukp:volNum" /></xsl:with-param>
       <xsl:with-param name="issue_date"><xsl:value-of select="ukp:pf" /></xsl:with-param>
     </xsl:apply-templates>
   </xsl:template>
@@ -26,7 +25,6 @@
     <xsl:param name="publication_id" />
     <xsl:param name="issue_id" />
     <xsl:param name="issue_number" />
-    <xsl:param name="issue_volume" />
     <xsl:param name="issue_date" />
     <!--
       Issue ID, ukp:issue/ukp:id, has form: <PREFIX>-<YYYY>-<MM><DD>.
@@ -56,9 +54,7 @@
        <publication>
           <xsl:attribute name="id"><xsl:value-of select="$publication_id" /></xsl:attribute>
           <issue>
-            <xsl:attribute name="id"><xsl:value-of select="$issue_id" /></xsl:attribute>
-            <number><xsl:value-of select="$issue_number" /></number>
-            <volume><xsl:value-of select="$issue_volume" /></volume>
+            <xsl:attribute name="id"><xsl:value-of select="$issue_number" /></xsl:attribute>
             <!-- Convert YYYYMMDD to YYYY-MM-DD -->
             <date><xsl:value-of select="concat(substring($issue_date, 1, 4), '-', substring($issue_date, 5, 2), '-', substring($issue_date, 7, 2))"/></date>
             <item>
