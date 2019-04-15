@@ -115,7 +115,8 @@
               <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:title" /></title>
               <issue>
                 <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:part//mods:number" /></xsl:attribute>
-                <date><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:dateIssued" /></date>
+                <xsl:variable name="issue_date"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:dateIssued" /></xsl:variable>
+                <date><xsl:value-of select="concat(substring($issue_date, 7, 4), '-', substring($issue_date, 4, 2), '-', substring($issue_date, 1, 2))"/></date>
                 <item>
                   <xsl:attribute name="id"><xsl:value-of select="$item_ID" /></xsl:attribute>
                   <plain_text_file><xsl:value-of select="$output_document_stub" />_<xsl:value-of select="$item_ID" />.txt</plain_text_file>
