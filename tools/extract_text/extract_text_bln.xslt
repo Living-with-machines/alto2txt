@@ -37,7 +37,7 @@
             <xsl:attribute name="id"><xsl:value-of select="issue_metadata/issueNumber" /></xsl:attribute>
             <date><xsl:value-of select="translate(issue_metadata/normalisedDate, '.', '-')" /></date>
             <item>
-              <xsl:attribute name="id"><xsl:value-of select="image_metadata/pageImage/pageSequence" /></xsl:attribute>
+              <xsl:attribute name="id"><xsl:value-of select="image_metadata/articleImage/articleSequence" /></xsl:attribute>
               <plain_text_file><xsl:value-of select="$output_document_stub" />.txt</plain_text_file>
               <title><xsl:value-of select="article_metadata/dc_metadata/dc:Title" /></title>
               <!-- item_type -->
