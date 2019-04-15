@@ -58,6 +58,7 @@
               <xsl:attribute name="id"><xsl:value-of select="ukp:id" /></xsl:attribute>
               <plain_text_file><xsl:value-of select="$output_document_stub" />-<xsl:value-of select="$article_id" />.txt</plain_text_file>
               <title><xsl:value-of select="ukp:ti" /></title>
+              <item_type><xsl:value-of select="ukp:ct" /></item_type>
               <word_count><xsl:value-of select="format-number(count(ukp:text//ukp:wd), '0')" /></word_count>
               <ocr_quality><xsl:value-of select="ukp:ocr" /></ocr_quality>
             </item>
