@@ -3,7 +3,8 @@
 Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
 1.4, BLN or UKP format) to plaintext articles and generate minimal
 metadata. Downsampling can be used to convert only every Nth issue of
-the newspaper. One text file is output per article.
+the newspaper. One text file is output per article, each complemented
+by one XML metadata file.
 
 Quality assurance will also be performed to check:
 

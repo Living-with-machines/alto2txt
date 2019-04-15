@@ -162,7 +162,7 @@ def xml_publication_to_text(publication_dir,
     1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
     generate minimal metadata. Downsampling can be used to convert
     only every Nth issue of the newspaper. One text file is output per
-    article.
+    article, each complemented by one XML metadata file.
 
     Quality assurance will also be performed to check:
 
