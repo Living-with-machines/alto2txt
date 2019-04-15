@@ -14,6 +14,7 @@
 
   <xsl:template match="/ukp:UKP/ukp:Periodical/ukp:issue" >
     <xsl:apply-templates select="ukp:page/ukp:article" >
+      <xsl:with-param name="publication_id"><xsl:value-of select="ukp:metadatainfo/ukp:newspaperID" /></xsl:with-param>
       <xsl:with-param name="issue_id"><xsl:value-of select="ukp:id" /></xsl:with-param>
       <xsl:with-param name="issue_number"><xsl:value-of select="ukp:is" /></xsl:with-param>
       <xsl:with-param name="issue_volume"><xsl:value-of select="ukp:volNum" /></xsl:with-param>
@@ -22,6 +23,7 @@
   </xsl:template>
 
   <xsl:template match="ukp:page/ukp:article">
+    <xsl:param name="publication_id" />
     <xsl:param name="issue_id" />
     <xsl:param name="issue_number" />
     <xsl:param name="issue_volume" />
@@ -45,7 +47,7 @@
           <input_filename><xsl:value-of select="$input_filename" /></input_filename>
         </process>
        <publication>
-          <xsl:attribute name="id"></xsl:attribute>
+          <xsl:attribute name="id"><xsl:value-of select="$publication_id" /></xsl:attribute>
           <issue>
             <xsl:attribute name="id"><xsl:value-of select="$issue_id" /></xsl:attribute>
             <number><xsl:value-of select="$issue_number" /></number>
