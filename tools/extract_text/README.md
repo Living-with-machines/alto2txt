@@ -114,7 +114,7 @@ and look for `WARN` messages.
 * Plaintext and XML metadat files are in `txt`.
 * Logs and errors are in `err.log`.
 
-### XML metadata
+## XML metadata
 
 Metadata about `extract_text.py` itself is inserted into the XML metadata files. The current values, including version, are defined in `extract_text_common.xslt`.
 
