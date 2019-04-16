@@ -6,6 +6,8 @@ metadata. Downsampling can be used to convert only every Nth issue of
 each newspaper. One text file is output per article, each complemented
 by one XML metadata file.
 
+Each publication is processed concurrently.
+
 Quality assurance is also performed to check for:
 
 * Unexpected directories.

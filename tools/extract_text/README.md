@@ -1,95 +1,8 @@
-# Extract plain text from newspapers
-
-## extract_text v0.2.1
-
-### Requirements
-
-* xsltproc
-* GNU parallel
-* GNU find
-
-### extractbatch
-
-Usage: `extractbatch xml_dir txt_out_dir [downsample=1]`
-
-Use to convert (in parallel-ish) many newspapers' worth of XML
-(in alto or bln format) to plain text alongside minimal metadata.
-Downsample can be used to do every nth issue. One article per txt file.
-
-Expected structure:
-```
-xml_dir
-├── newspaper_id
-│   ├── year
-│   │   ├── issue
-│   │   │   ├── xml_content
-├── newspaper_id
-```
-
-This tool will also perform quality assurance on:
-- unexpected directories
-- unexpected files
-- un well-formed xml
-- empty files
-- files that otherwise do not expose content
-
-`extractbatch` uses `extracttext` to do the hard work...
-
-### extracttext
-
-Usage: `extracttext publication_dir txt_out_dir [downsample=1]`
-
-Use to convert a single newspaper's worth of XML
-(in alto or bln format) to plain text alongside minimal metadata.
-Downsample can be used to do every nth issue. One article per txt file.
-
-Expected structure:
-```
-publication_dir
-├── year
-│   ├── issue
-│   │   ├── xml_content
-├── year
-```
-
-This tool will also perform quality assurance on:
-- unexpected directories
-- unexpected files
-- un well-formed xml
-- empty files
-- files that otherwise do not expose content
-
-`extracttext` uses `extracttext.xslt` to do the transform
-
-### Example
-
-Assume `BNA` exists and matches the structure above
-
-`./extractbatch ../BNA txt 100 > out 2> err` for every 100th issue
-`./extractbatch ../BNA txt > out 2> err` for every issue
-
-Optional, in another screen (while running) `less +F out` look for 'WARN'. BTW - parallel will cause output to be lumpy, as each process finishes and flushes into stdout.
-
-see results in `txt`
-
-review output in `err`
-
-### Improvements to be made
-
-* Do this in python, it seemed like a good idea to be moving files around in a shell script, it isn't
-* Spark-ify this
-* Use XML libraries to do the heavy lifting
-* Use XML tech to review the doc types, looking for strings is naff
-* Export more metadata from the alto, probably by parsing the mets first
-* Documentation could use more detail
-
----
-
-## extract_text.py
-
-A Python version of the `extracttext` script.
+# Extract plain text from newspapers (extract_text v0.2.1)
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+
+Each publication is processed concurrently.
 
 Quality assurance is also performed to check for:
 
@@ -99,11 +12,13 @@ Quality assurance is also performed to check for:
 * Empty files.
 * Files that otherwise do not expose content.
 
-### Requirements
+## Requirements
 
-Python 2.7 plus Python packages listed in `requirements.txt`.
+Python 2.7 (this code has not been tested under Python 3).
 
-### Usage
+Python packages listed in `requirements.txt`.
+
+## Usage
 
 ```
 extract_publications_text.py [-h] [-d [DOWNSAMPLE]] [-s]
@@ -156,38 +71,40 @@ The following XSLT files need to be in an `extract_text.xslts` module:
 * `extract_text_bln.xslt`: BLN XSL file.
 * `extract_text_ukp.xslt`: UKP XSL file.
 
-### Examples
+## Processing many publications
 
 Assume `~/BNA` exists and matches the structure above.
 
 Extract text from every publication:
 
 ```bash
-./extract_publication_text.py ~/BNA txt > out.log 2> err.log
+./extract_publications_text.py ~/BNA txt 2> err.log
 ```
 
 Extract text from every 100th issue of every publication:
 
 ```bash
-./extract_publication_text.py ~/BNA txt -d 100 > out.log 2> err.log
+./extract_publications_text.py ~/BNA txt -d 100 2> err.log
 ```
 
-Extract text from every issue of a specific publication:
+## Processing a single publication
+
+Extract text from every issue of a single publication:
 
 ```bash
-./extract_publication_text.py -s ~/BNA/0000151 txt > out.log 2> err.log
+./extract_publications_text.py -s ~/BNA/0000151 txt 2> err.log
 ```
 
-Extract text from every 100th issue of a specific publication:
+Extract text from every 100th issue of a single publication:
 
 ```bash
-./extract_publication_text.py -s ~/BNA/0000151 txt -d 100 > out.log 2> err.log
+./extract_publications_text.py -s ~/BNA/0000151 txt -d 100 2> err.log
 ```
 
 While running, in another screen, run:
 
 ```
-less +F out.log
+less +F err.log
 ```
 
 and look for `WARN` messages.
@@ -195,8 +112,7 @@ and look for `WARN` messages.
 **On completion:**
 
 * Plaintext and XML metadat files are in `txt`.
-* Logs are in `out.log`.
-* Errors are in `err.log`.
+* Logs and errors are in `err.log`.
 
 ### XML metadata
 

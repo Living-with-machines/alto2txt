@@ -22,10 +22,12 @@ The following XSLT files need to be in an extract_text.xslts module:
 """
 
 from __future__ import print_function
+import logging
+import multiprocessing
+from multiprocessing import Pool
 import os
 import os.path
 import re
-import sys
 from lxml import etree
 from extract_text import xml
 
@@ -53,7 +55,7 @@ def issue_to_text(publication,
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     """
-    print("INFO: processing issue: {}".format(os.path.join(year, issue)))
+    logging.info("Processing issue: %s", os.path.join(year, issue))
     summary = {}
     summary["num_files"] = 0
     summary["bad_xml"] = 0
@@ -67,26 +69,26 @@ def issue_to_text(publication,
     issue_out_dir = os.path.join(txt_out_dir, year, issue)
     assert not os.path.exists(issue_out_dir) or\
         not os.path.isfile(issue_out_dir),\
-        "ERROR: {} exists and is not a file".format(issue_out_dir)
+        "{} exists and is not a file".format(issue_out_dir)
     if not os.path.exists(issue_out_dir):
         os.makedirs(issue_out_dir)
     assert os.path.exists(issue_out_dir),\
-        "ERROR: Create {} failed".format(issue_out_dir)
+        "Create {} failed".format(issue_out_dir)
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
-            print("WARN: unexpected directory: {}".format(xml_file))
+            logging.warn("Unexpected directory: %s", xml_file)
             continue
         summary["num_files"] += 1
         if os.path.splitext(xml_file)[1].lower() != ".xml":
             summary["non_xml"] += 1
-            print("WARN: file with no .xml suffix: {}".format(xml_file))
+            logging.warn("File with no .xml suffix: %s", xml_file)
             continue
         try:
             document_tree = xml.get_xml(xml_file_path)
         except Exception as e:
             summary["bad_xml"] += 1
-            print("WARN: problematic file {}: {}".format(xml_file, str(e)))
+            logging.warn("Problematic file %s: %s", xml_file, str(e))
             continue
         metadata = xml.get_xml_metadata(document_tree)
         if metadata[xml.XML_ROOT] == xml.ALTO_ROOT:
@@ -109,9 +111,9 @@ def issue_to_text(publication,
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                print("WARN: unknown METS schema {}: {}".format(
-                    xml_file,
-                    mets_uri))
+                logging.warn("Unknown METS schema %s: %s",
+                             xml_file,
+                             mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -134,11 +136,12 @@ def issue_to_text(publication,
                      issue_out_stub),
                  output_path=etree.XSLT.strparam(issue_out_path))
             summary["converted_ok"] += 1
-            print("INFO: {} gave XSLT output".format(xml_file_path))
+            logging.info("%s gave XSLT output", xml_file_path)
         except Exception as e:
             summary["converted_bad"] += 1
-            print("ERROR: {} failed to give XSLT output: {}".format(
-                xml_file, str(e)), file=sys.stderr)
+            logging.error("%s failed to give XSLT output: %s",
+                          xml_file,
+                          str(e))
             continue
     if (summary["converted_ok"] > 0) and\
        (summary["converted_ok"] == (summary["num_files"] -
@@ -146,14 +149,13 @@ def issue_to_text(publication,
                                     summary["skipped_mets_unknown"] -
                                     summary["skipped_root_unknown"] -
                                     summary["skipped_bl_page"])):
-        print("INFO: {} {}".format(issue_dir, str(summary)))
+        logging.info("%s %s", issue_dir, str(summary))
     else:
-        print("WARN: {} {}".format(issue_dir, str(summary)))
+        logging.warn("%s %s", issue_dir, str(summary))
 
 
 def publication_to_text(publication_dir,
                         txt_out_dir,
-                        xslts,
                         downsample=1):
     """
     Converts issues of an XML publication to plaintext articles and
@@ -174,24 +176,23 @@ def publication_to_text(publication_dir,
     :type publication_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
-    :param xslts: XSLTs to convert XML to plaintext
-    :type xslts: dict(str: lxml.etree.XSLT)
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
+    xslts = xml.load_xslts()
     issue_counter = 0
     publication = os.path.basename(publication_dir)
-    print("INFO: processing publication: {}".format(publication))
+    logging.info("Processing publication: %s", publication)
     for year in os.listdir(publication_dir):
         year_dir = os.path.join(publication_dir, year)
         if not os.path.isdir(year_dir):
-            print("WARN: unexpected file: {}".format(year))
+            logging.warn("Unexpected file: %s", year)
             continue
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                print("WARN: unexpected file: {}".format(
-                    os.path.join(year, issue)))
+                logging.warn("Unexpected file: %s",
+                             os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
@@ -207,11 +208,12 @@ def publication_to_text(publication_dir,
 
 def publications_to_text(publications_dir,
                          txt_out_dir,
-                         xslts,
                          downsample=1):
     """
     Converts XML publications to plaintext articles and generates
     minimal metadata.
+
+    Each publication is processed concurrently.
 
     publications_dir is expected to hold XML for multiple
     publications, in the following structure:
@@ -230,22 +232,29 @@ def publications_to_text(publications_dir,
     :type publications_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
-    :param xslts: XSLTs to convert XML to plaintext
-    :type xslts: dict(str: lxml.etree.XSLT)
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
-    print("INFO: processing: {}".format(publications_dir))
+    logging.info("Processing: %s", publications_dir)
+    publications = os.listdir(publications_dir)
+    pool_size = max(multiprocessing.cpu_count(), len(publications))
+    logging.info("Publications: %d CPUs: %d Process pool size: %d",
+                 len(publications),
+                 multiprocessing.cpu_count(),
+                 pool_size)
+    pool = Pool(pool_size)
     for publication in os.listdir(publications_dir):
         publication_dir = os.path.join(publications_dir, publication)
         if not os.path.isdir(publication_dir):
-            print("WARN: unexpected file: {}".format(publication_dir))
+            logging.warn("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
-        publication_to_text(publication_dir,
-                            publication_txt_out_dir,
-                            xslts,
-                            downsample)
+        pool.apply_async(publication_to_text,
+                         args=(publication_dir,
+                               publication_txt_out_dir,
+                               downsample))
+    pool.close()
+    pool.join()
 
 
 def check_parameters(xml_in_dir, txt_out_dir, downsample):
@@ -286,6 +295,8 @@ def xml_publications_to_text(xml_in_dir,
     Converts XML publications to plaintext articles and generates
     minimal metadata.
 
+    Each publication is processed concurrently.
+
     One text file is output per article, each complemented by one XML
     metadata file.
 
@@ -308,15 +319,13 @@ def xml_publications_to_text(xml_in_dir,
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
+    logging.basicConfig(level=logging.INFO)
     check_parameters(xml_in_dir, txt_out_dir, downsample)
-    xslts = xml.load_xslts()
     if is_singleton:
         publication_to_text(xml_in_dir,
                             txt_out_dir,
-                            xslts,
                             downsample)
     else:
         publications_to_text(xml_in_dir,
                              txt_out_dir,
-                             xslts,
                              downsample)
