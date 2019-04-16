@@ -149,7 +149,7 @@ xml_in_dir
 
 `DOWNSAMPLE` must be a positive integer, default 1.
 
-The following XSLT files need to be in the current directory:
+The following XSLT files need to be in an `extract_text.xslts` module:
 
 * `extract_text_mets18.xslt`: METS 1.8 XSL file.
 * `extract_text_mets13.xslt`: METS 1.3 XSL file.

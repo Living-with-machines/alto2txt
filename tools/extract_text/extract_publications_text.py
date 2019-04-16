@@ -54,7 +54,7 @@ txt_out_dir is created with an analogous structure to xml_in_dir.
 
 DOWNSAMPLE must be a positive integer, default 1.
 
-The following XSLT files need to be in the current directory:
+The following XSLT files need to be in an extract_text.xslts module:
 
 * extract_text_mets18.xslt: METS 1.8 XSL file.
 * extract_text_mets13.xslt: METS 1.3 XSL file.
@@ -63,7 +63,7 @@ The following XSLT files need to be in the current directory:
 """
 
 from argparse import ArgumentParser
-from extract_text import xml_publications_to_text
+from extract_text.xml_text import xml_publications_to_text
 
 
 def main():
