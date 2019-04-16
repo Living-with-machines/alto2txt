@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 """
-Convert multiple newspapers' XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO
-1.4, BLN or UKP format) to plaintext articles and generate minimal
+Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP
+format) publications to plaintext articles and generates minimal
 metadata. Downsampling can be used to convert only every Nth issue of
 each newspaper. One text file is output per article, each complemented
 by one XML metadata file.
 
-Quality assurance will also be performed to check:
+Quality assurance is also performed to check for:
 
 * Unexpected directories.
 * Unexpected files.
@@ -14,31 +14,43 @@ Quality assurance will also be performed to check:
 * Empty files.
 * Files that otherwise do not expose content.
 
-    usage: extract_publications_text.py [-h]
-                           [-d [DOWNSAMPLE]]
-                           publications_dir txt_out_dir
+Usage:
 
-    Extract plaintext articles from multiple newspapers' XML
+    extract_publications_text.py [-h] [-d [DOWNSAMPLE]] [-s]
+                                  xml_in_dir txt_out_dir
 
     positional arguments:
-      publications_dir      Publications directory with XML
-      txt_out_dir           Output directory with plaintext
+      xml_in_dir            Input directory with XML publications
+      txt_out_dir           Output directory for plaintext articles
 
     optional arguments:
       -h, --help            show this help message and exit
       -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                             Downsample
+      -s, --singleton       Specify that xml_in_dir holds XML for a single
+                            publication
 
-publications_dir is expected to have structure:
+xml_in_dir is expected to hold XML for multiple publications, in the
+following structure:
 
-    publications_dir
+    xml_in_dir
     |-- publication
     |   |-- year
     |   |   |-- issue
     |   |   |   |-- xml_content
     |   |-- year
+    |-- publication
 
-txt_out_dir is created with an analogous structure.
+However, if "-s"|"--single" is provided then xml_in_dir is expected to
+hold XML for a single publication, in the following structure:
+
+    xml_in_dir
+    |-- year
+    |   |-- issue
+    |   |   |-- xml_content
+    |-- year
+
+txt_out_dir is created with an analogous structure to xml_in_dir.
 
 DOWNSAMPLE must be a positive integer, default 1.
 
@@ -56,31 +68,37 @@ from extract_text import xml_publications_to_text
 
 def main():
     """
-    Convert multiple newspapers' XML (in METS 1.8/ALTO 1.4, METS
-    1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and
-    generate minimal metadata.
+    Converts XML publications to plaintext articles and generates
+    minimal metadata.
 
-    Parse command-line arguments and call
+    Parses command-line arguments and calls
     extract_text.xml_publications_to_text.
     """
     parser = ArgumentParser(
-        description="Extract plaintext articles from multiple newspapers' XML")
-    parser.add_argument("publications_dir",
-                        help="Publications directory with XML")
+        description="Converts XML publications to plaintext articles")
+    parser.add_argument("xml_in_dir",
+                        help="Input directory with XML publications")
     parser.add_argument("txt_out_dir",
-                        help="Output directory with plaintext")
+                        help="Output directory for plaintext articles")
     parser.add_argument("-d",
                         "--downsample",
                         type=int,
                         nargs="?",
                         default=1,
                         help="Downsample")
+    parser.add_argument(
+        "-s",
+        "--singleton",
+        action='store_true',
+        help="Specify that xml_in_dir holds XML for a single publication")
     args = parser.parse_args()
-    publications_dir = args.publications_dir
+    xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
     downsample = args.downsample
-    xml_publications_to_text(publications_dir,
+    is_singleton = args.singleton
+    xml_publications_to_text(xml_in_dir,
                              txt_out_dir,
+                             is_singleton,
                              downsample)
 
 

@@ -89,7 +89,15 @@ review output in `err`
 
 A Python version of the `extracttext` script.
 
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and generate minimal metadata.
+Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+
+Quality assurance is also performed to check for:
+
+* Unexpected directories.
+* Unexpected files.
+* Malformed XML.
+* Empty files.
+* Files that otherwise do not expose content.
 
 ### Requirements
 
@@ -98,66 +106,82 @@ Python 2.7 plus Python packages listed in `requirements.txt`.
 ### Usage
 
 ```
-usage: extract_text.py [-h] [-d [DOWNSAMPLE]]
-                       publication_dir txt_out_dir
+extract_publications_text.py [-h] [-d [DOWNSAMPLE]] [-s]
+                                    xml_in_dir txt_out_dir
 
-Extract plaintext articles from newspaper XML
+Converts XML publications to plaintext articles
 
 positional arguments:
-  publication_dir       Publication directory with XML
-  txt_out_dir           Output directory with plaintext
+  xml_in_dir            Input directory with XML publications
+  txt_out_dir           Output directory for plaintext articles
 
 optional arguments:
   -h, --help            show this help message and exit
   -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                         Downsample
+  -s, --singleton       Specify that xml_in_dir holds XML for a single
+                        publication
 ```
 
-Convert a single newspaper's XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) to plaintext articles and generate minimal metadata. Downsampling can be used to convert only every Nth issue of the newspaper. One text file is output per article, each complemented by one XML metadata file.
-
-Quality assurance will also be performed to check:
-
-* Unexpected directories.
-* Unexpected files.
-* Malformed XML.
-* Empty files.
-* Files that otherwise do not expose content.
-
-`publication_dir` is expected to have structure:
+`xml_in_dir` is expected to hold XML for multiple publications, in the following structure:
 
 ```
-publication_dir
+xml_in_dir
+|-- publication
+|   |-- year
+|   |   |-- issue
+|   |   |   |-- xml_content
+|   |-- year
+|-- publication
+```
+
+However, if `-s`|`--single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
+
+```
+xml_in_dir
 |-- year
 |   |-- issue
 |   |   |-- xml_content
 |-- year
 ```
 
-`txt_out_dir` is created with an analogous structure.
+`txt_out_dir` is created with an analogous structure to `xml_in_dir`.
 
 `DOWNSAMPLE` must be a positive integer, default 1.
 
 The following XSLT files need to be in the current directory:
 
-* extract_text_mets18.xslt: METS 1.8 XSL file.
-* extract_text_mets13.xslt: METS 1.3 XSL file.
-* extract_text_bln.xslt: BLN XSL file.
-* extract_text_ukp.xslt: UKP XSL file.
+* `extract_text_mets18.xslt`: METS 1.8 XSL file.
+* `extract_text_mets13.xslt`: METS 1.3 XSL file.
+* `extract_text_bln.xslt`: BLN XSL file.
+* `extract_text_ukp.xslt`: UKP XSL file.
 
 ### Examples
 
-Assume `~/BNA/0000151` exists and matches the structure above.
+Assume `~/BNA` exists and matches the structure above.
 
-Extract text from every issue:
+Extract text from every publication:
 
 ```bash
-./extract_publication_text.py ~/BNA/0000151 txt > out.log 2> err.log
+./extract_publication_text.py ~/BNA txt > out.log 2> err.log
 ```
 
-Extract text from every 100th issue:
+Extract text from every 100th issue of every publication:
 
 ```bash
-./extract_publication_text.py ~/BNA/0000151 txt -d 100 > out.log 2> err.log
+./extract_publication_text.py ~/BNA txt -d 100 > out.log 2> err.log
+```
+
+Extract text from every issue of a specific publication:
+
+```bash
+./extract_publication_text.py -s ~/BNA/0000151 txt > out.log 2> err.log
+```
+
+Extract text from every 100th issue of a specific publication:
+
+```bash
+./extract_publication_text.py -s ~/BNA/0000151 txt -d 100 > out.log 2> err.log
 ```
 
 While running, in another screen, run:
@@ -168,7 +192,7 @@ less +F out.log
 
 and look for `WARN` messages.
 
-On completion:
+**On completion:**
 
 * Plaintext and XML metadat files are in `txt`.
 * Logs are in `out.log`.
