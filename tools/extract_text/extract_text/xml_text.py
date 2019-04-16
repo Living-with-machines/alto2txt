@@ -23,13 +23,22 @@ The following XSLT files need to be in an extract_text.xslts module:
 
 from __future__ import print_function
 import logging
+import logging.config
 import multiprocessing
 from multiprocessing import Pool
 import os
 import os.path
 import re
 from lxml import etree
+import yaml
+
 from extract_text import xml
+
+LOG_FILE = "logging.config"
+""" Default log file name. """
+
+logger = logging.getLogger(__name__)
+""" Module-level logger. """
 
 
 def issue_to_text(publication,
@@ -55,7 +64,7 @@ def issue_to_text(publication,
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     """
-    logging.info("Processing issue: %s", os.path.join(year, issue))
+    logger.info("Processing issue: %s", os.path.join(year, issue))
     summary = {}
     summary["num_files"] = 0
     summary["bad_xml"] = 0
@@ -77,18 +86,18 @@ def issue_to_text(publication,
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
-            logging.warn("Unexpected directory: %s", xml_file)
+            logger.warn("Unexpected directory: %s", xml_file)
             continue
         summary["num_files"] += 1
         if os.path.splitext(xml_file)[1].lower() != ".xml":
             summary["non_xml"] += 1
-            logging.warn("File with no .xml suffix: %s", xml_file)
+            logger.warn("File with no .xml suffix: %s", xml_file)
             continue
         try:
             document_tree = xml.get_xml(xml_file_path)
         except Exception as e:
             summary["bad_xml"] += 1
-            logging.warn("Problematic file %s: %s", xml_file, str(e))
+            logger.warn("Problematic file %s: %s", xml_file, str(e))
             continue
         metadata = xml.get_xml_metadata(document_tree)
         if metadata[xml.XML_ROOT] == xml.ALTO_ROOT:
@@ -111,9 +120,9 @@ def issue_to_text(publication,
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logging.warn("Unknown METS schema %s: %s",
-                             xml_file,
-                             mets_uri)
+                logger.warn("Unknown METS schema %s: %s",
+                            xml_file,
+                            mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -136,12 +145,12 @@ def issue_to_text(publication,
                      issue_out_stub),
                  output_path=etree.XSLT.strparam(issue_out_path))
             summary["converted_ok"] += 1
-            logging.info("%s gave XSLT output", xml_file_path)
+            logger.info("%s gave XSLT output", xml_file_path)
         except Exception as e:
             summary["converted_bad"] += 1
-            logging.error("%s failed to give XSLT output: %s",
-                          xml_file,
-                          str(e))
+            logger.error("%s failed to give XSLT output: %s",
+                         xml_file,
+                         str(e))
             continue
     if (summary["converted_ok"] > 0) and\
        (summary["converted_ok"] == (summary["num_files"] -
@@ -149,9 +158,9 @@ def issue_to_text(publication,
                                     summary["skipped_mets_unknown"] -
                                     summary["skipped_root_unknown"] -
                                     summary["skipped_bl_page"])):
-        logging.info("%s %s", issue_dir, str(summary))
+        logger.info("%s %s", issue_dir, str(summary))
     else:
-        logging.warn("%s %s", issue_dir, str(summary))
+        logger.warn("%s %s", issue_dir, str(summary))
 
 
 def publication_to_text(publication_dir,
@@ -182,17 +191,17 @@ def publication_to_text(publication_dir,
     xslts = xml.load_xslts()
     issue_counter = 0
     publication = os.path.basename(publication_dir)
-    logging.info("Processing publication: %s", publication)
+    logger.info("Processing publication: %s", publication)
     for year in os.listdir(publication_dir):
         year_dir = os.path.join(publication_dir, year)
         if not os.path.isdir(year_dir):
-            logging.warn("Unexpected file: %s", year)
+            logger.warn("Unexpected file: %s", year)
             continue
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logging.warn("Unexpected file: %s",
-                             os.path.join(year, issue))
+                logger.warn("Unexpected file: %s",
+                            os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
@@ -235,18 +244,18 @@ def publications_to_text(publications_dir,
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
-    logging.info("Processing: %s", publications_dir)
+    logger.info("Processing: %s", publications_dir)
     publications = os.listdir(publications_dir)
-    pool_size = max(multiprocessing.cpu_count(), len(publications))
-    logging.info("Publications: %d CPUs: %d Process pool size: %d",
-                 len(publications),
-                 multiprocessing.cpu_count(),
-                 pool_size)
+    pool_size = min(multiprocessing.cpu_count(), len(publications))
+    logger.info("Publications: %d CPUs: %d Process pool size: %d",
+                len(publications),
+                multiprocessing.cpu_count(),
+                pool_size)
     pool = Pool(pool_size)
     for publication in os.listdir(publications_dir):
         publication_dir = os.path.join(publications_dir, publication)
         if not os.path.isdir(publication_dir):
-            logging.warn("Unexpected file: %s", publication_dir)
+            logger.warn("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
         pool.apply_async(publication_to_text,
@@ -319,8 +328,12 @@ def xml_publications_to_text(xml_in_dir,
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    logging.basicConfig(level=logging.INFO)
     check_parameters(xml_in_dir, txt_out_dir, downsample)
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r") as f:
+            logging.config.dictConfig(yaml.load(f))
+    else:
+        logging.basicConfig(level=logging.INFO)
     if is_singleton:
         publication_to_text(xml_in_dir,
                             txt_out_dir,
