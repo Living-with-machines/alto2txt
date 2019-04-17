@@ -200,3 +200,9 @@ version="0.3.0",
 ```
 <xsl:param name="version">0.3.0</xsl:param>
 ```
+
+## Future work
+
+* Export more metadata from alto, probably by parsing mets first.
+* Check and ensure that articles that span multiple pages are pulled into a single article file.
+* Smarter handling of articles spanning multiple pages.
