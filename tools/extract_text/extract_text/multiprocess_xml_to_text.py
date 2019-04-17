@@ -10,6 +10,7 @@ from multiprocessing import Pool
 import os
 import os.path
 
+from extract_text.logging_utils import configure_logging
 from extract_text import xml
 from extract_text import xml_to_text
 
@@ -20,6 +21,7 @@ logger = logging.getLogger(__name__)
 def publication_to_text(publications_dir,
                         publication,
                         txt_out_dir,
+                        log_file,
                         downsample=1):
     """
     Converts issues of an XML publication to plaintext articles and
@@ -34,9 +36,14 @@ def publication_to_text(publications_dir,
     :type publication: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param log_file: log file
+    :type log_file: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
+    # This function will run in a separate process so reconfigure
+    # logging.
+    configure_logging(log_file)
     xslts = xml.load_xslts()
     publication_dir = os.path.join(publications_dir, publication)
     if not os.path.isdir(publication_dir):
@@ -50,6 +57,7 @@ def publication_to_text(publications_dir,
 
 def publications_to_text(publications_dir,
                          txt_out_dir,
+                         log_file,
                          downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -90,6 +98,8 @@ def publications_to_text(publications_dir,
     :type publications_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param log_file: log file
+    :type log_file: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
@@ -106,6 +116,7 @@ def publications_to_text(publications_dir,
                          args=(publications_dir,
                                publication,
                                txt_out_dir,
+                               log_file,
                                downsample))
     pool.close()
     pool.join()

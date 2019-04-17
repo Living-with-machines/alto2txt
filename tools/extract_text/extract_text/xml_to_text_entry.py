@@ -124,4 +124,5 @@ def xml_publications_to_text(xml_in_dir,
         from extract_text import multiprocess_xml_to_text
         multiprocess_xml_to_text.publications_to_text(xml_in_dir,
                                                       txt_out_dir,
+                                                      log_file,
                                                       downsample)
