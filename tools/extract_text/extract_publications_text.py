@@ -19,6 +19,7 @@ Usage:
     usage: extract_publications_text.py [-h] [-p [PROCESS_TYPE]]
                                         [-l [LOG_FILE]]
                                         [-d [DOWNSAMPLE]]
+                                        [-n [NUM_CORES]]
                                         xml_in_dir txt_out_dir
 
     Converts XML publications to plaintext articles
@@ -35,7 +36,9 @@ Usage:
       -l [LOG_FILE], --log-file [LOG_FILE]
                             Log file. Default out.log
       -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                        Downsample. Default 1
+                            Downsample. Default 1
+      -n [NUM_CORES], --num-cores [NUM_CORES]
+                            Number of cores (Spark only). Default 1")
 
 xml_in_dir is expected to hold XML for multiple publications, in the
 following structure:
@@ -116,16 +119,24 @@ def main():
                         nargs="?",
                         default=1,
                         help="Downsample. Default 1")
+    parser.add_argument("-n",
+                        "--num-cores",
+                        type=int,
+                        nargs="?",
+                        default=1,
+                        help="Number of cores (Spark only). Default 1")
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
     process_type = args.process_type
     log_file = args.log_file
+    num_cores = args.num_cores
     downsample = args.downsample
     xml_to_text_entry.xml_publications_to_text(xml_in_dir,
                                                txt_out_dir,
                                                process_type,
                                                log_file,
+                                               num_cores,
                                                downsample)
 
 

@@ -62,6 +62,7 @@ def publication_to_text(publications_dir,
 def publications_to_text(publications_dir,
                          txt_out_dir,
                          log_file,
+                         num_cores=1,
                          downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -104,18 +105,18 @@ def publications_to_text(publications_dir,
     :type txt_out_dir: str or unicode
     :param log_file: log file
     :type log_file: str or unicode
+    :param num_cores: Number of cores
+    :type num_cores: int
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
     logger.info("Processing: %s", publications_dir)
     publications = os.listdir(publications_dir)
-    # TODO make num_cores configurable
-#    num_cores = 144
     conf = SparkConf()
     conf.setAppName(__name__)
-#    conf.set("spark.cores.max", num_cores)
+    conf.set("spark.cores.max", num_cores)
     context = SparkContext(conf=conf)
-#    rdd_publications = context.parallelize(publications, num_cores)
+    rdd_publications = context.parallelize(publications, num_cores)
     rdd_publications = context.parallelize(publications)
     rdd_publications.map(
         lambda publication: publication_to_text(

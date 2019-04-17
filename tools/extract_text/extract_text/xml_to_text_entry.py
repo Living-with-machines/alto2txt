@@ -31,7 +31,11 @@ PROCESS_TYPES = [PROCESS_SINGLE,
                  PROCESS_SPARK]
 
 
-def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
+def check_parameters(xml_in_dir,
+                     txt_out_dir,
+                     process_type,
+                     num_cores,
+                     downsample):
     """
     Check parameters. The following checks are done:
 
@@ -40,6 +44,7 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
     * xml_in_dir and txt_out_dir are not the same directory.
     * process_type is one of single, serial, multi, spark.
     * downsample is a positive integer.
+    * num_cores is a positive integer.
 
     :param xml_in_dir: Input directory with XML publications
     :type xml_in_dir: str or unicode
@@ -47,11 +52,14 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
     :type txt_out_dir: str or unicode
     :param process_type: Process type
     :type process_type: str or unicode
+    :param num_cores: Number of cores (used for Spark only)
+    :type num_cores: int
     :param downsample: Downsample
     :type downsample: int
     :raise AssertionError: if any check fails
     """
-    assert downsample > 0, "downsample must be a positive integer"
+    assert downsample > 0,\
+        "downsample, {}, must be a positive integer".format(downsample)
     assert os.path.exists(xml_in_dir),\
         "xml_in_dir, {}, not found".format(xml_in_dir)
     assert os.path.isdir(xml_in_dir),\
@@ -66,12 +74,16 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
         "process-type, {}, must be one of {}.".format(
             process_type,
             ",".join(PROCESS_TYPES))
+    if process_type == PROCESS_SPARK:
+        assert num_cores > 0,\
+            "num_cores, {}, must be a positive integer".format(num_cores)
 
 
 def xml_publications_to_text(xml_in_dir,
                              txt_out_dir,
                              process_type,
                              log_file="out.log",
+                             num_cores=1,
                              downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -97,12 +109,18 @@ def xml_publications_to_text(xml_in_dir,
     :type process_type: str or unicode
     :param log_file: log file
     :type log_file: str or unicode
+    :param num_cores: Number of cores (used for Spark only)
+    :type num_cores: int
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    check_parameters(xml_in_dir, txt_out_dir, process_type, downsample)
+    check_parameters(xml_in_dir,
+                     txt_out_dir,
+                     process_type,
+                     num_cores,
+                     downsample)
     configure_logging(log_file)
     if process_type == PROCESS_SINGLE:
         xslts = xml.load_xslts()
@@ -119,6 +137,7 @@ def xml_publications_to_text(xml_in_dir,
         spark_xml_to_text.publications_to_text(xml_in_dir,
                                                txt_out_dir,
                                                log_file,
+                                               num_cores,
                                                downsample)
     else:
         from extract_text import multiprocess_xml_to_text
