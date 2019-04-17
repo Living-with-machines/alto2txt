@@ -40,6 +40,19 @@ LOG_FILE = "logging.config"
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
 
+PROCESS_SINGLE = "single"
+""" Process single publication. """
+PROCESS_SERIAL = "serial"
+""" Process publications serially. """
+PROCESS_MULTI = "multi"
+""" Process publications using multiprocessing. """
+PROCESS_SPARK = "spark"
+""" Process publications using Spark. """
+PROCESS_TYPES = [PROCESS_SINGLE,
+                 PROCESS_SERIAL,
+                 PROCESS_MULTI,
+                 PROCESS_SPARK]
+
 
 def issue_to_text(publication,
                   year,
@@ -165,6 +178,7 @@ def issue_to_text(publication,
 
 def publication_to_text(publication_dir,
                         txt_out_dir,
+                        xslts,
                         downsample=1):
     """
     Converts issues of an XML publication to plaintext articles and
@@ -185,6 +199,8 @@ def publication_to_text(publication_dir,
     :type publication_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param xslts: XSLTs to convert XML to plaintext
+    :type xslts: dict(str: lxml.etree.XSLT)
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
@@ -222,6 +238,80 @@ def publications_to_text(publications_dir,
     Converts XML publications to plaintext articles and generates
     minimal metadata.
 
+    publications_dir is expected to hold XML for multiple
+    publications, in the following structure:
+
+    publications_dir
+    |-- publication
+    |   |-- year
+    |   |   |-- issue
+    |   |   |   |-- xml_content
+    |   |-- year
+    |-- publication
+
+    txt_out_dir is created with an analogous structure.
+
+    :param publications dir: Input directory with XML publications
+    :type publications_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext articles
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample, converting every Nth issue only
+    :type downsample: int
+    """
+    logger.info("Processing: %s", publications_dir)
+    xslts = xml.load_xslts()
+    publications = os.listdir(publications_dir)
+    logger.info("Publications: %d", len(publications))
+    for publication in publications:
+        publication_dir = os.path.join(publications_dir, publication)
+        if not os.path.isdir(publication_dir):
+            logger.warn("Unexpected file: %s", publication_dir)
+            continue
+        publication_txt_out_dir = os.path.join(txt_out_dir, publication)
+        publication_to_text(publication_dir,
+                            publication_txt_out_dir,
+                            xslts,
+                            downsample)
+
+
+def publication_to_text_multiprocessing(publications_dir,
+                                        publication,
+                                        txt_out_dir,
+                                        downsample=1):
+    """
+    Converts issues of an XML publication to plaintext articles and
+    generates minimal metadata.
+
+    Loads XSLTs, checks publications_dir/publication exists then calls
+    publication_to_text.
+
+    :param publications_dir: Input directory with XML publications
+    :type publications_dir: str or unicode
+    :param publication: Local publication directory in publications_dir
+    :type publication: str or unicode
+    :param txt_out_dir: Output directory for plaintext articles
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample, converting every Nth issue only
+    :type downsample: int
+    """
+    xslts = xml.load_xslts()
+    publication_dir = os.path.join(publications_dir, publication)
+    if not os.path.isdir(publication_dir):
+        logger.warn("Unexpected file: %s", publication_dir)
+    publication_txt_out_dir = os.path.join(txt_out_dir, publication)
+    publication_to_text(publication_dir,
+                        publication_txt_out_dir,
+                        xslts,
+                        downsample)
+
+
+def publications_to_text_multiprocessing(publications_dir,
+                                         txt_out_dir,
+                                         downsample=1):
+    """
+    Converts XML publications to plaintext articles and generates
+    minimal metadata.
+
     Each publication is processed concurrently.
 
     publications_dir is expected to hold XML for multiple
@@ -253,32 +343,112 @@ def publications_to_text(publications_dir,
                 pool_size)
     pool = Pool(pool_size)
     for publication in os.listdir(publications_dir):
-        publication_dir = os.path.join(publications_dir, publication)
-        if not os.path.isdir(publication_dir):
-            logger.warn("Unexpected file: %s", publication_dir)
-            continue
-        publication_txt_out_dir = os.path.join(txt_out_dir, publication)
-        pool.apply_async(publication_to_text,
-                         args=(publication_dir,
-                               publication_txt_out_dir,
+        pool.apply_async(publication_to_text_multiprocessing,
+                         args=(publications_dir,
+                               publication,
+                               txt_out_dir,
                                downsample))
     pool.close()
     pool.join()
 
 
-def check_parameters(xml_in_dir, txt_out_dir, downsample):
+def publication_to_text_spark(publications_dir,
+                              publication,
+                              txt_out_dir,
+                              downsample=1):
+    """
+    Converts issues of an XML publication to plaintext articles and
+    generates minimal metadata.
+
+    Checks pulications_dir/publication exists then calls
+    publication_to_text.
+
+    :param publications_dir: Input directory with XML publications
+    :type publications_dir: str or unicode
+    :param publication: Local publication directory in publications_dir
+    :type publication: str or unicode
+    :param txt_out_dir: Output directory for plaintext articles
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample, converting every Nth issue only
+    :type downsample: int
+    """
+    publication_dir = os.path.join(publications_dir, publication)
+    if not os.path.isdir(publication_dir):
+        logger.warn("Unexpected file: %s", publication_dir)
+        return "XXX"
+    publication_txt_out_dir = os.path.join(txt_out_dir, publication)
+    publication_to_text(publication_dir,
+                        publication_txt_out_dir,
+                        downsample)
+    return publication
+
+
+def publications_to_text_spark(publications_dir,
+                               txt_out_dir,
+                               downsample=1):
+    """
+    Converts XML publications to plaintext articles and generates
+    minimal metadata.
+
+    Each publication is processed concurrently via Spark.
+
+    publications_dir is expected to hold XML for multiple
+    publications, in the following structure:
+
+    publications_dir
+    |-- publication
+    |   |-- year
+    |   |   |-- issue
+    |   |   |   |-- xml_content
+    |   |-- year
+    |-- publication
+
+    txt_out_dir is created with an analogous structure.
+
+    :param publications dir: Input directory with XML publications
+    :type publications_dir: str or unicode
+    :param txt_out_dir: Output directory for plaintext articles
+    :type txt_out_dir: str or unicode
+    :param downsample: Downsample, converting every Nth issue only
+    :type downsample: int
+    """
+    from pyspark import SparkContext, SparkConf
+
+    logger.info("Processing: %s", publications_dir)
+    publications = os.listdir(publications_dir)
+    # TODO make num_cores configurable
+    num_cores = 144
+    conf = SparkConf()
+    conf.setAppName("xml_text")
+    conf.set("spark.cores.max", num_cores)
+    context = SparkContext(conf=conf)
+    log = context._jvm.org.apache.log4j.LogManager.getLogger(__name__)  # pylint: disable=protected-access
+    rdd_publications = context.parallelize(publications, num_cores)
+    done = rdd_publications.map(
+        lambda publication: publication_to_text_spark(
+            publications_dir,
+            publication,
+            txt_out_dir,
+            downsample)).collect()
+    logger.info("DONE: %s", str(done))
+
+
+def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
     """
     Check parameters. The following checks are done:
 
     * xml_in_dir exists and is a directory.
     * txt_out_dir either does not exists or exists and is a directory.
     * xml_in_dir and txt_out_dir are not the same directory.
+    * process_type is one of single, serial, multi, spark.
     * downsample is a positive integer.
 
     :param xml_in_dir: Input directory with XML publications
     :type xml_in_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param process_type: Process type
+    :type process_type: str or unicode
     :param downsample: Downsample
     :type downsample: int
     :raise AssertionError: if any check fails
@@ -294,11 +464,15 @@ def check_parameters(xml_in_dir, txt_out_dir, downsample):
         os.path.normpath(txt_out_dir),\
         "xml_in_dir, {}, and txt_out_dir, {}, should be different".\
         format(xml_in_dir, txt_out_dir)
+    assert process_type in PROCESS_TYPES,\
+        "process-type, {}, must be one of {}.".format(
+            process_type,
+            ",".join(PROCESS_TYPES))
 
 
 def xml_publications_to_text(xml_in_dir,
                              txt_out_dir,
-                             is_singleton=False,
+                             process_type,
                              downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -320,6 +494,8 @@ def xml_publications_to_text(xml_in_dir,
     :type xml_in_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param process_type: Process type
+    :type process_type: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     :param is_singleton: xml_in_dir holds XML for a single publication
@@ -328,17 +504,25 @@ def xml_publications_to_text(xml_in_dir,
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    check_parameters(xml_in_dir, txt_out_dir, downsample)
+    check_parameters(xml_in_dir, txt_out_dir, process_type, downsample)
     if os.path.exists(LOG_FILE):
         with open(LOG_FILE, "r") as f:
             logging.config.dictConfig(yaml.load(f))
     else:
         logging.basicConfig(level=logging.INFO)
-    if is_singleton:
+    if process_type == PROCESS_SINGLE:
         publication_to_text(xml_in_dir,
                             txt_out_dir,
                             downsample)
-    else:
+    elif process_type == PROCESS_SERIAL:
         publications_to_text(xml_in_dir,
                              txt_out_dir,
                              downsample)
+    elif process_type == PROCESS_SPARK:
+        publications_to_text_spark(xml_in_dir,
+                                   txt_out_dir,
+                                   downsample)
+    else:
+        publications_to_text_multiprocessing(xml_in_dir,
+                                             txt_out_dir,
+                                             downsample)

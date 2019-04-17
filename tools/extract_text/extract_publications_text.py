@@ -6,8 +6,6 @@ metadata. Downsampling can be used to convert only every Nth issue of
 each newspaper. One text file is output per article, each complemented
 by one XML metadata file.
 
-Each publication is processed concurrently.
-
 Quality assurance is also performed to check for:
 
 * Unexpected directories.
@@ -18,8 +16,11 @@ Quality assurance is also performed to check for:
 
 Usage:
 
-    extract_publications_text.py [-h] [-d [DOWNSAMPLE]] [-s]
-                                  xml_in_dir txt_out_dir
+    usage: extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
+                                    [-p [PROCESS_TYPE]]
+                                    xml_in_dir txt_out_dir
+
+    Converts XML publications to plaintext articles
 
     positional arguments:
       xml_in_dir            Input directory with XML publications
@@ -29,8 +30,9 @@ Usage:
       -h, --help            show this help message and exit
       -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                             Downsample
-      -s, --singleton       Specify that xml_in_dir holds XML for a single
-                            publication
+      -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
+                            Process type.
+                            One of: single,serial,multi,spark
 
 xml_in_dir is expected to hold XML for multiple publications, in the
 following structure:
@@ -43,8 +45,9 @@ following structure:
     |   |-- year
     |-- publication
 
-However, if "-s"|"--single" is provided then xml_in_dir is expected to
-hold XML for a single publication, in the following structure:
+However, if "-p|--process-type single" is provided then xml_in_dir is
+expected to hold XML for a single publication, in the following
+structure:
 
     xml_in_dir
     |-- year
@@ -53,6 +56,13 @@ hold XML for a single publication, in the following structure:
     |-- year
 
 txt_out_dir is created with an analogous structure to xml_in_dir.
+
+PROCESS_TYPE can be one of:
+
+* single: Process single publication.
+* serial: Process publications serially.
+* multi: Process publications using multiprocessing (default).
+* spark: Process publications using Spark.
 
 DOWNSAMPLE must be a positive integer, default 1.
 
@@ -65,7 +75,7 @@ The following XSLT files need to be in an extract_text.xslts module:
 """
 
 from argparse import ArgumentParser
-from extract_text.xml_text import xml_publications_to_text
+from extract_text import xml_text
 
 
 def main():
@@ -88,20 +98,22 @@ def main():
                         nargs="?",
                         default=1,
                         help="Downsample")
-    parser.add_argument(
-        "-s",
-        "--singleton",
-        action='store_true',
-        help="Specify that xml_in_dir holds XML for a single publication")
+    parser.add_argument("-p",
+                        "--process-type",
+                        type=str,
+                        nargs="?",
+                        default=xml_text.PROCESS_MULTI,
+                        help="Process type. One of: " +
+                        ",".join(xml_text.PROCESS_TYPES))
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
     downsample = args.downsample
-    is_singleton = args.singleton
-    xml_publications_to_text(xml_in_dir,
-                             txt_out_dir,
-                             is_singleton,
-                             downsample)
+    process_type = args.process_type
+    xml_text.xml_publications_to_text(xml_in_dir,
+                                      txt_out_dir,
+                                      process_type,
+                                      downsample)
 
 
 if __name__ == "__main__":

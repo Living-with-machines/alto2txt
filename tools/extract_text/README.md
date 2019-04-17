@@ -2,8 +2,6 @@
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
 
-Each publication is processed concurrently.
-
 Quality assurance is also performed to check for:
 
 * Unexpected directories.
@@ -21,7 +19,8 @@ Python packages listed in `requirements.txt`.
 ## Usage
 
 ```
-extract_publications_text.py [-h] [-d [DOWNSAMPLE]] [-s]
+extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
+                                    [-p [PROCESS_TYPE]]
                                     xml_in_dir txt_out_dir
 
 Converts XML publications to plaintext articles
@@ -34,8 +33,9 @@ optional arguments:
   -h, --help            show this help message and exit
   -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
                         Downsample
-  -s, --singleton       Specify that xml_in_dir holds XML for a single
-                        publication
+  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
+                        Process type.
+                        One of: single,serial,multi,spark
 ```
 
 `xml_in_dir` is expected to hold XML for multiple publications, in the following structure:
@@ -50,7 +50,7 @@ xml_in_dir
 |-- publication
 ```
 
-However, if `-s`|`--single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
+However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
 
 ```
 xml_in_dir
@@ -61,6 +61,13 @@ xml_in_dir
 ```
 
 `txt_out_dir` is created with an analogous structure to `xml_in_dir`.
+
+`PROCESS_TYPE` can be one of:
+
+* `single`: Process single publication.
+* `serial`: Process publications serially.
+* `multi`: Process publications using multiprocessing (default).
+* `spark`: Process publications using Spark.
 
 `DOWNSAMPLE` must be a positive integer, default 1.
 
@@ -92,13 +99,13 @@ Extract text from every 100th issue of every publication:
 Extract text from every issue of a single publication:
 
 ```bash
-./extract_publications_text.py -s ~/BNA/0000151 txt 2> err.log
+./extract_publications_text.py -p single ~/BNA/0000151 txt 2> err.log
 ```
 
 Extract text from every 100th issue of a single publication:
 
 ```bash
-./extract_publications_text.py -s ~/BNA/0000151 txt -d 100 2> err.log
+./extract_publications_text.py -p single ~/BNA/0000151 txt -d 100 2> err.log
 ```
 
 While running, in another screen, run:
