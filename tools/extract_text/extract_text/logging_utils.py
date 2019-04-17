@@ -7,17 +7,16 @@ import logging
 
 def configure_logging(log_file):
     """
-    Configure logging.
+    Configure console and file logging.
 
     :param log_file: log file
     :type log_file: str or unicode
     """
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    console_logger = logging.StreamHandler()
-    console_logger.setLevel(logging.INFO)
-    logging.getLogger().addHandler(console_logger)
+    formatter = logging.Formatter(
+        "%(asctime)s:%(name)s:%(process)d:%(levelname)s:%(message)s")
+    logging.basicConfig(level=logging.INFO,
+                        formatter=formatter)
     file_logger = logging.FileHandler(log_file)
     file_logger.setLevel(logging.INFO)
+    file_logger.setFormatter(formatter)
     logging.getLogger().addHandler(file_logger)
