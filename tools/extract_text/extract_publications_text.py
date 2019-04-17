@@ -75,7 +75,8 @@ The following XSLT files need to be in an extract_text.xslts module:
 """
 
 from argparse import ArgumentParser
-from extract_text import xml_text
+
+from extract_text import xml_to_text_entry
 
 
 def main():
@@ -102,18 +103,18 @@ def main():
                         "--process-type",
                         type=str,
                         nargs="?",
-                        default=xml_text.PROCESS_MULTI,
+                        default=xml_to_text_entry.PROCESS_MULTI,
                         help="Process type. One of: " +
-                        ",".join(xml_text.PROCESS_TYPES))
+                        ",".join(xml_to_text_entry.PROCESS_TYPES))
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
     downsample = args.downsample
     process_type = args.process_type
-    xml_text.xml_publications_to_text(xml_in_dir,
-                                      txt_out_dir,
-                                      process_type,
-                                      downsample)
+    xml_to_text_entry.xml_publications_to_text(xml_in_dir,
+                                               txt_out_dir,
+                                               process_type,
+                                               downsample)
 
 
 if __name__ == "__main__":
