@@ -1,4 +1,4 @@
-# Extract plain text from newspapers (extract_text v0.2.1)
+# Extract plain text from newspapers (extract_text 0.3.0)
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
 
@@ -178,3 +178,25 @@ UKP:
 * `/lwm/process/namespace`
 * `/lwm/publication/title`
 * `/lwm/publication/location`
+
+## Update version
+
+To update the version number:
+
+1. Edit `README.md`:
+
+```
+# Extract plain text from newspapers (extract_text 0.3.0)
+```
+
+2. Edit `setup.py`:
+
+```
+version="0.3.0",
+```
+
+3. Exit `extract_text/xslts/extract_text_common.xslt`:
+
+```
+<xsl:param name="version">0.3.0</xsl:param>
+```

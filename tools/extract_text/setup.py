@@ -21,7 +21,7 @@ def read(fname):
 
 setup(
     name="extract_text",
-    version="0.2.1",
+    version="0.3.0",
     author="Mike Jackson, David Beavan",
     author_email="mjackson@turing.ac.uk, dbeavan@turing.ac.uk",
     description=("Converts XML publications to plaintext articles."),

@@ -8,7 +8,7 @@
 
   <!-- Metadata about plaintext extraction code -->
   <xsl:param name="name">extract_text</xsl:param>
-  <xsl:param name="version">0.2.1</xsl:param>
+  <xsl:param name="version">0.3.0</xsl:param>
   <xsl:param name="source">https://github.com/alan-turing-institute/Living-with-Machines-code</xsl:param>
   <xsl:variable name="lwm_tool">
     <lwm_tool>
