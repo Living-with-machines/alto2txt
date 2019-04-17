@@ -8,9 +8,9 @@ import logging
 import logging.config
 import os
 import os.path
-import yaml
 from pyspark import SparkContext, SparkConf
 
+from extract_text.logging_utils import configure_logging
 from extract_text import xml
 from extract_text import xml_to_text
 
@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 def publication_to_text(publications_dir,
                         publication,
                         txt_out_dir,
+                        log_file,
                         downsample=1):
     """
     Converts issues of an XML publication to plaintext articles and
@@ -38,9 +39,14 @@ def publication_to_text(publications_dir,
     :type publication: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param log_file: log file
+    :type log_file: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
+    # This function will run on Spark worker node so reconfigure
+    # logging.
+    configure_logging(log_file)
     xslts = xml.load_xslts()
     publication_dir = os.path.join(publications_dir, publication)
     if not os.path.isdir(publication_dir):
@@ -55,6 +61,7 @@ def publication_to_text(publications_dir,
 
 def publications_to_text(publications_dir,
                          txt_out_dir,
+                         log_file,
                          downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -95,22 +102,25 @@ def publications_to_text(publications_dir,
     :type publications_dir: str or unicode
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str or unicode
+    :param log_file: log file
+    :type log_file: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
     logger.info("Processing: %s", publications_dir)
     publications = os.listdir(publications_dir)
     # TODO make num_cores configurable
-    num_cores = 144
+#    num_cores = 144
     conf = SparkConf()
     conf.setAppName(__name__)
-    conf.set("spark.cores.max", num_cores)
+#    conf.set("spark.cores.max", num_cores)
     context = SparkContext(conf=conf)
-    log = context._jvm.org.apache.log4j.LogManager.getLogger(__name__)  # pylint: disable=protected-access
-    rdd_publications = context.parallelize(publications, num_cores)
+#    rdd_publications = context.parallelize(publications, num_cores)
+    rdd_publications = context.parallelize(publications)
     rdd_publications.map(
         lambda publication: publication_to_text(
             publications_dir,
             publication,
             txt_out_dir,
+            log_file,
             downsample)).collect()

@@ -16,9 +16,10 @@ Quality assurance is also performed to check for:
 
 Usage:
 
-    usage: extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
-                                    [-p [PROCESS_TYPE]]
-                                    xml_in_dir txt_out_dir
+    usage: extract_publications_text.py [-h] [-p [PROCESS_TYPE]]
+                                        [-l [LOG_FILE]]
+                                        [-d [DOWNSAMPLE]]
+                                        xml_in_dir txt_out_dir
 
     Converts XML publications to plaintext articles
 
@@ -28,11 +29,13 @@ Usage:
 
     optional arguments:
       -h, --help            show this help message and exit
-      -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                            Downsample
       -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
-                            Process type.
-                            One of: single,serial,multi,spark
+                            Process type. One of: single,serial,multi,spark
+                            Default: multi
+      -l [LOG_FILE], --log-file [LOG_FILE]
+                            Log file. Default out.log
+      -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                        Downsample. Default 1
 
 xml_in_dir is expected to hold XML for multiple publications, in the
 following structure:
@@ -93,27 +96,36 @@ def main():
                         help="Input directory with XML publications")
     parser.add_argument("txt_out_dir",
                         help="Output directory for plaintext articles")
-    parser.add_argument("-d",
-                        "--downsample",
-                        type=int,
-                        nargs="?",
-                        default=1,
-                        help="Downsample")
     parser.add_argument("-p",
                         "--process-type",
                         type=str,
                         nargs="?",
                         default=xml_to_text_entry.PROCESS_MULTI,
                         help="Process type. One of: " +
-                        ",".join(xml_to_text_entry.PROCESS_TYPES))
+                        ",".join(xml_to_text_entry.PROCESS_TYPES) +
+                        ". Default: multi")
+    parser.add_argument("-l",
+                        "--log-file",
+                        type=str,
+                        nargs="?",
+                        default="out.log",
+                        help="Log file. Default out.log")
+    parser.add_argument("-d",
+                        "--downsample",
+                        type=int,
+                        nargs="?",
+                        default=1,
+                        help="Downsample. Default 1")
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
-    downsample = args.downsample
     process_type = args.process_type
+    log_file = args.log_file
+    downsample = args.downsample
     xml_to_text_entry.xml_publications_to_text(xml_in_dir,
                                                txt_out_dir,
                                                process_type,
+                                               log_file,
                                                downsample)
 
 

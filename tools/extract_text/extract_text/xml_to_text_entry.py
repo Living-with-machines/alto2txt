@@ -9,13 +9,10 @@ import logging
 import logging.config
 import os
 import os.path
-import yaml
 
+from extract_text.logging_utils import configure_logging
 from extract_text import xml
 from extract_text import xml_to_text
-
-LOG_FILE = "logging.config"
-""" Default log file name. """
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -74,6 +71,7 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, downsample):
 def xml_publications_to_text(xml_in_dir,
                              txt_out_dir,
                              process_type,
+                             log_file="out.log",
                              downsample=1):
     """
     Converts XML publications to plaintext articles and generates
@@ -97,20 +95,15 @@ def xml_publications_to_text(xml_in_dir,
     :type txt_out_dir: str or unicode
     :param process_type: Process type
     :type process_type: str or unicode
+    :param log_file: log file
+    :type log_file: str or unicode
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
-    :param is_singleton: xml_in_dir holds XML for a single publication
-    (True) or multiple publications (False)
-    :type is_singleton: bool
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
     check_parameters(xml_in_dir, txt_out_dir, process_type, downsample)
-    if os.path.exists(LOG_FILE):
-        with open(LOG_FILE, "r") as f:
-            logging.config.dictConfig(yaml.load(f))
-    else:
-        logging.basicConfig(level=logging.INFO)
+    configure_logging(log_file)
     if process_type == PROCESS_SINGLE:
         xslts = xml.load_xslts()
         xml_to_text.publication_to_text(xml_in_dir,
@@ -125,6 +118,7 @@ def xml_publications_to_text(xml_in_dir,
         from extract_text import spark_xml_to_text
         spark_xml_to_text.publications_to_text(xml_in_dir,
                                                txt_out_dir,
+                                               log_file,
                                                downsample)
     else:
         from extract_text import multiprocess_xml_to_text

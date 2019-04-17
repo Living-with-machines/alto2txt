@@ -21,6 +21,7 @@ Python packages listed in `requirements.txt`.
 ```
 extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
                                     [-p [PROCESS_TYPE]]
+                                    [-l [LOG_FILE]]
                                     xml_in_dir txt_out_dir
 
 Converts XML publications to plaintext articles
@@ -32,10 +33,13 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                        Downsample
+                        Downsample. Default 1
+  -l [LOG_FILE], --log-file [LOG_FILE]
+                        Log file. Default out.log
   -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
                         Process type.
                         One of: single,serial,multi,spark
+                        Default: multi
 ```
 
 `xml_in_dir` is expected to hold XML for multiple publications, in the following structure:
@@ -78,48 +82,72 @@ The following XSLT files need to be in an `extract_text.xslts` module:
 * `extract_text_bln.xslt`: BLN XSL file.
 * `extract_text_ukp.xslt`: UKP XSL file.
 
-## Processing many publications
+## Process publications
 
 Assume `~/BNA` exists and matches the structure above.
 
 Extract text from every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt 2> err.log
+./extract_publications_text.py ~/BNA txt
 ```
 
 Extract text from every 100th issue of every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt -d 100 2> err.log
+./extract_publications_text.py ~/BNA txt -d 100
 ```
 
-## Processing a single publication
+## Process a single publication
 
 Extract text from every issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt 2> err.log
+./extract_publications_text.py -p single ~/BNA/0000151 txt
 ```
 
 Extract text from every 100th issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt -d 100 2> err.log
+./extract_publications_text.py -p single ~/BNA/0000151 txt -d 100
 ```
 
-While running, in another screen, run:
+## Configure logging
 
+By default, logs are put in `out.log`.
+
+To specify an alternative location for logs, use the `-l` flag e.g.
+
+```bash
+./extract_publications_text.py -l mylog.txt ~/BNA txt -d 100 2> err.log
 ```
-less +F err.log
+
+## Process publications via Spark
+
+When running via Spark ensure that:
+
+* `xml_in_dir` and `txt_out_dir` are on a file system accessible to all Spark worker nodes.
+* Provide a log file location, using the `-l` flag, that is accessible to all Spark worker nodes.
+* The code is available as a package on all Spark worker nodes.
+
+For example, the code can be run on Urika as follows...
+
+Install the code as a package:
+
+```bash
+python setup.py install
 ```
 
-and look for `WARN` messages.
+Run `spark-submit`
 
-**On completion:**
+```bash
+spark-submit ./extract_publications_text.py -p spark  \
+    -l /mnt/lustre/at003/at003/<username>/log.out     \
+    /mnt/lustre/at003/at003/shared/findmypast/BNA/    \
+    /mnt/lustre/at003/at003/<username>/fmp-lancs-txt
+```
 
-* Plaintext and XML metadat files are in `txt`.
-* Logs and errors are in `err.log`.
+---
 
 ## XML metadata
 
