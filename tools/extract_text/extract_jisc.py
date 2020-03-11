@@ -25,9 +25,16 @@ def main():
                         type=str,
                         help='Input directory with XML publications')
     parser.add_argument('out_dir', type=str, help='output_dir')
+    parser.add_argument("-l",
+                        "--log-file",
+                        type=str,
+                        nargs="?",
+                        default="out.log",
+                        help="Log file. Default out.log")
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     out_dir = args.out_dir
+    log_file = args.log_file
     if not Path(xml_in_dir).is_dir():
         raise ValueError("""You didn't provide a valid input directory""")
     remove_service(xml_in_dir)
@@ -42,7 +49,7 @@ def main():
         print('converting...')
         print(issue_path)
         xml_to_text_entry.xml_publications_to_text(issue_path, out_dir, 
-        process_type='multi',)
+        process_type='multi',log_file=log_file)
 
 
 if __name__ == "__main__":
