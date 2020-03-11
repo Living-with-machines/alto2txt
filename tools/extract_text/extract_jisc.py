@@ -5,28 +5,6 @@ from tqdm import tqdm
 
 from extract_text import xml_to_text_entry
 
-"""
-def remove_service(in_dir):
-    for f in Path(in_dir).rglob('*.xml'):
-        p = Path(f).absolute()
-        xml_dir = p.parents[0]
-        check for sub directories in folder containing xml
-       # if len([f for f in xml_dir.iterdir() if f.is_dir()]) != 0:
-       #     raise Exception()
-        parent_dir = p.parents[1]
-        # check for non 'service' directories
-        if not xml_dir.name == 'service':
-            print xml_dir.absolute()
-            raise Exception('Unexpected folder structure')
-         
-        else:
-            p.rename(parent_dir / p.name)
-   for f in Path(in_dir).rglob('service'):
-        try:
-            f.rmdir()
-            """
-
-
 def remove_service(in_dir):
     for d in Path(in_dir).rglob('service'):
         for f in Path(d).rglob('*.xml'):
@@ -36,7 +14,10 @@ def remove_service(in_dir):
             p.rename(parent_dir / p.name)
     # remove service directory
     for f in Path(in_dir).rglob('service'):
+        try:
             f.rmdir()
+        except OSError:
+            pass
 
 def main():
     parser = argparse.ArgumentParser(description='Process JISC data')
