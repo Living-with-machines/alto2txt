@@ -1,6 +1,0 @@
-lxml>=3.7.3
-pep8>=1.7.0
-pylint>=1.6.4
-pycodestyle>=2.5.0
-PyYAML>=3.13
-regex>=2018
