@@ -12,11 +12,15 @@ def configure_logging(log_file):
     :param log_file: log file
     :type log_file: str or unicode
     """
-    formatter = logging.Formatter(
-        "%(asctime)s:%(name)s:%(process)d:%(levelname)s:%(message)s")
+    #formatter = logging.Formatter(
+     #   "%(asctime)s:%(name)s:%(process)d:%(levelname)s:%(message)s")
+
+    format = "%(asctime)s:%(name)s:%(process)d:%(levelname)s:%(message)s"
+ 
+     
     logging.basicConfig(level=logging.INFO,
-                        formatter=formatter)
+                        format=format)
     file_logger = logging.FileHandler(log_file)
     file_logger.setLevel(logging.INFO)
-    file_logger.setFormatter(formatter)
+    file_logger.setFormatter(format)
     logging.getLogger().addHandler(file_logger)
