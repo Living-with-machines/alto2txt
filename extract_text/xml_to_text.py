@@ -27,15 +27,15 @@ def issue_to_text(publication,
     articles and generates minimal metadata.
 
     :param publication: Publication directory local name e.g. 0000151
-    :type publication: str or unicode
+    :type publication: str 
     :param year: Year directory local name e.g. 1835
-    :type year: str or unicode
+    :type year: str 
     :param issue: Issue directory local name e.g. 0121
-    :type issue: str or unicode
+    :type issue: str 
     :param issue_dir: Issue directory e.g. .../0000151/1835/0121
-    :type issue_dir: str or unicode
+    :type issue_dir: str 
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     """
@@ -158,9 +158,9 @@ def publication_to_text(publication_dir,
     txt_out_dir is created with an analogous structure.
 
     :param publication_dir: Input directory with XML publications
-    :type publication_dir: str or unicode
+    :type publication_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     :param downsample: Downsample, converting every Nth issue only
@@ -229,9 +229,9 @@ def publications_to_text(publications_dir,
     * extract_text_ukp.xslt: UKP XSL file.
 
     :param publications dir: Input directory with XML publications
-    :type publications_dir: str or unicode
+    :type publications_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str 
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """

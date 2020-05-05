@@ -34,13 +34,13 @@ def publication_to_text(publications_dir,
     xml_to_text.publication_to_text.
 
     :param publications_dir: Input directory with XML publications
-    :type publications_dir: str or unicode
+    :type publications_dir: str 
     :param publication: Local publication directory in publications_dir
-    :type publication: str or unicode
+    :type publication: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param log_file: log file
-    :type log_file: str or unicode
+    :type log_file: str
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
@@ -100,11 +100,11 @@ def publications_to_text(publications_dir,
     * extract_text_ukp.xslt: UKP XSL file.
 
     :param publications dir: Input directory with XML publications
-    :type publications_dir: str or unicode
+    :type publications_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param log_file: log file
-    :type log_file: str or unicode
+    :type log_file: str
     :param num_cores: Number of cores
     :type num_cores: int
     :param downsample: Downsample, converting every Nth issue only

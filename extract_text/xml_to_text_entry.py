@@ -47,11 +47,11 @@ def check_parameters(xml_in_dir,
     * num_cores is a positive integer.
 
     :param xml_in_dir: Input directory with XML publications
-    :type xml_in_dir: str or unicode
+    :type xml_in_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param process_type: Process type
-    :type process_type: str or unicode
+    :type process_type: str
     :param num_cores: Number of cores (used for Spark only)
     :type num_cores: int
     :param downsample: Downsample
@@ -102,13 +102,13 @@ def xml_publications_to_text(xml_in_dir,
     txt_out_dir is created with an analogous structure to xml_in_dir.
 
     :param xml_in_dir: Input directory with XML publications
-    :type xml_in_dir: str or unicode
+    :type xml_in_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str or unicode
+    :type txt_out_dir: str
     :param process_type: Process type
-    :type process_type: str or unicode
+    :type process_type: str 
     :param log_file: log file
-    :type log_file: str or unicode
+    :type log_file: str
     :param num_cores: Number of cores (used for Spark only)
     :type num_cores: int
     :param downsample: Downsample, converting every Nth issue only
