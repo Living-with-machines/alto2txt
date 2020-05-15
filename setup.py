@@ -12,9 +12,9 @@ def read(fname):
     Read and return file contents.
 
     :param fname: file name
-    :type fname: str or unicod
+    :type fname: str 
     :returns: file contents
-    :rtype: str or unicode
+    :rtype: str
     """
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 

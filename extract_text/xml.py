@@ -71,9 +71,9 @@ def get_path(module, *name):
     :param module: module
     :type module: module
     :param *name: file name components
-    :type *name: str or unicode
+    :type *name: str 
     :return: path to file
-    :rtype: str or unicode
+    :rtype: str 
     """
     return os.path.join(os.path.dirname(module.__file__), *name)
 
@@ -105,7 +105,7 @@ def get_xml(filename):
     Gets XML document tree from file.
 
     :param filename: XML filename
-    :type filename: str or unicode
+    :type filename: str
     :return: Document tree
     :rtype: lxml.etree._ElementTree
     """
@@ -168,7 +168,7 @@ def query_xml(document_tree, query):
     :param document_tree: Document tree
     :type document_tree: lxml.etree._ElementTree
     :param query: XPath query
-    :type query: str or unicode
+    :type query: str
     :return: Query results
     :rtype: Query-specific
     """
