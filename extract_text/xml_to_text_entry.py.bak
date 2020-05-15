@@ -4,7 +4,7 @@ or UKP format) publications to plaintext articles and generate minimal
 metadata.
 """
 
-
+from __future__ import print_function
 import logging
 import logging.config
 import os
