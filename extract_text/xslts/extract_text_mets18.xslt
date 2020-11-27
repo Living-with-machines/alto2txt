@@ -27,7 +27,7 @@
         <doc>
           <xsl:attribute name="ID"><xsl:value-of select="@ID" /></xsl:attribute>
           <xsl:variable name="fileloc2"><xsl:value-of select="$input_path" />/<xsl:value-of select="mets:FLocat/@xlink:href" /></xsl:variable>
-          <xsl:copy-of select="document($fileloc2)" />
+          <xsl:copy-of select="document(concat('../../', $fileloc2))" />
         </doc>
       </xsl:for-each>
     </xsl:variable>
