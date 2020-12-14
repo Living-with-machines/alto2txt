@@ -113,7 +113,7 @@ def issue_to_text(publication,
         issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
         try:
             xslt(document_tree,
-                 input_path=etree.XSLT.strparam(issue_dir),
+                 input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
                  input_sub_path=etree.XSLT.strparam(input_sub_path),
                  input_filename=etree.XSLT.strparam(input_filename),
                  output_document_stub=etree.XSLT.strparam(
