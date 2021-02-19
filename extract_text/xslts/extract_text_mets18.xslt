@@ -111,6 +111,7 @@
             </process>
             <publication>
               <xsl:attribute name="id"><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:mods/mods:relatedItem/mods:identifier" /></xsl:attribute>
+              <source><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:note" /></source>
               <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:title" /></title>
               <location><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:placeTerm" /></location>
               <issue>
