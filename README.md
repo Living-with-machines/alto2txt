@@ -10,12 +10,29 @@ Quality assurance is performed to check for:
 * Empty files.
 * Files that otherwise do not expose content.
 
-## Requirements
+## Installation
 
-Python 3.4+
+We recommend installation via Anaconda:
 
-Python packages listed in `requirements.txt`.
+* Refer to [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
 
+* Create a new environment for alto2txt
+
+```bash
+conda create -n py37alto python=3.7
+```
+
+* Activate the environment:
+
+```bash
+conda activate py37alto
+```
+
+* Install additional packages
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
