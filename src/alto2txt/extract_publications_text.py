@@ -94,37 +94,44 @@ def main():
     extract_text.xml_publications_to_text.
     """
     parser = ArgumentParser(
-        description="Converts XML publications to plaintext articles")
-    parser.add_argument("xml_in_dir",
-                        help="Input directory with XML publications")
-    parser.add_argument("txt_out_dir",
-                        help="Output directory for plaintext articles")
-    parser.add_argument("-p",
-                        "--process-type",
-                        type=str,
-                        nargs="?",
-                        default=xml_to_text_entry.PROCESS_MULTI,
-                        help="Process type. One of: " +
-                        ",".join(xml_to_text_entry.PROCESS_TYPES) +
-                        ". Default: multi")
-    parser.add_argument("-l",
-                        "--log-file",
-                        type=str,
-                        nargs="?",
-                        default="out.log",
-                        help="Log file. Default out.log")
-    parser.add_argument("-d",
-                        "--downsample",
-                        type=int,
-                        nargs="?",
-                        default=1,
-                        help="Downsample. Default 1")
-    parser.add_argument("-n",
-                        "--num-cores",
-                        type=int,
-                        nargs="?",
-                        default=1,
-                        help="Number of cores (Spark only). Default 1")
+        description="Converts XML publications to plaintext articles"
+    )
+    parser.add_argument("xml_in_dir", help="Input directory with XML publications")
+    parser.add_argument("txt_out_dir", help="Output directory for plaintext articles")
+    parser.add_argument(
+        "-p",
+        "--process-type",
+        type=str,
+        nargs="?",
+        default=xml_to_text_entry.PROCESS_MULTI,
+        help="Process type. One of: "
+        + ",".join(xml_to_text_entry.PROCESS_TYPES)
+        + ". Default: multi",
+    )
+    parser.add_argument(
+        "-l",
+        "--log-file",
+        type=str,
+        nargs="?",
+        default="out.log",
+        help="Log file. Default out.log",
+    )
+    parser.add_argument(
+        "-d",
+        "--downsample",
+        type=int,
+        nargs="?",
+        default=1,
+        help="Downsample. Default 1",
+    )
+    parser.add_argument(
+        "-n",
+        "--num-cores",
+        type=int,
+        nargs="?",
+        default=1,
+        help="Number of cores (Spark only). Default 1",
+    )
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
@@ -132,12 +139,9 @@ def main():
     log_file = args.log_file
     num_cores = args.num_cores
     downsample = args.downsample
-    xml_to_text_entry.xml_publications_to_text(xml_in_dir,
-                                               txt_out_dir,
-                                               process_type,
-                                               log_file,
-                                               num_cores,
-                                               downsample)
+    xml_to_text_entry.xml_publications_to_text(
+        xml_in_dir, txt_out_dir, process_type, log_file, num_cores, downsample
+    )
 
 
 if __name__ == "__main__":
