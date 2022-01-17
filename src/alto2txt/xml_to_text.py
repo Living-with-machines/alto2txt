@@ -10,30 +10,25 @@ import os.path
 import re
 from lxml import etree
 
-from extract_text import xml
+from alto2txt import xml
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
 
 
-def issue_to_text(publication,
-                  year,
-                  issue,
-                  issue_dir,
-                  txt_out_dir,
-                  xslts):
+def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     """
     Converts a single issue of an XML publication to plaintext
     articles and generates minimal metadata.
 
     :param publication: Publication directory local name e.g. 0000151
-    :type publication: str 
+    :type publication: str
     :param year: Year directory local name e.g. 1835
-    :type year: str 
+    :type year: str
     :param issue: Issue directory local name e.g. 0121
-    :type issue: str 
+    :type issue: str
     :param issue_dir: Issue directory e.g. .../0000151/1835/0121
-    :type issue_dir: str 
+    :type issue_dir: str
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str
     :param xslts: XSLTs to convert XML to plaintext
@@ -51,13 +46,12 @@ def issue_to_text(publication,
     summary["skipped_root_unknown"] = 0
     summary["non_xml"] = 0
     issue_out_dir = os.path.join(txt_out_dir, year, issue)
-    assert not os.path.exists(issue_out_dir) or\
-        not os.path.isfile(issue_out_dir),\
-        "{} exists and is not a file".format(issue_out_dir)
+    assert not os.path.exists(issue_out_dir) or not os.path.isfile(
+        issue_out_dir
+    ), "{} exists and is not a file".format(issue_out_dir)
     if not os.path.exists(issue_out_dir):
         os.makedirs(issue_out_dir)
-    assert os.path.exists(issue_out_dir),\
-        "Create {} failed".format(issue_out_dir)
+    assert os.path.exists(issue_out_dir), "Create {} failed".format(issue_out_dir)
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
@@ -95,9 +89,7 @@ def issue_to_text(publication,
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logger.warn("Unknown METS schema %s: %s",
-                            xml_file,
-                            mets_uri)
+                logger.warn("Unknown METS schema %s: %s", xml_file, mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -112,36 +104,36 @@ def issue_to_text(publication,
             issue_out_stub = os.path.splitext(input_filename)[0]
         issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
         try:
-            xslt(document_tree,
-                 input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
-                 input_sub_path=etree.XSLT.strparam(input_sub_path),
-                 input_filename=etree.XSLT.strparam(input_filename),
-                 output_document_stub=etree.XSLT.strparam(
-                     issue_out_stub),
-                 output_path=etree.XSLT.strparam(issue_out_path))
+            xslt(
+                document_tree,
+                input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
+                input_sub_path=etree.XSLT.strparam(input_sub_path),
+                input_filename=etree.XSLT.strparam(input_filename),
+                output_document_stub=etree.XSLT.strparam(issue_out_stub),
+                output_path=etree.XSLT.strparam(issue_out_path),
+            )
             summary["converted_ok"] += 1
             logger.info("%s gave XSLT output", xml_file_path)
         except Exception as e:
             summary["converted_bad"] += 1
-            logger.error("%s failed to give XSLT output: %s",
-                         xml_file,
-                         str(e))
+            logger.error("%s failed to give XSLT output: %s", xml_file, str(e))
             continue
-    if (summary["converted_ok"] > 0) and\
-       (summary["converted_ok"] == (summary["num_files"] -
-                                    summary["skipped_alto"] -
-                                    summary["skipped_mets_unknown"] -
-                                    summary["skipped_root_unknown"] -
-                                    summary["skipped_bl_page"])):
+    if (summary["converted_ok"] > 0) and (
+        summary["converted_ok"]
+        == (
+            summary["num_files"]
+            - summary["skipped_alto"]
+            - summary["skipped_mets_unknown"]
+            - summary["skipped_root_unknown"]
+            - summary["skipped_bl_page"]
+        )
+    ):
         logger.info("%s %s", issue_dir, str(summary))
     else:
         logger.warn("%s %s", issue_dir, str(summary))
 
 
-def publication_to_text(publication_dir,
-                        txt_out_dir,
-                        xslts,
-                        downsample=1):
+def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
     """
     Converts issues of an XML publication to plaintext articles and
     generates minimal metadata.
@@ -177,24 +169,16 @@ def publication_to_text(publication_dir,
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logger.warn("Unexpected file: %s",
-                            os.path.join(year, issue))
+                logger.warn("Unexpected file: %s", os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
             if (issue_counter % downsample) != 0:
                 continue
-            issue_to_text(publication,
-                          year,
-                          issue,
-                          issue_dir,
-                          txt_out_dir,
-                          xslts)
+            issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts)
 
 
-def publications_to_text(publications_dir,
-                         txt_out_dir,
-                         downsample=1):
+def publications_to_text(publications_dir, txt_out_dir, downsample=1):
     """
     Converts XML publications to plaintext articles and generates
     minimal metadata.
@@ -231,7 +215,7 @@ def publications_to_text(publications_dir,
     :param publications dir: Input directory with XML publications
     :type publications_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str 
+    :type txt_out_dir: str
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
@@ -245,7 +229,4 @@ def publications_to_text(publications_dir,
             logger.warn("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
-        publication_to_text(publication_dir,
-                            publication_txt_out_dir,
-                            xslts,
-                            downsample)
+        publication_to_text(publication_dir, publication_txt_out_dir, xslts, downsample)
