@@ -82,7 +82,7 @@ The following XSLT files need to be in an extract_text.xslts module:
 
 from argparse import ArgumentParser
 
-from extract_text import xml_to_text_entry
+import xml_to_text_entry
 
 
 def main():

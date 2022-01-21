@@ -10,7 +10,7 @@ import os.path
 import re
 from lxml import etree
 
-from alto2txt import xml
+import xml
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
