@@ -27,13 +27,13 @@ def issue_to_text(publication,
     articles and generates minimal metadata.
 
     :param publication: Publication directory local name e.g. 0000151
-    :type publication: str 
+    :type publication: str
     :param year: Year directory local name e.g. 1835
-    :type year: str 
+    :type year: str
     :param issue: Issue directory local name e.g. 0121
-    :type issue: str 
+    :type issue: str
     :param issue_dir: Issue directory e.g. .../0000151/1835/0121
-    :type issue_dir: str 
+    :type issue_dir: str
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str
     :param xslts: XSLTs to convert XML to plaintext
@@ -61,7 +61,16 @@ def issue_to_text(publication,
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
-            logger.warn("Unexpected directory: %s", xml_file)
+            if len(xml_file) == 2:
+                logger.info("Trying DD subdirectory handling on: %s", xml_file)
+                issue_to_text(publication=publication,
+                              year=year,
+                              issue=os.path.join(issue, xml_file),
+                              issue_dir=os.path.join(issue_dir, xml_file),
+                              txt_out_dir=txt_out_dir,
+                              xslts=xslts)
+            else:
+                logger.warn("Unexpected directory: %s", xml_file)
             continue
         summary["num_files"] += 1
         if os.path.splitext(xml_file)[1].lower() != ".xml":
@@ -231,7 +240,7 @@ def publications_to_text(publications_dir,
     :param publications dir: Input directory with XML publications
     :type publications_dir: str
     :param txt_out_dir: Output directory for plaintext articles
-    :type txt_out_dir: str 
+    :type txt_out_dir: str
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
