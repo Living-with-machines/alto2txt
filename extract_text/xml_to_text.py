@@ -61,6 +61,7 @@ def issue_to_text(publication,
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
+            # Detect & handle the MM/DD subdirectory structure.
             if len(xml_file) == 2:
                 logger.info("Trying DD subdirectory handling on: %s", xml_file)
                 issue_to_text(publication=publication,
@@ -144,6 +145,11 @@ def issue_to_text(publication,
                                     summary["skipped_bl_page"])):
         logger.info("%s %s", issue_dir, str(summary))
     else:
+        # Skip the summary in the case of an MM subdirectory.
+        list_dir = os.listdir(issue_dir)
+        if all([os.path.isdir(os.path.join(issue_dir, d)) for d in list_dir]):
+            if all([len(d) == 2 for d in list_dir]):
+                return
         logger.warn("%s %s", issue_dir, str(summary))
 
 
