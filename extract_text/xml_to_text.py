@@ -61,18 +61,18 @@ def issue_to_text(publication,
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
-            logger.warn("Unexpected directory: %s", xml_file)
+            logger.warning("Unexpected directory: %s", xml_file)
             continue
         summary["num_files"] += 1
         if os.path.splitext(xml_file)[1].lower() != ".xml":
             summary["non_xml"] += 1
-            logger.warn("File with no .xml suffix: %s", xml_file)
+            logger.warning("File with no .xml suffix: %s", xml_file)
             continue
         try:
             document_tree = xml.get_xml(xml_file_path)
         except Exception as e:
             summary["bad_xml"] += 1
-            logger.warn("Problematic file %s: %s", xml_file, str(e))
+            logger.warning("Problematic file %s: %s", xml_file, str(e))
             continue
         metadata = xml.get_xml_metadata(document_tree)
         if metadata[xml.XML_ROOT] == xml.ALTO_ROOT:
@@ -95,7 +95,7 @@ def issue_to_text(publication,
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logger.warn("Unknown METS schema %s: %s",
+                logger.warning("Unknown METS schema %s: %s",
                             xml_file,
                             mets_uri)
                 summary["skipped_mets_unknown"] += 1
@@ -135,7 +135,7 @@ def issue_to_text(publication,
                                     summary["skipped_bl_page"])):
         logger.info("%s %s", issue_dir, str(summary))
     else:
-        logger.warn("%s %s", issue_dir, str(summary))
+        logger.warning("%s %s", issue_dir, str(summary))
 
 
 def publication_to_text(publication_dir,
@@ -172,12 +172,12 @@ def publication_to_text(publication_dir,
     for year in os.listdir(publication_dir):
         year_dir = os.path.join(publication_dir, year)
         if not os.path.isdir(year_dir):
-            logger.warn("Unexpected file: %s", year)
+            logger.warning("Unexpected file: %s", year)
             continue
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logger.warn("Unexpected file: %s",
+                logger.warning("Unexpected file: %s",
                             os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
@@ -242,7 +242,7 @@ def publications_to_text(publications_dir,
     for publication in publications:
         publication_dir = os.path.join(publications_dir, publication)
         if not os.path.isdir(publication_dir):
-            logger.warn("Unexpected file: %s", publication_dir)
+            logger.warning("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
         publication_to_text(publication_dir,

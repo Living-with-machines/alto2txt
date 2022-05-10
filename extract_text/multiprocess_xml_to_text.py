@@ -47,7 +47,7 @@ def publication_to_text(publications_dir,
     xslts = xml.load_xslts()
     publication_dir = os.path.join(publications_dir, publication)
     if not os.path.isdir(publication_dir):
-        logger.warn("Unexpected file: %s", publication_dir)
+        logger.warning("Unexpected file: %s", publication_dir)
     publication_txt_out_dir = os.path.join(txt_out_dir, publication)
     xml_to_text.publication_to_text(publication_dir,
                                     publication_txt_out_dir,
