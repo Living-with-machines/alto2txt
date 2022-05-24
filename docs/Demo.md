@@ -37,10 +37,9 @@ If you are familiar with git, use the following command in a blank directory fro
 ```
 git clone https://github.com/Living-with-machines/alto2txt.git
 ```
+Alternatively, you can also download the directory as a .zip [by clicking here](https://github.com/Living-with-machines/alto2txt/archive/refs/heads/master.zip).
 
-You can also download the directory as a .zip [from here.](https://github.com/Living-with-machines/alto2txt/archive/refs/heads/master.zip)
-
-Unzip and navigate to your new copy of alto2txt folder in the terminal or the Anaconda Prompt. 
+Unzip and navigate to your the `alto2txt` folder in the terminal or the Anaconda Prompt. 
 
 ```
 cd ~myFolder/alto2txt
@@ -61,16 +60,33 @@ conda activate py37alto
 #### Install Required Packages
 
 
-Install the required packages which are outlined in requirements.txt:
+Install the required packages which are outlined in `requirements.txt`:
 
 ```
 pip install -r requirements.txt
 ```
 Follow the instructions to download and install the packages. You should now have all the required Python packages within your conda environment to run Alto2txt. 
 
-## Example Alto files
 
-You should see a subdirectory called `demo-files`. These come from a newspaper published on the 17th of February, 1824. The directory tree structure is important, and will be mirrored in the output. 
+
+## Run Alto2Txt
+
+Make sure you have navigated to the `alto2txt` directory in your terminal or Anaconda prompt. For this demo, we are using a single edition for a single publication. The output files will be created in `/demo-output` which you can check is currently empty. 
+
+``` 
+./extract_publications_text.py -p single demo-files demo-output 
+```
+
+Here we use the positional argument `-p` to determine which process type, in this case `single`. The script can be run on many publications and years by default, but in this case we only have one publication. [Click here](/#process-types) to read more about different process types. 
+
+The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory. Once alto2txt has run, the output directory structure will mirror the input directory. 
+
+We will now look in more detail at the ALTO/METS input files and output plain text files. 
+
+
+## Input ALTO/METS files
+
+We ran alto2txt on the ALTO/METS files within a subdirectory called `demo-files`. These come from a newspaper published on the 17th of February, 1824. The directory tree structure is important, and will be mirrored in the output. 
 
 ```
 alto2txt/
@@ -84,11 +100,11 @@ alto2txt/
                     └── 0002647_18240217_mets.xml
 └── demo-output/
 └── extract_text/
-└── ...
+└── docs/
 ```
 Our output `.txt` files will end up in the currently empty `demo-output/` folder. 
 
-#### Alto File Contents
+#### ALTO File Contents
 
 There are four files with the file name ending in `_000x.xml`. These alto files contain the OCR information from the four pages scanned from the newspaper. Within each one, each word from the newspaper page has reference IDs and exists within a tree, for example:
 
@@ -105,7 +121,7 @@ There are four files with the file name ending in `_000x.xml`. These alto files 
 
 Alto2txt will extract all these individual words and create a text file for each article. 
 
-#### Mets File Contents
+#### METS File Contents
 
 The other file in the `demo-files/` directory ends with `_mets.xml`. This contains the meta information for this newspaper edition. It contains a map of the different articles that may or may not cross multiple pages, within a structure called `<mets:structLink>`. 
 
@@ -123,20 +139,7 @@ Here is a short example, which defines **Article 01** as the first paragraph on 
 Alto2txt will produce a `.txt` file for every Article (and other content, for example Advert) defined in this mets file. 
 
 
-## Run Alto2Txt
-
-Make sure you have navigated to the Alto2txt directory in your terminal or Anaconda prompt. For this demo, we are using a single edition for a single publication. 
-
-``` 
-./extract_publications_text.py -p single demo-files demo-output 
-```
-
-Here we use the positional argument `-p` to determine which process type, in this case `single`. The script can be run on many publications and years by default, but in this case we only have one publication. 
-
-The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory. If you navigate to this folder you will see a directory structure that mirrors the input directory. 
-
-
-## Output Text (.txt) files
+## Output Files
 
 Here are the newly created files:
 
@@ -151,7 +154,9 @@ alto2txt/
                     ├── ...
                     └── ...
 ```
-A total of 26 articles are extracted from the alto files, and one advert. Each plain text article file has an associated `metadata.xml` file. The meta data comes from the original source mets file. 
+A total of 26 articles are extracted from the alto files, and one advert. Each plain text article file has an associated `metadata.xml` file. The meta data comes from the original source METS file. 
+
+[Click here](advanced.md) to read more about the contents of the metadata files. 
 
 ## Further Examples
 
