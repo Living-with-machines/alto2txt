@@ -1,4 +1,4 @@
 
-* [Home](/)
-* [Demo](demo.md)
-* [Spark Instructions](spark_instructions.md)
+* [Alto2Txt](/)
+* [Demo](Demo.md)
+* [Advanced](advanced.md)

@@ -6,7 +6,7 @@ Input xml files from digitised newspapers create an object for every section, pa
 
 The resulting .txt files are one per article, which may span multiple newspaper pages. 
 
-## TL;DR
+## Quick Demo
 
 If you are comfortable with the command line, git, and already have Python & Anaconda installed, these are the steps to run the demo: 
 
@@ -24,7 +24,9 @@ The resulting plain text files of the articles are in `alto2txt/demo-output/`.
 
 Read on for a more in-depth explanation.
 
-## Install
+
+## Installation Instructions
+
 
 It is recommended to use [Anaconda](https://docs.anaconda.com/anaconda/install/index.html) which is a data science distribution for Python and R. 
 
@@ -64,7 +66,7 @@ Install the required packages which are outlined in requirements.txt:
 ```
 pip install -r requirements.txt
 ```
-Press `y` to confirm the installation process. You should now have all the required Python packages within your conda environment to run Alto2txt. 
+Follow the instructions to download and install the packages. You should now have all the required Python packages within your conda environment to run Alto2txt. 
 
 ## Example Alto files
 
@@ -181,3 +183,5 @@ Where `-d` determines the downsample value.
 ```
 ./extract_publications_text.py -p single input-directory output-directory -d 100 
 ```
+
+
