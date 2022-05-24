@@ -90,17 +90,17 @@ We ran alto2txt on the ALTO/METS files within a subdirectory called `demo-files`
 
 ```
 alto2txt/
-└── demo-files/
-        └── 1824/
-              └── 0217/
-                    ├── 0002647_18240217_0001.xml
-                    ├── 0002647_18240217_0002.xml
-                    ├── 0002647_18240217_0003.xml
-                    ├── 0002647_18240217_0004.xml
-                    └── 0002647_18240217_mets.xml
-└── demo-output/
-└── extract_text/
-└── docs/
+    ├── demo-files/
+    │        └── 1824/
+    │              └── 0217/
+    │                    ├── 0002647_18240217_0001.xml
+    │                    ├── 0002647_18240217_0002.xml
+    │                    ├── 0002647_18240217_0003.xml
+    │                    ├── 0002647_18240217_0004.xml
+    │                    └── 0002647_18240217_mets.xml
+    ├── demo-output/
+    ├── extract_text/
+    └── docs/
 ```
 Our output `.txt` files will end up in the currently empty `demo-output/` folder. 
 
@@ -141,18 +141,21 @@ Alto2txt will produce a `.txt` file for every Article (and other content, for ex
 
 ## Output Files
 
-Here are the newly created files:
+Here are the newly created files in `demo-output`:
 
 ```
 alto2txt/
-└── demo-output/
-        └── 1824/
-              └── 0217/
-                    ├── 0002647_18240217_art0001_metadata.xml
-                    ├── 0002647_18240217_art0001.txt
-                    ├── ...
-                    ├── ...
-                    └── ...
+    ├── demo-input/
+    ├── demo-output/
+    │        └── 1824/
+    │              └── 0217/
+    │                    ├── 0002647_18240217_art0001_metadata.xml
+    │                    ├── 0002647_18240217_art0001.txt
+    │                    ├── ...
+    │                    ├── ...
+    │                    └── ...
+    ├── extract_text/
+    └── docs/
 ```
 A total of 26 articles are extracted from the alto files, and one advert. Each plain text article file has an associated `metadata.xml` file. The meta data comes from the original source METS file. 
 
