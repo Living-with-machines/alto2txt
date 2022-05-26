@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>pixel</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//NP1-STOR2/data01/blend6/2019-07-11_09_03/2019-07-11_09_03_03118.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Hamburg, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>7.0-1.47</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingStepSettings>Character Count: 28398 
+Predicted Word Accuracy: 88.2% 
+Suspicious Character Count: 678 
+Word Count: 5014 
+Suspicious Word Count: 870 
+width: 4169 
+height: 6177 
+xdpi: 300 
+ydpi: 300 
+source-image: //NP1-STOR2/data01/blend6/2019-07-11_09_03/2019-07-11_09_03_03118.tif</processingStepSettings>
+				<processingSoftware>
+					<softwareCreator>Nuance Communications, Inc.</softwareCreator>
+					<softwareName>OmniPage</softwareName>
+					<softwareVersion>20</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_1" FONTSIZE="0" FONTFAMILY=""/>
+		<TextStyle ID="TXT_2" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_3" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold underline"/>
+		<TextStyle ID="TXT_4" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold italics"/>
+		<TextStyle ID="TXT_5" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold italics"/>
+		<TextStyle ID="TXT_6" FONTSIZE="0" FONTFAMILY=""/>
+		<TextStyle ID="TXT_7" FONTSIZE="0" FONTFAMILY="" FONTSTYLE="bold underline"/>
+		<TextStyle ID="TXT_8" FONTSIZE="0" FONTFAMILY=""/>
+		<ParagraphStyle ID="PAR_LEFT" ALIGN="Left"/>
+		<ParagraphStyle ID="PAR_RIGHT" ALIGN="Right"/>
+		<ParagraphStyle ID="PAR_BLOCK" ALIGN="Block"/>
+	</Styles>
+	<Layout>
+		<Page ID="P1" PHYSICAL_IMG_NR="1" HEIGHT="6177" WIDTH="4169" PC="0.882">
+			<TopMargin ID="P1_TM00001" HPOS="0" VPOS="0" WIDTH="4169" HEIGHT="0"/>
+			<LeftMargin ID="P1_LM00001" HPOS="0" VPOS="0" WIDTH="0" HEIGHT="5976"/>
+			<RightMargin ID="P1_RM00001" HPOS="4167" VPOS="0" WIDTH="2" HEIGHT="5976"/>
+			<BottomMargin ID="P1_BM00001" HPOS="0" VPOS="5976" WIDTH="4169" HEIGHT="201"/>
+			<PrintSpace ID="P1_PS00001" HPOS="0" VPOS="0" WIDTH="4167" HEIGHT="5976">
+				<TextBlock ID="pa0001001" HPOS="72" VPOS="2533" WIDTH="899" HEIGHT="812" STYLEREFS="TXT_2 PAR_LEFT">
+					<TextLine ID="P1_TL00143" HPOS="73" VPOS="2535" WIDTH="886" HEIGHT="46">
+						<String ID="word001131" HPOS="73" VPOS="2552" WIDTH="56" HEIGHT="25" CONTENT="This" WC="0.92" CC="0201"/>
+						<SP ID="P1_SP01094" HPOS="129" VPOS="2577" WIDTH="8"/>
+						<String ID="word001132" HPOS="137" VPOS="2550" WIDTH="48" HEIGHT="31" CONTENT="article" WC="1.00" CC="000"/>
+						<SP ID="P1_SP01095" HPOS="185" VPOS="2581" WIDTH="11"/>
+						<String ID="word001133" HPOS="196" VPOS="2546" WIDTH="22" HEIGHT="26" CONTENT="should" WC="1.00" CC="00"/>
+						<SP ID="P1_SP01096" HPOS="219" VPOS="2581" WIDTH="13"/>
+						<String ID="word001134" HPOS="231" VPOS="2545" WIDTH="144" HEIGHT="34" CONTENT="continue" WC="0.92" CC="0101000005"/>
+						<SP ID="P1_SP01097" HPOS="376" VPOS="2581" WIDTH="12"/>
+						<String ID="word001135" HPOS="387" VPOS="2544" WIDTH="27" HEIGHT="25" CONTENT="from" WC="0.78" CC="40"/>
+						<SP ID="P1_SP01098" HPOS="415" VPOS="2581" WIDTH="9"/>
+						<String ID="word001136" HPOS="424" VPOS="2544" WIDTH="61" HEIGHT="24" CONTENT="1" WC="0.44" CC="8651"/>
+						<SP ID="P1_SP01099" HPOS="485" VPOS="2581" WIDTH="14"/>
+						<String ID="word001137" HPOS="500" VPOS="2542" WIDTH="71" HEIGHT="31" CONTENT="to" WC="0.95" CC="00110"/>
+						<SP ID="P1_SP01100" HPOS="570" VPOS="2581" WIDTH="11"/>
+						<String ID="word001138" HPOS="581" VPOS="2542" WIDTH="39" HEIGHT="25" CONTENT="10." WC="0.74" CC="151"/>
+						<HYP HPOS="944" VPOS="2535" WIDTH="15" CONTENT="-"/>
+					</TextLine>
+					<TextLine ID="P1_TL00144" HPOS="317" VPOS="2572" WIDTH="379" HEIGHT="36">
+						<String ID="word001144" HPOS="317" VPOS="2593" WIDTH="7" HEIGHT="11" CONTENT="1" SUBS_TYPE="HypPart2" SUBS_CONTENT="Edi." WC="0.33" CC="6"/>
+						<SP ID="P1_SP01106" HPOS="324" VPOS="2603" WIDTH="18"/>
+						<String ID="word001145" HPOS="341" VPOS="2578" WIDTH="65" HEIGHT="28" CONTENT="2" WC="0.93" CC="11010"/>
+						<SP ID="P1_SP01107" HPOS="406" VPOS="2607" WIDTH="8"/>
+						<String ID="word001146" HPOS="415" VPOS="2576" WIDTH="91" HEIGHT="32" CONTENT="3" WC="0.74" CC="222323"/>
+						<SP ID="P1_SP01108" HPOS="506" VPOS="2608" WIDTH="13"/>
+						<String ID="word001147" HPOS="519" VPOS="2574" WIDTH="41" HEIGHT="25" CONTENT="4" WC="0.56" CC="354"/>
+						<SP ID="P1_SP01109" HPOS="560" VPOS="2608" WIDTH="11"/>
+						<String ID="word001148" HPOS="570" VPOS="2572" WIDTH="85" HEIGHT="32" CONTENT="5" WC="0.94" CC="111000"/>
+						<SP ID="P1_SP01110" HPOS="656" VPOS="2608" WIDTH="8"/>
+						<String ID="word001149" HPOS="664" VPOS="2572" WIDTH="32" HEIGHT="26" CONTENT="6" WC="1.00" CC="00"/>
+						<SP ID="P1_SP01111" HPOS="696" VPOS="2608" WIDTH="0"/>
+					</TextLine>
+					<TextLine ID="P1_TL00145" HPOS="133" VPOS="2609" WIDTH="825" HEIGHT="45">
+						<String ID="word001150" HPOS="133" VPOS="2620" WIDTH="189" HEIGHT="34" CONTENT="7" WC="0.92" CC="0001004"/>
+						<SP ID="P1_SP01112" HPOS="322" VPOS="2654" WIDTH="11"/>
+						<String ID="word001151" HPOS="333" VPOS="2630" WIDTH="38" HEIGHT="20" CONTENT="8" WC="1.00" CC="00"/>
+						<SP ID="P1_SP01113" HPOS="371" VPOS="2654" WIDTH="15"/>
+						<String ID="word001152" HPOS="386" VPOS="2619" WIDTH="50" HEIGHT="31" CONTENT="9" WC="1.00" CC="000"/>
+						<SP ID="P1_SP01114" HPOS="436" VPOS="2654" WIDTH="15"/>
+						<String ID="word001153" HPOS="451" VPOS="2614" WIDTH="222" HEIGHT="34" CONTENT="10" WC="0.67" CC="33333333"/>
+						<SP ID="P1_SP01115" HPOS="673" VPOS="2654" WIDTH="8"/>
+					</TextLine>
+				</TextBlock>
+				<TextBlock ID="pa0001002" HPOS="80" VPOS="3372" WIDTH="905" HEIGHT="541" STYLEREFS="TXT_0 PAR_LEFT">
+					<TextLine ID="P1_TL00166" HPOS="81" VPOS="3372" WIDTH="898" HEIGHT="39">
+						<String ID="word001310" HPOS="81" VPOS="3380" WIDTH="59" HEIGHT="25" CONTENT="This" WC="0.94" CC="1100"/>
+						<SP ID="P1_SP01266" HPOS="141" VPOS="3405" WIDTH="12"/>
+						<String ID="word001311" HPOS="152" VPOS="3379" WIDTH="53" HEIGHT="32" CONTENT="article" WC="0.96" CC="010"/>
+						<SP ID="P1_SP01267" HPOS="206" VPOS="3411" WIDTH="11"/>
+						<String ID="word001312" HPOS="216" VPOS="3378" WIDTH="26" HEIGHT="25" CONTENT="is" WC="1.00" CC="00"/>
+						<SP ID="P1_SP01268" HPOS="242" VPOS="3411" WIDTH="25"/>
+						<String ID="word001313" HPOS="267" VPOS="3377" WIDTH="146" HEIGHT="32" CONTENT="missing" WC="0.88" CC="0013140101"/>
+						<SP ID="P1_SP01269" HPOS="413" VPOS="3411" WIDTH="18"/>
+						<String ID="word001314" HPOS="431" VPOS="3377" WIDTH="27" HEIGHT="25" CONTENT="content." WC="0.78" CC="40"/>
+						<SP ID="P1_SP01270" HPOS="458" VPOS="3411" WIDTH="22"/>
+					</TextLine>
+				</TextBlock>
+				<TextBlock ID="pa0001003" HPOS="96" VPOS="3917" WIDTH="887" HEIGHT="164" STYLEREFS="TXT_2 PAR_LEFT">
+					<TextLine ID="P1_TL00182" HPOS="120" VPOS="3919" WIDTH="314" HEIGHT="27">
+						<String ID="word001448" HPOS="120" VPOS="3920" WIDTH="93" HEIGHT="25" CONTENT="My" WC="0.76" CC="1311351"/>
+						<SP ID="P1_SP01400" HPOS="214" VPOS="3945" WIDTH="19"/>
+						<String ID="word001449" HPOS="233" VPOS="3920" WIDTH="40" HEIGHT="25" CONTENT="article" WC="1.00" CC="000"/>
+						<SP ID="P1_SP01401" HPOS="273" VPOS="3945" WIDTH="13"/>
+						<String ID="word001450" HPOS="286" VPOS="3920" WIDTH="34" HEIGHT="26" CONTENT="is" WC="1.00" CC="00"/>
+						<SP ID="P1_SP01402" HPOS="320" VPOS="3946" WIDTH="22"/>
+						<String ID="word001451" HPOS="343" VPOS="3919" WIDTH="91" HEIGHT="26" CONTENT="here." WC="0.61" CC="363333"/>
+						<SP ID="P1_SP01403" HPOS="433" VPOS="3946" WIDTH="0"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>
