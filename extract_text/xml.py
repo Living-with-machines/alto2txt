@@ -141,6 +141,7 @@ def get_xml_metadata(document_tree):
     namespaces = root_element.nsmap
     no_ns_schema_location = root_element.get(NO_NS_SCHEMA_LOCATION.text)
     schema_locations = root_element.get(SCHEMA_LOCATION.text)
+
     if schema_locations is not None:
         # Convert schema_locations from "namespaceURI schemaURI ..."
         # to dictionary with namespaceURI:schemaURI

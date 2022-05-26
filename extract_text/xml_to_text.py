@@ -27,18 +27,19 @@ def issue_to_text(publication,
     articles and generates minimal metadata.
 
     :param publication: Publication directory local name e.g. 0000151
-    :type publication: str 
+    :type publication: str
     :param year: Year directory local name e.g. 1835
-    :type year: str 
+    :type year: str
     :param issue: Issue directory local name e.g. 0121
-    :type issue: str 
+    :type issue: str
     :param issue_dir: Issue directory e.g. .../0000151/1835/0121
-    :type issue_dir: str 
+    :type issue_dir: str
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     """
+    # TODO Fix these error messages, they're too vague
     logger.info("Processing issue: %s", os.path.join(year, issue))
     summary = {}
     summary["num_files"] = 0
@@ -75,6 +76,7 @@ def issue_to_text(publication,
             logger.warning("Problematic file %s: %s", xml_file, str(e))
             continue
         metadata = xml.get_xml_metadata(document_tree)
+
         if metadata[xml.XML_ROOT] == xml.ALTO_ROOT:
             # alto files are accessed via mets file.
             summary["skipped_alto"] += 1
@@ -112,6 +114,7 @@ def issue_to_text(publication,
             issue_out_stub = os.path.splitext(input_filename)[0]
         issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
         try:
+
             xslt(document_tree,
                  input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
                  input_sub_path=etree.XSLT.strparam(input_sub_path),
@@ -167,6 +170,9 @@ def publication_to_text(publication_dir,
     :type downsample: int
     """
     issue_counter = 0
+
+    # TODO The publication name, year, and edition is copied from the directory path and not the METS file. 
+
     publication = os.path.basename(publication_dir)
     logger.info("Processing publication: %s", publication)
     for year in os.listdir(publication_dir):

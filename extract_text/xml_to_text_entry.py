@@ -78,6 +78,9 @@ def check_parameters(xml_in_dir,
         assert num_cores > 0,\
             "num_cores, {}, must be a positive integer".format(num_cores)
 
+# TODO Add test in here to check the directory tree
+
+
 
 def xml_publications_to_text(xml_in_dir,
                              txt_out_dir,
