@@ -77,7 +77,7 @@ Navigate to `alto2txt/`.
 
 ```
 
-Two output files will appear in `tests/test_files/output/no_dir_tree`.
+Two output files *should* appear in `tests/test_files/output/no_dir_tree`.
 
 ### Current Output
 
