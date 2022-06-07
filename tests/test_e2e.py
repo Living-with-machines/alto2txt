@@ -1,7 +1,7 @@
 import sys
 
 # from alto2txt
-import extract_publications_text as ept
+from alto2txt import extract_publications_text as ept
 import pytest
 from icecream import ic
 

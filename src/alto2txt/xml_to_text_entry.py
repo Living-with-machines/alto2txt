@@ -10,9 +10,9 @@ import logging.config
 import os
 import os.path
 
-from logging_utils import configure_logging
-import xml
-import xml_to_text
+from alto2txt.logging_utils import configure_logging
+from alto2txt import xml
+from alto2txt import xml_to_text
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -120,13 +120,13 @@ def xml_publications_to_text(
     elif process_type == PROCESS_SERIAL:
         xml_to_text.publications_to_text(xml_in_dir, txt_out_dir, downsample)
     elif process_type == PROCESS_SPARK:
-        from extract_text import spark_xml_to_text
+        from alto2txt import spark_xml_to_text
 
         spark_xml_to_text.publications_to_text(
             xml_in_dir, txt_out_dir, log_file, num_cores, downsample
         )
     else:
-        from extract_text import multiprocess_xml_to_text
+        from alto2txt import multiprocess_xml_to_text
 
         multiprocess_xml_to_text.publications_to_text(
             xml_in_dir, txt_out_dir, log_file, downsample

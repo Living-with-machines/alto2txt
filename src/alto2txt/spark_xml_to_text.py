@@ -10,9 +10,9 @@ import os
 import os.path
 from pyspark import SparkContext, SparkConf
 
-from extract_text.logging_utils import configure_logging
-from extract_text import xml
-from extract_text import xml_to_text
+from alto2txt.logging_utils import configure_logging
+from alto2txt import xml
+from alto2txt import xml_to_text
 
 LOG_FILE = "logging.config"
 """ Default log file name. """

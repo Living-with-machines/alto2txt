@@ -4,7 +4,7 @@ XML utilities.
 
 import os
 from lxml import etree
-import xslts
+from alto2txt import xslts
 
 
 METS_18_XSLT = "extract_text_mets18.xslt"
