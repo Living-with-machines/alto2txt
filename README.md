@@ -1,4 +1,4 @@
-# Extract plain text from newspapers (extract_text 0.3.0)
+# Extract plain text from newspapers (alto2txt 0.3.0)
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
 
@@ -14,7 +14,7 @@ Quality assurance is performed to check for:
 
 We recommend installation via Anaconda:
 
-* Refer to [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
+* Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
 
 * Create a new environment for alto2txt
 
@@ -169,30 +169,23 @@ UKP:
 * `/lwm/publication/title`
 * `/lwm/publication/location`
 
-## Update version
-
-To update the version number:
-
-1. Edit `README.md`:
-
-```
-# Extract plain text from newspapers (extract_text 0.3.0)
-```
-
-2. Edit `setup.py`:
-
-```
-version="0.3.0",
-```
-
-3. Exit `extract_text/xslts/extract_text_common.xslt`:
-
-```
-<xsl:param name="version">0.3.0</xsl:param>
-```
 
 ## Future work
 
-* Export more metadata from alto, probably by parsing mets first.
+For a complete list of future plans see the [GitHub issues list](https://github.com/Living-with-machines/alto2txt/issues). Some highlights include:
+
+* Export more metadata from alto, probably by parsing `mets` first.
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
+
+
+# Copyright
+
+Copyright 2022 The Alan Turing Institute, British Library Board, Queen Mary University of London, University of Exeter, University of East Anglia and University of Cambridge.
+
+
+# Funding and Acknowledgements
+
+This software has been developed as part of the [Living with Machines](https://livingwithmachines.ac.uk) project.
+
+This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London.

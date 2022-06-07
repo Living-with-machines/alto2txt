@@ -10,6 +10,7 @@ Please maintain both this file AND the README.md file.
 ### Added
 * Added this changelog file.
 * Established use of [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for this project.
+* Added a seperate 'CONTRIBUTING.md' doc for software developers notes.
 
 ### Changed
 ### Deprecated
