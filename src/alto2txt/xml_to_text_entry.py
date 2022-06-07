@@ -10,9 +10,9 @@ import logging.config
 import os
 import os.path
 
-from extract_text.logging_utils import configure_logging
-from extract_text import xml
-from extract_text import xml_to_text
+from logging_utils import configure_logging
+import xml
+import xml_to_text
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -25,17 +25,10 @@ PROCESS_MULTI = "multi"
 """ Process publications using multiprocessing. """
 PROCESS_SPARK = "spark"
 """ Process publications using Spark. """
-PROCESS_TYPES = [PROCESS_SINGLE,
-                 PROCESS_SERIAL,
-                 PROCESS_MULTI,
-                 PROCESS_SPARK]
+PROCESS_TYPES = [PROCESS_SINGLE, PROCESS_SERIAL, PROCESS_MULTI, PROCESS_SPARK]
 
 
-def check_parameters(xml_in_dir,
-                     txt_out_dir,
-                     process_type,
-                     num_cores,
-                     downsample):
+def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsample):
     """
     Check parameters. The following checks are done:
 
@@ -58,33 +51,33 @@ def check_parameters(xml_in_dir,
     :type downsample: int
     :raise AssertionError: if any check fails
     """
-    assert downsample > 0,\
-        "downsample, {}, must be a positive integer".format(downsample)
-    assert os.path.exists(xml_in_dir),\
-        "xml_in_dir, {}, not found".format(xml_in_dir)
-    assert os.path.isdir(xml_in_dir),\
-        "xml_in_dir, {}, is not a directory".format(xml_in_dir)
-    assert not os.path.isfile(txt_out_dir),\
-        "txt_out_dir, {}, is not a directory".format(txt_out_dir)
-    assert os.path.normpath(xml_in_dir) !=\
-        os.path.normpath(txt_out_dir),\
-        "xml_in_dir, {}, and txt_out_dir, {}, should be different".\
-        format(xml_in_dir, txt_out_dir)
-    assert process_type in PROCESS_TYPES,\
-        "process-type, {}, must be one of {}.".format(
-            process_type,
-            ",".join(PROCESS_TYPES))
+    assert downsample > 0, "downsample, {}, must be a positive integer".format(
+        downsample
+    )
+    assert os.path.exists(xml_in_dir), "xml_in_dir, {}, not found".format(xml_in_dir)
+    assert os.path.isdir(xml_in_dir), "xml_in_dir, {}, is not a directory".format(
+        xml_in_dir
+    )
+    assert not os.path.isfile(
+        txt_out_dir
+    ), "txt_out_dir, {}, is not a directory".format(txt_out_dir)
+    assert os.path.normpath(xml_in_dir) != os.path.normpath(
+        txt_out_dir
+    ), "xml_in_dir, {}, and txt_out_dir, {}, should be different".format(
+        xml_in_dir, txt_out_dir
+    )
+    assert process_type in PROCESS_TYPES, "process-type, {}, must be one of {}.".format(
+        process_type, ",".join(PROCESS_TYPES)
+    )
     if process_type == PROCESS_SPARK:
-        assert num_cores > 0,\
-            "num_cores, {}, must be a positive integer".format(num_cores)
+        assert num_cores > 0, "num_cores, {}, must be a positive integer".format(
+            num_cores
+        )
 
 
-def xml_publications_to_text(xml_in_dir,
-                             txt_out_dir,
-                             process_type,
-                             log_file="out.log",
-                             num_cores=1,
-                             downsample=1):
+def xml_publications_to_text(
+    xml_in_dir, txt_out_dir, process_type, log_file="out.log", num_cores=1, downsample=1
+):
     """
     Converts XML publications to plaintext articles and generates
     minimal metadata.
@@ -106,7 +99,7 @@ def xml_publications_to_text(xml_in_dir,
     :param txt_out_dir: Output directory for plaintext articles
     :type txt_out_dir: str
     :param process_type: Process type
-    :type process_type: str 
+    :type process_type: str
     :param log_file: log file
     :type log_file: str
     :param num_cores: Number of cores (used for Spark only)
@@ -116,32 +109,22 @@ def xml_publications_to_text(xml_in_dir,
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    check_parameters(xml_in_dir,
-                     txt_out_dir,
-                     process_type,
-                     num_cores,
-                     downsample)
+    check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsample)
     configure_logging(log_file)
     if process_type == PROCESS_SINGLE:
         xslts = xml.load_xslts()
-        xml_to_text.publication_to_text(xml_in_dir,
-                                        txt_out_dir,
-                                        xslts,
-                                        downsample)
+        xml_to_text.publication_to_text(xml_in_dir, txt_out_dir, xslts, downsample)
     elif process_type == PROCESS_SERIAL:
-        xml_to_text.publications_to_text(xml_in_dir,
-                                         txt_out_dir,
-                                         downsample)
+        xml_to_text.publications_to_text(xml_in_dir, txt_out_dir, downsample)
     elif process_type == PROCESS_SPARK:
         from extract_text import spark_xml_to_text
-        spark_xml_to_text.publications_to_text(xml_in_dir,
-                                               txt_out_dir,
-                                               log_file,
-                                               num_cores,
-                                               downsample)
+
+        spark_xml_to_text.publications_to_text(
+            xml_in_dir, txt_out_dir, log_file, num_cores, downsample
+        )
     else:
         from extract_text import multiprocess_xml_to_text
-        multiprocess_xml_to_text.publications_to_text(xml_in_dir,
-                                                      txt_out_dir,
-                                                      log_file,
-                                                      downsample)
+
+        multiprocess_xml_to_text.publications_to_text(
+            xml_in_dir, txt_out_dir, log_file, downsample
+        )

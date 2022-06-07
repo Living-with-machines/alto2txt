@@ -4,7 +4,7 @@ XML utilities.
 
 import os
 from lxml import etree
-from extract_text import xslts
+import xslts
 
 
 METS_18_XSLT = "extract_text_mets18.xslt"
@@ -20,8 +20,7 @@ XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
 """ XML Schema Instance namespace """
 SCHEMA_LOCATION = etree.QName(XSI_NS, "schemaLocation")
 """ schemaLocation element """
-NO_NS_SCHEMA_LOCATION = etree.QName(XSI_NS,
-                                    "noNamespaceSchemaLocation")
+NO_NS_SCHEMA_LOCATION = etree.QName(XSI_NS, "noNamespaceSchemaLocation")
 """ noNamespaceSchemaLocation element """
 
 METS_NS = "http://www.loc.gov/METS/"
@@ -43,10 +42,7 @@ UKP_NS = "http://tempuri.org/ncbpissue"
 UKP_ROOT = etree.QName(UKP_NS, "UKP")
 """ UKP root element """
 
-LWM_NS = {
-    'ukp': UKP_NS,
-    'mets': METS_NS
-}
+LWM_NS = {"ukp": UKP_NS, "mets": METS_NS}
 """ Namespaces of documents within Living with Machines datasets. """
 
 XML_ROOT = "root"
@@ -71,9 +67,9 @@ def get_path(module, *name):
     :param module: module
     :type module: module
     :param *name: file name components
-    :type *name: str 
+    :type *name: str
     :return: path to file
-    :rtype: str 
+    :rtype: str
     """
     return os.path.join(os.path.dirname(module.__file__), *name)
 
@@ -145,8 +141,7 @@ def get_xml_metadata(document_tree):
         # Convert schema_locations from "namespaceURI schemaURI ..."
         # to dictionary with namespaceURI:schemaURI
         uris = schema_locations.split(" ")
-        schema_locations = {uris[i]: uris[i+1]
-                            for i in range(0, len(uris), 2)}
+        schema_locations = {uris[i]: uris[i + 1] for i in range(0, len(uris), 2)}
     else:
         schema_locations = {}
     metadata = {}
