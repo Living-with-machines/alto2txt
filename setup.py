@@ -12,7 +12,7 @@ def read(fname):
     Read and return file contents.
 
     :param fname: file name
-    :type fname: str 
+    :type fname: str
     :returns: file contents
     :rtype: str
     """
@@ -20,7 +20,7 @@ def read(fname):
 
 
 setup(
-    name="extract_text",
+    name="alto2txt",
     version="0.3.0",
     author="Mike Jackson, David Beavan",
     author_email="mjackson@turing.ac.uk, dbeavan@turing.ac.uk",
@@ -29,8 +29,8 @@ setup(
     keywords="XML text processing publications articles",
     url="https://github.com/alan-turing-institute/Living-with-Machines-code",
     packages=find_packages(),
-    scripts=["extract_publications_text.py"],
-    package_data={'': ['*.xslt']},
+    scripts=["src/alto2txt/extract_publications_text.py"],
+    package_data={"": ["*.xslt"]},
     long_description=read("README.md"),
     classifiers=[
         "Development Status :: 3 - Alpha",
