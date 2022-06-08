@@ -183,6 +183,8 @@ For a complete list of future plans see the [GitHub issues list](https://github.
 
 Copyright 2022 The Alan Turing Institute, British Library Board, Queen Mary University of London, University of Exeter, University of East Anglia and University of Cambridge.
 
+See [LICENSE](LICENSE) for more details.
+
 
 # Funding and Acknowledgements
 
