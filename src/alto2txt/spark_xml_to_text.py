@@ -10,9 +10,9 @@ import os
 import os.path
 from pyspark import SparkContext, SparkConf
 
-from extract_text.logging_utils import configure_logging
-from extract_text import xml
-from extract_text import xml_to_text
+from alto2txt.logging_utils import configure_logging
+from alto2txt import xml
+from alto2txt import xml_to_text
 
 LOG_FILE = "logging.config"
 """ Default log file name. """
@@ -48,7 +48,7 @@ def publication_to_text(
     xslts = xml.load_xslts()
     publication_dir = os.path.join(publications_dir, publication)
     if not os.path.isdir(publication_dir):
-        logger.warn("Unexpected file: %s", publication_dir)
+        logger.warning("Unexpected file: %s", publication_dir)
         return
     publication_txt_out_dir = os.path.join(txt_out_dir, publication)
     xml_to_text.publication_to_text(

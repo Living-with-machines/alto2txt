@@ -10,7 +10,7 @@ import os.path
 import re
 from lxml import etree
 
-import xml
+from alto2txt import xml
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -34,6 +34,7 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     :param xslts: XSLTs to convert XML to plaintext
     :type xslts: dict(str: lxml.etree.XSLT)
     """
+    # TODO Fix these error messages, they're too vague
     logger.info("Processing issue: %s", os.path.join(year, issue))
     summary = {}
     summary["num_files"] = 0
@@ -55,20 +56,21 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
-            logger.warn("Unexpected directory: %s", xml_file)
+            logger.warning("Unexpected directory: %s", xml_file)
             continue
         summary["num_files"] += 1
         if os.path.splitext(xml_file)[1].lower() != ".xml":
             summary["non_xml"] += 1
-            logger.warn("File with no .xml suffix: %s", xml_file)
+            logger.warning("File with no .xml suffix: %s", xml_file)
             continue
         try:
             document_tree = xml.get_xml(xml_file_path)
         except Exception as e:
             summary["bad_xml"] += 1
-            logger.warn("Problematic file %s: %s", xml_file, str(e))
+            logger.warning("Problematic file %s: %s", xml_file, str(e))
             continue
         metadata = xml.get_xml_metadata(document_tree)
+
         if metadata[xml.XML_ROOT] == xml.ALTO_ROOT:
             # alto files are accessed via mets file.
             summary["skipped_alto"] += 1
@@ -89,7 +91,9 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logger.warn("Unknown METS schema %s: %s", xml_file, mets_uri)
+                logger.warning("Unknown METS schema %s: %s",
+                            xml_file,
+                            mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -104,14 +108,14 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
             issue_out_stub = os.path.splitext(input_filename)[0]
         issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
         try:
-            xslt(
-                document_tree,
-                input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
-                input_sub_path=etree.XSLT.strparam(input_sub_path),
-                input_filename=etree.XSLT.strparam(input_filename),
-                output_document_stub=etree.XSLT.strparam(issue_out_stub),
-                output_path=etree.XSLT.strparam(issue_out_path),
-            )
+
+            xslt(document_tree,
+                 input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
+                 input_sub_path=etree.XSLT.strparam(input_sub_path),
+                 input_filename=etree.XSLT.strparam(input_filename),
+                 output_document_stub=etree.XSLT.strparam(
+                     issue_out_stub),
+                 output_path=etree.XSLT.strparam(issue_out_path))
             summary["converted_ok"] += 1
             logger.info("%s gave XSLT output", xml_file_path)
         except Exception as e:
@@ -130,7 +134,7 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     ):
         logger.info("%s %s", issue_dir, str(summary))
     else:
-        logger.warn("%s %s", issue_dir, str(summary))
+        logger.warning("%s %s", issue_dir, str(summary))
 
 
 def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
@@ -159,17 +163,21 @@ def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
     :type downsample: int
     """
     issue_counter = 0
+
+    # TODO The publication name, year, and edition is copied from the directory path and not the METS file. 
+
     publication = os.path.basename(publication_dir)
     logger.info("Processing publication: %s", publication)
     for year in os.listdir(publication_dir):
         year_dir = os.path.join(publication_dir, year)
         if not os.path.isdir(year_dir):
-            logger.warn("Unexpected file: %s", year)
+            logger.warning("Unexpected file: %s", year)
             continue
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logger.warn("Unexpected file: %s", os.path.join(year, issue))
+                logger.warning("Unexpected file: %s",
+                            os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
@@ -226,7 +234,7 @@ def publications_to_text(publications_dir, txt_out_dir, downsample=1):
     for publication in publications:
         publication_dir = os.path.join(publications_dir, publication)
         if not os.path.isdir(publication_dir):
-            logger.warn("Unexpected file: %s", publication_dir)
+            logger.warning("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
         publication_to_text(publication_dir, publication_txt_out_dir, xslts, downsample)

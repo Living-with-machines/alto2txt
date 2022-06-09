@@ -101,3 +101,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.DS_Store
+
+# Ignore demo-output dir
+demo-output/

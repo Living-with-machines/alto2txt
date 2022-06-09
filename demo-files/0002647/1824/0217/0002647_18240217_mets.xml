@@ -1,0 +1,2841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mets="http://www.loc.gov/METS/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version18/mets.xsd info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd" xmlns:premis="info:lc/xmlns/premis-v2" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" TYPE="Newspaper">
+	<mets:metsHdr CREATEDATE="2019-08-09T07:25:35" LASTMODDATE="2019-08-09T07:25:35">
+		<mets:agent ROLE="CREATOR" TYPE="OTHER" OTHERTYPE="SOFTWARE">
+			<mets:name>CCS docWorks/METAe Version 7.0-1</mets:name>
+			<mets:note>docWorks-ID: 2685919</mets:note>
+		</mets:agent>
+		<mets:agent ROLE="CREATOR" TYPE="OTHER" OTHERTYPE="RQA">
+			<mets:name>ROM</mets:name>
+		</mets:agent>
+	</mets:metsHdr>
+	<mets:dmdSec ID="MODS_ISSUE_0002647-00000">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:identifier type="NLP">0002647-00000</mods:identifier>
+					<mods:relatedItem type="host" displayLabel="Newspaper">
+						<mods:identifier type="NLP">0002647</mods:identifier>
+					</mods:relatedItem>
+					<mods:relatedItem type="original">
+						<mods:note type="source note">British Library Heritage Made Digital Newspapers</mods:note>
+						<mods:location>
+							<mods:physicalLocation authority="marcorg">Uk</mods:physicalLocation>
+							<mods:physicalLocation>British Library</mods:physicalLocation>
+						</mods:location>
+					</mods:relatedItem>
+					<mods:titleInfo>
+						<mods:title>The Statesman.</mods:title>
+					</mods:titleInfo>
+					<mods:originInfo>
+						<mods:dateIssued encoding="w3cdtf" keyDate="yes">1824-02-17</mods:dateIssued>
+						<mods:place>
+							<mods:placeTerm type="text">London, England</mods:placeTerm>
+						</mods:place>
+					</mods:originInfo>
+					<mods:part>
+						<mods:detail type="issue">
+							<mods:number></mods:number>
+						</mods:detail>
+					</mods:part>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle1">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle2">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle2_TI1" xml:lang="en">
+						<mods:title>COAL DUTIES.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle3">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle3_TI2" xml:lang="en">
+						<mods:title>ORDIRS IN COUNCIL.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle4">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle4_TI3" xml:lang="en">
+						<mods:title>STATE Of IRELAND.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle5">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle5_TI4" xml:lang="en">
+						<mods:title>COMMUTATION 011 TITO'S.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle6">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle6_TI5" xml:lang="en">
+						<mods:title>COIN OF TIM REALM.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle7">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle8">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle9">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle10">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle10_TI6" xml:lang="en">
+						<mods:title>Ti 1F S rATESM AN</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle11">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle11_TI7" xml:lang="en">
+						<mods:title>SUPPLY.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle12">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle12_TI8" xml:lang="en">
+						<mods:title>NAVY ESTIMATES.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle13">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle13_TI9" xml:lang="en">
+						<mods:nonSort>THE</mods:nonSort>
+						<mods:title>STATESMAN</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle14">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle14_TI10" xml:lang="en">
+						<mods:title>WELSH JUDGES.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle15">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle15_TI11" xml:lang="en">
+						<mods:title>PRICE OF STOCKS.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle16">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle16_TI12" xml:lang="en">
+						<mods:title>WEST INDIES.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle17">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle17_TI13" xml:lang="en">
+						<mods:title>CATHOLIC ASSOCIATION.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle18">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle19">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle20">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle21">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle22">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle22_TI14" xml:lang="en">
+						<mods:nonSort>THE</mods:nonSort>
+						<mods:title>STATESMAN</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle23">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle23_TI15" xml:lang="en">
+						<mods:title>POLICE.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle24">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle24_TI16" xml:lang="en">
+						<mods:title>LONDON MARKETS.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle25">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle25_TI17" xml:lang="en">
+						<mods:title>PRICE 01 GRAIN ON HOARD SNIP, AS UNDER 1.-•</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle26">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle26_TI18" xml:lang="en">
+						<mods:title>SEEDS, &amp;c.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modssection1">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:amdSec ID="img0001-source-amd">
+		<mets:digiprovMD ID="img0001-source-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>641990ea0fa61ad5dc68aecf6aff056d32dc342acfbadbc98971ba6beb943a3b</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/tiff</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>2019-07-11_09_03_03118.tif</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-source-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0001</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>deselection</premis:eventType>
+						<premis:eventDateTime>2019-07-11T12:57:09-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0001</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-source-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0001</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>The British Library Newspaper Programme</premis:agentName>
+						<premis:agentType>organisation</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0002-source-amd">
+		<mets:digiprovMD ID="img0002-source-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>a7ab8f45393573617e87ac776301224854e47ae902399e0802f24f5aa1ade167</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/tiff</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>2019-07-11_09_03_03119.tif</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-source-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0002</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>deselection</premis:eventType>
+						<premis:eventDateTime>2019-07-11T12:57:10-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0002</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-source-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0002</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>The British Library Newspaper Programme</premis:agentName>
+						<premis:agentType>organisation</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0003-source-amd">
+		<mets:digiprovMD ID="img0003-source-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>db7af7bff525c4735f384d6046a9c782dd4048a2cf9cdad028177bf25ecb792e</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/tiff</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>2019-07-11_09_03_03120.tif</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-source-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0003</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>deselection</premis:eventType>
+						<premis:eventDateTime>2019-07-11T12:57:11-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0003</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-source-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0003</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>The British Library Newspaper Programme</premis:agentName>
+						<premis:agentType>organisation</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0004-source-amd">
+		<mets:digiprovMD ID="img0004-source-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>1794b65b0fcf61707c29ab668dbc05039f8aedd64926c518cc65636e3c2ffa60</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/tiff</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>2019-07-11_09_03_03121.tif</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-source-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0004</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>deselection</premis:eventType>
+						<premis:eventDateTime>2019-07-11T12:57:12-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0004</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-source-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0004</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>The British Library Newspaper Programme</premis:agentName>
+						<premis:agentType>organisation</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0001-master-amd">
+		<mets:digiprovMD ID="img0001-master-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>f2113380208b6b35894fe9fd15614fb2c317c12f626419c1345bad11e246606c</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/jp2</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0001.jp2</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-master-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0001</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>migration</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:15-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+							<premis:eventOutcomeDetail>
+								<premis:eventOutcomeDetailNote>lossy</premis:eventOutcomeDetailNote>
+							</premis:eventOutcomeDetail>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0001</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-master-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0001</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>docWorks, Version 7.0.1.47</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0002-master-amd">
+		<mets:digiprovMD ID="img0002-master-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>5ecda8299c670d9bda1a5402b1b764b330c10f2353909197f50045ce7e8a1c4e</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/jp2</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0002.jp2</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-master-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0002</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>migration</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:21-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+							<premis:eventOutcomeDetail>
+								<premis:eventOutcomeDetailNote>lossy</premis:eventOutcomeDetailNote>
+							</premis:eventOutcomeDetail>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0002</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-master-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0002</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>docWorks, Version 7.0.1.47</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0003-master-amd">
+		<mets:digiprovMD ID="img0003-master-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>1840950aed5c8391ce62411a37e9d9cadb1328f18996f3bfb3eb5068f2771d97</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/jp2</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0003.jp2</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-master-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0003</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>migration</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:25-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+							<premis:eventOutcomeDetail>
+								<premis:eventOutcomeDetailNote>lossy</premis:eventOutcomeDetailNote>
+							</premis:eventOutcomeDetail>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0003</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-master-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0003</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>docWorks, Version 7.0.1.47</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0004-master-amd">
+		<mets:digiprovMD ID="img0004-master-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>8db8ff789dd960004fae76061889b18ca1b0551ac6e191acba25c4743f691e66</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>image/jp2</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0004.jp2</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-master-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0004</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>migration</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:28-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+							<premis:eventOutcomeDetail>
+								<premis:eventOutcomeDetailNote>lossy</premis:eventOutcomeDetailNote>
+							</premis:eventOutcomeDetail>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0004</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-master-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0004</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>docWorks, Version 7.0.1.47</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0001-alto-amd">
+		<mets:digiprovMD ID="img0001-alto-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>cb42a98bbe6437d273a9b9623d877876312186fc9e995282b49c6357ec322cf0</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>text/xml</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0001.xml</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-alto-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0001</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>transformation</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:30-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0001</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0001-alto-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0001</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>Abby Finereader 20</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0002-alto-amd">
+		<mets:digiprovMD ID="img0002-alto-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>56638fb1f14b51a66288024e90621646d1d6c8dbac7d428c30343133098c6ee0</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>text/xml</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0002.xml</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-alto-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0002</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>transformation</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:31-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0002</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0002-alto-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0002</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>Abby Finereader 20</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0003-alto-amd">
+		<mets:digiprovMD ID="img0003-alto-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>a3014f3b1e8e79ce56840848a1c8c5d6fb9800bdccbe56fd85db402342d06f1a</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>text/xml</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0003.xml</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-alto-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0003</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>transformation</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:34-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0003</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0003-alto-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0003</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>Abby Finereader 20</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:amdSec ID="img0004-alto-amd">
+		<mets:digiprovMD ID="img0004-alto-object">
+			<mets:mdWrap MDTYPE="PREMIS:OBJECT">
+				<mets:xmlData>
+					<premis:object xsi:type="premis:file">
+						<premis:objectIdentifier>
+							<premis:objectIdentifierType/>
+							<premis:objectIdentifierValue/>
+						</premis:objectIdentifier>
+						<premis:objectCharacteristics>
+							<premis:compositionLevel>0</premis:compositionLevel>
+							<premis:fixity>
+								<premis:messageDigestAlgorithm>SHA-256</premis:messageDigestAlgorithm>
+								<premis:messageDigest>944a2d0dc9c9da3e3fc842c3bf4e31f572a54abb7e11cd870d00c6e68f4370cb</premis:messageDigest>
+							</premis:fixity>
+							<premis:format>
+								<premis:formatDesignation>
+									<premis:formatName>text/xml</premis:formatName>
+								</premis:formatDesignation>
+							</premis:format>
+						</premis:objectCharacteristics>
+						<premis:originalName>0002647_18240217_0004.xml</premis:originalName>
+					</premis:object>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-alto-event">
+			<mets:mdWrap MDTYPE="PREMIS:EVENT">
+				<mets:xmlData>
+					<premis:event>
+						<premis:eventIdentifier>
+							<premis:eventIdentifierType>local</premis:eventIdentifierType>
+							<premis:eventIdentifierValue>event0004</premis:eventIdentifierValue>
+						</premis:eventIdentifier>
+						<premis:eventType>transformation</premis:eventType>
+						<premis:eventDateTime>2019-08-09T07:25:35-01:00</premis:eventDateTime>
+						<premis:eventOutcomeInformation>
+							<premis:eventOutcome>success</premis:eventOutcome>
+						</premis:eventOutcomeInformation>
+						<premis:linkingAgentIdentifier>
+							<premis:linkingAgentIdentifierType>local</premis:linkingAgentIdentifierType>
+							<premis:linkingAgentIdentifierValue>agent0004</premis:linkingAgentIdentifierValue>
+						</premis:linkingAgentIdentifier>
+					</premis:event>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+		<mets:digiprovMD ID="img0004-alto-agent">
+			<mets:mdWrap MDTYPE="PREMIS:AGENT">
+				<mets:xmlData>
+					<premis:agent>
+						<premis:agentIdentifier>
+							<premis:agentIdentifierType>local</premis:agentIdentifierType>
+							<premis:agentIdentifierValue>agent0004</premis:agentIdentifierValue>
+						</premis:agentIdentifier>
+						<premis:agentName>Abby Finereader 20</premis:agentName>
+						<premis:agentType>software</premis:agentType>
+					</premis:agent>
+				</mets:xmlData>
+			</mets:mdWrap>
+		</mets:digiprovMD>
+	</mets:amdSec>
+	<mets:fileSec>
+		<mets:fileGrp USE="DigitalManifestation">
+			<mets:fileGrp USE="PreservationMaster">
+				<mets:file ID="img0001-master" ADMID="img0001-master-amd" MIMETYPE="image/jp2" CHECKSUM="f2113380208b6b35894fe9fd15614fb2c317c12f626419c1345bad11e246606c" CHECKSUMTYPE="SHA-256" SIZE="10933441">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.jp2"/>
+				</mets:file>
+				<mets:file ID="img0002-master" ADMID="img0002-master-amd" MIMETYPE="image/jp2" CHECKSUM="5ecda8299c670d9bda1a5402b1b764b330c10f2353909197f50045ce7e8a1c4e" CHECKSUMTYPE="SHA-256" SIZE="10943176">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.jp2"/>
+				</mets:file>
+				<mets:file ID="img0003-master" ADMID="img0003-master-amd" MIMETYPE="image/jp2" CHECKSUM="1840950aed5c8391ce62411a37e9d9cadb1328f18996f3bfb3eb5068f2771d97" CHECKSUMTYPE="SHA-256" SIZE="10386828">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.jp2"/>
+				</mets:file>
+				<mets:file ID="img0004-master" ADMID="img0004-master-amd" MIMETYPE="image/jp2" CHECKSUM="8db8ff789dd960004fae76061889b18ca1b0551ac6e191acba25c4743f691e66" CHECKSUMTYPE="SHA-256" SIZE="10906151">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.jp2"/>
+				</mets:file>
+			</mets:fileGrp>
+			<mets:fileGrp USE="Fulltext">
+				<mets:file ID="img0001-alto" ADMID="img0001-alto-amd" MIMETYPE="text/xml" CHECKSUM="cb42a98bbe6437d273a9b9623d877876312186fc9e995282b49c6357ec322cf0" CHECKSUMTYPE="SHA-256" SIZE="1000193">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.xml"/>
+				</mets:file>
+				<mets:file ID="img0002-alto" ADMID="img0002-alto-amd" MIMETYPE="text/xml" CHECKSUM="56638fb1f14b51a66288024e90621646d1d6c8dbac7d428c30343133098c6ee0" CHECKSUMTYPE="SHA-256" SIZE="1223915">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.xml"/>
+				</mets:file>
+				<mets:file ID="img0003-alto" ADMID="img0003-alto-amd" MIMETYPE="text/xml" CHECKSUM="a3014f3b1e8e79ce56840848a1c8c5d6fb9800bdccbe56fd85db402342d06f1a" CHECKSUMTYPE="SHA-256" SIZE="970348">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.xml"/>
+				</mets:file>
+				<mets:file ID="img0004-alto" ADMID="img0004-alto-amd" MIMETYPE="text/xml" CHECKSUM="944a2d0dc9c9da3e3fc842c3bf4e31f572a54abb7e11cd870d00c6e68f4370cb" CHECKSUMTYPE="SHA-256" SIZE="1076009">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.xml"/>
+				</mets:file>
+			</mets:fileGrp>
+		</mets:fileGrp>
+		<mets:fileGrp USE="Discarded">
+			<mets:file ID="img0001-source" ADMID="img0001-source-amd" MIMETYPE="image/tiff" CHECKSUM="641990ea0fa61ad5dc68aecf6aff056d32dc342acfbadbc98971ba6beb943a3b" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
+			<mets:file ID="img0002-source" ADMID="img0002-source-amd" MIMETYPE="image/tiff" CHECKSUM="a7ab8f45393573617e87ac776301224854e47ae902399e0802f24f5aa1ade167" CHECKSUMTYPE="SHA-256" SIZE="40212871"/>
+			<mets:file ID="img0003-source" ADMID="img0003-source-amd" MIMETYPE="image/tiff" CHECKSUM="db7af7bff525c4735f384d6046a9c782dd4048a2cf9cdad028177bf25ecb792e" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
+			<mets:file ID="img0004-source" ADMID="img0004-source-amd" MIMETYPE="image/tiff" CHECKSUM="1794b65b0fcf61707c29ab668dbc05039f8aedd64926c518cc65636e3c2ffa60" CHECKSUMTYPE="SHA-256" SIZE="40021383"/>
+		</mets:fileGrp>
+	</mets:fileSec>
+	<mets:structMap LABEL="Logical Structure" TYPE="LOGICAL">
+		<mets:div ID="log1" TYPE="ISSUE" DMDID="MODS_ISSUE_0002647-00000" LABEL="The Statesman. 1824-02-17">
+			<mets:div ID="art0001" TYPE="ARTICLE" DMDID="modsarticle1"/>
+			<mets:div ID="art0002" TYPE="ARTICLE" DMDID="modsarticle2"/>
+			<mets:div ID="art0003" TYPE="ARTICLE" DMDID="modsarticle3"/>
+			<mets:div ID="art0004" TYPE="ARTICLE" DMDID="modsarticle4"/>
+			<mets:div ID="art0005" TYPE="ARTICLE" DMDID="modsarticle5"/>
+			<mets:div ID="art0006" TYPE="ARTICLE" DMDID="modsarticle6"/>
+			<mets:div ID="art0007" TYPE="ARTICLE" DMDID="modsarticle7"/>
+			<mets:div ID="art0008" TYPE="ARTICLE" DMDID="modsarticle8"/>
+			<mets:div ID="art0009" TYPE="ARTICLE" DMDID="modsarticle9"/>
+			<mets:div ID="art0010" TYPE="ARTICLE" DMDID="modsarticle10"/>
+			<mets:div ID="art0011" TYPE="ARTICLE" DMDID="modsarticle11"/>
+			<mets:div ID="art0012" TYPE="ARTICLE" DMDID="modsarticle12"/>
+			<mets:div ID="art0013" TYPE="ARTICLE" DMDID="modsarticle13"/>
+			<mets:div ID="art0014" TYPE="ARTICLE" DMDID="modsarticle14"/>
+			<mets:div ID="art0015" TYPE="ARTICLE" DMDID="modsarticle15"/>
+			<mets:div ID="art0016" TYPE="ARTICLE" DMDID="modsarticle16"/>
+			<mets:div ID="art0017" TYPE="ARTICLE" DMDID="modsarticle17"/>
+			<mets:div ID="art0018" TYPE="ARTICLE" DMDID="modsarticle18"/>
+			<mets:div ID="art0019" TYPE="ARTICLE" DMDID="modsarticle19"/>
+			<mets:div ID="art0020" TYPE="ARTICLE" DMDID="modsarticle20"/>
+			<mets:div ID="art0021" TYPE="ARTICLE" DMDID="modsarticle21"/>
+			<mets:div ID="art0022" TYPE="ARTICLE" DMDID="modsarticle22"/>
+			<mets:div ID="art0023" TYPE="ARTICLE" DMDID="modsarticle23"/>
+			<mets:div ID="art0024" TYPE="ARTICLE" DMDID="modsarticle24"/>
+			<mets:div ID="art0025" TYPE="ARTICLE" DMDID="modsarticle25"/>
+			<mets:div ID="art0026" TYPE="ARTICLE" DMDID="modsarticle26"/>
+			<mets:div ID="sect0001" TYPE="ADVERT" DMDID="modssection1"/>
+		</mets:div>
+	</mets:structMap>
+	<mets:structMap LABEL="Physical Structure" TYPE="PHYSICAL">
+		<mets:div ID="phys0" LABEL="The Statesman. 1824-02-17" TYPE="physSequence" DMDID="MODS_ISSUE_0002647-00000">
+			<mets:div ID="phys1" ORDER="1" ORDERLABEL="1" TYPE="page">
+				<mets:fptr FILEID="img0001-master"/>
+				<mets:fptr FILEID="img0001-alto"/>
+				<mets:div ID="pa0001001" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="72,2533,971,3345"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001131" END="word001309"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001002" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="80,3372,985,3913"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001310" END="word001447"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001003" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="96,3917,983,4081"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001448" END="word001484"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001004" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="98,4119,976,4287"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001485" END="word001523"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001005" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="107,4292,989,4459"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001524" END="word001558"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001006" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="107,4492,994,4765"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001559" END="word001616"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001007" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="110,4804,996,5310"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001617" END="word001733"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001008" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="702,5244,997,5277"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001734" END="word001737"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001009" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="116,5340,997,5630"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001738" END="word001820"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001010" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="115,5634,1006,5970"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001821" END="word001919"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001011" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1352,2756,1557,2777"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001920" END="word001921"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001012" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="996,2780,1911,2895"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001922" END="word001948"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001013" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1298,2902,1611,2925"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001949" END="word001951"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001014" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="998,2926,1915,3149"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001952" END="word001997"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001015" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1304,3158,1609,3181"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001998" END="word002000"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001016" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1002,3182,1923,3579"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002001" END="word002096"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001017" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1048,3587,1764,3687"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002097" END="word002103"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001018" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1026,3692,1927,3793"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002104" END="word002121"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001019" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1261,3810,1666,3831"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002122" END="word002124"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001020" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1015,3835,1928,3943"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002125" END="word002145"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001021" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1372,3958,1576,3977"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002146" END="word002147"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001022" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1016,3984,1931,4087"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002148" END="word002167"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001023" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1018,4093,1933,4165"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002168" END="word002178"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001024" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1016,4166,1934,4233"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002179" END="word002188"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001025" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1020,4238,1927,4317"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002189" END="word002203"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001026" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1370,4322,1583,4343"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002204" END="word002206"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001027" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1020,4348,1927,4452"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002207" END="word002229"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001028" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1022,4456,1926,4535"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002230" END="word002242"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001029" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1378,4538,1582,4560"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002243" END="word002245"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001030" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1026,4564,1938,4669"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002246" END="word002263"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001031" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1028,4672,1939,4775"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002264" END="word002281"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001032" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1024,4780,1940,4957"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002282" END="word002312"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001033" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1028,4958,1940,5425"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002313" END="word002411"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001034" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1322,5438,1640,5462"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002412" END="word002415"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001035" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1028,5461,1947,5976"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002416" END="word002548"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001036" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1938,2550,2861,3243"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002549" END="word002735"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001037" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1948,3244,2863,3423"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002736" END="word002785"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001038" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="1952,3426,2877,5958"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word002786" END="word003495"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001039" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="2854,888,3806,3649"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word003496" END="word004236"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001040" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="2894,3650,3824,5953"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word004237" END="word004879"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001041" TYPE="pagearea" LABEL="Illustration">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="3912,3066,4167,3577"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word004880" END="word004881"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001042" TYPE="pagearea" LABEL="Advertisement">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="8,1331,956,1959"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word004882" END="word005013"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001043" TYPE="pagearea" LABEL="Advertisement">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="70,1984,962,2508"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word005014" END="word005140"/>
+					</mets:fptr>
+				</mets:div>
+			</mets:div>
+			<mets:div ID="phys2" ORDER="2" ORDERLABEL="2" TYPE="page">
+				<mets:fptr FILEID="img0002-master"/>
+				<mets:fptr FILEID="img0002-alto"/>
+				<mets:div ID="pa0002001" TYPE="pagearea" LABEL="Illustration">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="0,2483,270,3245"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word000001" END="word000001"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002002" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="338,234,1262,3209"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word000002" END="word000807"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002003" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="334,3211,1244,3279"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word000808" END="word000820"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002004" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="330,3286,1243,4513"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word000821" END="word001134"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002005" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="333,4517,1251,5858"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001135" END="word001487"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002006" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1920,135,2386,180"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001488" END="word001492"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002007" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1281,224,2194,899"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001493" END="word001687"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002008" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1277,902,2195,1805"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001688" END="word001918"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002009" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="2222,230,3126,371"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001919" END="word001957"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002010" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="2220,374,3134,947"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word001958" END="word002102"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002011" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="2220,960,3134,1499"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word002103" END="word002239"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002012" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="2207,1512,3136,5829"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word002240" END="word003510"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002013" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="3156,228,4050,2399"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word003511" END="word004138"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002014" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="3154,2412,4060,5821"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word004139" END="word005068"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002015" TYPE="pagearea" LABEL="Illustration">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="3726,4387,4167,6175"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word005069" END="word005260"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002016" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1680,1813,1802,1835"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word005261" END="word005261"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002017" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1270,1840,2191,3419"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word005262" END="word005683"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002018" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1592,3419,1867,3441"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word005684" END="word005685"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0002019" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0002-master" SHAPE="RECT" COORDS="1269,3446,2190,5841"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0002-alto" BETYPE="IDREF" BEGIN="word005686" END="word006357"/>
+					</mets:fptr>
+				</mets:div>
+			</mets:div>
+			<mets:div ID="phys3" ORDER="3" ORDERLABEL="3" TYPE="page">
+				<mets:fptr FILEID="img0003-master"/>
+				<mets:fptr FILEID="img0003-alto"/>
+				<mets:div ID="pa0003001" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="80,282,981,2898"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000001" END="word000767"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003002" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="86,2904,976,3059"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000768" END="word000791"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003003" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="78,3066,976,3198"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000792" END="word000821"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003004" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="81,3198,977,3296"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000822" END="word000843"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003005" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="299,3317,747,3337"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000844" END="word000847"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003006" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="83,3343,982,5889"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word000848" END="word001569"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003007" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1038,1869,1877,1909"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word001570" END="word001574"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003008" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1004,1978,1923,2561"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word001575" END="word001679"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003009" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1004,2568,1926,3204"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word001680" END="word001790"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003010" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1006,3274,1920,3506"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word001791" END="word001833"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003011" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="996,3565,1921,5404"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word001834" END="word002206"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003012" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1010,5454,1915,5638"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002207" END="word002242"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003013" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1010,5650,1915,5881"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002243" END="word002289"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003014" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1730,188,2240,235"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002290" END="word002291"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003015" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1006,286,1920,461"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002292" END="word002333"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003016" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1067,1708,1848,1810"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002334" END="word002335"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003017" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1942,274,2854,1117"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002336" END="word002520"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003018" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1942,1131,2851,1413"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002521" END="word002592"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003019" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1942,1420,2854,1600"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002593" END="word002633"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003020" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2146,1662,2648,1738"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002634" END="word002636"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003021" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1944,1760,2855,2010"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002637" END="word002693"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003022" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1946,2014,2860,2299"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002694" END="word002752"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003023" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1952,2302,2863,2875"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002753" END="word002879"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003024" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1950,2910,2865,3163"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002880" END="word002933"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003025" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1338,478,1581,499"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002934" END="word002935"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003026" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1004,510,1915,802"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word002936" END="word003008"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003027" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1280,819,1633,844"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003009" END="word003011"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003028" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1004,862,1914,1003"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003012" END="word003053"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003029" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1002,1007,1911,1081"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003054" END="word003074"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003030" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1390,1139,1517,1165"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003075" END="word003075"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003031" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1002,1194,1230,1248"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003076" END="word003077"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003032" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1049,1226,1868,1386"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003078" END="word003106"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003033" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1326,1186,1716,1285"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003107" END="word003112"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003034" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1814,1198,1881,1219"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003113" END="word003113"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003035" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1276,1427,1641,1459"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003114" END="word003116"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003036" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1002,1465,1915,1641"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003117" END="word003159"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003037" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2272,3220,2543,3247"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003160" END="word003161"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003038" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2172,3309,2645,3342"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003162" END="word003165"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003039" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1946,3354,2860,3937"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003166" END="word003293"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003040" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1946,3938,2854,4118"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003294" END="word003346"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003041" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1942,4120,2855,4447"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003347" END="word003426"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003042" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="1942,4509,2855,5872"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003427" END="word003769"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003043" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="3009,306,3715,434"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003770" END="word003777"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003044" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2876,458,3792,923"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003778" END="word003911"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003045" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2880,952,3799,1573"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word003912" END="word004058"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003046" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="3006,1622,3649,1693"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004059" END="word004062"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003047" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2885,1711,3804,2036"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004063" END="word004143"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003048" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2888,2039,3801,2333"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004144" END="word004217"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003049" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="3102,2383,3587,2413"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004218" END="word004219"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003050" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2885,2454,3807,3515"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004220" END="word004446"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003051" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2884,3520,3801,3636"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004447" END="word004467"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003052" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2880,3665,3799,3961"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004468" END="word004536"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003053" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2881,3969,3796,4067"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004537" END="word004556"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003054" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2880,4070,3793,4471"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004557" END="word004652"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003055" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2880,4476,3787,4770"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004653" END="word004724"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003056" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="2870,4776,3815,5875"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word004725" END="word005005"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003057" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="4004,6037,4145,6152"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word005006" END="word005007"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0003058" TYPE="pagearea" LABEL="Illustration">
+					<mets:fptr>
+						<mets:area FILEID="img0003-master" SHAPE="RECT" COORDS="3904,2962,4167,3342"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0003-alto" BETYPE="IDREF" BEGIN="word005008" END="word005008"/>
+					</mets:fptr>
+				</mets:div>
+			</mets:div>
+			<mets:div ID="phys4" ORDER="4" ORDERLABEL="4" TYPE="page">
+				<mets:fptr FILEID="img0004-master"/>
+				<mets:fptr FILEID="img0004-alto"/>
+				<mets:div ID="pa0004001" TYPE="pagearea" LABEL="Illustration">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="0,2456,289,3212"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word000001" END="word000002"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004002" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="374,324,1067,377"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word000003" END="word000006"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004003" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="64,5735,108,5870"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word000007" END="word000007"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004004" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="276,381,1291,5919"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word000008" END="word001526"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004005" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="94,0,115,20"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word001527" END="word001527"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004006" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="1850,187,2343,245"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word001528" END="word001529"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004007" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="1204,300,2228,5906"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word001530" END="word003037"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004008" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2147,274,3117,2941"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word003038" END="word003710"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004009" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2204,2955,3117,3091"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word003711" END="word003736"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004010" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2376,3126,2938,3186"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word003737" END="word003738"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004011" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2207,3193,3120,3318"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word003739" END="word003754"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004012" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2210,3306,3138,4403"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word003755" END="word004014"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004013" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2311,4426,3051,4510"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004015" END="word004020"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004014" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="2230,4509,3160,5892"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004021" END="word004384"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004015" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3086,266,4009,1200"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004385" END="word004606"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004016" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3502,1235,3651,1265"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004607" END="word004607"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004017" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3122,1322,4026,2235"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004608" END="word004838"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004018" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3415,2272,3798,2306"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004839" END="word004840"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004019" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3354,2356,3826,2387"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004841" END="word004844"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004020" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3139,2396,4035,2502"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004845" END="word004868"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004021" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3141,2496,4041,2731"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004869" END="word004903"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004022" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3256,2766,3938,2797"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004904" END="word004912"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004023" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3146,2798,4057,3469"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word004913" END="word005057"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004024" TYPE="pagearea" LABEL="Headline">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3511,3488,3705,3519"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005058" END="word005059"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004025" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3158,3539,4061,4404"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005060" END="word005228"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004026" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3193,4411,4060,4502"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005229" END="word005244"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004027" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3174,4518,4067,4980"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005245" END="word005354"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004028" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3178,5002,4067,5237"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005355" END="word005405"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004029" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3180,5262,4075,5475"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005406" END="word005471"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004030" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3184,5466,4080,5749"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005472" END="word005553"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0004031" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0004-master" SHAPE="RECT" COORDS="3191,5774,4080,5860"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0004-alto" BETYPE="IDREF" BEGIN="word005554" END="word005573"/>
+					</mets:fptr>
+				</mets:div>
+			</mets:div>
+		</mets:div>
+	</mets:structMap>
+	<mets:structLink>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#log1" xlink:label="issue" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#phys0" xlink:label="physSeq" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="issue" xlink:to="physSeq" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0001" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001001" xlink:label="page1 area1" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001002" xlink:label="page1 area2" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001003" xlink:label="page1 area3" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001004" xlink:label="page1 area4" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001005" xlink:label="page1 area5" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001006" xlink:label="page1 area6" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001007" xlink:label="page1 area7" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001008" xlink:label="page1 area8" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001009" xlink:label="page1 area9" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001010" xlink:label="page1 area10" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area1" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area2" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area3" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area4" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area5" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area6" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area7" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area8" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area9" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area10" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0002" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001011" xlink:label="page1 area11" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001012" xlink:label="page1 area12" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area11" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area12" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0003" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001013" xlink:label="page1 area13" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001014" xlink:label="page1 area14" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area13" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area14" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0004" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001015" xlink:label="page1 area15" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001016" xlink:label="page1 area16" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001017" xlink:label="page1 area17" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001018" xlink:label="page1 area18" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area15" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area16" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area17" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area18" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0005" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001019" xlink:label="page1 area19" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001020" xlink:label="page1 area20" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001021" xlink:label="page1 area21" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001022" xlink:label="page1 area22" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001023" xlink:label="page1 area23" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001024" xlink:label="page1 area24" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001025" xlink:label="page1 area25" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001026" xlink:label="page1 area26" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001027" xlink:label="page1 area27" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001028" xlink:label="page1 area28" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001029" xlink:label="page1 area29" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001030" xlink:label="page1 area30" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001031" xlink:label="page1 area31" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001032" xlink:label="page1 area32" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001033" xlink:label="page1 area33" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area19" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area20" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area21" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area22" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area23" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area24" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area25" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area26" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area27" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area28" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area29" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area30" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area31" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area32" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area33" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0006" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001034" xlink:label="page1 area34" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001035" xlink:label="page1 area35" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001036" xlink:label="page1 area36" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001037" xlink:label="page1 area37" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001038" xlink:label="page1 area38" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001039" xlink:label="page1 area39" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001040" xlink:label="page1 area40" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area34" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area35" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area36" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area37" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area38" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area39" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area40" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0007" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001041" xlink:label="page1 area41" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area41" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0008" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002001" xlink:label="page2 area1" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area1" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0009" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002002" xlink:label="page2 area2" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002003" xlink:label="page2 area3" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002004" xlink:label="page2 area4" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002005" xlink:label="page2 area5" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area2" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area3" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area4" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area5" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0010" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002006" xlink:label="page2 area6" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002007" xlink:label="page2 area7" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002008" xlink:label="page2 area8" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002009" xlink:label="page2 area9" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002010" xlink:label="page2 area10" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002011" xlink:label="page2 area11" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002012" xlink:label="page2 area12" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002013" xlink:label="page2 area13" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002014" xlink:label="page2 area14" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002015" xlink:label="page2 area15" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003001" xlink:label="page3 area1" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003002" xlink:label="page3 area2" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003003" xlink:label="page3 area3" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003004" xlink:label="page3 area4" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003005" xlink:label="page3 area5" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003006" xlink:label="page3 area6" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003007" xlink:label="page3 area7" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003008" xlink:label="page3 area8" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003009" xlink:label="page3 area9" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003010" xlink:label="page3 area10" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003011" xlink:label="page3 area11" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003012" xlink:label="page3 area12" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003013" xlink:label="page3 area13" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area6" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area7" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area8" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area9" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area10" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area11" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area12" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area13" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area14" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area15" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area1" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area2" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area3" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area4" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area5" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area6" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area7" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area8" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area9" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area10" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area11" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area12" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area13" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0011" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002016" xlink:label="page2 area16" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002017" xlink:label="page2 area17" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area16" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area17" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0012" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002018" xlink:label="page2 area18" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0002019" xlink:label="page2 area19" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area18" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page2 area19" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0013" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003014" xlink:label="page3 area14" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003015" xlink:label="page3 area15" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003016" xlink:label="page3 area16" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003017" xlink:label="page3 area17" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003018" xlink:label="page3 area18" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003019" xlink:label="page3 area19" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003020" xlink:label="page3 area20" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003021" xlink:label="page3 area21" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003022" xlink:label="page3 area22" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003023" xlink:label="page3 area23" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003024" xlink:label="page3 area24" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area14" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area15" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area16" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area17" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area18" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area19" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area20" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area21" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area22" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area23" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area24" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0014" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003025" xlink:label="page3 area25" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003026" xlink:label="page3 area26" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003027" xlink:label="page3 area27" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003028" xlink:label="page3 area28" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003029" xlink:label="page3 area29" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003030" xlink:label="page3 area30" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003031" xlink:label="page3 area31" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003032" xlink:label="page3 area32" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003033" xlink:label="page3 area33" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003034" xlink:label="page3 area34" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area25" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area26" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area27" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area28" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area29" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area30" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area31" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area32" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area33" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area34" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0015" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003035" xlink:label="page3 area35" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003036" xlink:label="page3 area36" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area35" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area36" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0016" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003037" xlink:label="page3 area37" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003038" xlink:label="page3 area38" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003039" xlink:label="page3 area39" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003040" xlink:label="page3 area40" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003041" xlink:label="page3 area41" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003042" xlink:label="page3 area42" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003043" xlink:label="page3 area43" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003044" xlink:label="page3 area44" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003045" xlink:label="page3 area45" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003046" xlink:label="page3 area46" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003047" xlink:label="page3 area47" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003048" xlink:label="page3 area48" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area37" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area38" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area39" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area40" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area41" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area42" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area43" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area44" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area45" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area46" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area47" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area48" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0017" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003049" xlink:label="page3 area49" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003050" xlink:label="page3 area50" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003051" xlink:label="page3 area51" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003052" xlink:label="page3 area52" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003053" xlink:label="page3 area53" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003054" xlink:label="page3 area54" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003055" xlink:label="page3 area55" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003056" xlink:label="page3 area56" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area49" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area50" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area51" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area52" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area53" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area54" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area55" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area56" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0018" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003057" xlink:label="page3 area57" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0003058" xlink:label="page3 area58" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area57" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page3 area58" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0019" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004001" xlink:label="page4 area1" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area1" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0020" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004002" xlink:label="page4 area2" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004003" xlink:label="page4 area3" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004004" xlink:label="page4 area4" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area2" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area3" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area4" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0021" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004005" xlink:label="page4 area5" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area5" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0022" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004006" xlink:label="page4 area6" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004007" xlink:label="page4 area7" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004008" xlink:label="page4 area8" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004009" xlink:label="page4 area9" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004010" xlink:label="page4 area10" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004011" xlink:label="page4 area11" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004012" xlink:label="page4 area12" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004013" xlink:label="page4 area13" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004014" xlink:label="page4 area14" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004015" xlink:label="page4 area15" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area6" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area7" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area8" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area9" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area10" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area11" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area12" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area13" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area14" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area15" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0023" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004016" xlink:label="page4 area16" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004017" xlink:label="page4 area17" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area16" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area17" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0024" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004018" xlink:label="page4 area18" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004019" xlink:label="page4 area19" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004020" xlink:label="page4 area20" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004021" xlink:label="page4 area21" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area18" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area19" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area20" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area21" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0025" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004022" xlink:label="page4 area22" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004023" xlink:label="page4 area23" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area22" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area23" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0026" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004024" xlink:label="page4 area24" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004025" xlink:label="page4 area25" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004026" xlink:label="page4 area26" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004027" xlink:label="page4 area27" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004028" xlink:label="page4 area28" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004029" xlink:label="page4 area29" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004030" xlink:label="page4 area30" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0004031" xlink:label="page4 area31" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area24" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area25" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area26" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area27" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area28" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area29" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area30" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page4 area31" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#sect0001" xlink:label="advert" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001042" xlink:label="page1 area42" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001043" xlink:label="page1 area43" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="advert" xlink:to="page1 area42" ARCTYPE="logicalphysical"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="advert" xlink:to="page1 area43" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+	</mets:structLink>
+</mets:mets>

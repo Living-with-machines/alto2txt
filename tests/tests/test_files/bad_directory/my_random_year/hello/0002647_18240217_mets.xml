@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mets="http://www.loc.gov/METS/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version18/mets.xsd info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd" xmlns:premis="info:lc/xmlns/premis-v2" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" TYPE="Newspaper">
+	<mets:metsHdr CREATEDATE="2019-08-09T07:25:35" LASTMODDATE="2019-08-09T07:25:35">
+		<mets:agent ROLE="CREATOR" TYPE="OTHER" OTHERTYPE="SOFTWARE">
+			<mets:name>CCS docWorks/METAe Version 7.0-1</mets:name>
+			<mets:note>docWorks-ID: 2685919</mets:note>
+		</mets:agent>
+		<mets:agent ROLE="CREATOR" TYPE="OTHER" OTHERTYPE="RQA">
+			<mets:name>ROM</mets:name>
+		</mets:agent>
+	</mets:metsHdr>
+	<mets:dmdSec ID="MODS_ISSUE_0002647-00000">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:identifier type="NLP">0002647-00000</mods:identifier>
+					<mods:relatedItem type="host" displayLabel="Newspaper">
+						<mods:identifier type="NLP">0002647</mods:identifier>
+					</mods:relatedItem>
+					<mods:relatedItem type="original">
+						<mods:note type="source note">British Library Heritage Made Digital Newspapers</mods:note>
+						<mods:location>
+							<mods:physicalLocation authority="marcorg">Uk</mods:physicalLocation>
+							<mods:physicalLocation>British Library</mods:physicalLocation>
+						</mods:location>
+					</mods:relatedItem>
+					<mods:titleInfo>
+						<mods:title>The Statesman.</mods:title>
+					</mods:titleInfo>
+					<mods:originInfo>
+						<mods:dateIssued encoding="w3cdtf" keyDate="yes">1824-02-17</mods:dateIssued>
+						<mods:place>
+							<mods:placeTerm type="text">London, England</mods:placeTerm>
+						</mods:place>
+					</mods:originInfo>
+					<mods:part>
+						<mods:detail type="issue">
+							<mods:number></mods:number>
+						</mods:detail>
+					</mods:part>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle1">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:dmdSec ID="modsarticle2">
+		<mets:mdWrap MDTYPE="MODS">
+			<mets:xmlData>
+				<mods:mods>
+					<mods:titleInfo ID="modsarticle2_TI1" xml:lang="en">
+						<mods:title>COAL DUTIES.</mods:title>
+					</mods:titleInfo>
+					<mods:language>
+						<mods:languageTerm type="code" authority="rfc3066">en</mods:languageTerm>
+					</mods:language>
+				</mods:mods>
+			</mets:xmlData>
+		</mets:mdWrap>
+	</mets:dmdSec>
+	<mets:fileSec>
+		<mets:fileGrp USE="DigitalManifestation">
+			<mets:fileGrp USE="PreservationMaster">
+				<mets:file ID="img0001-master" ADMID="img0001-master-amd" MIMETYPE="image/jp2" CHECKSUM="f2113380208b6b35894fe9fd15614fb2c317c12f626419c1345bad11e246606c" CHECKSUMTYPE="SHA-256" SIZE="10933441">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.jp2"/>
+				</mets:file>
+				<mets:file ID="img0002-master" ADMID="img0002-master-amd" MIMETYPE="image/jp2" CHECKSUM="5ecda8299c670d9bda1a5402b1b764b330c10f2353909197f50045ce7e8a1c4e" CHECKSUMTYPE="SHA-256" SIZE="10943176">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.jp2"/>
+				</mets:file>
+				<mets:file ID="img0003-master" ADMID="img0003-master-amd" MIMETYPE="image/jp2" CHECKSUM="1840950aed5c8391ce62411a37e9d9cadb1328f18996f3bfb3eb5068f2771d97" CHECKSUMTYPE="SHA-256" SIZE="10386828">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.jp2"/>
+				</mets:file>
+				<mets:file ID="img0004-master" ADMID="img0004-master-amd" MIMETYPE="image/jp2" CHECKSUM="8db8ff789dd960004fae76061889b18ca1b0551ac6e191acba25c4743f691e66" CHECKSUMTYPE="SHA-256" SIZE="10906151">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.jp2"/>
+				</mets:file>
+			</mets:fileGrp>
+			<mets:fileGrp USE="Fulltext">
+				<mets:file ID="img0001-alto" ADMID="img0001-alto-amd" MIMETYPE="text/xml" CHECKSUM="cb42a98bbe6437d273a9b9623d877876312186fc9e995282b49c6357ec322cf0" CHECKSUMTYPE="SHA-256" SIZE="1000193">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.xml"/>
+				</mets:file>
+				<mets:file ID="img0002-alto" ADMID="img0002-alto-amd" MIMETYPE="text/xml" CHECKSUM="56638fb1f14b51a66288024e90621646d1d6c8dbac7d428c30343133098c6ee0" CHECKSUMTYPE="SHA-256" SIZE="1223915">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.xml"/>
+				</mets:file>
+				<mets:file ID="img0003-alto" ADMID="img0003-alto-amd" MIMETYPE="text/xml" CHECKSUM="a3014f3b1e8e79ce56840848a1c8c5d6fb9800bdccbe56fd85db402342d06f1a" CHECKSUMTYPE="SHA-256" SIZE="970348">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.xml"/>
+				</mets:file>
+				<mets:file ID="img0004-alto" ADMID="img0004-alto-amd" MIMETYPE="text/xml" CHECKSUM="944a2d0dc9c9da3e3fc842c3bf4e31f572a54abb7e11cd870d00c6e68f4370cb" CHECKSUMTYPE="SHA-256" SIZE="1076009">
+					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.xml"/>
+				</mets:file>
+			</mets:fileGrp>
+		</mets:fileGrp>
+		<mets:fileGrp USE="Discarded">
+			<mets:file ID="img0001-source" ADMID="img0001-source-amd" MIMETYPE="image/tiff" CHECKSUM="641990ea0fa61ad5dc68aecf6aff056d32dc342acfbadbc98971ba6beb943a3b" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
+			<mets:file ID="img0002-source" ADMID="img0002-source-amd" MIMETYPE="image/tiff" CHECKSUM="a7ab8f45393573617e87ac776301224854e47ae902399e0802f24f5aa1ade167" CHECKSUMTYPE="SHA-256" SIZE="40212871"/>
+			<mets:file ID="img0003-source" ADMID="img0003-source-amd" MIMETYPE="image/tiff" CHECKSUM="db7af7bff525c4735f384d6046a9c782dd4048a2cf9cdad028177bf25ecb792e" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
+			<mets:file ID="img0004-source" ADMID="img0004-source-amd" MIMETYPE="image/tiff" CHECKSUM="1794b65b0fcf61707c29ab668dbc05039f8aedd64926c518cc65636e3c2ffa60" CHECKSUMTYPE="SHA-256" SIZE="40021383"/>
+		</mets:fileGrp>
+	</mets:fileSec>
+	<mets:structMap LABEL="Logical Structure" TYPE="LOGICAL">
+		<mets:div ID="log1" TYPE="ISSUE" DMDID="MODS_ISSUE_0002647-00000" LABEL="The Statesman. 1824-02-17">
+			<mets:div ID="art0001" TYPE="ARTICLE" DMDID="modsarticle1"/>
+			<mets:div ID="art0002" TYPE="ARTICLE" DMDID="modsarticle2"/>
+		</mets:div>
+	</mets:structMap>
+	<mets:structMap LABEL="Physical Structure" TYPE="PHYSICAL">
+		<mets:div ID="phys0" LABEL="The Statesman. 1824-02-17" TYPE="physSequence" DMDID="MODS_ISSUE_0002647-00000">
+			<mets:div ID="phys1" ORDER="1" ORDERLABEL="1" TYPE="page">
+				<mets:fptr FILEID="img0001-master"/>
+				<mets:fptr FILEID="img0001-alto"/>
+				<mets:div ID="pa0001001" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="72,2533,971,3345"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001131" END="word001309"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001002" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="80,3372,985,3913"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001310" END="word001447"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0001003" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="80,3372,985,3913"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001448" END="word001451"/>
+					</mets:fptr>
+				</mets:div>
+				<mets:div ID="pa0005001" TYPE="pagearea" LABEL="Textblock">
+					<mets:fptr>
+						<mets:area FILEID="img0001-master" SHAPE="RECT" COORDS="80,3372,985,3913"/>
+					</mets:fptr>
+					<mets:fptr>
+						<mets:area FILEID="img0001-alto" BETYPE="IDREF" BEGIN="word001460" END="word001480"/>
+					</mets:fptr>
+				</mets:div>
+			</mets:div>
+		</mets:div>
+	</mets:structMap>
+	<mets:structLink>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#log1" xlink:label="issue" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#phys0" xlink:label="physSeq" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="issue" xlink:to="physSeq" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0001" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001001" xlink:label="page1 area1" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area1" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+		<mets:smLinkGrp>
+			<mets:smLocatorLink xlink:href="#art0002" xlink:label="article" xlink:type="locator"/>
+			<mets:smLocatorLink xlink:href="#pa0001003" xlink:label="page1 area3" xlink:type="locator"/>
+			<mets:smArcLink xlink:type="arc" xlink:from="article" xlink:to="page1 area3" ARCTYPE="logicalphysical"/>
+		</mets:smLinkGrp>
+	</mets:structLink>
+</mets:mets>
