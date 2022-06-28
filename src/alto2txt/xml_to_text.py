@@ -91,9 +91,7 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logger.warning("Unknown METS schema %s: %s",
-                               xml_file,
-                               mets_uri)
+                logger.warning("Unknown METS schema %s: %s", xml_file, mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -109,13 +107,14 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
         issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
         try:
 
-            xslt(document_tree,
-                 input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
-                 input_sub_path=etree.XSLT.strparam(input_sub_path),
-                 input_filename=etree.XSLT.strparam(input_filename),
-                 output_document_stub=etree.XSLT.strparam(
-                     issue_out_stub),
-                 output_path=etree.XSLT.strparam(issue_out_path))
+            xslt(
+                document_tree,
+                input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
+                input_sub_path=etree.XSLT.strparam(input_sub_path),
+                input_filename=etree.XSLT.strparam(input_filename),
+                output_document_stub=etree.XSLT.strparam(issue_out_stub),
+                output_path=etree.XSLT.strparam(issue_out_path),
+            )
             summary["converted_ok"] += 1
             logger.info("%s gave XSLT output", xml_file_path)
         except Exception as e:
@@ -176,8 +175,7 @@ def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logger.warning("Unexpected file: %s",
-                               os.path.join(year, issue))
+                logger.warning("Unexpected file: %s", os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1

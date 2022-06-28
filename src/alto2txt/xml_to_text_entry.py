@@ -74,6 +74,7 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsampl
             num_cores
         )
 
+
 # TODO Add test in here to check the directory tree
 
 
