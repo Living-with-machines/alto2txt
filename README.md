@@ -181,9 +181,21 @@ For a complete list of future plans see the [GitHub issues list](https://github.
 
 # Copyright
 
+## Software
+
 Copyright 2022 The Alan Turing Institute, British Library Board, Queen Mary University of London, University of Exeter, University of East Anglia and University of Cambridge.
 
 See [LICENSE](LICENSE) for more details.
+
+## Example Datasets
+
+This repo contains example datasets, which have been taken from the [British Library Research Repository](https://bl.iro.bl.uk/concern/datasets/551cdd7b-580d-472d-8efb-b7f05cf64a11) ([DOI link](https://doi.org/10.23636/1235)).
+
+This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Legal Restrictions](https://rightsstatements.org/page/NoC-OKLR/1.0/?language=en)
+
+- There is a subset of the example data in the `demo-files` directory.
+- There are adapted copies of the data in the `tests/tests/test_files` directory. These have been edited to test errors and edge cases.
+
 
 
 # Funding and Acknowledgements
