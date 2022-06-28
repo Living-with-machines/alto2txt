@@ -77,7 +77,6 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsampl
 # TODO Add test in here to check the directory tree
 
 
-
 def xml_publications_to_text(
     xml_in_dir, txt_out_dir, process_type, log_file="out.log", num_cores=1, downsample=1
 ):

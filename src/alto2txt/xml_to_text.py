@@ -92,8 +92,8 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
             else:
                 # Unknown METS.
                 logger.warning("Unknown METS schema %s: %s",
-                            xml_file,
-                            mets_uri)
+                               xml_file,
+                               mets_uri)
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -164,7 +164,7 @@ def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
     """
     issue_counter = 0
 
-    # TODO The publication name, year, and edition is copied from the directory path and not the METS file. 
+    # TODO The publication name, year, and edition is copied from the directory path and not the METS file.
 
     publication = os.path.basename(publication_dir)
     logger.info("Processing publication: %s", publication)
@@ -177,7 +177,7 @@ def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
                 logger.warning("Unexpected file: %s",
-                            os.path.join(year, issue))
+                               os.path.join(year, issue))
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
