@@ -10,8 +10,12 @@ Please maintain both this file AND the README.md file.
 ### Added
 * Added this changelog file.
 * Established use of [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for this project.
+* Added a separate 'CONTRIBUTING.md' doc for software developers notes.
+* Added a separate copyright notice for example datasets
 
 ### Changed
+* Switch from Apache v2.0 license to MIT license, inline with project recommendations.
+
 ### Deprecated
 ### Removed
 ### Fixed
