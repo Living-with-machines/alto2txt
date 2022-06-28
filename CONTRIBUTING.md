@@ -1,4 +1,24 @@
 
+## Coding standards
+
+The following standards are enforced via automated tests;
+
+### Pre-commit
+
+`pre-commit` hooks are used to ensure:
+
+- The code is formatted according to `black` and `pep8` rules.
+- White space at the end of lines is removed.
+- Files end with a single blank line.
+- XML and YAML files are properly formatted. If there is a need to add a malformatted file (eg for test purposes) it is possible to add an exception to these rules using an `exclude` clause in the `.pre-commit-config.yml` file.
+- Where type hints are used they are correct. The use of type hints is not required.
+
+Currently, import sort order is _not_ enforced.
+
+### CI
+
+- Unit and integration tests are run using `pytest`.
+- `flake8` is used to test for function complexity, but only warnings (not errors) are returned.
 
 ## How to update the package version number
 
