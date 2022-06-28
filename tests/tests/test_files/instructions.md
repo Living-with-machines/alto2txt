@@ -95,4 +95,3 @@ This is not a helpful warning about what has happened.
 ### Desired Output
 
 Much clearer error message about how to solve the problem. Preferably it could deal with a flat directory structure by looking for the required publication/year/edition within the METS file. 
-

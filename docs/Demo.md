@@ -191,5 +191,3 @@ Where `-d` determines the downsample value.
 ```
 ./extract_publications_text.py -p single input-directory output-directory -d 100 
 ```
-
-
