@@ -1,7 +1,11 @@
 # Adapted from https://github.com/alan-turing-institute/scivision/blob/main/.github/workflows/publish-to-pypi.yml
 name: Publish Python 🐍 distributions 📦 to PyPI
 
-on: push
+on:
+  pull_request:
+    branches:
+      - main
+  push:
 
 jobs:
   build-and-publish:
