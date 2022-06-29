@@ -23,7 +23,7 @@ jobs:
         python -m pip install poetry
     - name: Build a binary wheel and a source tarball
       run: |
-        poetry version `poetry version -s`.alpha${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}
+        poetry version `poetry version -s`-alpha$.{{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}
         poetry build
     - name: Publish all builds to TestPyPI
       uses: pypa/gh-action-pypi-publish@release/v1
