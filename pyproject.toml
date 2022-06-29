@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alto2txt"
-version = "0.3.0"
+version = "0.3.0-alpha+16.1"
 description = "extract plain text and minimal metadata from ALTO xml files"
 authors=["Mike Jackson <mjackson@turing.ac.uk>", "David Beavan <dbeavan@turing.ac.uk>"]
 
