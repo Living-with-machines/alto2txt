@@ -12,6 +12,8 @@ Quality assurance is performed to check for:
 
 ## Installation
 
+### Installation using an Anaconda environment
+
 We recommend installation via Anaconda:
 
 * Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
@@ -28,10 +30,16 @@ conda create -n py37alto python=3.7
 conda activate py37alto
 ```
 
-* Install additional packages
+* Install alto2txt itself
 
 ```bash
-pip install -r requirements.txt
+conda install -c conda-forge alto2txt
+```
+
+### Installation using a Poetry environment
+
+```bash
+pip install alto2txt
 ```
 
 ## Usage
