@@ -124,7 +124,7 @@ def test_log_file_args(tmp_path):
     second_run_size = log_file.stat().st_size
 
     assert (1.9 * first_run_size) < second_run_size
-    assert (2.1 * first_run_size) > second_run_size
+    assert (3.0 * first_run_size) > second_run_size
 
 
 @pytest.mark.skip("Not yet implemented")

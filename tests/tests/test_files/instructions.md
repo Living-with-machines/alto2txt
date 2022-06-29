@@ -3,7 +3,7 @@
 
 ## 01. Bad Directory Input
 
-Under the path `tests/test_files/bad_directory`, these ALTO/METS files are within a folder structure with nonsense names rather than the year and edition as expected. 
+Under the path `tests/test_files/bad_directory`, these ALTO/METS files are within a folder structure with nonsense names rather than the year and edition as expected.
 
 ### Command to run in Terminal
 
@@ -27,7 +27,7 @@ Creates `output/bad_directory/my_random_year/hello` with the output files. Both 
 
 ### Desired Output
 
-Creates `output/bad_directory/1824/0217` by referring to EITHER the filename or the variables within the METS file for year and edition. 
+Creates `output/bad_directory/1824/0217` by referring to EITHER the filename or the variables within the METS file for year and edition.
 
 
 ## 02. Missing Page Input
@@ -53,20 +53,20 @@ Creates `output/1824/0217` with the output files. The first article is correct:
 
 * _"This article should continue 1-10. 1 2 3 4 5 6 7 8 9 10"_
 
-The second article is only produced with the first section: 
+The second article is only produced with the first section:
 
 * _"This article is missing content."_
 
-No error or warning is generated in this case. 
+No error or warning is generated in this case.
 
 ### Desired Output
 
-Warns the user with a clear message about missing content, in a way that would work at large scale. 
+Warns the user with a clear message about missing content, in a way that would work at large scale.
 
 
 ## 03. No Directory Tree
 
-Under the path `tests/test_files/no_dir_tree`, there are no subdirectories referring to the year and edition. 
+Under the path `tests/test_files/no_dir_tree`, there are no subdirectories referring to the year and edition.
 
 ### Command to run in Terminal
 
@@ -90,9 +90,8 @@ INFO:Processing publication: no_dir_tree
 WARNING:Unexpected file: 0002647_18240217_0001.xml
 WARNING:Unexpected file: 0002647_18240217_mets.xml
 ```
-This is not a helpful warning about what has happened. 
+This is not a helpful warning about what has happened.
 
 ### Desired Output
 
-Much clearer error message about how to solve the problem. Preferably it could deal with a flat directory structure by looking for the required publication/year/edition within the METS file. 
-
+Much clearer error message about how to solve the problem. Preferably it could deal with a flat directory structure by looking for the required publication/year/edition within the METS file.

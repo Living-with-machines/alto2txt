@@ -178,7 +178,6 @@ For a complete list of future plans see the [GitHub issues list](https://github.
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-
 # Copyright
 
 ## Software
@@ -195,8 +194,6 @@ This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Leg
 
 - There is a subset of the example data in the `demo-files` directory.
 - There are adapted copies of the data in the `tests/tests/test_files` directory. These have been edited to test errors and edge cases.
-
-
 
 # Funding and Acknowledgements
 
