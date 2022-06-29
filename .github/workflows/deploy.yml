@@ -5,7 +5,7 @@ on:
   pull_request:
     branches:
       - main
-  push:
+  # push:
 
 jobs:
   build-and-publish:
@@ -22,7 +22,7 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install poetry
     - name: Build a binary wheel and a source tarball
-      run: >-
+      run: |
         poetry version `poetry version -s`.alpha{{github.run_id}}.{{github.run_number}}{{github.run_attempt}}
         poetry build
     - name: Publish all builds to TestPyPI
