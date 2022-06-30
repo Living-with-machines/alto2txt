@@ -25,7 +25,7 @@ The resulting plain text files of the articles are in `alto2txt/demo-output/`.
 Read on for a more in-depth explanation.
 
 
-## Installation Instructions
+# Detailed Instructions
 
 
 It is recommended to use [Anaconda](https://docs.anaconda.com/anaconda/install/index.html) which is a data science distribution for Python and R. 
@@ -79,7 +79,7 @@ Make sure you have navigated to the `alto2txt` directory in your terminal or Ana
 
 Here we use the positional argument `-p` to determine which process type, in this case `single`. The script can be run on many publications and years by default, but in this case we only have one publication. [Click here](/#process-types) to read more about different process types. 
 
-The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory. Once alto2txt has run, the output directory structure will mirror the input directory. 
+The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory (which should be empty). Once alto2txt has run, the output directory structure will mirror the input directory. 
 
 We will now look in more detail at the ALTO/METS input files and output plain text files. 
 

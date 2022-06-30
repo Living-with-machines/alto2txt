@@ -136,4 +136,4 @@ Quality assurance is performed to check for:
 * Smarter handling of articles spanning multiple pages.
 
 
-> Last updated 2022-05-24
+> Last updated 2022-06-30
