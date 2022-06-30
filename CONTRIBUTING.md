@@ -26,18 +26,22 @@ To update the version number:
 
 1. Edit `README.md`:
 
-```
-# Extract plain text from newspapers (extract_text 0.3.0)
-```
-
-2. Edit `setup.py`:
+The document title is in the form:
 
 ```
-version="0.3.0",
+# Extract plain text from newspapers (extract_text v0.3.1)
 ```
 
-3. Exit `extract_text/xslts/extract_text_common.xslt`:
+2. Use poetry to increase the version number:
+
+For details see [the poetry documentation](https://python-poetry.org/docs/cli/#version). An example command is:
 
 ```
-<xsl:param name="version">0.3.0</xsl:param>
+poetry version patch
+```
+
+1. Edit the version number in `extract_text/xslts/extract_text_common.xslt`:
+
+```
+<xsl:param name="version">0.3.1</xsl:param>
 ```

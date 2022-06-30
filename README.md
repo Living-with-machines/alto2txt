@@ -1,4 +1,4 @@
-# Extract plain text from newspapers (alto2txt 0.3.0)
+# Extract plain text from newspapers (alto2txt 0.3.1)
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
 
@@ -32,14 +32,28 @@ conda activate py37alto
 
 * Install alto2txt itself
 
-```bash
-conda install -c conda-forge alto2txt
-```
-
-### Installation using a Poetry environment
+Install `alto2txt` using pip:
 
 ```bash
 pip install alto2txt
+```
+
+(For now it is still necessary to install using pip. In due course we plan to make alto2txt available through a conda channel, meaning that it can be installed directly using conda commands.)
+
+### Installation using pip, outside an Anaconda environment
+
+Note, the use of `alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
+
+```bash
+pip install alto2txt
+```
+
+### Installation of a test release
+
+If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This examaple command will install `v0.3.1-alpha.20`:
+
+```bash
+pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 ```
 
 ## Usage
