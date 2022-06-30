@@ -14,15 +14,15 @@
 				</processingSoftware>
 			</preProcessingStep>
 			<ocrProcessingStep>
-				<processingStepSettings>Character Count: 28398 
-Predicted Word Accuracy: 88.2% 
-Suspicious Character Count: 678 
-Word Count: 5014 
-Suspicious Word Count: 870 
-width: 4169 
-height: 6177 
-xdpi: 300 
-ydpi: 300 
+				<processingStepSettings>Character Count: 28398
+Predicted Word Accuracy: 88.2%
+Suspicious Character Count: 678
+Word Count: 5014
+Suspicious Word Count: 870
+width: 4169
+height: 6177
+xdpi: 300
+ydpi: 300
 source-image: //NP1-STOR2/data01/blend6/2019-07-11_09_03/2019-07-11_09_03_03118.tif</processingStepSettings>
 				<processingSoftware>
 					<softwareCreator>Nuance Communications, Inc.</softwareCreator>

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alto2txt"
-version = "0.3.0"
+version = "0.3.2"
 description = "extract plain text and minimal metadata from ALTO xml files"
 authors=["Mike Jackson <mjackson@turing.ac.uk>", "David Beavan <dbeavan@turing.ac.uk>"]
 
@@ -15,6 +15,7 @@ lxml = "^4.7.1"
 black = "^21.12b0"
 flake8 = "^4.0.1"
 pytest = "^6.2.5"
+icecream = "^2.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]

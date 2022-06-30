@@ -1,10 +1,56 @@
-# Extract plain text from newspapers (alto2txt 0.3.0)
+# Extract plain text from newspapers (alto2txt 0.3.1)
 
 Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. 
 
 
 [https://living-with-machines.github.io/alto2txt/#/](For full documentation see here.)
 
+
+## Installation
+
+### Installation using an Anaconda environment
+
+We recommend installation via Anaconda:
+
+* Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
+
+* Create a new environment for alto2txt
+
+```bash
+conda create -n py37alto python=3.7
+```
+
+* Activate the environment:
+
+```bash
+conda activate py37alto
+```
+
+* Install alto2txt itself
+
+Install `alto2txt` using pip:
+
+```bash
+pip install alto2txt
+```
+
+(For now it is still necessary to install using pip. In due course we plan to make alto2txt available through a conda channel, meaning that it can be installed directly using conda commands.)
+
+### Installation using pip, outside an Anaconda environment
+
+Note, the use of `alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
+
+```bash
+pip install alto2txt
+```
+
+### Installation of a test release
+
+If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This examaple command will install `v0.3.1-alpha.20`:
+
+```bash
+pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
+```
 
 ## Usage
 
@@ -132,7 +178,6 @@ For a complete list of future plans see the [GitHub issues list](https://github.
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-
 # Copyright
 
 ## Software
@@ -149,8 +194,6 @@ This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Leg
 
 - There is a subset of the example data in the `demo-files` directory.
 - There are adapted copies of the data in the `tests/tests/test_files` directory. These have been edited to test errors and edge cases.
-
-
 
 # Funding and Acknowledgements
 

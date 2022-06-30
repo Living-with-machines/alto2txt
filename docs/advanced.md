@@ -1,7 +1,7 @@
 # Further Information
 
 
-## XSTL: XML Stylesheet 
+## XSTL: XML Stylesheet
 
 XSLT (eXtensible Stylesheet Language Transformations) is the recommended style sheet language for XML.
 The following XSLT files need to be in an `extract_text.xslts` module:
@@ -14,7 +14,8 @@ The following XSLT files need to be in an `extract_text.xslts` module:
 
 ## XML metadata
 
-Metadata about `extract_text.py` itself is inserted into the XML metadata files. The current values, including version, are defined in `extract_text_common.xslt`.
+Metadata about `extract_text.py` itself is inserted into the XML metadata files.
+The current values, including version, are defined in `extract_text_common.xslt`.
 
 The following metadata for the following dataset types are **not** output, due to it not being present in the XML for those datasets:
 
@@ -45,7 +46,7 @@ To specify an alternative location for logs, use the `-l` flag e.g.
 ./extract_publications_text.py -l mylog.txt ~/xml_in_dir ~/txt_out_dir -d 100 2> err.log
 ```
 
-## Using Spark 
+## Using Spark
 
 When running via Spark ensure that:
 
