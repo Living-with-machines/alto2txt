@@ -22,7 +22,7 @@ Currently, import sort order is _not_ enforced.
 
 ## How to update the package version number
 
-To update the version number:
+### To update the version number:
 
 1. Edit `README.md`:
 
@@ -45,3 +45,15 @@ poetry version patch
 ```
 <xsl:param name="version">0.3.1</xsl:param>
 ```
+
+### To release a new version
+
+From the `main` branch.
+
+```bash
+git checkout main
+git tag -a v`poetry version -s` -m \'alto2txt release v`poetry version -s`\'
+git push --tags
+```
+
+GitHub Actions will detect the tagged commit and publish the package to PyPI accordingly.
