@@ -100,3 +100,21 @@ version="0.3.0",
 ```
 <xsl:param name="version">0.3.0</xsl:param>
 ```
+
+## Documentation with Docsify
+
+Documentation exists as a static site hosted on Github Pages. Instructions can be found here: https://docsify.js.org/
+
+1. Edit the `.md` files within `docs/`. 
+2. Add any extra pages to `_sidebar.md` or reorder them
+
+To preview locally from the terminal can install `docsify-cli` globally to make sure the preview updates as you edit files.
+
+1. Install `npm i docsify-cli -g`
+2. Navigate to your repo `cd alto2text`
+3. Run `docsify serve docs`
+4. Use browser to navigate to `http://localhost:3000`
+
+To preview using Python without any installation:
+
+`cd docs && python -m http.server 3000`

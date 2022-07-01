@@ -1,14 +1,10 @@
 # Extract plain text from newspapers (alto2txt 0.3.1)
 
-Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. 
 
-Quality assurance is performed to check for:
 
-* Unexpected directories.
-* Unexpected files.
-* Malformed XML.
-* Empty files.
-* Files that otherwise do not expose content.
+## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
+
 
 ## Installation
 
@@ -57,6 +53,10 @@ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 ```
 
 ## Usage
+
+Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+
+
 
 ```
 extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
@@ -168,28 +168,6 @@ To specify an alternative location for logs, use the `-l` flag e.g.
 ## Process publications via Spark
 
 [Information on running on spark.](spark_instructions.md)
-
-## XML metadata
-
-Metadata about `extract_text.py` itself is inserted into the XML metadata files. The current values, including version, are defined in `extract_text_common.xslt`.
-
-The following metadata for the following dataset types are **not** output, due to it not being present in the XML for those datasets:
-
-METS1.3/ALTO1.4:
-
-* `/lwm/publication/location`
-
-BLN:
-
-* `/lwm/process/namespace`
-* `/lwm/publication/issue/item/item_type`
-
-UKP:
-
-* `/lwm/process/software`
-* `/lwm/process/namespace`
-* `/lwm/publication/title`
-* `/lwm/publication/location`
 
 
 ## Future work
