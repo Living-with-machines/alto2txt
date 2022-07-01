@@ -105,7 +105,7 @@ version="0.3.0",
 
 Documentation exists as a static site hosted on Github Pages. Instructions can be found here: https://docsify.js.org/
 
-1. Edit the `.md` files within `docs/`. 
+1. Edit the `.md` files within `docs/`.
 2. Add any extra pages to `_sidebar.md` or reorder them
 
 To preview locally from the terminal can install `docsify-cli` globally to make sure the preview updates as you edit files.
