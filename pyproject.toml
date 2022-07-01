@@ -15,7 +15,11 @@ lxml = "^4.7.1"
 black = "^21.12b0"
 flake8 = "^4.0.1"
 pytest = "^6.2.5"
+icecream = "^2.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+alto2txt = 'alto2txt.extract_publications_text:main'
