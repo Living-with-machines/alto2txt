@@ -13,7 +13,7 @@ on:
 
 jobs:
   build-and-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
+    name: Publish all Python 🐍 distributions 📦 to Test PyPI
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -38,8 +38,3 @@ jobs:
         user: __token__
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
-    - name: Publish tagged build to PyPI
-      if: startsWith(github.ref, 'refs/tags')
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
