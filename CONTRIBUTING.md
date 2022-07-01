@@ -57,3 +57,13 @@ git push --tags
 ```
 
 GitHub Actions will detect the tagged commit and publish the package to PyPI accordingly.
+
+Immediately afterwards, increase the version number of the package within the code.
+
+```bash
+poetry version patch
+git commit -m "Bump version number"
+git push
+```
+
+This will ensure that development builds, from non-tagged commits, will be published to [TestPyPI](https://test.pypi.org/) as an `alpha` release of the next version. For example, if the latest version on PyPI is `v1.2.3`, the next development build on TestPyPI will be `v1.2.4-alphaX` (sequentially after the latest version).
