@@ -2,10 +2,18 @@
 name = "alto2txt"
 version = "0.3.4"
 description = "extract plain text and minimal metadata from ALTO xml files"
-authors=["Mike Jackson <mjackson@turing.ac.uk>", "David Beavan <dbeavan@turing.ac.uk>"]
+authors = ["Mike Jackson <mjackson@turing.ac.uk>", "David Beavan <dbeavan@turing.ac.uk>"]
+maintainers = ["Dr Griffith Rees <grees@turing.ac.uk"]
 
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/Living-with-machines/alto2txt/"
+keywords = "XML text processing publications articles"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Topic :: Text Processing",
+]
+documentation = "https://living-with-machines.github.io/alto2txt/"
 
 [tool.poetry.dependencies]
 python = ">3.7.0"
