@@ -8,7 +8,7 @@ maintainers = ["Dr Griffith Rees <grees@turing.ac.uk"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/Living-with-machines/alto2txt/"
-keywords = "XML text processing publications articles"
+keywords = ["XML", "text", "processing", "publications", "articles"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Topic :: Text Processing",
