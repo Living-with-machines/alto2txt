@@ -1,20 +1,18 @@
-# Extract plain text from newspapers (extract_text 0.3.0)
+# Extract plain text from newspapers (alto2txt 0.3.1)
 
-Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata. Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata.
 
-Quality assurance is performed to check for:
 
-* Unexpected directories.
-* Unexpected files.
-* Malformed XML.
-* Empty files.
-* Files that otherwise do not expose content.
+## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
+
 
 ## Installation
 
+### Installation using an Anaconda environment
+
 We recommend installation via Anaconda:
 
-* Refer to [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
+* Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
 
 * Create a new environment for alto2txt
 
@@ -28,13 +26,37 @@ conda create -n py37alto python=3.7
 conda activate py37alto
 ```
 
-* Install additional packages
+* Install alto2txt itself
+
+Install `alto2txt` using pip:
 
 ```bash
-pip install -r requirements.txt
+pip install alto2txt
+```
+
+(For now it is still necessary to install using pip. In due course we plan to make alto2txt available through a conda channel, meaning that it can be installed directly using conda commands.)
+
+### Installation using pip, outside an Anaconda environment
+
+Note, the use of `alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
+
+```bash
+pip install alto2txt
+```
+
+### Installation of a test release
+
+If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This examaple command will install `v0.3.1-alpha.20`:
+
+```bash
+pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 ```
 
 ## Usage
+
+Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+
+
 
 ```
 extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
@@ -147,52 +169,34 @@ To specify an alternative location for logs, use the `-l` flag e.g.
 
 [Information on running on spark.](spark_instructions.md)
 
-## XML metadata
-
-Metadata about `extract_text.py` itself is inserted into the XML metadata files. The current values, including version, are defined in `extract_text_common.xslt`.
-
-The following metadata for the following dataset types are **not** output, due to it not being present in the XML for those datasets:
-
-METS1.3/ALTO1.4:
-
-* `/lwm/publication/location`
-
-BLN:
-
-* `/lwm/process/namespace`
-* `/lwm/publication/issue/item/item_type`
-
-UKP:
-
-* `/lwm/process/software`
-* `/lwm/process/namespace`
-* `/lwm/publication/title`
-* `/lwm/publication/location`
-
-## Update version
-
-To update the version number:
-
-1. Edit `README.md`:
-
-```
-# Extract plain text from newspapers (extract_text 0.3.0)
-```
-
-2. Edit `setup.py`:
-
-```
-version="0.3.0",
-```
-
-3. Exit `extract_text/xslts/extract_text_common.xslt`:
-
-```
-<xsl:param name="version">0.3.0</xsl:param>
-```
 
 ## Future work
 
-* Export more metadata from alto, probably by parsing mets first.
+For a complete list of future plans see the [GitHub issues list](https://github.com/Living-with-machines/alto2txt/issues). Some highlights include:
+
+* Export more metadata from alto, probably by parsing `mets` first.
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
+
+# Copyright
+
+## Software
+
+Copyright 2022 The Alan Turing Institute, British Library Board, Queen Mary University of London, University of Exeter, University of East Anglia and University of Cambridge.
+
+See [LICENSE](LICENSE) for more details.
+
+## Example Datasets
+
+This repo contains example datasets, which have been taken from the [British Library Research Repository](https://bl.iro.bl.uk/concern/datasets/551cdd7b-580d-472d-8efb-b7f05cf64a11) ([DOI link](https://doi.org/10.23636/1235)).
+
+This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Legal Restrictions](https://rightsstatements.org/page/NoC-OKLR/1.0/?language=en)
+
+- There is a subset of the example data in the `demo-files` directory.
+- There are adapted copies of the data in the `tests/tests/test_files` directory. These have been edited to test errors and edge cases.
+
+# Funding and Acknowledgements
+
+This software has been developed as part of the [Living with Machines](https://livingwithmachines.ac.uk) project.
+
+This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London.

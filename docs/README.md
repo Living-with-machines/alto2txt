@@ -1,18 +1,18 @@
-# Alto2txt: Extract plain text from digitised newspapers 
+# Alto2txt: Extract plain text from digitised newspapers
 
 *Version extract_text 0.3.0*
 
-Alto2txt converts XML publications to plaintext articles with minimal metadata. 
-ALTO and METS is the current industry standard for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. 
+Alto2txt converts XML publications to plaintext articles with minimal metadata.
+ALTO and METS is the current industry standard for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects.
 One text file is output per article, each complemented by one XML metadata file.
 
 **XML compatibility: METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN, or UKP format**
 
-## Usage 
+## Usage
 
 
 ```
-extract_publications_text.py [-h [HELP]] 
+extract_publications_text.py [-h [HELP]]
                              [-d [DOWNSAMPLE]]
                              [-p [PROCESS_TYPE]]
                              [-l [LOG_FILE]]
@@ -90,7 +90,7 @@ To downsample and only process every 100th edition:
 
 ## Process Single Publication
 
-[A demo for processing a single publication is available here.](Demo.md) 
+[A demo for processing a single publication is available here.](Demo.md)
 
 If `-p|--process-type single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
 
@@ -116,10 +116,10 @@ To downsample and only process every 100th edition from the one publication:
 
 ## Plain Text Files Output
 
-`txt_out_dir` is created with an analogous structure to `xml_in_dir`. 
-One `.txt` file and one metadata `.xml` file are produced per article. 
+`txt_out_dir` is created with an analogous structure to `xml_in_dir`.
+One `.txt` file and one metadata `.xml` file are produced per article.
 
-## Quality Assurances 
+## Quality Assurances
 
 Quality assurance is performed to check for:
 
@@ -136,4 +136,4 @@ Quality assurance is performed to check for:
 * Smarter handling of articles spanning multiple pages.
 
 
-> Last updated 2022-05-24
+> Last updated 2022-06-30

@@ -1,6 +1,5 @@
 import sys
 
-# from alto2txt
 from alto2txt import extract_publications_text as ept
 import pytest
 from icecream import ic
@@ -71,7 +70,11 @@ def test_output_dir_args(tmp_path):
     assert ae.match("output-file.txt")
     assert ae.match("txt_out_dir.+not a directory")
 
-    # Test that `txt_out_dir` is empty. What should the correct behaviour be here?
+
+@pytest.mark.skip("Correct behaviour not confirmed. See GH Issue #27")
+def test_non_empty_output_dir(tmp_path):
+    # Run twice to ensure that on the second run `txt_out_dir` is not empty.
+    # What should the correct behaviour be here?
     # See https://github.com/Living-with-machines/alto2txt/issues/27
 
     run_twice_dir = str(tmp_path / "run-twice")
@@ -121,7 +124,7 @@ def test_log_file_args(tmp_path):
     second_run_size = log_file.stat().st_size
 
     assert (1.9 * first_run_size) < second_run_size
-    assert (2.1 * first_run_size) > second_run_size
+    assert (3.0 * first_run_size) > second_run_size
 
 
 @pytest.mark.skip("Not yet implemented")
