@@ -25,7 +25,7 @@ setup(
     author="Mike Jackson, David Beavan",
     author_email="mjackson@turing.ac.uk, dbeavan@turing.ac.uk",
     description=("Converts XML publications to plaintext articles."),
-    license="Apache License 2.0",
+    license="MIT",
     keywords="XML text processing publications articles",
     url="https://github.com/alan-turing-institute/Living-with-Machines-code",
     packages=find_packages(),
@@ -35,6 +35,6 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Text Processing",
-        "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: MIT License",
     ],
 )
