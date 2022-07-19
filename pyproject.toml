@@ -25,6 +25,8 @@ flake8 = "^4.0.1"
 pytest = "^6.2.5"
 icecream = "^2.1.2"
 pre-commit = "^2.20.0"
+coverage = {extras = ["toml"], version = "^6.4.2"}
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]
@@ -35,3 +37,12 @@ alto2txt = 'alto2txt.extract_publications_text:main'
 
 [tool.pycln]
 all = true
+
+[tool.coverage.run]
+relative_files = true
+
+[tool.pytest.ini_options]
+addopts = """
+--cov=src/alto2txt
+--cov-report=term:skip-covered
+"""
