@@ -16,7 +16,7 @@ classifiers = [
 documentation = "https://living-with-machines.github.io/alto2txt/"
 
 [tool.poetry.dependencies]
-python = ">3.7.0"
+python = ">3.6.0"
 lxml = "^4.7.1"
 
 [tool.poetry.dev-dependencies]
