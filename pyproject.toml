@@ -32,3 +32,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 alto2txt = 'alto2txt.extract_publications_text:main'
+
+[tool.pycln]
+all = true

@@ -5,7 +5,6 @@ metadata using Apache Spark.
 """
 
 import logging
-import logging.config
 import os
 import os.path
 
