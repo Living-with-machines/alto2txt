@@ -2,6 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt)
 
+![PyPI](https://img.shields.io/pypi/v/alto2txt)
 
 Converts `XML` (in `METS 1.8/ALTO 1.4`, `METS 1.3/ALTO 1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
 
