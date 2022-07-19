@@ -1,6 +1,6 @@
-# Extract plain text from newspapers (alto2txt 0.3.1)
+# Extract plain text from newspapers (`alto2txt` `0.3.1`)
 
-Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata.
+Converts `XML` (in `METS 1.8/ALTO 1.4`, `METS 1.3/ALTO 1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
 
 
 ## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
@@ -14,7 +14,7 @@ We recommend installation via Anaconda:
 
 * Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
 
-* Create a new environment for alto2txt
+* Create a new environment for `alto2txt`
 
 ```bash
 conda create -n py37alto python=3.7
@@ -26,7 +26,7 @@ conda create -n py37alto python=3.7
 conda activate py37alto
 ```
 
-* Install alto2txt itself
+* Install `alto2txt` itself
 
 Install `alto2txt` using pip:
 
@@ -34,11 +34,11 @@ Install `alto2txt` using pip:
 pip install alto2txt
 ```
 
-(For now it is still necessary to install using pip. In due course we plan to make alto2txt available through a conda channel, meaning that it can be installed directly using conda commands.)
+(For now it is still necessary to install using `pip`. In due course we plan to make `alto2txt` available through a `conda` channel, meaning that it can be installed directly using `conda` commands.)
 
 ### Installation using pip, outside an Anaconda environment
 
-Note, the use of `alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
+Note, the use of ``alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
 
 ```bash
 pip install alto2txt
@@ -97,7 +97,7 @@ xml_in_dir
 |-- publication
 ```
 
-However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
+However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold `XML` for a single publication, in the following structure:
 
 ```
 xml_in_dir
@@ -118,12 +118,12 @@ xml_in_dir
 
 `DOWNSAMPLE` must be a positive integer, default 1.
 
-The following XSLT files need to be in an `extract_text.xslts` module:
+The following `XSLT` files need to be in an `extract_text.xslts` module:
 
-* `extract_text_mets18.xslt`: METS 1.8 XSL file.
-* `extract_text_mets13.xslt`: METS 1.3 XSL file.
-* `extract_text_bln.xslt`: BLN XSL file.
-* `extract_text_ukp.xslt`: UKP XSL file.
+* `extract_text_mets18.xslt`: `METS 1.8 XSL` file.
+* `extract_text_mets13.xslt`: `METS 1.3 XSL` file.
+* `extract_text_bln.xslt`: `BLN XSL` file.
+* `extract_text_ukp.xslt`: `UKP XSL` file.
 
 ## Process publications
 
