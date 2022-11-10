@@ -56,17 +56,16 @@ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 
 ## Usage
 
-Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one `XML` metadata file.
 
 
 
 ```
-extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
-                                    [-p [PROCESS_TYPE]]
-                                    [-l [LOG_FILE]]
-                                    [-n [NUM_CORES]]
-                                    xml_in_dir txt_out_dir
-
+usage: alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
+                xml_in_dir txt_out_dir
+alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
+         xml_in_dir txt_out_dir
+                                    
 Converts XML publications to plaintext articles
 
 positional arguments:
@@ -75,19 +74,17 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                        Downsample. Default 1
+  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
+                        Process type. One of: single,serial,multi,spark Default: multi
   -l [LOG_FILE], --log-file [LOG_FILE]
                         Log file. Default out.log
-  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
-                        Process type.
-                        One of: single,serial,multi,spark
-                        Default: multi
+  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                        Downsample. Default 1
   -n [NUM_CORES], --num-cores [NUM_CORES]
                         Number of cores (Spark only). Default 1")
 ```
 
-`xml_in_dir` is expected to hold XML for multiple publications, in the following structure:
+`xml_in_dir` is expected to hold `XML` for multiple publications, in the following structure:
 
 ```
 xml_in_dir
@@ -129,18 +126,18 @@ The following `XSLT` files need to be in an `extract_text.xslts` module:
 
 ## Process publications
 
-Assume `~/BNA` exists and matches the structure above.
+Assume folder `BNA` exists and matches the structure above.
 
 Extract text from every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt
+alto2txt BNA txt
 ```
 
 Extract text from every 100th issue of every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt -d 100
+alto2txt BNA txt -d 100
 ```
 
 ## Process a single publication
@@ -148,13 +145,13 @@ Extract text from every 100th issue of every publication:
 Extract text from every issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt
+alto2txt -p single BNA/0000151 txt
 ```
 
 Extract text from every 100th issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt -d 100
+alto2txt -p single BNA/0000151 txt -d 100
 ```
 
 ## Configure logging
@@ -164,7 +161,7 @@ By default, logs are put in `out.log`.
 To specify an alternative location for logs, use the `-l` flag e.g.
 
 ```bash
-./extract_publications_text.py -l mylog.txt ~/BNA txt -d 100 2> err.log
+alto2txt -l mylog.txt BNA txt -d 100 2> err.log
 ```
 
 ## Process publications via Spark

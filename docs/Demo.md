@@ -1,10 +1,10 @@
 # Demo
 
-A working example of alto2txt.
+A working example of `alto2txt`.
 
-Input xml files from digitised newspapers create an object for every section, paragraph, sentence, and individual word, making it difficult to read articles. Each newspaper page has an associated alto (.xml) file with content, and the pages share a mets (.xml) file with meta data about what articles/other content contain and where.
+Input `XML` files from digitised newspapers create an object for every section, paragraph, sentence, and individual word, making it difficult to read articles. Each newspaper page has an associated alto (`.xml`) file with content, and the pages share a mets (`.xml`) file with meta data about what articles/other content contain and where.
 
-The resulting .txt files are one per article, which may span multiple newspaper pages.
+The resulting `.txt` files are one per article, which may span multiple newspaper pages.
 
 ## Quick Demo
 
@@ -17,10 +17,21 @@ Navigate to an empty directory in the terminal and run the following commands:
 > cd alto2txt
 > conda create -n py37alto python=3.7
 > conda activate py37alto
-> pip install -r requirements.txt
-> ./extract_publications_text.py -p single demo-files demo-output
 ```
-The resulting plain text files of the articles are in `alto2txt/demo-output/`.
+
+To install that checkout you can 
+```
+> pip install pyproject.toml
+```
+or you can simply install the latest release (but this may not be up to date with local changes)
+```
+> pip install alto2txt
+```
+regardless this should make the following command run
+```
+> alto2txt -p single demo-files demo-output
+```
+and the resulting plain text files of the articles will be in `alto2txt/demo-output/`.
 
 Read on for a more in-depth explanation.
 
@@ -32,7 +43,7 @@ It is recommended to use [Anaconda](https://docs.anaconda.com/anaconda/install/i
 
 #### Download the code directory
 
-If you are familiar with git, use the following command in a blank directory from your terminal:
+If you are familiar with `git`, use the following command in a blank directory from your terminal:
 
 ```
 git clone https://github.com/Living-with-machines/alto2txt.git
@@ -63,30 +74,30 @@ conda activate py37alto
 Install the required packages which are outlined in `requirements.txt`:
 
 ```
-pip install -r requirements.txt
+pip install pyproject.toml
 ```
-Follow the instructions to download and install the packages. You should now have all the required Python packages within your conda environment to run Alto2txt.
+Follow the instructions to download and install the packages. You should now have all the required Python packages within your conda environment to run `alto2txt`.
 
 
 
-## Run Alto2Txt
+## Run `alto2txt`
 
 Make sure you have navigated to the `alto2txt` directory in your terminal or Anaconda prompt. For this demo, we are using a single edition for a single publication. The output files will be created in `/demo-output` which you can check is currently empty.
 
 ```
-./extract_publications_text.py -p single demo-files demo-output
+alto2txt -p single demo-files demo-output
 ```
 
 Here we use the positional argument `-p` to determine which process type, in this case `single`. The script can be run on many publications and years by default, but in this case we only have one publication. [Click here](/#process-types) to read more about different process types.
 
-The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory (which should be empty). Once alto2txt has run, the output directory structure will mirror the input directory.
+The next argument `demo-files` provides the input directory, and then `demo-output` provides the output directory (which should be empty). Once `alto2txt` has run, the output directory structure will mirror the input directory.
 
 We will now look in more detail at the ALTO/METS input files and output plain text files.
 
 
 ## Input ALTO/METS files
 
-We ran alto2txt on the ALTO/METS files within a subdirectory called `demo-files`. These come from a newspaper published on the 17th of February, 1824. The directory tree structure is important, and will be mirrored in the output.
+We ran `alto2txt` on the ALTO/METS files within a subdirectory called `demo-files`. These come from a newspaper published on the 17th of February, 1824. The directory tree structure is important, and will be mirrored in the output.
 
 ```
 alto2txt/
@@ -119,7 +130,7 @@ There are four files with the file name ending in `_000x.xml`. These alto files 
                 <String ID = "word000001" ... CONTENT = "hello" ... />
 ```
 
-Alto2txt will extract all these individual words and create a text file for each article.
+`alto2txt` will extract all these individual words and create a text file for each article.
 
 #### METS File Contents
 
@@ -136,7 +147,7 @@ Here is a short example, which defines **Article 01** as the first paragraph on 
     </mets:smLinkGrp>
 </mets:structLink>
 ```
-Alto2txt will produce a `.txt` file for every Article (and other content, for example Advert) defined in this mets file.
+`alto2txt` will produce a `.txt` file for every Article (and other content, for example Advert) defined in this mets file.
 
 
 ## Output Files
@@ -163,31 +174,31 @@ A total of 26 articles are extracted from the alto files, and one advert. Each p
 
 ## Further Examples
 
-Running these steps for your own files works in the same way. Your source and/or output directory does not need to be within `/alto2txt/` as long as you put the full path name into the command arguments.
+Running these steps for your own files works in the same way. Your source and/or output directory as long as you put the path name into the command arguments.
 
 
 #### Run on a single publication, multiple years, multiple editions
 
 ```
-./extract_publications_text.py -p single input-directory output-directory
+alto2txt -p single input-directory output-directory
 ```
 
 
 #### Run on multiple publications, multiple years, multiple editions
 
 ```
-./extract_publications_text.py input-directory output-directory
+alto2txt input-directory output-directory
 ```
 
 #### Extract every 100th edition from every publication
 
 ```
-./extract_publications_text.py input-directory output-directory -d 100
+alto2txt input-directory output-directory -d 100
 ```
 Where `-d` determines the downsample value.
 
 #### Extract every 100th edition from one publication
 
 ```
-./extract_publications_text.py -p single input-directory output-directory -d 100
+alto2txt -p single input-directory output-directory -d 100
 ```

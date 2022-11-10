@@ -1,24 +1,24 @@
-# Alto2txt: Extract plain text from digitised newspapers
+# `alto2txt`: Extract plain text from digitised newspapers
 
 *Version extract_text 0.3.0*
 
-Alto2txt converts XML publications to plaintext articles with minimal metadata.
+`alto2txt` converts `XML` publications to plaintext articles with minimal metadata.
 ALTO and METS is the current industry standard for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects.
-One text file is output per article, each complemented by one XML metadata file.
+One text file is output per article, each complemented by one `XML` metadata file.
 
-**XML compatibility: METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN, or UKP format**
+**`XML` compatibility: METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN, or UKP format**
 
 ## Usage
 
-
+> *Note*: the formatting below is altered for readability
 ```
-extract_publications_text.py [-h [HELP]]
-                             [-d [DOWNSAMPLE]]
-                             [-p [PROCESS_TYPE]]
-                             [-l [LOG_FILE]]
-                             [-n [NUM_CORES]]
-                             xml_in_dir txt_out_dir
-
+usage: alto2txt [-h]
+                [-p [PROCESS_TYPE]]
+                [-l [LOG_FILE]]
+                [-d [DOWNSAMPLE]]
+                [-n [NUM_CORES]]
+                xml_in_dir txt_out_dir
+                                    
 Converts XML publications to plaintext articles
 
 positional arguments:
@@ -26,27 +26,29 @@ positional arguments:
   txt_out_dir           Output directory for plaintext articles
 
 optional arguments:
-  -h, --help            Show this help message and exit
-  -d, --downsample      Downsample, process every [integer] nth edition.  Default 1
-  -l, --log-file        Log file. Default out.log
-  -p, --process-type    Process type.
-                        One of: single,serial,multi,spark
-                        Default: multi
-  -n, --num-cores       Number of cores (Spark only). Default 1
+  -h, --help            show this help message and exit
+  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
+                        Process type. One of: single,serial,multi,spark Default: multi
+  -l [LOG_FILE], --log-file [LOG_FILE]
+                        Log file. Default out.log
+  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                        Downsample. Default 1
+  -n [NUM_CORES], --num-cores [NUM_CORES]
+                        Number of cores (Spark only). Default 1")
 ```
 To read about downsampling, logs, and using spark see [Advanced Information](advanced.md).
 
 
 ## Quick Install
 
-If you are comfortable with the command line, git, and already have Python & Anaconda installed, you can install Alto2txt by navigating to an empty directory in the terminal and run the following commands:
+If you are comfortable with the command line, git, and already have Python & Anaconda installed, you can install `alto2txt` by navigating to an empty directory in the terminal and run the following commands:
 
 ```
 > git clone https://github.com/Living-with-machines/alto2txt.git
 > cd alto2txt
 > conda create -n py37alto python=3.7
 > conda activate py37alto
-> pip install -r requirements.txt
+> pip install pyproject.toml
 ```
 
 [Click here](/Demo.md) for more in-depth installation instructions using demo files.
@@ -78,13 +80,13 @@ xml_in_dir/
 Assuming `xml_in_dir` follows this structure, run alto2txt with the following in the terminal:
 
 ```bash
-./extract_publications_text.py ~/xml_in_dir ~/txt_out_dir
+alto2txt xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition:
 
 ```bash
-./extract_publications_text.py ~/xml_in_dir ~/txt_out_dir -d 100
+alto2txt xml_in_dir txt_out_dir -d 100
 ```
 
 
@@ -92,7 +94,7 @@ To downsample and only process every 100th edition:
 
 [A demo for processing a single publication is available here.](Demo.md)
 
-If `-p|--process-type single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
+If `-p|--process-type single` is provided then `xml_in_dir` is expected to hold `XML` for a single publication, in the following structure:
 
 ```
 xml_in_dir/
@@ -102,16 +104,16 @@ xml_in_dir/
   └── year
 ```
 
-Assuming `xml_in_dir` follows this structure, run alto2txt with the following in the terminal:
+Assuming `xml_in_dir` follows this structure, run `alto2txt` with the following in the terminal in the folder `xml_in_dir` is stored in:
 
 ```bash
-./extract_publications_text.py -p single ~/xml_in_dir ~/txt_out_dir
+alto2txt -p single xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition from the one publication:
 
 ```bash
-./extract_publications_text.py -p single ~/xml_in_dir ~/txt_out_dir -d 100
+alto2txt -p single xml_in_dir txt_out_dir -d 100
 ```
 
 ## Plain Text Files Output
@@ -125,7 +127,7 @@ Quality assurance is performed to check for:
 
 * Unexpected directories.
 * Unexpected files.
-* Malformed XML.
+* Malformed `XML`.
 * Empty files.
 * Files that otherwise do not expose content.
 
@@ -135,5 +137,4 @@ Quality assurance is performed to check for:
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-
-> Last updated 2022-06-30
+> Last updated 2022-11-10
