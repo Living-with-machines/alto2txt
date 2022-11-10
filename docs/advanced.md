@@ -108,7 +108,7 @@ Documentation exists as a static site hosted on Github Pages. Instructions can b
 1. Edit the `.md` files within `docs/`.
 2. Add any extra pages to `_sidebar.md` or reorder them
 
-To preview locally from the terminal: 
+To preview locally from the terminal:
 
 1. Navigate to your `alto2txt` repository checkout
 2. Run `cd docs && python -m http.server 3000`

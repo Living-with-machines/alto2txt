@@ -18,7 +18,7 @@ usage: alto2txt [-h]
                 [-d [DOWNSAMPLE]]
                 [-n [NUM_CORES]]
                 xml_in_dir txt_out_dir
-                                    
+
 Converts XML publications to plaintext articles
 
 positional arguments:

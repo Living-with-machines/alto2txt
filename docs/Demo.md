@@ -19,7 +19,7 @@ Navigate to an empty directory in the terminal and run the following commands:
 > conda activate py37alto
 ```
 
-To install that checkout you can 
+To install that checkout you can
 ```
 > pip install pyproject.toml
 ```

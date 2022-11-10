@@ -65,7 +65,7 @@ usage: alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [
                 xml_in_dir txt_out_dir
 alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
          xml_in_dir txt_out_dir
-                                    
+
 Converts XML publications to plaintext articles
 
 positional arguments:
