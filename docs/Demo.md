@@ -18,12 +18,11 @@ Navigate to an empty directory in the terminal and run the following commands:
 > conda create -n py37alto python=3.7
 > conda activate py37alto
 ```
-
 To install that checkout you can
 ```
 > pip install pyproject.toml
 ```
-or you can simply install the latest release (but this may not be up to date with local changes)
+You can simply install the latest release (but this may not be up to date with the GitHub `main` branch)
 ```
 > pip install alto2txt
 ```
@@ -71,7 +70,7 @@ conda activate py37alto
 #### Install Required Packages
 
 
-Install the required packages which are outlined in `requirements.txt`:
+Install the required packages which are outlined in `pyproject.toml`:
 
 ```
 pip install pyproject.toml
