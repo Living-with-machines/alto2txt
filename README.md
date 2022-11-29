@@ -58,8 +58,6 @@ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 
 Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one `XML` metadata file.
 
-
-
 ```
 usage: alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
                 xml_in_dir txt_out_dir

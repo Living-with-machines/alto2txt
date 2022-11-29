@@ -56,10 +56,10 @@ When running via Spark ensure that:
 
 For example, the code can be run on Urika requesting as follows...
 
-Install the code as a package:
+Install the code as a package with the `spark` option:
 
 ```bash
-python setup.py install
+poetry install --with spark
 ```
 
 Run `spark-submit`:
@@ -83,22 +83,16 @@ this would request 144/36 = 4 workers/executors and nodes.
 
 To update the version number:
 
-1. Edit `README.md`:
+1. Edit `pyproject.toml`:
 
 ```
-# Extract plain text from newspapers (extract_text 0.3.0)
+version = "0.3.4"
 ```
 
-2. Edit `setup.py`:
+2. Edit `extract_text/xslts/extract_text_common.xslt`:
 
 ```
-version="0.3.0",
-```
-
-3. Exit `extract_text/xslts/extract_text_common.xslt`:
-
-```
-<xsl:param name="version">0.3.0</xsl:param>
+<xsl:param name="version">0.3.4</xsl:param>
 ```
 
 ## Documentation with Docsify
