@@ -1,23 +1,23 @@
 # Further Information
 
 
-## XSTL: XML Stylesheet
+## `XSTL`: `XML` Stylesheet
 
-XSLT (eXtensible Stylesheet Language Transformations) is the recommended style sheet language for XML.
-The following XSLT files need to be in an `extract_text.xslts` module:
+`XSLT` (eXtensible Stylesheet Language Transformations) is the recommended style sheet language for `XML`.
+The following `XSLT` files need to be in an `extract_text.xslts` module:
 
 * `extract_text_mets18.xslt`: METS 1.8 XSL file.
 * `extract_text_mets13.xslt`: METS 1.3 XSL file.
-* `extract_text_bln.xslt`: BLN XSL file.
-* `extract_text_ukp.xslt`: UKP XSL file.
+* `extract_text_bln.xslt`: BLN `XSL` file.
+* `extract_text_ukp.xslt`: UKP `XSL` file.
 
 
-## XML metadata
+## `XML` metadata
 
-Metadata about `extract_text.py` itself is inserted into the XML metadata files.
+Metadata about `extract_text.py` itself is inserted into the `XML` metadata files.
 The current values, including version, are defined in `extract_text_common.xslt`.
 
-The following metadata for the following dataset types are **not** output, due to it not being present in the XML for those datasets:
+The following metadata for the following dataset types are **not** output, due to it not being present in the `XML` for those datasets:
 
 METS1.3/ALTO1.4:
 
@@ -43,7 +43,7 @@ By default, logs are put in `out.log`.
 To specify an alternative location for logs, use the `-l` flag e.g.
 
 ```bash
-./extract_publications_text.py -l mylog.txt ~/xml_in_dir ~/txt_out_dir -d 100 2> err.log
+alto2txt -l mylog.txt ~/xml_in_dir ~/txt_out_dir -d 100 2> err.log
 ```
 
 ## Using Spark
@@ -108,13 +108,8 @@ Documentation exists as a static site hosted on Github Pages. Instructions can b
 1. Edit the `.md` files within `docs/`.
 2. Add any extra pages to `_sidebar.md` or reorder them
 
-To preview locally from the terminal can install `docsify-cli` globally to make sure the preview updates as you edit files.
+To preview locally from the terminal:
 
-1. Install `npm i docsify-cli -g`
-2. Navigate to your repo `cd alto2text`
-3. Run `docsify serve docs`
-4. Use browser to navigate to `http://localhost:3000`
-
-To preview using Python without any installation:
-
-`cd docs && python -m http.server 3000`
+1. Navigate to your `alto2txt` repository checkout
+2. Run `cd docs && python -m http.server 3000`
+3. Use browser to navigate to `http://localhost:3000`
