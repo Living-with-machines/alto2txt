@@ -1,6 +1,8 @@
-# Extract plain text from newspapers (alto2txt 0.3.1)
+# `alto2txt`: Extract plain text from newspapers
 
-Converts XML (in METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN or UKP format) publications to plaintext articles and generates minimal metadata.
+![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt)
+
+Converts `XML` (in `METS` `1.8`/`ALTO` `1.4`, `METS` `1.3`/`ALTO` `1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
 
 
 ## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
@@ -14,7 +16,7 @@ We recommend installation via Anaconda:
 
 * Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
 
-* Create a new environment for alto2txt
+* Create a new environment for `alto2txt`
 
 ```bash
 conda create -n py37alto python=3.7
@@ -26,7 +28,7 @@ conda create -n py37alto python=3.7
 conda activate py37alto
 ```
 
-* Install alto2txt itself
+* Install `alto2txt` itself
 
 Install `alto2txt` using pip:
 
@@ -34,11 +36,11 @@ Install `alto2txt` using pip:
 pip install alto2txt
 ```
 
-(For now it is still necessary to install using pip. In due course we plan to make alto2txt available through a conda channel, meaning that it can be installed directly using conda commands.)
+(For now it is still necessary to install using `pip`. In due course we plan to make `alto2txt` available through a `conda` channel, meaning that it can be installed directly using `conda` commands.)
 
 ### Installation using pip, outside an Anaconda environment
 
-Note, the use of `alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
+Note, the use of ``alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
 
 ```bash
 pip install alto2txt
@@ -54,16 +56,15 @@ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 
 ## Usage
 
-Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one XML metadata file.
+Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one `XML` metadata file.
 
 
 
 ```
-extract_publications_text.py [-h] [-d [DOWNSAMPLE]]
-                                    [-p [PROCESS_TYPE]]
-                                    [-l [LOG_FILE]]
-                                    [-n [NUM_CORES]]
-                                    xml_in_dir txt_out_dir
+usage: alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
+                xml_in_dir txt_out_dir
+alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
+         xml_in_dir txt_out_dir
 
 Converts XML publications to plaintext articles
 
@@ -73,19 +74,17 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                        Downsample. Default 1
+  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
+                        Process type. One of: single,serial,multi,spark Default: multi
   -l [LOG_FILE], --log-file [LOG_FILE]
                         Log file. Default out.log
-  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
-                        Process type.
-                        One of: single,serial,multi,spark
-                        Default: multi
+  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
+                        Downsample. Default 1
   -n [NUM_CORES], --num-cores [NUM_CORES]
                         Number of cores (Spark only). Default 1")
 ```
 
-`xml_in_dir` is expected to hold XML for multiple publications, in the following structure:
+`xml_in_dir` is expected to hold `XML` for multiple publications, in the following structure:
 
 ```
 xml_in_dir
@@ -97,7 +96,7 @@ xml_in_dir
 |-- publication
 ```
 
-However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold XML for a single publication, in the following structure:
+However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold `XML` for a single publication, in the following structure:
 
 ```
 xml_in_dir
@@ -118,27 +117,27 @@ xml_in_dir
 
 `DOWNSAMPLE` must be a positive integer, default 1.
 
-The following XSLT files need to be in an `extract_text.xslts` module:
+The following `XSLT` files need to be in an `extract_text.xslts` module:
 
-* `extract_text_mets18.xslt`: METS 1.8 XSL file.
-* `extract_text_mets13.xslt`: METS 1.3 XSL file.
-* `extract_text_bln.xslt`: BLN XSL file.
-* `extract_text_ukp.xslt`: UKP XSL file.
+* `extract_text_mets18.xslt`: `METS 1.8 XSL` file.
+* `extract_text_mets13.xslt`: `METS 1.3 XSL` file.
+* `extract_text_bln.xslt`: `BLN XSL` file.
+* `extract_text_ukp.xslt`: `UKP XSL` file.
 
 ## Process publications
 
-Assume `~/BNA` exists and matches the structure above.
+Assume folder `BNA` exists and matches the structure above.
 
 Extract text from every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt
+alto2txt BNA txt
 ```
 
 Extract text from every 100th issue of every publication:
 
 ```bash
-./extract_publications_text.py ~/BNA txt -d 100
+alto2txt BNA txt -d 100
 ```
 
 ## Process a single publication
@@ -146,13 +145,13 @@ Extract text from every 100th issue of every publication:
 Extract text from every issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt
+alto2txt -p single BNA/0000151 txt
 ```
 
 Extract text from every 100th issue of a single publication:
 
 ```bash
-./extract_publications_text.py -p single ~/BNA/0000151 txt -d 100
+alto2txt -p single BNA/0000151 txt -d 100
 ```
 
 ## Configure logging
@@ -162,7 +161,7 @@ By default, logs are put in `out.log`.
 To specify an alternative location for logs, use the `-l` flag e.g.
 
 ```bash
-./extract_publications_text.py -l mylog.txt ~/BNA txt -d 100 2> err.log
+alto2txt -l mylog.txt BNA txt -d 100 2> err.log
 ```
 
 ## Process publications via Spark

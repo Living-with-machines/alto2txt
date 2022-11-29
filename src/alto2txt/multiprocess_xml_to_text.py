@@ -6,13 +6,12 @@ metadata using multiprocessing.
 
 import logging
 import multiprocessing
-from multiprocessing import Pool
 import os
 import os.path
+from multiprocessing import Pool
 
+from alto2txt import xml, xml_to_text
 from alto2txt.logging_utils import configure_logging
-from alto2txt import xml
-from alto2txt import xml_to_text
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
