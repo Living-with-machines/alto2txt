@@ -39,6 +39,7 @@ Usage:
                             Downsample. Default 1
       -n [NUM_CORES], --num-cores [NUM_CORES]
                             Number of cores (Spark only). Default 1")
+      -t, --test-output     Verify output txt files
 
 xml_in_dir is expected to hold XML for multiple publications, in the
 following structure:
@@ -80,9 +81,39 @@ The following XSLT files need to be in an extract_text.xslts module:
 * extract_text_ukp.xslt: UKP XSL file.
 """
 
-from argparse import ArgumentParser
+from argparse import ArgumentParser, BooleanOptionalAction
+from os import PathLike
+from pathlib import Path
+from subprocess import CompletedProcess, run
+from typing import Final
 
 from alto2txt import xml_to_text_entry
+
+VERIFY_SCRIPT_PATH: Final[PathLike | str] = "alto2txt-verify.sh"
+VERIFY_SCRIPT_TEMP_PATH: Final[Path] = Path(Path(VERIFY_SCRIPT_PATH).stem)
+VERIFY_TEMP_INPUT_PATH: Final[PathLike] = VERIFY_SCRIPT_TEMP_PATH / "input"
+VERIFY_TEMP_OUTPUT_PATH: Final[PathLike] = VERIFY_SCRIPT_TEMP_PATH / "output"
+
+
+class ScriptPathError(Exception):
+    ...
+
+
+def verify_output(
+    input_dir: PathLike,
+    output_dir: PathLike,
+    script_path: PathLike | str = VERIFY_SCRIPT_PATH,
+) -> CompletedProcess:
+    """Run script_path to verify the output_dir paths match the input_dir paths.
+
+    Note:
+        * This assumes the script_path is in the root directory of the package
+    """
+    try:
+        assert Path(script_path).is_file()
+    except AssertionError:
+        raise ScriptPathError(f"{script_path} is not a script file")
+    return run(["bash", script_path, input_dir, output_dir])
 
 
 def main():
@@ -132,6 +163,12 @@ def main():
         default=1,
         help="Number of cores (Spark only). Default 1",
     )
+    parser.add_argument(
+        "-t",
+        "--test-output",
+        action=BooleanOptionalAction,
+        help="Verify output txt files",
+    )
     args = parser.parse_args()
     xml_in_dir = args.xml_in_dir
     txt_out_dir = args.txt_out_dir
@@ -142,6 +179,8 @@ def main():
     xml_to_text_entry.xml_publications_to_text(
         xml_in_dir, txt_out_dir, process_type, log_file, num_cores, downsample
     )
+    if args.test_output:
+        verify_output(xml_in_dir, txt_out_dir)
 
 
 if __name__ == "__main__":
