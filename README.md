@@ -1,4 +1,4 @@
-# `alto2txt`: Extract plain text from newspapers
+# `alto2txt`: Extract plain text from digitised newspapers
 
 ![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615)
 
