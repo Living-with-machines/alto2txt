@@ -26,7 +26,7 @@ pytest = "^7.2.0"
 icecream = "^2.1.2"
 pre-commit = "^2.20.0"
 coverage = {extras = ["toml"], version = "^6.4.2"}
-pytest-cov = "^3.0.0"
+pytest-cov = "^4.0.0"
 
 [tool.poetry.group.dev.dependencies]
 
