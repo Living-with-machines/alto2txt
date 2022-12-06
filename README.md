@@ -1,14 +1,14 @@
-# `alto2txt`: Extract plain text from newspapers
+# `alto2txt`: Extract plain text from newspaper OCR scans
 
 ![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615)
 
+`alto2txt` converts `XML` `ALTO`/`METS` Optical Character Recognition (OCR) scans into plaintext files with minimal metadata.
 
+`ALTO` and `METS` are current industry standards for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. One text file is output per article, each complemented by one `XML` metadata file. `alto2txt` converts `XML` (in `METS` `1.8`/`ALTO` `1.4`, `METS` `1.3`/`ALTO` `1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
 
-Converts `XML` (in `METS` `1.8`/`ALTO` `1.4`, `METS` `1.3`/`ALTO` `1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
-
+[`METS` (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in `XML`. [`ALTO` (Analyzed Layout and Text Objects)](https://www.loc.gov/standards/alto/) is an [`XML` schema](https://en.wikipedia.org/wiki/XML_schema) for technical metadata describing the layout and content of text resources such as book or newspaper pages. `ALTO` is often used in combination with `METS` but can also be used independently. Details of the `ALTO` schema are avilable at https://github.com/altoxml/schema.
 
 ## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
-
 
 ## Installation
 

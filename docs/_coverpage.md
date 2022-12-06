@@ -1,7 +1,7 @@
 
-# Alto2Txt
+# alto2txt
 
-> Extract text from digitised newspapers articles
+> Extract plain text from newspaper OCR scans
 
 <img height="25" hspace="0"/>
 
@@ -11,4 +11,4 @@
 <img src="partners.png" height="100" />
 
 
-<small> Made with docsify </small>
+<small>Made with <a href="https://docsify.js.org" style="all: inherit;text-decoration: underline;">docsify</a>.</small>

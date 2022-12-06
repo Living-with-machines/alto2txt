@@ -1,4 +1,4 @@
 
-* [Alto2Txt](/)
+* [`alto2txt`](/)
 * [Demo](Demo.md)
 * [Advanced](advanced.md)
