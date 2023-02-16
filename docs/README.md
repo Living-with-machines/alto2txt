@@ -3,8 +3,10 @@
 *Version extract_text 0.3.0*
 
 `alto2txt` converts `XML` publications to plaintext articles with minimal metadata.
-ALTO and METS is the current industry standard for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects.
+ALTO and METS are the current industry standards for newspaper digitisation used by hundreds of modern, large-scale newspaper digitisation projects.
 One text file is output per article, each complemented by one `XML` metadata file.
+
+[METS (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in XML. [ALTO (Analyzed Layout and Text Objects](http://www.loc.gov/standards/alto/) is an 'XML Schema that details technical metadata for describing the layout and content of physical text resources, such as pages of a book or a newspaper'. ALTO extends METS but can also be used independently.
 
 **`XML` compatibility: METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN, or UKP format**
 

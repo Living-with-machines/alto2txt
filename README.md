@@ -30,16 +30,6 @@ conda create -n py37alto python=3.7
 conda activate py37alto
 ```
 
-* Install `alto2txt` itself
-
-Install `alto2txt` using pip:
-
-```bash
-pip install alto2txt
-```
-
-(For now it is still necessary to install using `pip`. In due course we plan to make `alto2txt` available through a `conda` channel, meaning that it can be installed directly using `conda` commands.)
-
 ### Installation using pip, outside an Anaconda environment
 
 Note, the use of ``alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
@@ -198,4 +188,4 @@ This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Leg
 
 This software has been developed as part of the [Living with Machines](https://livingwithmachines.ac.uk) project.
 
-This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London.
+This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London. Grant reference: AH/S01179X/1
