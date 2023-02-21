@@ -8,7 +8,7 @@
 
   <!-- Metadata about plaintext extraction code -->
   <xsl:param name="name">alto2txt</xsl:param>
-  <xsl:param name="version">0.3.1</xsl:param>
+  <xsl:param name="version">0.3.4</xsl:param>
   <xsl:param name="source">https://github.com/Living-with-machines/alto2txt</xsl:param>
   <xsl:variable name="lwm_tool">
     <lwm_tool>
