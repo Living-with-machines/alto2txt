@@ -37,12 +37,22 @@ $ conda activate py37alto
 $ pip install pyproject.toml
 ```
 
+### Installation of a test release
+
+If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This command will install `v0.3.1-alpha.20`:
+
+```bash
+$ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
+```
+
 [Click here](/Demo.md) for more in-depth installation instructions using demo files.
 
 ## Usage
 
 > *Note*: the formatting below is altered for readability
 ```
+$ alto2txt -h
+
 usage: alto2txt [-h]
                 [-p [PROCESS_TYPE]]
                 [-l [LOG_FILE]]
@@ -71,7 +81,6 @@ To read about downsampling, logs, and using spark see [Advanced Information](adv
 
 ## Process Types
 
-
 `-p | -process-type` can be one of:
 
 * `single`: Process single publication.
@@ -79,7 +88,7 @@ To read about downsampling, logs, and using spark see [Advanced Information](adv
 * `multi`: Process publications using multiprocessing (default).
 * `spark`: Process publications using Spark.
 
-## Process Multiple Publications
+### Process Multiple Publications
 
 For default settings, (`multi`) multiprocessing assumes the following directory structure for multiple publications in `xml_in_dir`:
 
@@ -105,7 +114,7 @@ $ alto2txt xml_in_dir txt_out_dir -d 100
 ```
 
 
-## Process Single Publication
+### Process Single Publication
 
 [A demo for processing a single publication is available here.](Demo.md)
 
@@ -131,59 +140,11 @@ To downsample and only process every 100th edition from the one publication:
 $ alto2txt -p single xml_in_dir txt_out_dir -d 100
 ```
 
-## Plain Text Files Output
+### Plain Text Files Output
 
 `txt_out_dir` is created with an analogous structure to `xml_in_dir`.
 One `.txt` file and one metadata `.xml` file are produced per article.
 
-
-`txt_out_dir` is created with an analogous structure to `xml_in_dir`.
-
-`PROCESS_TYPE` can be one of:
-
-* `single`: Process single publication.
-* `serial`: Process publications serially.
-* `multi`: Process publications using multiprocessing (default).
-* `spark`: Process publications using Spark.
-
-`DOWNSAMPLE` must be a positive integer, default 1.
-
-The following `XSLT` files need to be in an `extract_text.xslts` module:
-
-* `extract_text_mets18.xslt`: `METS 1.8 XSL` file.
-* `extract_text_mets13.xslt`: `METS 1.3 XSL` file.
-* `extract_text_bln.xslt`: `BLN XSL` file.
-* `extract_text_ukp.xslt`: `UKP XSL` file.
-
-## Process publications
-
-Assume folder `BNA` exists and matches the structure above.
-
-Extract text from every publication:
-
-```console
-$ alto2txt BNA txt
-```
-
-Extract text from every 100th issue of every publication:
-
-```console
-$ alto2txt BNA txt -d 100
-```
-
-## Process a single publication
-
-Extract text from every issue of a single publication:
-
-```console
-$ alto2txt -p single BNA/0000151 txt
-```
-
-Extract text from every 100th issue of a single publication:
-
-```console
-$ alto2txt -p single BNA/0000151 txt -d 100
-```
 
 ## Configure logging
 
@@ -192,7 +153,7 @@ By default, logs are put in `out.log`.
 To specify an alternative location for logs, use the `-l` flag e.g.
 
 ```console
-$ alto2txt -l mylog.txt BNA txt -d 100 2> err.log
+$ alto2txt -l mylog.txt single xml_in_dir txt_out_dir -d 100 2> err.log
 ```
 
 ## Process publications via Spark
@@ -231,6 +192,5 @@ This software has been developed as part of the [Living with Machines](https://l
 
 This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London. Grant reference: AH/S01179X/1
 
-[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
-
 > Last updated 2023-02-21
+[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
