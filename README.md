@@ -37,6 +37,14 @@ conda activate py37alto
 pip install pyproject.toml
 ```
 
+### Installation of a test release
+
+If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This command will install `v0.3.1-alpha.20`:
+
+```bash
+pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
+```
+
 [Click here](/Demo.md) for more in-depth installation instructions using demo files.
 
 ## Usage
@@ -152,111 +160,6 @@ Quality assurance is performed to check for:
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
-
-> Last updated 2023-02-21
-# `alto2txt`: Extract plain text from newspaper OCR scans
-
-![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615)
-
-`alto2txt` converts `XML` `ALTO`/`METS` Optical Character Recognition (OCR) scans into plaintext files with minimal metadata.
-
-`ALTO` and `METS` are current industry standards for newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. One text file is output per article, each complemented by one `XML` metadata file. `alto2txt` converts `XML` (in `METS` `1.8`/`ALTO` `1.4`, `METS` `1.3`/`ALTO` `1.4`, `BLN` or `UKP` format) publications to plaintext articles and generates minimal metadata.
-
-[`METS` (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in `XML`. [`ALTO` (Analyzed Layout and Text Objects)](https://www.loc.gov/standards/alto/) is an [`XML` schema](https://en.wikipedia.org/wiki/XML_schema) for technical metadata describing the layout and content of text resources such as book or newspaper pages. `ALTO` is often used in combination with `METS` but can also be used independently. Details of the `ALTO` schema are avilable at https://github.com/altoxml/schema.
-
-## [Full documentation and demo instructions.](https://living-with-machines.github.io/alto2txt/#/)
-
-## Installation
-
-### Installation using an Anaconda environment
-
-We recommend installation via Anaconda:
-
-* Refer to the [Anaconda website and follow the instructions](https://docs.anaconda.com/anaconda/install/).
-
-* Create a new environment for `alto2txt`
-
-```bash
-conda create -n py37alto python=3.7
-```
-
-* Activate the environment:
-
-```bash
-conda activate py37alto
-```
-
-### Installation using pip, outside an Anaconda environment
-
-Note, the use of ``alto2txt`` outside a conda environment has not been as extensively tested as within a conda environment. Whilst we believe that this should work, please use with caution.
-
-```bash
-pip install alto2txt
-```
-
-### Installation of a test release
-
-If you need (or want) to install a test release of `alto2txt` you will likely be advised of the specific version number to install. This examaple command will install `v0.3.1-alpha.20`:
-
-```bash
-pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
-```
-
-## Usage
-
-Downsampling can be used to convert only every Nth issue of each newspaper. One text file is output per article, each complemented by one `XML` metadata file.
-
-
-
-```
-usage: alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
-                xml_in_dir txt_out_dir
-alto2txt [-h] [-p [PROCESS_TYPE]] [-l [LOG_FILE]] [-d [DOWNSAMPLE]] [-n [NUM_CORES]]
-         xml_in_dir txt_out_dir
-
-Converts XML publications to plaintext articles
-
-positional arguments:
-  xml_in_dir            Input directory with XML publications
-  txt_out_dir           Output directory for plaintext articles
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -p [PROCESS_TYPE], --process-type [PROCESS_TYPE]
-                        Process type. One of: single,serial,multi,spark Default: multi
-  -l [LOG_FILE], --log-file [LOG_FILE]
-                        Log file. Default out.log
-  -d [DOWNSAMPLE], --downsample [DOWNSAMPLE]
-                        Downsample. Default 1
-  -n [NUM_CORES], --num-cores [NUM_CORES]
-                        Number of cores (Spark only). Default 1")
-```
-
-`xml_in_dir` is expected to hold `XML` for multiple publications, in the following structure:
-
-```
-xml_in_dir
-|-- publication
-|   |-- year
-|   |   |-- issue
-|   |   |   |-- xml_content
-|   |-- year
-|-- publication
-```
-
-However, if `-p|--process-type single` is provided then `xml_in_dir` is expected to hold `XML` for a single publication, in the following structure:
-
-```
-xml_in_dir
-|-- year
-|   |-- issue
-|   |   |-- xml_content
-|-- year
-```
-
-`txt_out_dir` is created with an analogous structure to `xml_in_dir`.
-
 `PROCESS_TYPE` can be one of:
 
 * `single`: Process single publication.
@@ -348,3 +251,6 @@ This data is "CC0 1.0 Universal Public Domain" - [No Copyright - Other Known Leg
 This software has been developed as part of the [Living with Machines](https://livingwithmachines.ac.uk) project.
 
 This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London. Grant reference: AH/S01179X/1
+
+> Last updated 2023-02-21
+[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
