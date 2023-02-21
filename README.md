@@ -21,20 +21,20 @@
 
 As of verion `v0.3.4` `alto2txt` is available on [`PyPI`](https://pypi.org/project/alto2txt/) and can be installed via
 
-```bash
-pip install alto2txt
+```console
+$ pip install alto2txt
 ```
 
 ### `conda`
 
 If you are comfortable with the command line, git, and already have Python & Anaconda installed, you can install `alto2txt` by navigating to an empty directory in the terminal and run the following commands:
 
-```bash
-git clone https://github.com/Living-with-machines/alto2txt.git
-cd alto2txt
-conda create -n py37alto python=3.7
-conda activate py37alto
-pip install pyproject.toml
+```console
+$ git clone https://github.com/Living-with-machines/alto2txt.git
+$ cd alto2txt
+$ conda create -n py37alto python=3.7
+$ conda activate py37alto
+$ pip install pyproject.toml
 ```
 
 [Click here](/Demo.md) for more in-depth installation instructions using demo files.
@@ -94,14 +94,14 @@ xml_in_dir/
 ```
 Assuming `xml_in_dir` follows this structure, run alto2txt with the following in the terminal:
 
-```bash
-alto2txt xml_in_dir txt_out_dir
+```console
+$ alto2txt xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition:
 
-```bash
-alto2txt xml_in_dir txt_out_dir -d 100
+```console
+$ alto2txt xml_in_dir txt_out_dir -d 100
 ```
 
 
@@ -121,14 +121,14 @@ xml_in_dir/
 
 Assuming `xml_in_dir` follows this structure, run `alto2txt` with the following in the terminal in the folder `xml_in_dir` is stored in:
 
-```bash
-alto2txt -p single xml_in_dir txt_out_dir
+```console
+$ alto2txt -p single xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition from the one publication:
 
-```bash
-alto2txt -p single xml_in_dir txt_out_dir -d 100
+```console
+$ alto2txt -p single xml_in_dir txt_out_dir -d 100
 ```
 
 ## Plain Text Files Output
@@ -161,28 +161,28 @@ Assume folder `BNA` exists and matches the structure above.
 
 Extract text from every publication:
 
-```bash
-alto2txt BNA txt
+```console
+$ alto2txt BNA txt
 ```
 
 Extract text from every 100th issue of every publication:
 
-```bash
-alto2txt BNA txt -d 100
+```console
+$ alto2txt BNA txt -d 100
 ```
 
 ## Process a single publication
 
 Extract text from every issue of a single publication:
 
-```bash
-alto2txt -p single BNA/0000151 txt
+```console
+$ alto2txt -p single BNA/0000151 txt
 ```
 
 Extract text from every 100th issue of a single publication:
 
-```bash
-alto2txt -p single BNA/0000151 txt -d 100
+```console
+$ alto2txt -p single BNA/0000151 txt -d 100
 ```
 
 ## Configure logging
@@ -191,8 +191,8 @@ By default, logs are put in `out.log`.
 
 To specify an alternative location for logs, use the `-l` flag e.g.
 
-```bash
-alto2txt -l mylog.txt BNA txt -d 100 2> err.log
+```console
+$ alto2txt -l mylog.txt BNA txt -d 100 2> err.log
 ```
 
 ## Process publications via Spark
