@@ -1,4 +1,4 @@
-# `alto2txt`: Extract plain text from newspaper OCR scans
+# `alto2txt`: Extract plain text from digital newspaper OCR scans
 
 *Version extract_text 0.3.4*
 
