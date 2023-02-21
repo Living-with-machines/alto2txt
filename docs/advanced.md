@@ -107,9 +107,11 @@ Documentation exists as a static site hosted on Github Pages. Instructions can b
 
 1. Edit the `.md` files within `docs/`.
 2. Add any extra pages to `_sidebar.md` or reorder them
+3. Make sure you have a local `python` install, and we recommend via [`poetry`](https://python-poetry.org/docs/#installation)
 
 To preview locally from the terminal:
 
 1. Navigate to your `alto2txt` repository checkout
-2. Run `cd docs && python -m http.server 3000`
-3. Use browser to navigate to `http://localhost:3000`
+2. `poetry shell` to activate your local `python` environment
+3. `cd docs && python -m http.server 3000` to render the `docs`
+4. Navigate to `http://localhost:3000` in a browser to render changes as you make them

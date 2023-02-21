@@ -2,13 +2,16 @@
 
 *Version extract_text 0.3.4*
 
+![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615)
+
 `alto2txt` converts `XML` `ALTO`/`METS` Optical Character Recognition (OCR) scans into plaintext files with minimal metadata.
 
-`ALTO` and `METS` are industry standards maintained by the US Library of Congress targeting newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. One text file is output per article, each complemented by one `XML` metadata file[^CHNC].
+**`XML` compatibility: `METS 1.8`/`ALTO 1.4`, `METS 1.3`/`ALTO 1.4`, `BLN`, or `UKP` format**
+
+`ALTO` and `METS` are industry standards maintained by the [US Library of Congress](https://www.loc.gov/librarians/standards) targeting newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. One text file is output per article, each complemented by one `XML` metadata file[^1] .
 
 [`METS` (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in `XML`. [`ALTO` (Analyzed Layout and Text Objects)](https://www.loc.gov/standards/alto/) is an [`XML schema`](https://en.wikipedia.org/wiki/XML_schema) for technical metadata describing the layout and content of text resources such as book or newspaper pages. `ALTO` is often used in combination with `METS` but can also be used independently. Details of the `ALTO` schema are avilable at https://github.com/altoxml/schema.
 
-**`XML` compatibility: `METS 1.8`/`ALTO 1.4`, `METS 1.3`/`ALTO 1.4`, `BLN`, or `UKP` format**
 
 ## Quick Install
 
@@ -147,6 +150,6 @@ Quality assurance is performed to check for:
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-[^CHNC]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
+[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
 
-> Last updated 2022-12-06
+> Last updated 2023-02-21
