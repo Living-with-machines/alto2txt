@@ -5,9 +5,9 @@ Contributions via [GitHub issues](https://github.com/Living-with-machines/alto2t
 ## Local checkout
 
 1. Install [`poetry`](https://python-poetry.org/docs/#installation)
-2. `git checkout https://github.com/Living-with-machines/alto2txt.git`
-3. `cd alto2txt`
-4. `poetry install`
+2. `$ git checkout https://github.com/Living-with-machines/alto2txt.git`
+3. `$ cd alto2txt`
+4. `$ poetry install`
 
 ## [`pre-commit`](https://pre-commit.com/) local changes
 
@@ -17,14 +17,66 @@ Whatever contribution you make, be it code or documentation, your changes will n
 2. Add `pre-commit` [git commit hooks](https://pre-commit.com/#3-install-the-git-hook-scripts)
 
 ```console
-cd path/to/alto2txt
-pre-commit install
+$ cd path/to/alto2txt
+$ pre-commit install
 ```
 
 3. Make your local commit and see if any `pre-commit` changes are added. See a [best practice guide](https://www.conventionalcommits.org/en/v1.0.0/#examples) for writing these:
 
 ```console
-git commit -m "docs: correct spelling of CHANGELOG"
+$ git commit -m "docs: add docs/contributing.py and enable in sidebar"
+```
+
+This *should* then run `pre-commit` checks that print messages like this to the screen (this is simplifed as an example):
+
+```console
+[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Initializing environment for https://github.com/psf/black.
+[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Installing environment for https://github.com/pre-commit/mirrors-autopep8.
+[INFO] Installing environment for https://github.com/pre-commit/mirrors-mypy.
+[INFO] This may take a few minutes...
+trim trailing whitespace.................................................Failed
+- hook id: trailing-whitespace
+- exit code: 1
+- files were modified by this hook
+
+Fixing docs/contributing.md
+
+fix end of files.........................................................Passed
+Check Yaml...............................................................Passed
+Fix End of Files.........................................................Passed
+check yaml...............................................................Passed
+check xml............................................(no files to check)Skipped
+check for added large files..............................................Passed
+poetry-check.........................................(no files to check)Skipped
+poetry-lock..............................................................Passed
+black................................................(no files to check)Skipped
+autopep8.............................................(no files to check)Skipped
+mypy.................................................(no files to check)Skipped
+isort................................................(no files to check)Skipped
+pycln................................................(no files to check)Skipped
+```
+
+You should then be able to add the fixed file and then add for another commit.
+
+```console
+$ git add docs/contributing.md
+$ git commit -m "docs: add docs/contributing.py and enable in sidebar"
+
+trim trailing whitespace.................................................Passed
+fix end of files.........................................................Passed
+check yaml...............................................................Passed
+check xml............................................(no files to check)Skipped
+check for added large files..............................................Passed
+poetry-check.........................................(no files to check)Skipped
+poetry-lock..............................................................Passed
+black................................................(no files to check)Skipped
+autopep8.............................................(no files to check)Skipped
+mypy.................................................(no files to check)Skipped
+isort................................................(no files to check)Skipped
+pycln................................................(no files to check)Skipped
+[INFO] Restored changes from
 ```
 
 ## Running tests
@@ -32,13 +84,13 @@ git commit -m "docs: correct spelling of CHANGELOG"
 Once you've made any changes, please add a test within the `tests/` folder to ensure your contribution produces correct results and to ease our process of reviewing and understanding changes. Once you've written a test, you should be able to run it via
 
 ```console
-poetry run pytest
+$ poetry run pytest
 ```
 
 if you need to debug your changes and/or tests, you can add
 
 ```console
-poetry run pytest --pdb
+$ poetry run pytest --pdb
 ```
 
 to drop into [`ipython`](https://ipython.readthedocs.io/en/stable/) to and interactively debug tests and code. You should also see an example of [test coverage](https://coverage.readthedocs.io/en/7.1.0/) which indicates how much of the code is tested.
@@ -81,8 +133,8 @@ Documentation is a collection of [`markdown`](https://www.markdownguide.org/basi
 To preview locally from the terminal:
 
 1. Navigate to your `alto2txt` repository (and follow installation instructions above if needed).
-3. `poetry shell` to activate your local `python` environment
-4. `cd docs && python -m http.server 3000` to render the `docs`
+3. `$ poetry shell` to activate your local `python` environment
+4. `$ cd docs && python -m http.server 3000` to render the `docs`
 5. Navigate to `http://localhost:3000` in a browser to render changes as you make them
 
 ## Update Version
