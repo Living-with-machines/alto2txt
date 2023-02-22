@@ -38,5 +38,6 @@ jobs:
         poetry run flake8 src --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        # pip install pytest
         poetry run pytest
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
