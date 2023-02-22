@@ -3,5 +3,5 @@ def test_import():
         import alto2txt  # noqa F401
 
         assert True
-    except (ImportError):
+    except ImportError:
         assert False
