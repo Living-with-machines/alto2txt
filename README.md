@@ -1,8 +1,8 @@
 # `alto2txt`: Extract plain text from digital newspaper OCR scans
 
-*Version extract_text 0.3.4*
-
 ![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+
+*Version extract_text 0.3.4*
 
 `alto2txt` converts `XML` `ALTO`/`METS` Optical Character Recognition (OCR) scans into plaintext files with minimal metadata.
 
