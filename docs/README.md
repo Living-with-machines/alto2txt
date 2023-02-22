@@ -81,14 +81,14 @@ xml_in_dir/
 ```
 Assuming `xml_in_dir` follows this structure, run alto2txt with the following in the terminal:
 
-```bash
-alto2txt xml_in_dir txt_out_dir
+```console
+$ alto2txt xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition:
 
-```bash
-alto2txt xml_in_dir txt_out_dir -d 100
+```console
+$ alto2txt xml_in_dir txt_out_dir -d 100
 ```
 
 
@@ -108,14 +108,14 @@ xml_in_dir/
 
 Assuming `xml_in_dir` follows this structure, run `alto2txt` with the following in the terminal in the folder `xml_in_dir` is stored in:
 
-```bash
-alto2txt -p single xml_in_dir txt_out_dir
+```console
+$ alto2txt -p single xml_in_dir txt_out_dir
 ```
 
 To downsample and only process every 100th edition from the one publication:
 
-```bash
-alto2txt -p single xml_in_dir txt_out_dir -d 100
+```console
+$ alto2txt -p single xml_in_dir txt_out_dir -d 100
 ```
 
 ## Plain Text Files Output
@@ -139,4 +139,4 @@ Quality assurance is performed to check for:
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-> Last updated 2022-11-10
+> Last updated 2023-02-22

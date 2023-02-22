@@ -12,24 +12,30 @@ If you are comfortable with the command line, git, and already have Python & Ana
 
 Navigate to an empty directory in the terminal and run the following commands:
 
+```console
+$ git clone https://github.com/Living-with-machines/alto2txt.git
+$ cd alto2txt
+$ conda create -n py37alto python=3.7
+$ conda activate py37alto
 ```
-> git clone https://github.com/Living-with-machines/alto2txt.git
-> cd alto2txt
-> conda create -n py37alto python=3.7
-> conda activate py37alto
-```
+
 To install that checkout you can
-```
-> pip install pyproject.toml
+
+```console
+$ pip install pyproject.toml
 ```
 You can simply install the latest release (but this may not be up to date with the GitHub `main` branch)
+
+```console
+$ pip install alto2txt
 ```
-> pip install alto2txt
-```
+
 regardless this should make the following command run
+
+```console
+$ alto2txt -p single demo-files demo-output
 ```
-> alto2txt -p single demo-files demo-output
-```
+
 and the resulting plain text files of the articles will be in `alto2txt/demo-output/`.
 
 Read on for a more in-depth explanation.
@@ -59,21 +65,21 @@ cd ~myFolder/alto2txt
 
 Create a new [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) with Python 3.7.  The environment name can be whatever you choose, here it is `py37alto`:
 
-```
-conda create -n py37alto python=3.7
+```console
+$ conda create -n py37alto python=3.7
 ```
 After creating the environment, activate it:
 
-```
-conda activate py37alto
+```console
+$ conda activate py37alto
 ```
 #### Install Required Packages
 
 
 Install the required packages which are outlined in `pyproject.toml`:
 
-```
-pip install pyproject.toml
+```console
+$ pip install pyproject.toml
 ```
 Follow the instructions to download and install the packages. You should now have all the required Python packages within your conda environment to run `alto2txt`.
 
@@ -84,7 +90,7 @@ Follow the instructions to download and install the packages. You should now hav
 Make sure you have navigated to the `alto2txt` directory in your terminal or Anaconda prompt. For this demo, we are using a single edition for a single publication. The output files will be created in `/demo-output` which you can check is currently empty.
 
 ```
-alto2txt -p single demo-files demo-output
+$ alto2txt -p single demo-files demo-output
 ```
 
 Here we use the positional argument `-p` to determine which process type, in this case `single`. The script can be run on many publications and years by default, but in this case we only have one publication. [Click here](/#process-types) to read more about different process types.
@@ -178,26 +184,26 @@ Running these steps for your own files works in the same way. Your source and/or
 
 #### Run on a single publication, multiple years, multiple editions
 
-```
-alto2txt -p single input-directory output-directory
+```console
+$ alto2txt -p single input-directory output-directory
 ```
 
 
 #### Run on multiple publications, multiple years, multiple editions
 
-```
-alto2txt input-directory output-directory
+```console
+$ alto2txt input-directory output-directory
 ```
 
 #### Extract every 100th edition from every publication
 
-```
-alto2txt input-directory output-directory -d 100
+```console
+$ alto2txt input-directory output-directory -d 100
 ```
 Where `-d` determines the downsample value.
 
 #### Extract every 100th edition from one publication
 
-```
-alto2txt -p single input-directory output-directory -d 100
+```console
+$ alto2txt -p single input-directory output-directory -d 100
 ```
