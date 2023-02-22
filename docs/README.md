@@ -1,14 +1,42 @@
-# `alto2txt`: Extract plain text from digitised newspapers
+# `alto2txt`: Extract plain text from digital newspaper OCR scans
 
-*Version extract_text 0.3.0*
+*Version extract_text 0.3.4*
 
-`alto2txt` converts `XML` publications to plaintext articles with minimal metadata.
-ALTO and METS are the current industry standards for newspaper digitisation used by hundreds of modern, large-scale newspaper digitisation projects.
-One text file is output per article, each complemented by one `XML` metadata file.
+![GitHub](https://img.shields.io/github/license/Living-with-Machines/alto2txt) ![PyPI](https://img.shields.io/pypi/v/alto2txt) [![DOI](https://zenodo.org/badge/259340615.svg)](https://zenodo.org/badge/latestdoi/259340615) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
-[METS (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in XML. [ALTO (Analyzed Layout and Text Objects](http://www.loc.gov/standards/alto/) is an 'XML Schema that details technical metadata for describing the layout and content of physical text resources, such as pages of a book or a newspaper'. ALTO extends METS but can also be used independently.
 
-**`XML` compatibility: METS 1.8/ALTO 1.4, METS 1.3/ALTO 1.4, BLN, or UKP format**
+`alto2txt` converts `XML` `ALTO`/`METS` Optical Character Recognition (OCR) scans into plaintext files with minimal metadata.
+
+**`XML` compatibility: `METS 1.8`/`ALTO 1.4`, `METS 1.3`/`ALTO 1.4`, `BLN`, or `UKP` format**
+
+`ALTO` and `METS` are industry standards maintained by the [US Library of Congress](https://www.loc.gov/librarians/standards) targeting newspaper digitization used by hundreds of modern, large-scale newspaper digitization projects. One text file is output per article, each complemented by one `XML` metadata file[^1] .
+
+[`METS` (Metadata Encoding and Transmission Standard)](http://www.loc.gov/standards/mets/) is a standard for encoding descriptive, administrative, and structural metadata regarding objects within a digital library, expressed in `XML`. [`ALTO` (Analyzed Layout and Text Objects)](https://www.loc.gov/standards/alto/) is an [`XML schema`](https://en.wikipedia.org/wiki/XML_schema) for technical metadata describing the layout and content of text resources such as book or newspaper pages. `ALTO` is often used in combination with `METS` but can also be used independently. Details of the `ALTO` schema are avilable at https://github.com/altoxml/schema.
+
+
+## Quick Install
+
+### `pip`
+
+As of verion `v0.3.4` `alto2txt` is available on [`PyPI`](https://pypi.org/project/alto2txt/) and can be installed via
+
+```bash
+pip install alto2txt
+```
+
+### `conda`
+
+If you are comfortable with the command line, git, and already have Python & Anaconda installed, you can install `alto2txt` by navigating to an empty directory in the terminal and run the following commands:
+
+```bash
+git clone https://github.com/Living-with-machines/alto2txt.git
+cd alto2txt
+conda create -n py37alto python=3.7
+conda activate py37alto
+pip install pyproject.toml
+```
+
+[Click here](/Demo.md) for more in-depth installation instructions using demo files.
 
 ## Usage
 
@@ -39,22 +67,6 @@ optional arguments:
                         Number of cores (Spark only). Default 1")
 ```
 To read about downsampling, logs, and using spark see [Advanced Information](advanced.md).
-
-
-## Quick Install
-
-If you are comfortable with the command line, git, and already have Python & Anaconda installed, you can install `alto2txt` by navigating to an empty directory in the terminal and run the following commands:
-
-```
-> git clone https://github.com/Living-with-machines/alto2txt.git
-> cd alto2txt
-> conda create -n py37alto python=3.7
-> conda activate py37alto
-> pip install pyproject.toml
-```
-
-[Click here](/Demo.md) for more in-depth installation instructions using demo files.
-
 
 ## Process Types
 
@@ -135,8 +147,10 @@ Quality assurance is performed to check for:
 
 ## Future work
 
-* Export more metadata from ALTO, probably by parsing METS first.
+* Export more metadata from `ALTO`, probably by parsing `METS` first.
 * Check and ensure that articles that span multiple pages are pulled into a single article file.
 * Smarter handling of articles spanning multiple pages.
 
-> Last updated 2022-11-10
+[^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
+
+> Last updated 2023-02-21
