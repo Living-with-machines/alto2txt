@@ -45,7 +45,7 @@ If you need (or want) to install a test release of `alto2txt` you will likely be
 $ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 ```
 
-[Click here](/Demo.md) for more in-depth installation instructions using demo files.
+[Click here](https://living-with-machines.github.io/alto2txt/#Demo.md) for more in-depth installation instructions using demo files.
 
 ## Usage
 
@@ -77,7 +77,7 @@ optional arguments:
   -n [NUM_CORES], --num-cores [NUM_CORES]
                         Number of cores (Spark only). Default 1")
 ```
-To read about downsampling, logs, and using spark see [Advanced Information](advanced.md).
+To read about downsampling, logs, and using spark see [Advanced Information](https://living-with-machines.github.io/alto2txt/#/advanced).
 
 ## Process Types
 
@@ -116,7 +116,7 @@ $ alto2txt xml_in_dir txt_out_dir -d 100
 
 ### Process Single Publication
 
-[A demo for processing a single publication is available here.](Demo.md)
+[A demo for processing a single publication is available here.](https://living-with-machines.github.io/alto2txt/#/?id=process-single-publication)
 
 If `-p|--process-type single` is provided then `xml_in_dir` is expected to hold `XML` for a single publication, in the following structure:
 
@@ -158,8 +158,11 @@ $ alto2txt -l mylog.txt single xml_in_dir txt_out_dir -d 100 2> err.log
 
 ## Process publications via Spark
 
-[Information on running on spark.](spark_instructions.md)
+[Information on running on spark.](https://living-with-machines.github.io/alto2txt/#/advanced?id=using-spark)
 
+## Contributing
+
+Suggestions, code, tests, further documentation and features – especially to cover various OCR output formats – are needed and welcome. For details and examples see the [Contributing](https://living-with-machines.github.io/alto2txt/#/contributing) section.
 
 ## Future work
 
