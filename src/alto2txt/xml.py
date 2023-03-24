@@ -91,9 +91,11 @@ def load_xslts():
     :rtype: dict(str: lxml.etree.XSLT)
     """
     xsl_transforms = {}
+
     for xslt_name in [METS_18_XSLT, METS_13_XSLT, BLN_XSLT, UKP_XSLT]:
         xslt_file = get_path(xslts, xslt_name)
         xsl_transforms[xslt_name] = etree.XSLT(etree.parse(xslt_file))
+
     return xsl_transforms
 
 
@@ -110,6 +112,7 @@ def get_xml(filename):
         document_tree = None
         parser = etree.XMLParser()
         document_tree = etree.parse(f, parser)
+
     return document_tree
 
 
@@ -143,15 +146,19 @@ def get_xml_metadata(document_tree):
         # Convert schema_locations from "namespaceURI schemaURI ..."
         # to dictionary with namespaceURI:schemaURI
         uris = schema_locations.split(" ")
-        schema_locations = {uris[i]: uris[i + 1] for i in range(0, len(uris), 2)}
+        schema_locations = {
+            uris[i]: uris[i + 1] for i in range(0, len(uris), 2)
+        }
     else:
         schema_locations = {}
+
     metadata = {}
     metadata[XML_ROOT] = root_element_tag
     metadata[XML_DOCTYPE] = doctype
     metadata[XML_NS] = namespaces
     metadata[XML_NO_NS_SCHEMA_LOCATION] = no_ns_schema_location
     metadata[XML_SCHEMA_LOCATIONS] = schema_locations
+
     return metadata
 
 
