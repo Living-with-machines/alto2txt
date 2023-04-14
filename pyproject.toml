@@ -26,6 +26,7 @@ documentation = "https://living-with-machines.github.io/alto2txt/"
 [tool.poetry.dependencies]
 python = ">=3.7.0"
 lxml = "^4.7.1"
+pyspark = "^3.4.0"
 
 [tool.poetry.group.spark]
 optional = true
