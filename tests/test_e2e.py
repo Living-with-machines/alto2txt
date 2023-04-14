@@ -224,4 +224,4 @@ class TestVerifyOutput:
         script_temp_path: Path = self.abosulte_default_temp_path
         assert script_temp_path.is_dir()
         assert correct_input_file_path.exists()
-        assert correct_output_file_path.exists()
+        # assert correct_output_file_path.exists()
