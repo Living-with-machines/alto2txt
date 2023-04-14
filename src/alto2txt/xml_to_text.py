@@ -16,6 +16,51 @@ from alto2txt import xml
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
 
+# SUGGESTION: 
+# Alternative function to essentially take the place of issue_to_text()
+# but with the loop over METS files taking place in the calling function.
+def xml_to_text(mets_file_path, xml_in_dir, txt_out_dir, xslts):
+    # mets_file_path is the full path to a METS XML file
+    # xml_in_dir is the input directory command line argument
+    # txt_out_dir is the output directory command line argument
+    # xslts is the same argument passed to issue_to_text()
+
+    # The main work is to construct arguments to be passed to `xslt`
+
+    ## ROUGH PSEUDOCODE
+    document_tree = xml.get_xml(mets_file_path) # METS file content.
+    input_path = os.path.dirname(mets_file_path) # Parent directory of the METS file.
+    # input_path begins with /../../xml_in_dir, which we remove:
+    input_sub_path = # input_path up to & including the xml_in_dir subdirectory
+    input_filename = os.path.basename(mets_file_path) # 
+    issue_out_stub = input_filename - "_mets.xml"
+
+    metadata = xml.get_xml_metadata(document_tree)
+    # Kalle has a better version of this:
+    issue_out_dir = # METS file path with the last subdirectory in xml_in_dir replaced with txt_out_dir
+    if metadata[xml.XML_ROOT] == xml.METS_ROOT:
+        mets_match = re.findall(xml.RE_METS, input_filename)
+        issue_out_stub = mets_match[0][0]
+    else:
+        issue_out_stub = os.path.splitext(input_filename)[0]
+    issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
+
+    try:
+        xslt(
+            document_tree,
+            input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
+            input_sub_path=etree.XSLT.strparam(input_sub_path),
+            input_filename=etree.XSLT.strparam(input_filename),
+            output_document_stub=etree.XSLT.strparam(issue_out_stub),
+            output_path=etree.XSLT.strparam(issue_out_path),
+        )
+        summary["converted_ok"] += 1
+        logger.info("%s gave XSLT output", xml_file_path)
+    except Exception as e:
+        summary["converted_bad"] += 1
+        logger.error("%s failed to give XSLT output: %s", xml_file, str(e))
+        # continue
+
 
 def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     """
