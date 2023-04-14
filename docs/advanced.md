@@ -55,10 +55,10 @@ When running via Spark ensure that:
 
 For example, the code can be run on Urika requesting as follows...
 
-Install the code as a package:
+Install the code as a package with the `spark` option:
 
 ```console
-python setup.py install
+poetry install --with spark
 ```
 
 Run `spark-submit`:
@@ -76,3 +76,33 @@ For Urika, it is recommended that the value of 144 be used for
 `NUM_CORES`. This, with the number of cores per node, determines the
 number of workers/executors and nodes. As Urika has 36 cores per node,
 this would request 144/36 = 4 workers/executors and nodes.
+
+
+## Update Version
+
+To update the version number:
+
+1. Edit `pyproject.toml`:
+
+```
+version = "0.3.4"
+```
+
+2. Edit `extract_text/xslts/extract_text_common.xslt`:
+
+```
+<xsl:param name="version">0.3.4</xsl:param>
+```
+
+## Documentation with Docsify
+
+Documentation exists as a static site hosted on Github Pages. Instructions can be found here: https://docsify.js.org/
+
+1. Edit the `.md` files within `docs/`.
+2. Add any extra pages to `_sidebar.md` or reorder them
+
+To preview locally from the terminal:
+
+1. Navigate to your `alto2txt` repository checkout
+2. Run `cd docs && python -m http.server 3000`
+3. Use browser to navigate to `http://localhost:3000`

@@ -27,16 +27,21 @@ documentation = "https://living-with-machines.github.io/alto2txt/"
 python = ">=3.7.0"
 lxml = "^4.7.1"
 
-[tool.poetry.dev-dependencies]
-black = "^23.1"
+[tool.poetry.group.spark]
+optional = true
+
+[tool.poetry.group.spark.dependencies]
+pyspark = "^3.3.1"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "7.34.0"
+black = "^21.12b0"
 flake8 = "^5.0.4"
 pytest = "^7.2.1"
 icecream = "^2.1.2"
 pre-commit = "^2.21.0"
 coverage = {extras = ["toml"], version = "^7.1.0"}
 pytest-cov = "^4.0.0"
-
-[tool.poetry.group.dev.dependencies]
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]
@@ -55,6 +60,8 @@ relative_files = true
 addopts = """
 --cov=src/alto2txt
 --cov-report=term:skip-covered
+--pdbcls=IPython.terminal.debugger:TerminalPdb
+--doctest-modules
 """
 pythonpath = [
   "src"

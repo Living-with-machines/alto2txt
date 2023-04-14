@@ -105,3 +105,6 @@ dmypy.json
 
 # Ignore demo-output dir
 demo-output/
+
+# Ignore dir containing verification artifacts
+alto2txt-verify/
