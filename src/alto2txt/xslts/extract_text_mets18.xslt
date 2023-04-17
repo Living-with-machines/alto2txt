@@ -3,6 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:exsl="http://exslt.org/common"
   xmlns:math="http://exslt.org/math"
+  xmlns:set="http://exslt.org/sets"
   extension-element-prefixes="exsl"
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:mets="http://www.loc.gov/METS/"
@@ -58,6 +59,21 @@
         </xsl:variable>
 
         <xsl:variable name="item_page_areas" select="exsl:node-set($item_page_areas_rt)" />
+
+        <xsl:variable name="item_mets_order_rt">
+          <xsl:for-each select="key('smLocatorLink_href', $item_ID_hash)/../mets:smArcLink/@xlink:to">
+            <xsl:variable name="pagearea" select="key('smLocatorLink_label', .)/@xlink:href" />
+            <xsl:variable name="pagearea_unhash" select="substring($pagearea, 2)" />
+            <xsl:variable name="key_out" select="key('structMap', $pagearea_unhash)" />
+            <xsl:for-each select="$key_out[@TYPE='pagearea']|$key_out/mets:div[@TYPE='pagearea']">
+              <xsl:if test="mets:fptr/mets:area[@BETYPE='IDREF']">
+                <mets_order><xsl:value-of select="../@ORDER" /></mets_order>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:for-each>
+        </xsl:variable>
+
+        <xsl:variable name="item_mets_order" select="exsl:node-set($item_mets_order_rt)" />
 
         <exsl:document method="text" href="{$output_path}_{$item_ID}.txt">
           <xsl:choose>
@@ -127,6 +143,11 @@
                 <date><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$issue_DMDID]//mods:dateIssued" /></date>
                 <item>
                   <xsl:attribute name="id"><xsl:value-of select="$item_ID" /></xsl:attribute>
+                  <mets_orders>
+                    <xsl:for-each select="set:distinct($item_mets_order/mets_order)">
+                      <mets_order><xsl:value-of select="." /></mets_order>
+                    </xsl:for-each>
+                  </mets_orders>
                   <plain_text_file><xsl:value-of select="$output_document_stub" />_<xsl:value-of select="$item_ID" />.txt</plain_text_file>
                   <title><xsl:value-of select="/mets:mets/mets:dmdSec[@ID=$item_DMDID]//mods:title" /></title>
                   <item_type><xsl:value-of select="@TYPE" /></item_type>
