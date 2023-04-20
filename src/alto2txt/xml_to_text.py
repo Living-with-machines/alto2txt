@@ -365,7 +365,7 @@ def process_mets_files_in_directory(
     Process METS files in a specified input directory.
 
     ..
-        Note: This function replaces publications_to_text below.
+        Note: This function replaces publication_to_text above.
 
     :param input_dir: Path to the input directory containing METS files.
     :type input_dir: str, optional
