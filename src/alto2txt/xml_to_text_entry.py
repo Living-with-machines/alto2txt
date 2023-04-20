@@ -127,7 +127,7 @@ def xml_publications_to_text(
     configure_logging(log_file)
     if process_type == PROCESS_SINGLE:
         xslts = xml.load_xslts()
-        xml_to_text.publication_to_text(
+        xml_to_text.process_mets_files_in_directory(
             xml_in_dir, txt_out_dir, xslts, downsample
         )
     elif process_type == PROCESS_SERIAL:
