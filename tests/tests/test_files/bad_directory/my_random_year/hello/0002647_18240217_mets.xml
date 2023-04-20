@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mets="http://www.loc.gov/METS/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version18/mets.xsd info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd" xmlns:premis="info:lc/xmlns/premis-v2" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" TYPE="Newspaper">
+<mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mets="http://www.loc.gov/METS/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version18/mets.xsd info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd"
+	xmlns:premis="info:lc/xmlns/premis-v2"
+	xmlns:mods="http://www.loc.gov/mods/v3"
+	xmlns:xlink="http://www.w3.org/1999/xlink" TYPE="Newspaper">
 	<mets:metsHdr CREATEDATE="2019-08-09T07:25:35" LASTMODDATE="2019-08-09T07:25:35">
 		<mets:agent ROLE="CREATOR" TYPE="OTHER" OTHERTYPE="SOFTWARE">
 			<mets:name>CCS docWorks/METAe Version 7.0-1</mets:name>
@@ -73,36 +77,17 @@
 				<mets:file ID="img0001-master" ADMID="img0001-master-amd" MIMETYPE="image/jp2" CHECKSUM="f2113380208b6b35894fe9fd15614fb2c317c12f626419c1345bad11e246606c" CHECKSUMTYPE="SHA-256" SIZE="10933441">
 					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.jp2"/>
 				</mets:file>
-				<mets:file ID="img0002-master" ADMID="img0002-master-amd" MIMETYPE="image/jp2" CHECKSUM="5ecda8299c670d9bda1a5402b1b764b330c10f2353909197f50045ce7e8a1c4e" CHECKSUMTYPE="SHA-256" SIZE="10943176">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.jp2"/>
-				</mets:file>
-				<mets:file ID="img0003-master" ADMID="img0003-master-amd" MIMETYPE="image/jp2" CHECKSUM="1840950aed5c8391ce62411a37e9d9cadb1328f18996f3bfb3eb5068f2771d97" CHECKSUMTYPE="SHA-256" SIZE="10386828">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.jp2"/>
-				</mets:file>
-				<mets:file ID="img0004-master" ADMID="img0004-master-amd" MIMETYPE="image/jp2" CHECKSUM="8db8ff789dd960004fae76061889b18ca1b0551ac6e191acba25c4743f691e66" CHECKSUMTYPE="SHA-256" SIZE="10906151">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.jp2"/>
-				</mets:file>
 			</mets:fileGrp>
 			<mets:fileGrp USE="Fulltext">
 				<mets:file ID="img0001-alto" ADMID="img0001-alto-amd" MIMETYPE="text/xml" CHECKSUM="cb42a98bbe6437d273a9b9623d877876312186fc9e995282b49c6357ec322cf0" CHECKSUMTYPE="SHA-256" SIZE="1000193">
 					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0001.xml"/>
 				</mets:file>
-				<mets:file ID="img0002-alto" ADMID="img0002-alto-amd" MIMETYPE="text/xml" CHECKSUM="56638fb1f14b51a66288024e90621646d1d6c8dbac7d428c30343133098c6ee0" CHECKSUMTYPE="SHA-256" SIZE="1223915">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0002.xml"/>
-				</mets:file>
-				<mets:file ID="img0003-alto" ADMID="img0003-alto-amd" MIMETYPE="text/xml" CHECKSUM="a3014f3b1e8e79ce56840848a1c8c5d6fb9800bdccbe56fd85db402342d06f1a" CHECKSUMTYPE="SHA-256" SIZE="970348">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0003.xml"/>
-				</mets:file>
-				<mets:file ID="img0004-alto" ADMID="img0004-alto-amd" MIMETYPE="text/xml" CHECKSUM="944a2d0dc9c9da3e3fc842c3bf4e31f572a54abb7e11cd870d00c6e68f4370cb" CHECKSUMTYPE="SHA-256" SIZE="1076009">
-					<mets:FLocat LOCTYPE="URL" xlink:href="0002647_18240217_0004.xml"/>
-				</mets:file>
 			</mets:fileGrp>
 		</mets:fileGrp>
 		<mets:fileGrp USE="Discarded">
 			<mets:file ID="img0001-source" ADMID="img0001-source-amd" MIMETYPE="image/tiff" CHECKSUM="641990ea0fa61ad5dc68aecf6aff056d32dc342acfbadbc98971ba6beb943a3b" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
-			<mets:file ID="img0002-source" ADMID="img0002-source-amd" MIMETYPE="image/tiff" CHECKSUM="a7ab8f45393573617e87ac776301224854e47ae902399e0802f24f5aa1ade167" CHECKSUMTYPE="SHA-256" SIZE="40212871"/>
-			<mets:file ID="img0003-source" ADMID="img0003-source-amd" MIMETYPE="image/tiff" CHECKSUM="db7af7bff525c4735f384d6046a9c782dd4048a2cf9cdad028177bf25ecb792e" CHECKSUMTYPE="SHA-256" SIZE="39829895"/>
-			<mets:file ID="img0004-source" ADMID="img0004-source-amd" MIMETYPE="image/tiff" CHECKSUM="1794b65b0fcf61707c29ab668dbc05039f8aedd64926c518cc65636e3c2ffa60" CHECKSUMTYPE="SHA-256" SIZE="40021383"/>
+
+
 		</mets:fileGrp>
 	</mets:fileSec>
 	<mets:structMap LABEL="Logical Structure" TYPE="LOGICAL">
