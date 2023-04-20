@@ -42,8 +42,10 @@ UKP_NS = "http://tempuri.org/ncbpissue"
 """ UKP namespace """
 UKP_ROOT = etree.QName(UKP_NS, "UKP")
 """ UKP root element """
+MODS_NS = "http://www.loc.gov/mods/v3"
+""" MODS namespace"""
 
-LWM_NS = {"ukp": UKP_NS, "mets": METS_NS}
+LWM_NS = {"ukp": UKP_NS, "mets": METS_NS, "mods": MODS_NS}
 """ Namespaces of documents within Living with Machines datasets. """
 
 XML_ROOT = "root"

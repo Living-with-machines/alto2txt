@@ -9,7 +9,7 @@ import os
 import os.path
 import re
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import List, Union
 
 from lxml import etree
 
@@ -28,7 +28,6 @@ def xml_to_text(
     input_dir: str,
     output_dir: str,
     xslts: dict,
-    in_zip: Optional[str] = None,
 ) -> Union[bool, str]:
     """
     Transform an XML file to text using an XSLT transformation.
@@ -37,35 +36,18 @@ def xml_to_text(
     :type mets_path: str
     :param input_dir: The input directory containing the XML file.
     :type input_dir: str
-    :param output_dir : The output directory where the transformed file will be saved.
-    :type output_dir : str
-    :param xslts : A dictionary containing XSLT files.
-    :type xslts : dict
+    :param output_dir: The output directory where the transformed file will be saved.
+    :type output_dir: str
+    :param xslts: A dictionary containing XSLT files.
+    :type xslts: dict
     :return: True if transformation was successful, otherwise returns a string error message.
     :rtype: Union[bool, str]
     """
 
     # Get METS tree
-    #     def get_xml_from_string(string):
-    #         parser = etree.XMLParser()
-    #         document_tree = etree.parse(io.BytesIO(string))
-    #         return document_tree
-    #     if is_zipfile(input_dir):
-    #         zf = ZipFile(input_dir, 'r')
-
-    #         with zf.open(str(mets_path)) as xml_f:
-    #             contents = xml_f.read()
-    #             # contents = contents.decode("utf-8")
-    #             try:
-    #                 document_tree = get_xml_from_string(contents)
-    #             except etree.XMLSyntaxError:
-    #                 logger.warning(f"Problematic file {mets_path}: {e}")
-    #                 return XMLError(error=XMLError.XML_SYNTAX_ERROR, file=mets_path)
-    #     else:
     try:
         document_tree = xml.get_xml(mets_path)
     except etree.XMLSyntaxError:
-        logger.warning(f"Problematic file {mets_path}: {e}")
         return XMLError(error=XMLError.XML_SYNTAX_ERROR, file=mets_path)
 
     # Get metadata from METS tree
@@ -80,29 +62,94 @@ def xml_to_text(
     if input_sub_path.startswith("/"):
         input_sub_path = input_sub_path.lstrip("/")
 
-    # Create output path
-    output_path = str(
-        Path(output_dir).resolve() / input_sub_path / output_document_stub
-    )
-
     # Set up xslt for correct XML schema
+    is_bln, is_ukp, is_mets18, is_mets13 = False, False, False, False
     if metadata[xml.XML_ROOT] == xml.BLN_ROOT:
+        is_bln = True
         xslt = xslts[xml.BLN_XSLT]
     elif metadata[xml.XML_ROOT] == xml.UKP_ROOT:
+        is_ukp = True
         xslt = xslts[xml.UKP_XSLT]
     elif metadata[xml.XML_ROOT] == xml.METS_ROOT:
         mets_uri = metadata[xml.XML_SCHEMA_LOCATIONS][xml.METS_NS]
         if mets_uri == xml.METS_18_URI:
+            is_mets18 = True
             xslt = xslts[xml.METS_18_XSLT]
         elif mets_uri == xml.METS_13_URI:
+            is_mets13 = True
             xslt = xslts[xml.METS_13_XSLT]
         else:
-            logger.warning("Unknown METS schema {mets_path}: {mets_uri}")
             return XMLError(
                 error=XMLError.UNKNOWN_SCHEMA, file=mets_path, schema=mets_uri
             )
     else:
         return XMLError(error=XMLError.UNKNOWN_ROOT, file=mets_path)
+
+    if is_mets18:
+        # Find dates in XML
+        dates = xml.query_xml(
+            document_tree,
+            "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateIssued",
+        )
+        if not len(dates) == 1:
+            if len(dates) == 0:
+                return XMLError(error=XMLError.NO_DATES, file=mets_path)
+            else:
+                return XMLError(error=XMLError.TOO_MANY_DATES, file=mets_path)
+        date = dates[0].text
+        if not date:
+            return XMLError(error=XMLError.NO_DATE_TEXT, file=mets_path)
+        date = date.split("-")
+        if not len(date) == 3:
+            return XMLError(error=XMLError.DATE_MALFORMED, file=mets_path)
+        year, month, day = date
+
+        # Find identifier in XML
+        identifiers = xml.query_xml(
+            document_tree,
+            "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier",
+        )
+        if not len(identifiers) == 1:
+            if len(identifiers) == 0:
+                return XMLError(error=XMLError.NO_IDENTIFIERS, file=mets_path)
+            else:
+                return XMLError(
+                    error=XMLError.TOO_MANY_IDENTIFIERS, file=mets_path
+                )
+
+        identifier = identifiers[0].text
+        if not identifier:
+            return XMLError(error=XMLError.NO_IDENTIFIER_TEXT, file=mets_path)
+    elif is_mets13:
+        # TODO: Add functionality for METS 1.3
+        return XMLError(
+            error=XMLError.UNSUPPORTED_SCHEMA, file=mets_path, schema=mets_uri
+        )
+    elif is_bln:
+        # TODO: Add functionality for BLN format
+        return XMLError(
+            error=XMLError.UNSUPPORTED_SCHEMA, file=mets_path, schema=mets_uri
+        )
+    elif is_ukp:
+        # TODO: Add functionality for UKP format
+        return XMLError(
+            error=XMLError.UNSUPPORTED_SCHEMA, file=mets_path, schema=mets_uri
+        )
+    else:
+        return XMLError(
+            error=XMLError.UNSUPPORTED_SCHEMA, file=mets_path, schema=mets_uri
+        )
+
+    # Make output_dir an absolute Path object
+    output_dir = Path(output_dir).resolve()
+
+    # Create (strongly opinionated) output path
+    output_document_stub = f"{identifier}_{year}_{month}{day}"
+    output_path = (
+        output_dir / identifier / year / f"{month}{day}" / output_document_stub
+    )
+
+    input_sub_path = f"{year}/{month}{day}"
 
     # Set up XSLT parameters
     xslt_params = {
@@ -114,10 +161,11 @@ def xml_to_text(
         "output_path": output_path,
     }
 
-    # Ensure correct XSLT parameter types
-    xslt_params = {
-        x: etree.XSLT.strparam(str(y)) for x, y in xslt_params.items()
-    }
+    # Ensure correct XSLT parameter types (string)
+    xslt_params = {x: str(y) for x, y in xslt_params.items()}
+
+    # Ensure correct XSLT parameter types (etree.XSLT.strparam)
+    xslt_params = {x: etree.XSLT.strparam(y) for x, y in xslt_params.items()}
 
     # Ensure output path exists
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
@@ -127,7 +175,6 @@ def xml_to_text(
         xslt(document_tree, **xslt_params)
         logger.info(f"{mets_path} gave XSLT output")
     except Exception as e:
-        logger.error(f"{mets_path} failed to give XSLT output: {e}")
         return XMLError(error=XMLError.CONVERTED_BAD, file=mets_path)
 
     return True
