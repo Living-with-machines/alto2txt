@@ -9,6 +9,7 @@ class XMLError:
     def __init__(self, error=None, file=None, schema=None):
         self.file = file
         self.schema = schema
+        self.error = error
 
     def write(self):
         if self.file and self.schema:
