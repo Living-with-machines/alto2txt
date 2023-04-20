@@ -10,8 +10,8 @@ import os
 import os.path
 from multiprocessing import Pool
 
-from alto2txt import xml, xml_to_text
-from alto2txt.logging_utils import configure_logging
+from . import xml, xml_to_text
+from .logging_utils import configure_logging
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -51,7 +51,9 @@ def publication_to_text(
     )
 
 
-def publications_to_text(publications_dir, txt_out_dir, log_file, downsample=1):
+def publications_to_text(
+    publications_dir, txt_out_dir, log_file, downsample=1
+):
     """
     Converts XML publications to plaintext articles and generates
     minimal metadata.
@@ -109,7 +111,13 @@ def publications_to_text(publications_dir, txt_out_dir, log_file, downsample=1):
     for publication in os.listdir(publications_dir):
         pool.apply_async(
             publication_to_text,
-            args=(publications_dir, publication, txt_out_dir, log_file, downsample),
+            args=(
+                publications_dir,
+                publication,
+                txt_out_dir,
+                log_file,
+                downsample,
+            ),
         )
     pool.close()
     pool.join()

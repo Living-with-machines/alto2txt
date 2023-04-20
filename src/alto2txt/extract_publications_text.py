@@ -82,7 +82,7 @@ The following XSLT files need to be in an extract_text.xslts module:
 
 from argparse import ArgumentParser
 
-from alto2txt import xml_to_text_entry
+from . import xml_to_text_entry
 
 
 def main():
@@ -96,8 +96,12 @@ def main():
     parser = ArgumentParser(
         description="Converts XML publications to plaintext articles"
     )
-    parser.add_argument("xml_in_dir", help="Input directory with XML publications")
-    parser.add_argument("txt_out_dir", help="Output directory for plaintext articles")
+    parser.add_argument(
+        "xml_in_dir", help="Input directory with XML publications"
+    )
+    parser.add_argument(
+        "txt_out_dir", help="Output directory for plaintext articles"
+    )
     parser.add_argument(
         "-p",
         "--process-type",

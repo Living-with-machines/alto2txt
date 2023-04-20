@@ -8,58 +8,129 @@ import logging
 import os
 import os.path
 import re
+from pathlib import Path
+from typing import List, Optional, Union
 
 from lxml import etree
 
-from alto2txt import xml
+from . import xml
+from .errors import XMLError
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
 
-# SUGGESTION: 
+
+# SUGGESTION:
 # Alternative function to essentially take the place of issue_to_text()
 # but with the loop over METS files taking place in the calling function.
-def xml_to_text(mets_file_path, xml_in_dir, txt_out_dir, xslts):
-    # mets_file_path is the full path to a METS XML file
-    # xml_in_dir is the input directory command line argument
-    # txt_out_dir is the output directory command line argument
-    # xslts is the same argument passed to issue_to_text()
+def xml_to_text(
+    mets_path: str,
+    input_dir: str,
+    output_dir: str,
+    xslts: dict,
+    in_zip: Optional[str] = None,
+) -> Union[bool, str]:
+    """
+    Transform an XML file to text using an XSLT transformation.
 
-    # The main work is to construct arguments to be passed to `xslt`
+    :param mets_path: The path to the XML file to be transformed.
+    :type mets_path: str
+    :param input_dir: The input directory containing the XML file.
+    :type input_dir: str
+    :param output_dir : The output directory where the transformed file will be saved.
+    :type output_dir : str
+    :param xslts : A dictionary containing XSLT files.
+    :type xslts : dict
+    :return: True if transformation was successful, otherwise returns a string error message.
+    :rtype: Union[bool, str]
+    """
 
-    ## ROUGH PSEUDOCODE
-    document_tree = xml.get_xml(mets_file_path) # METS file content.
-    input_path = os.path.dirname(mets_file_path) # Parent directory of the METS file.
-    # input_path begins with /../../xml_in_dir, which we remove:
-    input_sub_path = # input_path up to & including the xml_in_dir subdirectory
-    input_filename = os.path.basename(mets_file_path) # 
-    issue_out_stub = input_filename - "_mets.xml"
+    # Get METS tree
+    #     def get_xml_from_string(string):
+    #         parser = etree.XMLParser()
+    #         document_tree = etree.parse(io.BytesIO(string))
+    #         return document_tree
+    #     if is_zipfile(input_dir):
+    #         zf = ZipFile(input_dir, 'r')
 
-    metadata = xml.get_xml_metadata(document_tree)
-    # Kalle has a better version of this:
-    issue_out_dir = # METS file path with the last subdirectory in xml_in_dir replaced with txt_out_dir
-    if metadata[xml.XML_ROOT] == xml.METS_ROOT:
-        mets_match = re.findall(xml.RE_METS, input_filename)
-        issue_out_stub = mets_match[0][0]
-    else:
-        issue_out_stub = os.path.splitext(input_filename)[0]
-    issue_out_path = os.path.join(issue_out_dir, issue_out_stub)
-
+    #         with zf.open(str(mets_path)) as xml_f:
+    #             contents = xml_f.read()
+    #             # contents = contents.decode("utf-8")
+    #             try:
+    #                 document_tree = get_xml_from_string(contents)
+    #             except etree.XMLSyntaxError:
+    #                 logger.warning(f"Problematic file {mets_path}: {e}")
+    #                 return XMLError(error=XMLError.XML_SYNTAX_ERROR, file=mets_path)
+    #     else:
     try:
-        xslt(
-            document_tree,
-            input_path=etree.XSLT.strparam(os.path.abspath(issue_dir)),
-            input_sub_path=etree.XSLT.strparam(input_sub_path),
-            input_filename=etree.XSLT.strparam(input_filename),
-            output_document_stub=etree.XSLT.strparam(issue_out_stub),
-            output_path=etree.XSLT.strparam(issue_out_path),
-        )
-        summary["converted_ok"] += 1
-        logger.info("%s gave XSLT output", xml_file_path)
+        document_tree = xml.get_xml(mets_path)
+    except etree.XMLSyntaxError:
+        logger.warning(f"Problematic file {mets_path}: {e}")
+        return XMLError(error=XMLError.XML_SYNTAX_ERROR, file=mets_path)
+
+    # Get metadata from METS tree
+    metadata = xml.get_xml_metadata(document_tree)
+
+    # Set up variables passed to XSLT
+    input_filename = mets_path.name
+    input_path = mets_path.parent.resolve()
+    input_sub_path = str(mets_path.parent).replace(input_dir, "")
+    output_document_stub = str(input_filename).replace("_mets.xml", "")
+
+    if input_sub_path.startswith("/"):
+        input_sub_path = input_sub_path.lstrip("/")
+
+    # Create output path
+    output_path = str(
+        Path(output_dir).resolve() / input_sub_path / output_document_stub
+    )
+
+    # Set up xslt for correct XML schema
+    if metadata[xml.XML_ROOT] == xml.BLN_ROOT:
+        xslt = xslts[xml.BLN_XSLT]
+    elif metadata[xml.XML_ROOT] == xml.UKP_ROOT:
+        xslt = xslts[xml.UKP_XSLT]
+    elif metadata[xml.XML_ROOT] == xml.METS_ROOT:
+        mets_uri = metadata[xml.XML_SCHEMA_LOCATIONS][xml.METS_NS]
+        if mets_uri == xml.METS_18_URI:
+            xslt = xslts[xml.METS_18_XSLT]
+        elif mets_uri == xml.METS_13_URI:
+            xslt = xslts[xml.METS_13_XSLT]
+        else:
+            logger.warning("Unknown METS schema {mets_path}: {mets_uri}")
+            return XMLError(
+                error=XMLError.UNKNOWN_SCHEMA, file=mets_path, schema=mets_uri
+            )
+    else:
+        return XMLError(error=XMLError.UNKNOWN_ROOT, file=mets_path)
+
+    # Set up XSLT parameters
+    xslt_params = {
+        "input_dir": input_dir,
+        "input_path": input_path,
+        "input_sub_path": input_sub_path,
+        "input_filename": input_filename,
+        "output_document_stub": output_document_stub,
+        "output_path": output_path,
+    }
+
+    # Ensure correct XSLT parameter types
+    xslt_params = {
+        x: etree.XSLT.strparam(str(y)) for x, y in xslt_params.items()
+    }
+
+    # Ensure output path exists
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+
+    # Run XSLT
+    try:
+        xslt(document_tree, **xslt_params)
+        logger.info(f"{mets_path} gave XSLT output")
     except Exception as e:
-        summary["converted_bad"] += 1
-        logger.error("%s failed to give XSLT output: %s", xml_file, str(e))
-        # continue
+        logger.error(f"{mets_path} failed to give XSLT output: {e}")
+        return XMLError(error=XMLError.CONVERTED_BAD, file=mets_path)
+
+    return True
 
 
 def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
@@ -98,7 +169,9 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
     ), "{} exists and is not a file".format(issue_out_dir)
     if not os.path.exists(issue_out_dir):
         os.makedirs(issue_out_dir)
-    assert os.path.exists(issue_out_dir), "Create {} failed".format(issue_out_dir)
+    assert os.path.exists(issue_out_dir), "Create {} failed".format(
+        issue_out_dir
+    )
     for xml_file in os.listdir(issue_dir):
         xml_file_path = os.path.join(issue_dir, xml_file)
         if os.path.isdir(xml_file_path):
@@ -137,7 +210,9 @@ def issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts):
                 xslt = xslts[xml.METS_13_XSLT]
             else:
                 # Unknown METS.
-                logger.warning("Unknown METS schema %s: %s", xml_file, mets_uri)
+                logger.warning(
+                    "Unknown METS schema %s: %s", xml_file, mets_uri
+                )
                 summary["skipped_mets_unknown"] += 1
                 continue
         else:
@@ -220,13 +295,112 @@ def publication_to_text(publication_dir, txt_out_dir, xslts, downsample=1):
         for issue in os.listdir(year_dir):
             issue_dir = os.path.join(year_dir, issue)
             if not os.path.isdir(issue_dir):
-                logger.warning("Unexpected file: %s", os.path.join(year, issue))
+                logger.warning(
+                    "Unexpected file: %s", os.path.join(year, issue)
+                )
                 continue
             # Only process every Nth issue (when using downsample).
             issue_counter += 1
             if (issue_counter % downsample) != 0:
                 continue
-            issue_to_text(publication, year, issue, issue_dir, txt_out_dir, xslts)
+            issue_to_text(
+                publication, year, issue, issue_dir, txt_out_dir, xslts
+            )
+
+
+def process_mets_files_in_directory(
+    input_dir: str,
+    output_dir: str,
+    xslts: dict,
+    downsample: int = 1,
+) -> dict:
+    """
+    Process METS files in a specified input directory.
+
+    ..
+        Note: This function replaces publications_to_text below.
+
+    :param input_dir: Path to the input directory containing METS files.
+    :type input_dir: str, optional
+    :param output_dir: Path to the output directory for the processed files.
+    :type output_dir: str, optional
+    :param downsample: Amount to downsample the number of files processed, by default 1
+    :type downsample: int, optional
+    :param xslts: A dictionary containing XSLT files.
+    :type xslts: dict
+    :return: A dictionary containing a report of successful files, and any errors that
+        occurred.
+    :rtype: dict
+    """
+
+    def setup_summary() -> dict:
+        """Private function that sets up a dictionary for reporting"""
+        summary = {error: 0 for error in XMLError.errors}
+        summary["num_files"] = 0
+        return summary
+
+    def get_mets_files(input_dir: str, downsample: int) -> List[str]:
+        """
+        Private function that gets a list of METS XML files in the given directory.
+
+        :param input_dir: The directory where the METS files are located.
+        :type input_dir: str
+        :param downsample: A factor to downsample the list of METS files.
+        :type downsample: int
+        :return: A list of paths to the METS XML files.
+        :rtype: List[str]
+        """
+        #   if is_zipfile(input_dir):
+        #       archive = ZipFile(input_dir, "r")
+        #       files = archive.namelist()
+        #   else:
+        files = Path(input_dir).glob("**/*_mets.xml")
+
+        lst = [Path(f) for f in list(files) if str(f).endswith("_mets.xml")]
+        return [f for ix, f in enumerate(lst) if not (ix % downsample) != 0]
+
+    def check_for_unexpected_files(
+        input_dir: str, downsample: int = 1
+    ) -> None:
+        """
+        Private function that checks for unexpected files in an input directory,
+        optionally downsampled.
+        """
+        mets_files_unexpected_dirs = [
+            mets_file
+            for mets_file in get_mets_files(input_dir, downsample)
+            if mets_file.is_dir()
+        ]
+        if len(mets_files_unexpected_dirs):
+            print("Warning: encountered METS XML paths that are directories.")
+            print("- " + mets_files_unexpected_dirs.join("\n- "))
+
+    # Expand the input dir
+    input_dir = str(Path(input_dir).resolve())
+
+    # Make sure there are no strange files in the input directory. If there are, warn!
+    check_for_unexpected_files(input_dir, downsample)
+
+    # Get a proper list of METS files
+    mets_files_for_processing = [
+        mets_file
+        for mets_file in get_mets_files(input_dir, downsample)
+        if not mets_file.is_dir()
+    ]
+
+    # Now, do something to each proper METS file:
+    summary = setup_summary()
+    for mets_path in mets_files_for_processing:
+        logger.info(f"Processing {mets_path.name}...")
+        result = xml_to_text(mets_path, input_dir, output_dir, xslts)
+
+        if isinstance(result, XMLError):
+            result.write()
+            summary[XMLError.error] += 1
+        else:
+            summary["num_files"] += 1
+
+    return summary
 
 
 def publications_to_text(publications_dir, txt_out_dir, downsample=1):
@@ -280,4 +454,6 @@ def publications_to_text(publications_dir, txt_out_dir, downsample=1):
             logger.warning("Unexpected file: %s", publication_dir)
             continue
         publication_txt_out_dir = os.path.join(txt_out_dir, publication)
-        publication_to_text(publication_dir, publication_txt_out_dir, xslts, downsample)
+        publication_to_text(
+            publication_dir, publication_txt_out_dir, xslts, downsample
+        )

@@ -9,8 +9,8 @@ import logging
 import os
 import os.path
 
-from alto2txt import xml, xml_to_text
-from alto2txt.logging_utils import configure_logging
+from . import xml, xml_to_text
+from .logging_utils import configure_logging
 
 logger = logging.getLogger(__name__)
 """ Module-level logger. """
@@ -26,7 +26,9 @@ PROCESS_SPARK = "spark"
 PROCESS_TYPES = [PROCESS_SINGLE, PROCESS_SERIAL, PROCESS_MULTI, PROCESS_SPARK]
 
 
-def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsample):
+def check_parameters(
+    xml_in_dir, txt_out_dir, process_type, num_cores, downsample
+):
     """
     Check parameters. The following checks are done:
 
@@ -52,10 +54,12 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsampl
     assert downsample > 0, "downsample, {}, must be a positive integer".format(
         downsample
     )
-    assert os.path.exists(xml_in_dir), "xml_in_dir, {}, not found".format(xml_in_dir)
-    assert os.path.isdir(xml_in_dir), "xml_in_dir, {}, is not a directory".format(
+    assert os.path.exists(xml_in_dir), "xml_in_dir, {}, not found".format(
         xml_in_dir
     )
+    assert os.path.isdir(
+        xml_in_dir
+    ), "xml_in_dir, {}, is not a directory".format(xml_in_dir)
     assert not os.path.isfile(
         txt_out_dir
     ), "txt_out_dir, {}, is not a directory".format(txt_out_dir)
@@ -64,20 +68,27 @@ def check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsampl
     ), "xml_in_dir, {}, and txt_out_dir, {}, should be different".format(
         xml_in_dir, txt_out_dir
     )
-    assert process_type in PROCESS_TYPES, "process-type, {}, must be one of {}.".format(
+    assert (
+        process_type in PROCESS_TYPES
+    ), "process-type, {}, must be one of {}.".format(
         process_type, ",".join(PROCESS_TYPES)
     )
     if process_type == PROCESS_SPARK:
-        assert num_cores > 0, "num_cores, {}, must be a positive integer".format(
-            num_cores
-        )
+        assert (
+            num_cores > 0
+        ), "num_cores, {}, must be a positive integer".format(num_cores)
 
 
 # TODO Add test in here to check the directory tree
 
 
 def xml_publications_to_text(
-    xml_in_dir, txt_out_dir, process_type, log_file="out.log", num_cores=1, downsample=1
+    xml_in_dir,
+    txt_out_dir,
+    process_type,
+    log_file="out.log",
+    num_cores=1,
+    downsample=1,
 ):
     """
     Converts XML publications to plaintext articles and generates
@@ -110,11 +121,15 @@ def xml_publications_to_text(
     :raise AssertionError: if any parameter check fails (see
     check_parameters)
     """
-    check_parameters(xml_in_dir, txt_out_dir, process_type, num_cores, downsample)
+    check_parameters(
+        xml_in_dir, txt_out_dir, process_type, num_cores, downsample
+    )
     configure_logging(log_file)
     if process_type == PROCESS_SINGLE:
         xslts = xml.load_xslts()
-        xml_to_text.publication_to_text(xml_in_dir, txt_out_dir, xslts, downsample)
+        xml_to_text.publication_to_text(
+            xml_in_dir, txt_out_dir, xslts, downsample
+        )
     elif process_type == PROCESS_SERIAL:
         xml_to_text.publications_to_text(xml_in_dir, txt_out_dir, downsample)
     elif process_type == PROCESS_SPARK:

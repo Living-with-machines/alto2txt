@@ -6,7 +6,7 @@ import os
 
 from lxml import etree
 
-from alto2txt import xslts
+from . import xslts
 
 METS_18_XSLT = "extract_text_mets18.xslt"
 """ METS 1.8 XSLT """
@@ -143,7 +143,9 @@ def get_xml_metadata(document_tree):
         # Convert schema_locations from "namespaceURI schemaURI ..."
         # to dictionary with namespaceURI:schemaURI
         uris = schema_locations.split(" ")
-        schema_locations = {uris[i]: uris[i + 1] for i in range(0, len(uris), 2)}
+        schema_locations = {
+            uris[i]: uris[i + 1] for i in range(0, len(uris), 2)
+        }
     else:
         schema_locations = {}
     metadata = {}
