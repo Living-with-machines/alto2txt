@@ -174,8 +174,21 @@ def xml_to_text(
     try:
         xslt(document_tree, **xslt_params)
         logger.info(f"{mets_path} gave XSLT output")
-    except Exception as e:
-        return XMLError(error=XMLError.CONVERTED_BAD, file=mets_path)
+    except etree.XSLTApplyError as e:
+        if "Cannot resolve URI" in str(e):
+            g = re.findall(r"(/.*?\.\S*)", str(e))
+            if len(g):
+                path = g[0]
+                return XMLError(error=XMLError.CANNOT_RESOLVE_URI, file=path)
+
+            return XMLError(error=XMLError.CANNOT_RESOLVE_URI)
+        else:
+            g = re.findall(r"(/.*?\.\S*)", str(e))
+            if len(g):
+                path = g[0]
+                return XMLError(error=XMLError.GENERAL_XSLT_ERROR, file=path)
+
+            return XMLError(error=XMLError.GENERAL_XSLT_ERROR, file=mets_path)
 
     return True
 
@@ -443,7 +456,7 @@ def process_mets_files_in_directory(
 
         if isinstance(result, XMLError):
             result.write()
-            summary[XMLError.error] += 1
+            summary[result.error] += 1
         else:
             summary["num_files"] += 1
 

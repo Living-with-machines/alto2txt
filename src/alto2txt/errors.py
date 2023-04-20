@@ -17,6 +17,8 @@ class XMLError:
     NO_IDENTIFIERS = "No identifiers found"
     TOO_MANY_IDENTIFIERS = "Too many identifiers found"
     NO_IDENTIFIER_TEXT = "Identifier has no text"
+    GENERAL_XSLT_ERROR = "General XSLT Error"
+    CANNOT_RESOLVE_URI = "XSLT Error, cannot resolve URI"
 
     errors = [
         UNKNOWN_SCHEMA,
@@ -31,6 +33,8 @@ class XMLError:
         NO_IDENTIFIERS,
         TOO_MANY_IDENTIFIERS,
         NO_IDENTIFIER_TEXT,
+        GENERAL_XSLT_ERROR,
+        CANNOT_RESOLVE_URI,
     ]
 
     def __init__(self, error=None, file=None, schema=None, log_error=True):
