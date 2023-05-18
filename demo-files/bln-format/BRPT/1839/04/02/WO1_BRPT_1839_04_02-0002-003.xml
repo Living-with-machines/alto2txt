@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BL_newspaper SYSTEM "BL_newspaper.dtd">
+<BL_newspaper xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/elements/1.1/">
+<BL_article>
+<title_metadata>
+<title>Brighton Patriot and South of England Free Press</title>
+<normalisedTitle>Brighton Patriot</normalisedTitle>
+<titleAbbreviation>BRPT</titleAbbreviation>
+<changeToTitle>
+<name>Brighton Patriot and Lewes Free Press etc</name>
+<startDate day="24" month="02" year="1835"/>
+<endDate day="28" month="06" year="1836"/>
+</changeToTitle>
+<changeToTitle>
+<name>Brighton Patriot and South of England Free Press</name>
+<startDate day="05" month="07" year="1836"/>
+<endDate day="13" month="08" year="1839"/>
+</changeToTitle>
+<placeOfPublication>Brighton</placeOfPublication>
+<datesOfPublication>24 Feb 1835 - 28 Jun 1836; 5 Jul 1836 - 13 Aug 1839</datesOfPublication>
+<typeOfPublication>Newspaper</typeOfPublication>
+<subCollection>Regional Weekly</subCollection>
+</title_metadata>
+<issue_metadata>
+<volumeNumber></volumeNumber>
+<issueNumber>215</issueNumber>
+<printedDate>TUESDAY, APRIL 2, 1839</printedDate>
+<normalisedDate>1839.04.02</normalisedDate>
+<pageCount>4</pageCount>
+<reelID>0002</reelID>
+<qualityRating>Good</qualityRating>
+</issue_metadata>
+<article_metadata>
+<dc_metadata>
+<dc:Title>Advertisements &amp; Notices</dc:Title>
+<dc:Subject></dc:Subject>
+<dcterms:issued>1839.04.02</dcterms:issued>
+<dc:Type>Image</dc:Type>
+<dc:Type>Newspaper article</dc:Type>
+<dc:Type>Advertisements &amp; Notices</dc:Type>
+<dc:Identifier>WO1_BRPT_1839_04_02-0002-003.xml</dc:Identifier>
+<dcterms:bibliographicCitation>Brighton Patriot and South of England Free Press, 215, 0002, TUESDAY, APRIL 2, 1839</dcterms:bibliographicCitation>
+<dc:Language>eng</dc:Language>
+<dcterms:isPartOf>Brighton Patriot and South of England Free Press</dcterms:isPartOf>
+<dc:Rights>Copyright &#x00A9; The British Library Board</dc:Rights>
+</dc_metadata>
+<additional_metadata>
+<illustrations indicator="no"/>
+<conversionCredit>Apex CoVantage, LLC</conversionCredit>
+<tableCredit></tableCredit>
+<illustrationCredit></illustrationCredit>
+<authorName></authorName>
+</additional_metadata>
+</article_metadata>
+<image_metadata>
+<pageImage>
+<pageSequence>0002</pageSequence>
+<pageImageFile>WO1_BRPT_1839_04_02-0002.tif</pageImageFile>
+<pageCoordinates>436,407,5774,7686</pageCoordinates>
+<pageSkew>-30</pageSkew>
+</pageImage>
+<articleImage>
+<articleSequence>0002-003</articleSequence>
+<articleImageFile>WO1_BRPT_1839_04_02-0002-003.tif</articleImageFile>
+<articleCoordinates>17,255,994,1455</articleCoordinates>
+<articleText>
+<articleWord coord="104,41,361,91">BRiGhTON</articleWord>
+<articleWord coord="348,37,515,110">WHTurE</articleWord>
+<articleWord coord="502,50,638,97">LEAD,</articleWord>
+<articleWord coord="634,48,771,97">LEAD</articleWord>
+<articleWord coord="757,46,871,97">PIPE,</articleWord>
+<articleWord coord="861,51,984,96">AND</articleWord>
+<articleWord coord="358,100,566,146">COLOUR</articleWord>
+<articleWord coord="538,100,726,145">WORKS.</articleWord>
+<articleWord coord="225,139,300,181">No.</articleWord>
+<articleWord coord="298,146,354,185">47,</articleWord>
+<articleWord coord="348,146,508,189">NORTH</articleWord>
+<articleWord coord="492,151,651,188">STREET,</articleWord>
+<articleWord coord="644,149,854,188">BRIGHTON.</articleWord>
+<articleWord coord="369,210,458,265">B.</articleWord>
+<articleWord coord="443,209,712,266">WOOD,</articleWord>
+<articleWord coord="140,242,341,298">PLUMBER,</articleWord>
+<articleWord coord="341,246,527,298">GLAZIER,</articleWord>
+<articleWord coord="534,258,710,295">PAINTER,</articleWord>
+<articleWord coord="715,257,820,294">AND</articleWord>
+<articleWord coord="814,256,952,294">PAPER</articleWord>
+<articleWord coord="459,295,634,333">HANGER,</articleWord>
+<articleWord coord="110,319,280,378">REGS</articleWord>
+<articleWord coord="276,328,479,373">respectfully</articleWord>
+<articleWord coord="478,328,530,372">to</articleWord>
+<articleWord coord="530,328,659,372">inform</articleWord>
+<articleWord coord="643,327,711,372">his</articleWord>
+<articleWord coord="716,326,839,372">friends</articleWord>
+<articleWord coord="829,323,914,368">and</articleWord>
+<articleWord coord="907,323,976,367">the</articleWord>
+<articleWord coord="105,360,291,424">MiLublic</articleWord>
+<articleWord coord="281,367,350,404">that</articleWord>
+<articleWord coord="337,369,439,410">hehas</articleWord>
+<articleWord coord="426,372,546,409">erected</articleWord>
+<articleWord coord="520,371,675,409">WHITE</articleWord>
+<articleWord coord="656,369,779,407">LEAD</articleWord>
+<articleWord coord="758,367,827,405">and</articleWord>
+<articleWord coord="807,363,973,402">COLOUIt</articleWord>
+<articleWord coord="115,387,201,426">Aill,</articleWord>
+<articleWord coord="206,402,248,438">S</articleWord>
+<articleWord coord="247,393,374,436">(worked</articleWord>
+<articleWord coord="367,399,423,438">by</articleWord>
+<articleWord coord="419,395,477,438">ste</articleWord>
+<articleWord coord="461,394,532,438">mn),</articleWord>
+<articleWord coord="529,400,631,437">which</articleWord>
+<articleWord coord="626,399,741,436">enables</articleWord>
+<articleWord coord="737,399,816,434">him</articleWord>
+<articleWord coord="808,401,850,430">to</articleWord>
+<articleWord coord="842,393,975,430">offerthe</articleWord>
+<articleWord coord="117,414,262,458">following</articleWord>
+<articleWord coord="251,424,367,464">articles</articleWord>
+<articleWord coord="359,426,414,463">for</articleWord>
+<articleWord coord="407,417,475,466">sale</articleWord>
+<articleWord coord="465,424,517,463">on</articleWord>
+<articleWord coord="512,426,571,463">the</articleWord>
+<articleWord coord="552,420,715,463">Wholesale</articleWord>
+<articleWord coord="707,425,834,462">London</articleWord>
+<articleWord coord="821,424,981,459">Terms:-</articleWord>
+<articleWord coord="168,454,359,499">GROUND</articleWord>
+<articleWord coord="331,462,490,499">WHITE</articleWord>
+<articleWord coord="475,462,598,499">LEAD,</articleWord>
+<articleWord coord="596,462,666,498">best</articleWord>
+<articleWord coord="677,461,709,498">..</articleWord>
+<articleWord coord="703,454,731,490">..</articleWord>
+<articleWord coord="728,452,796,500">32s.</articleWord>
+<articleWord coord="790,461,852,498">per</articleWord>
+<articleWord coord="844,451,911,493">cwt.</articleWord>
+<articleWord coord="602,489,736,530">seconds..</articleWord>
+<articleWord coord="729,488,795,527">3uS.</articleWord>
+<articleWord coord="835,492,853,529">;</articleWord>
+<articleWord coord="474,529,508,544">-</articleWord>
+<articleWord coord="476,523,571,559">-~-t</articleWord>
+<articleWord coord="603,521,695,559">thirds</articleWord>
+<articleWord coord="707,523,718,555">.</articleWord>
+<articleWord coord="719,523,734,556">.</articleWord>
+<articleWord coord="728,516,793,556">28s.</articleWord>
+<articleWord coord="174,542,275,579">Stone</articleWord>
+<articleWord coord="261,527,456,583">Colour.28s.</articleWord>
+<articleWord coord="174,572,268,608">Lead</articleWord>
+<articleWord coord="252,573,367,610">Colour</articleWord>
+<articleWord coord="361,584,565,619">..............</articleWord>
+<articleWord coord="693,600,737,611">...</articleWord>
+<articleWord coord="742,565,795,615">28s.</articleWord>
+<articleWord coord="334,618,395,655">A</articleWord>
+<articleWord coord="375,618,506,655">discount</articleWord>
+<articleWord coord="499,607,620,657">allowed</articleWord>
+<articleWord coord="604,615,674,655">for</articleWord>
+<articleWord coord="665,614,756,651">Cash.</articleWord>
+<articleWord coord="114,640,208,685">Lead</articleWord>
+<articleWord coord="193,645,282,690">Pipe,</articleWord>
+<articleWord coord="265,649,387,689">Milled</articleWord>
+<articleWord coord="373,651,465,688">Lead,</articleWord>
+<articleWord coord="457,651,588,688">Linseed</articleWord>
+<articleWord coord="567,651,640,687">Oil,</articleWord>
+<articleWord coord="629,647,804,688">Turpentine,</articleWord>
+<articleWord coord="794,639,865,687">&amp;C.,</articleWord>
+<articleWord coord="867,650,920,682">on</articleWord>
+<articleWord coord="917,634,968,678">tbO</articleWord>
+<articleWord coord="418,685,503,721">same</articleWord>
+<articleWord coord="499,683,594,721">liberal</articleWord>
+<articleWord coord="592,680,686,718">terms.</articleWord>
+<articleWord coord="303,716,510,774">PAPER</articleWord>
+<articleWord coord="485,710,780,773">HANGINGS.</articleWord>
+<articleWord coord="175,762,251,798">Bed</articleWord>
+<articleWord coord="237,764,352,799">Room</articleWord>
+<articleWord coord="333,761,724,813">Papers...................</articleWord>
+<articleWord coord="728,759,770,793">5d.</articleWord>
+<articleWord coord="772,760,831,795">per</articleWord>
+<articleWord coord="823,751,912,790">piece.</articleWord>
+<articleWord coord="173,796,231,833">A</articleWord>
+<articleWord coord="212,799,300,835">great</articleWord>
+<articleWord coord="293,798,406,835">variety</articleWord>
+<articleWord coord="394,798,442,835">of</articleWord>
+<articleWord coord="428,798,515,835">ditto</articleWord>
+<articleWord coord="502,798,542,835">at</articleWord>
+<articleWord coord="535,798,590,835">6d.</articleWord>
+<articleWord coord="584,797,644,834">per</articleWord>
+<articleWord coord="639,794,724,835">piece</articleWord>
+<articleWord coord="719,790,786,828">and</articleWord>
+<articleWord coord="777,783,912,832">upwards.</articleWord>
+<articleWord coord="139,831,336,878">CROWN</articleWord>
+<articleWord coord="330,833,455,877">AND</articleWord>
+<articleWord coord="449,831,645,877">BRITISH</articleWord>
+<articleWord coord="643,822,798,878">SHEET</articleWord>
+<articleWord coord="793,816,953,865">GLASS</articleWord>
+<articleWord coord="295,876,365,912">On</articleWord>
+<articleWord coord="367,875,426,912">the</articleWord>
+<articleWord coord="425,875,508,912">same</articleWord>
+<articleWord coord="511,875,599,909">terms</articleWord>
+<articleWord coord="596,876,639,907">as</articleWord>
+<articleWord coord="640,873,682,907">in</articleWord>
+<articleWord coord="674,868,802,903">London.</articleWord>
+<articleWord coord="231,910,397,951">Workmen</articleWord>
+<articleWord coord="391,914,462,946">sent</articleWord>
+<articleWord coord="466,915,507,947">to</articleWord>
+<articleWord coord="501,916,568,949">any</articleWord>
+<articleWord coord="556,913,633,948">part</articleWord>
+<articleWord coord="630,909,684,947">of</articleWord>
+<articleWord coord="678,909,736,947">the</articleWord>
+<articleWord coord="728,905,849,943">County.</articleWord>
+<articleWord coord="129,963,190,1001">fl~e</articleWord>
+<articleWord coord="188,964,239,999">do</articleWord>
+<articleWord coord="234,966,295,999">not</articleWord>
+<articleWord coord="294,965,408,1000">admire</articleWord>
+<articleWord coord="410,964,464,999">the</articleWord>
+<articleWord coord="465,962,596,999">tendency</articleWord>
+<articleWord coord="592,959,692,993">01the</articleWord>
+<articleWord coord="694,958,766,992">lines</articleWord>
+<articleWord coord="760,955,817,994">of</articleWord>
+<articleWord coord="810,947,974,986">&quot;1Brutus.&quot;</articleWord>
+<articleWord coord="154,993,222,1031">Wie</articleWord>
+<articleWord coord="214,994,322,1034">prefer</articleWord>
+<articleWord coord="320,991,492,1027">&quot;tepoe</articleWord>
+<articleWord coord="496,990,539,1024">o</articleWord>
+<articleWord coord="568,989,633,1026">ind</articleWord>
+<articleWord coord="650,989,689,1022">to</articleWord>
+<articleWord coord="691,987,746,1022">the</articleWord>
+<articleWord coord="751,986,875,1023">&quot;power</articleWord>
+<articleWord coord="870,982,925,1021">of</articleWord>
+<articleWord coord="917,979,975,1013">the</articleWord>
+<articleWord coord="192,1021,335,1058">,i1~ane&apos;</articleWord>
+<articleWord coord="328,997,509,1061">n:,thepoteter</articleWord>
+<articleWord coord="502,998,570,1043">Of</articleWord>
+<articleWord coord="596,1019,673,1053">rise&apos;</articleWord>
+<articleWord coord="693,1015,798,1051">should</articleWord>
+<articleWord coord="793,1014,870,1052">only</articleWord>
+<articleWord coord="869,1013,912,1047">be</articleWord>
+<articleWord coord="906,1008,972,1046">put</articleWord>
+<articleWord coord="150,1057,246,1096">.forth</articleWord>
+<articleWord coord="234,1059,330,1093">when</articleWord>
+<articleWord coord="333,1057,365,1091">it</articleWord>
+<articleWord coord="371,1058,408,1092">is</articleWord>
+<articleWord coord="405,1051,558,1094">attempted</articleWord>
+<articleWord coord="547,1054,595,1089">by</articleWord>
+<articleWord coord="581,1042,788,1091">on.opponents</articleWord>
+<articleWord coord="782,1044,825,1080">to</articleWord>
+<articleWord coord="814,1047,918,1082">oppose</articleWord>
+<articleWord coord="908,1044,973,1077">our</articleWord>
+<articleWord coord="153,1086,325,1124">aspirations</articleWord>
+<articleWord coord="325,1080,411,1132">qjfler</articleWord>
+<articleWord coord="412,1084,514,1121">liberty</articleWord>
+<articleWord coord="509,1081,556,1120">by</articleWord>
+<articleWord coord="556,1080,626,1116">brut</articleWord>
+<articleWord coord="639,1079,732,1114">force.</articleWord>
+<articleWord coord="741,1076,814,1110">We</articleWord>
+<articleWord coord="818,1074,898,1112">hope</articleWord>
+<articleWord coord="904,1069,971,1105">that</articleWord>
+<articleWord coord="157,1114,234,1152">time</articleWord>
+<articleWord coord="228,1113,302,1152">will</articleWord>
+<articleWord coord="301,1097,393,1160">nsever</articleWord>
+<articleWord coord="397,1111,480,1151">come,</articleWord>
+<articleWord coord="489,1096,642,1150">thougyhwe</articleWord>
+<articleWord coord="643,1105,740,1142">cannot</articleWord>
+<articleWord coord="740,1101,813,1139">add</articleWord>
+<articleWord coord="799,1109,858,1134">we</articleWord>
+<articleWord coord="855,1098,909,1135">do</articleWord>
+<articleWord coord="908,1098,971,1132">not</articleWord>
+<articleWord coord="145,1147,233,1187">Jear</articleWord>
+<articleWord coord="229,1147,276,1184">it.</articleWord>
+</articleText>
+</articleImage>
+</image_metadata>
+</BL_article>
+</BL_newspaper>

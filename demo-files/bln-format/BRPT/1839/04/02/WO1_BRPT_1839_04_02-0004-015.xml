@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BL_newspaper SYSTEM "BL_newspaper.dtd">
+<BL_newspaper xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/elements/1.1/">
+<BL_article>
+<title_metadata>
+<title>Brighton Patriot and South of England Free Press</title>
+<normalisedTitle>Brighton Patriot</normalisedTitle>
+<titleAbbreviation>BRPT</titleAbbreviation>
+<changeToTitle>
+<name>Brighton Patriot and Lewes Free Press etc</name>
+<startDate day="24" month="02" year="1835"/>
+<endDate day="28" month="06" year="1836"/>
+</changeToTitle>
+<changeToTitle>
+<name>Brighton Patriot and South of England Free Press</name>
+<startDate day="05" month="07" year="1836"/>
+<endDate day="13" month="08" year="1839"/>
+</changeToTitle>
+<placeOfPublication>Brighton</placeOfPublication>
+<datesOfPublication>24 Feb 1835 - 28 Jun 1836; 5 Jul 1836 - 13 Aug 1839</datesOfPublication>
+<typeOfPublication>Newspaper</typeOfPublication>
+<subCollection>Regional Weekly</subCollection>
+</title_metadata>
+<issue_metadata>
+<volumeNumber></volumeNumber>
+<issueNumber>215</issueNumber>
+<printedDate>TUESDAY, APRIL 2, 1839</printedDate>
+<normalisedDate>1839.04.02</normalisedDate>
+<pageCount>4</pageCount>
+<reelID>0002</reelID>
+<qualityRating>Good</qualityRating>
+</issue_metadata>
+<article_metadata>
+<dc_metadata>
+<dc:Title>POETRY.</dc:Title>
+<dc:Subject></dc:Subject>
+<dcterms:issued>1839.04.02</dcterms:issued>
+<dc:Type>Image</dc:Type>
+<dc:Type>Newspaper article</dc:Type>
+<dc:Type>Arts &amp; Popular Culture</dc:Type>
+<dc:Identifier>WO1_BRPT_1839_04_02-0004-015.xml</dc:Identifier>
+<dcterms:bibliographicCitation>Brighton Patriot and South of England Free Press, 215, 0004, TUESDAY, APRIL 2, 1839</dcterms:bibliographicCitation>
+<dc:Language>eng</dc:Language>
+<dcterms:isPartOf>Brighton Patriot and South of England Free Press</dcterms:isPartOf>
+<dc:Rights>Copyright &#x00A9; The British Library Board</dc:Rights>
+</dc_metadata>
+<additional_metadata>
+<illustrations indicator="no"/>
+<conversionCredit>Apex CoVantage, LLC</conversionCredit>
+<tableCredit></tableCredit>
+<illustrationCredit></illustrationCredit>
+<authorName></authorName>
+</additional_metadata>
+</article_metadata>
+<image_metadata>
+<pageImage>
+<pageSequence>0004</pageSequence>
+<pageImageFile>WO1_BRPT_1839_04_02-0004.tif</pageImageFile>
+<pageCoordinates>524,416,5810,7676</pageCoordinates>
+<pageSkew>-20</pageSkew>
+</pageImage>
+<articleImage>
+<articleSequence>0004-015</articleSequence>
+<articleImageFile>WO1_BRPT_1839_04_02-0004-015.tif</articleImageFile>
+<articleCoordinates>90,300,974,2502</articleCoordinates>
+<articleText>
+<articleWord coord="265,16,628,83">POETRY.</articleWord>
+<articleWord coord="47,87,327,143">ASSOCIA&apos;LED</articleWord>
+<articleWord coord="300,97,528,141">WORKING</articleWord>
+<articleWord coord="513,104,702,139">CLASSES</articleWord>
+<articleWord coord="687,95,825,143">HYMN-</articleWord>
+<articleWord coord="323,161,388,186">BY</articleWord>
+<articleWord coord="385,154,414,188">5l</articleWord>
+<articleWord coord="418,161,570,190">DRAPIER.</articleWord>
+<articleWord coord="159,180,261,221">Ruler</articleWord>
+<articleWord coord="250,185,299,220">of</articleWord>
+<articleWord coord="292,185,386,220">earth,</articleWord>
+<articleWord coord="381,184,447,219">and</articleWord>
+<articleWord coord="441,184,502,219">sea,</articleWord>
+<articleWord coord="497,184,566,219">and</articleWord>
+<articleWord coord="553,184,608,219">air</articleWord>
+<articleWord coord="608,184,618,220">I</articleWord>
+<articleWord coord="160,212,274,251">Before</articleWord>
+<articleWord coord="268,215,329,250">thy</articleWord>
+<articleWord coord="322,214,425,250">throne</articleWord>
+<articleWord coord="411,214,471,249">we</articleWord>
+<articleWord coord="460,211,547,264">bow;</articleWord>
+<articleWord coord="156,242,325,283">Vouchsafe</articleWord>
+<articleWord coord="317,247,361,282">to</articleWord>
+<articleWord coord="347,246,425,282">hear</articleWord>
+<articleWord coord="422,246,480,282">the</articleWord>
+<articleWord coord="462,246,620,282">mourner&apos;s</articleWord>
+<articleWord coord="612,245,720,281">prayer,</articleWord>
+<articleWord coord="159,272,272,312">Bright</articleWord>
+<articleWord coord="264,276,352,311">fount</articleWord>
+<articleWord coord="342,276,391,311">of</articleWord>
+<articleWord coord="377,275,489,313">mercy,</articleWord>
+<articleWord coord="478,275,575,310">Thou</articleWord>
+<articleWord coord="572,275,585,310">I</articleWord>
+<articleWord coord="161,312,244,352">Thy</articleWord>
+<articleWord coord="229,315,339,351">people</articleWord>
+<articleWord coord="328,315,392,351">cry</articleWord>
+<articleWord coord="382,315,436,350">for</articleWord>
+<articleWord coord="425,311,703,351">bread-bond-slaves,</articleWord>
+<articleWord coord="162,345,262,382">Their</articleWord>
+<articleWord coord="254,346,347,382">sighs,</articleWord>
+<articleWord coord="344,346,424,381">their</articleWord>
+<articleWord coord="418,346,502,381">tears,</articleWord>
+<articleWord coord="496,346,558,381">are</articleWord>
+<articleWord coord="545,345,624,381">vain,</articleWord>
+<articleWord coord="159,376,237,414">His</articleWord>
+<articleWord coord="228,379,300,414">iron</articleWord>
+<articleWord coord="291,377,410,419">scourge</articleWord>
+<articleWord coord="404,378,451,416">th&apos;</articleWord>
+<articleWord coord="446,378,590,413">oppressor</articleWord>
+<articleWord coord="576,377,682,412">waves,</articleWord>
+<articleWord coord="158,408,246,444">And</articleWord>
+<articleWord coord="234,409,357,444">reckless</articleWord>
+<articleWord coord="341,408,452,444">mocks</articleWord>
+<articleWord coord="447,408,522,444">their</articleWord>
+<articleWord coord="511,408,594,443">pain.</articleWord>
+<articleWord coord="160,445,280,484">Revolt,</articleWord>
+<articleWord coord="275,448,345,484">and</articleWord>
+<articleWord coord="328,448,424,483">Hate,</articleWord>
+<articleWord coord="418,448,486,483">and</articleWord>
+<articleWord coord="477,448,564,483">fierce</articleWord>
+<articleWord coord="547,447,679,483">Despair,</articleWord>
+<articleWord coord="159,477,247,512">And</articleWord>
+<articleWord coord="228,476,350,512">Rapine</articleWord>
+<articleWord coord="340,476,423,512">stalk</articleWord>
+<articleWord coord="417,476,475,511">the</articleWord>
+<articleWord coord="466,476,552,511">land:</articleWord>
+<articleWord coord="160,504,246,542">God</articleWord>
+<articleWord coord="232,507,280,542">of</articleWord>
+<articleWord coord="272,506,338,542">our</articleWord>
+<articleWord coord="331,506,442,542">fathers,</articleWord>
+<articleWord coord="440,506,512,542">hear</articleWord>
+<articleWord coord="503,506,566,541">our</articleWord>
+<articleWord coord="556,505,664,541">prayer,</articleWord>
+<articleWord coord="165,536,288,571">Stretch</articleWord>
+<articleWord coord="279,535,364,571">forth</articleWord>
+<articleWord coord="357,535,417,571">thy</articleWord>
+<articleWord coord="407,535,508,571">saving</articleWord>
+<articleWord coord="496,535,581,571">hand</articleWord>
+<articleWord coord="576,535,589,570">I</articleWord>
+<articleWord coord="163,573,247,610">God</articleWord>
+<articleWord coord="235,575,280,610">of</articleWord>
+<articleWord coord="273,575,339,610">our</articleWord>
+<articleWord coord="332,571,443,610">fathers,</articleWord>
+<articleWord coord="439,574,513,609">hear</articleWord>
+<articleWord coord="501,574,566,609">our</articleWord>
+<articleWord coord="558,574,593,609">p</articleWord>
+<articleWord coord="585,574,665,609">ayer,</articleWord>
+<articleWord coord="163,603,243,640">The</articleWord>
+<articleWord coord="234,605,323,640">fetter</articleWord>
+<articleWord coord="313,604,384,640">and</articleWord>
+<articleWord coord="374,604,433,639">the</articleWord>
+<articleWord coord="423,604,505,639">steel,</articleWord>
+<articleWord coord="155,631,280,671">Which</articleWord>
+<articleWord coord="271,635,325,670">for</articleWord>
+<articleWord coord="315,635,379,670">our</articleWord>
+<articleWord coord="374,632,455,670">souls</articleWord>
+<articleWord coord="454,632,508,669">thy</articleWord>
+<articleWord coord="500,634,565,669">foes</articleWord>
+<articleWord coord="557,634,678,669">prepare,</articleWord>
+<articleWord coord="161,661,236,701">Oh,</articleWord>
+<articleWord coord="233,665,281,700">let</articleWord>
+<articleWord coord="271,664,337,700">our</articleWord>
+<articleWord coord="331,664,439,700">tyrants</articleWord>
+<articleWord coord="431,664,489,699">feel</articleWord>
+<articleWord coord="492,664,505,699">I</articleWord>
+<articleWord coord="118,725,327,771">DANIEL&apos;S</articleWord>
+<articleWord coord="313,727,534,771">POLITICAL</articleWord>
+<articleWord coord="514,725,757,768">DEATH-BED.</articleWord>
+<articleWord coord="336,774,441,815">[From</articleWord>
+<articleWord coord="429,775,485,810">the</articleWord>
+<articleWord coord="472,774,564,812">SW?.]</articleWord>
+<articleWord coord="92,806,177,841">&quot;Old</articleWord>
+<articleWord coord="168,806,265,840">Daniel</articleWord>
+<articleWord coord="262,806,402,842">O&apos;Connell</articleWord>
+<articleWord coord="407,806,437,840">is</articleWord>
+<articleWord coord="437,806,488,840">on</articleWord>
+<articleWord coord="478,806,531,839">his</articleWord>
+<articleWord coord="529,804,637,840">political</articleWord>
+<articleWord coord="637,803,805,839">death-bed!&quot;</articleWord>
+<articleWord coord="530,839,608,873">Vide</articleWord>
+<articleWord coord="598,839,684,871">Times</articleWord>
+<articleWord coord="676,840,716,868">of</articleWord>
+<articleWord coord="706,839,844,869">Thursday.</articleWord>
+<articleWord coord="135,872,247,910">Daniel</articleWord>
+<articleWord coord="233,873,401,910">O&apos;Connoll,</articleWord>
+<articleWord coord="398,872,457,909">old</articleWord>
+<articleWord coord="447,871,513,908">and</articleWord>
+<articleWord coord="500,874,580,909">grey,</articleWord>
+<articleWord coord="136,905,205,940">On</articleWord>
+<articleWord coord="192,905,252,941">his</articleWord>
+<articleWord coord="242,904,363,941">political</articleWord>
+<articleWord coord="356,903,504,940">death-bed</articleWord>
+<articleWord coord="498,904,562,940">lay;</articleWord>
+<articleWord coord="139,933,211,969">His</articleWord>
+<articleWord coord="201,934,309,969">cheeks</articleWord>
+<articleWord coord="295,933,379,969">were</articleWord>
+<articleWord coord="369,933,452,970">sunk,</articleWord>
+<articleWord coord="448,933,514,968">and</articleWord>
+<articleWord coord="499,932,570,969">wanl</articleWord>
+<articleWord coord="569,933,609,968">in</articleWord>
+<articleWord coord="599,932,671,967">hue,</articleWord>
+<articleWord coord="134,964,217,999">And</articleWord>
+<articleWord coord="209,964,262,999">his</articleWord>
+<articleWord coord="254,963,341,1000">pulse</articleWord>
+<articleWord coord="326,964,396,999">was</articleWord>
+<articleWord coord="387,963,470,1000">down</articleWord>
+<articleWord coord="470,963,511,998">to</articleWord>
+<articleWord coord="504,962,666,999">twventy-two</articleWord>
+<articleWord coord="138,993,191,1029">At</articleWord>
+<articleWord coord="189,993,246,1029">the</articleWord>
+<articleWord coord="237,993,302,1029">foot</articleWord>
+<articleWord coord="294,993,342,1028">of</articleWord>
+<articleWord coord="334,992,391,1027">his</articleWord>
+<articleWord coord="380,992,446,1027">bed</articleWord>
+<articleWord coord="435,992,521,1027">stood</articleWord>
+<articleWord coord="503,991,671,1029">Melbourne</articleWord>
+<articleWord coord="662,991,781,1026">sighing,</articleWord>
+<articleWord coord="144,1020,195,1058">In</articleWord>
+<articleWord coord="182,1023,217,1057">a</articleWord>
+<articleWord coord="206,1023,288,1058">chair</articleWord>
+<articleWord coord="280,1020,381,1058">beside</articleWord>
+<articleWord coord="369,1019,445,1056">him</articleWord>
+<articleWord coord="431,1022,498,1053">sate</articleWord>
+<articleWord coord="484,1018,597,1055">Russell</articleWord>
+<articleWord coord="592,1021,704,1054">crying;</articleWord>
+<articleWord coord="133,1049,243,1086">While</articleWord>
+<articleWord coord="235,1051,311,1086">poor</articleWord>
+<articleWord coord="303,1050,408,1085">Spring</articleWord>
+<articleWord coord="394,1049,477,1084">Rice</articleWord>
+<articleWord coord="462,1047,541,1085">with</articleWord>
+<articleWord coord="533,1050,564,1084">a</articleWord>
+<articleWord coord="555,1048,629,1085">phiz</articleWord>
+<articleWord coord="619,1048,667,1084">all</articleWord>
+<articleWord coord="659,1047,766,1084">gloom,</articleWord>
+<articleWord coord="134,1082,226,1119">Kept</articleWord>
+<articleWord coord="218,1082,375,1118">noiselessly</articleWord>
+<articleWord coord="366,1081,496,1118">creeping</articleWord>
+<articleWord coord="484,1079,572,1118">about</articleWord>
+<articleWord coord="570,1081,628,1117">the</articleWord>
+<articleWord coord="619,1080,707,1117">room,</articleWord>
+<articleWord coord="134,1111,210,1147">His</articleWord>
+<articleWord coord="204,1111,327,1147">Iinoceait</articleWord>
+<articleWord coord="322,1111,399,1145">nose</articleWord>
+<articleWord coord="392,1110,432,1144">in</articleWord>
+<articleWord coord="422,1110,542,1146">anguish</articleWord>
+<articleWord coord="528,1109,655,1145">blowing,</articleWord>
+<articleWord coord="138,1142,196,1176">As</articleWord>
+<articleWord coord="188,1142,239,1176">he</articleWord>
+<articleWord coord="222,1141,384,1177">murmured</articleWord>
+<articleWord coord="374,1141,459,1176">forth,</articleWord>
+<articleWord coord="457,1141,497,1166">&quot;</articleWord>
+<articleWord coord="474,1139,531,1173">0</articleWord>
+<articleWord coord="513,1141,606,1176">Lord,</articleWord>
+<articleWord coord="605,1137,671,1176">lie&apos;s</articleWord>
+<articleWord coord="661,1140,756,1175">going</articleWord>
+<articleWord coord="750,1140,763,1175">I</articleWord>
+<articleWord coord="135,1172,219,1207">And</articleWord>
+<articleWord coord="215,1172,260,1207">ice</articleWord>
+<articleWord coord="252,1172,326,1206">shall</articleWord>
+<articleWord coord="319,1172,407,1206">never</articleWord>
+<articleWord coord="392,1172,487,1206">more,</articleWord>
+<articleWord coord="486,1171,574,1206">ready</articleWord>
+<articleWord coord="563,1171,631,1206">and</articleWord>
+<articleWord coord="621,1171,691,1205">gay,</articleWord>
+<articleWord coord="142,1201,225,1237">Sack</articleWord>
+<articleWord coord="210,1201,350,1236">Treasury</articleWord>
+<articleWord coord="338,1201,427,1235">burnt</articleWord>
+<articleWord coord="420,1201,470,1236">on</articleWord>
+<articleWord coord="459,1201,634,1236">quarter-day</articleWord>
+<articleWord coord="628,1197,666,1235">I&quot;</articleWord>
+<articleWord coord="160,1243,270,1278">While</articleWord>
+<articleWord coord="263,1242,332,1278">thus</articleWord>
+<articleWord coord="328,1243,384,1278">the</articleWord>
+<articleWord coord="367,1244,516,1277">mourners</articleWord>
+<articleWord coord="508,1241,612,1277">looked</articleWord>
+<articleWord coord="601,1241,648,1276">all</articleWord>
+<articleWord coord="640,1241,751,1276">aghast,</articleWord>
+<articleWord coord="141,1274,262,1309">Fearing</articleWord>
+<articleWord coord="252,1274,327,1309">each</articleWord>
+<articleWord coord="317,1273,394,1308">hour</articleWord>
+<articleWord coord="384,1270,483,1309">would</articleWord>
+<articleWord coord="473,1273,520,1308">be</articleWord>
+<articleWord coord="506,1272,639,1308">Daniel&apos;s</articleWord>
+<articleWord coord="635,1272,701,1307">last,</articleWord>
+<articleWord coord="138,1304,191,1338">A</articleWord>
+<articleWord coord="177,1303,262,1342">posse</articleWord>
+<articleWord coord="252,1304,296,1338">of</articleWord>
+<articleWord coord="286,1304,391,1338">Tories</articleWord>
+<articleWord coord="381,1304,467,1338">came</articleWord>
+<articleWord coord="462,1303,503,1338">in</articleWord>
+<articleWord coord="492,1303,545,1338">by</articleWord>
+<articleWord coord="540,1302,648,1337">Ftealth,</articleWord>
+<articleWord coord="141,1333,214,1368">Just</articleWord>
+<articleWord coord="211,1333,252,1367">to</articleWord>
+<articleWord coord="246,1332,324,1368">learn</articleWord>
+<articleWord coord="318,1332,403,1368">(they</articleWord>
+<articleWord coord="392,1332,467,1367">said)</articleWord>
+<articleWord coord="467,1332,522,1367">the</articleWord>
+<articleWord coord="514,1331,593,1367">state</articleWord>
+<articleWord coord="581,1331,629,1366">of</articleWord>
+<articleWord coord="619,1328,673,1367">his</articleWord>
+<articleWord coord="663,1331,767,1366">health</articleWord>
+<articleWord coord="137,1361,207,1396">But</articleWord>
+<articleWord coord="198,1360,286,1396">when</articleWord>
+<articleWord coord="281,1361,350,1395">they</articleWord>
+<articleWord coord="340,1360,445,1395">beheld</articleWord>
+<articleWord coord="434,1360,491,1395">his</articleWord>
+<articleWord coord="481,1359,575,1395">pallid</articleWord>
+<articleWord coord="567,1360,638,1394">face,</articleWord>
+<articleWord coord="140,1390,231,1427">Each</articleWord>
+<articleWord coord="221,1390,314,1427">scanmp</articleWord>
+<articleWord coord="310,1390,438,1426">indulged</articleWord>
+<articleWord coord="430,1390,472,1424">in</articleWord>
+<articleWord coord="463,1391,494,1424">a</articleWord>
+<articleWord coord="486,1390,588,1424">fiend&apos;s</articleWord>
+<articleWord coord="577,1389,702,1425">grimace</articleWord>
+<articleWord coord="140,1420,236,1456">Shaw</articleWord>
+<articleWord coord="219,1419,338,1456">griznned,</articleWord>
+<articleWord coord="339,1420,402,1454">like</articleWord>
+<articleWord coord="395,1421,479,1453">some</articleWord>
+<articleWord coord="469,1416,568,1455">dandy</articleWord>
+<articleWord coord="561,1416,761,1455">fiddle-scraper,</articleWord>
+<articleWord coord="130,1447,240,1485">WVhile</articleWord>
+<articleWord coord="229,1450,318,1485">grave</articleWord>
+<articleWord coord="307,1448,364,1482">Sir</articleWord>
+<articleWord coord="351,1448,429,1482">Bob</articleWord>
+<articleWord coord="417,1449,475,1481">cut</articleWord>
+<articleWord coord="471,1448,501,1483">a</articleWord>
+<articleWord coord="491,1447,586,1484">frisky</articleWord>
+<articleWord coord="574,1448,669,1483">caper,</articleWord>
+<articleWord coord="136,1478,214,1516">And</articleWord>
+<articleWord coord="200,1477,346,1514">Goulburn</articleWord>
+<articleWord coord="338,1477,461,1514">shouted,</articleWord>
+<articleWord coord="462,1479,502,1505">&quot;</articleWord>
+<articleWord coord="487,1477,547,1511">his</articleWord>
+<articleWord coord="535,1476,602,1515">day</articleWord>
+<articleWord coord="597,1477,632,1511">is</articleWord>
+<articleWord coord="621,1475,701,1515">o&apos;er,</articleWord>
+<articleWord coord="139,1509,206,1545">For</articleWord>
+<articleWord coord="197,1509,267,1544">he&apos;s</articleWord>
+<articleWord coord="257,1509,349,1545">going</articleWord>
+<articleWord coord="343,1509,385,1543">to</articleWord>
+<articleWord coord="378,1509,444,1543">that</articleWord>
+<articleWord coord="430,1508,599,1544">mysterious</articleWord>
+<articleWord coord="592,1508,687,1543">shore,</articleWord>
+<articleWord coord="129,1537,247,1573">Where</articleWord>
+<articleWord coord="240,1536,282,1572">all</articleWord>
+<articleWord coord="280,1536,355,1573">such</articleWord>
+<articleWord coord="347,1535,450,1571">fellows</articleWord>
+<articleWord coord="443,1535,521,1569">have</articleWord>
+<articleWord coord="512,1536,594,1572">gone</articleWord>
+<articleWord coord="589,1534,690,1571">before</articleWord>
+<articleWord coord="139,1567,197,1603">So,</articleWord>
+<articleWord coord="190,1566,287,1603">here&apos;s</articleWord>
+<articleWord coord="281,1567,389,1601">success</articleWord>
+<articleWord coord="384,1567,426,1599">to</articleWord>
+<articleWord coord="414,1567,477,1599">our</articleWord>
+<articleWord coord="466,1565,598,1602">proudest</articleWord>
+<articleWord coord="589,1564,706,1601">wishes,</articleWord>
+<articleWord coord="135,1596,212,1633">And</articleWord>
+<articleWord coord="203,1596,261,1633">hip</articleWord>
+<articleWord coord="257,1598,271,1630">!</articleWord>
+<articleWord coord="281,1595,389,1631">I-Hrrah</articleWord>
+<articleWord coord="389,1595,398,1628">I</articleWord>
+<articleWord coord="401,1594,453,1628">for</articleWord>
+<articleWord coord="449,1594,507,1628">the</articleWord>
+<articleWord coord="500,1594,595,1629">loaves</articleWord>
+<articleWord coord="585,1594,657,1629">and</articleWord>
+<articleWord coord="646,1595,736,1628">fishes</articleWord>
+<articleWord coord="733,1594,773,1628">I&quot;</articleWord>
+<articleWord coord="163,1626,262,1660">These</articleWord>
+<articleWord coord="252,1625,402,1660">clamorous</articleWord>
+<articleWord coord="395,1625,497,1659">shouts</articleWord>
+<articleWord coord="486,1625,535,1659">of</articleWord>
+<articleWord coord="526,1624,686,1658">exultation</articleWord>
+<articleWord coord="136,1654,254,1691">Roused</articleWord>
+<articleWord coord="237,1652,343,1689">Dan&apos;s</articleWord>
+<articleWord coord="333,1655,476,1688">extremest</articleWord>
+<articleWord coord="473,1652,644,1690">indignation,</articleWord>
+<articleWord coord="140,1683,192,1718">So</articleWord>
+<articleWord coord="181,1683,232,1718">up</articleWord>
+<articleWord coord="229,1683,271,1718">lie</articleWord>
+<articleWord coord="264,1683,382,1718">jumped</articleWord>
+<articleWord coord="373,1683,413,1717">in</articleWord>
+<articleWord coord="404,1682,459,1717">his</articleWord>
+<articleWord coord="450,1682,529,1717">shirt</articleWord>
+<articleWord coord="524,1682,610,1716">from</articleWord>
+<articleWord coord="593,1681,664,1716">bed,</articleWord>
+<articleWord coord="130,1714,225,1751">With</articleWord>
+<articleWord coord="215,1716,246,1749">a</articleWord>
+<articleWord coord="232,1713,358,1750">worsted</articleWord>
+<articleWord coord="347,1712,481,1751">nightcap</articleWord>
+<articleWord coord="470,1715,522,1748">on</articleWord>
+<articleWord coord="513,1712,570,1750">his</articleWord>
+<articleWord coord="560,1712,645,1749">head,</articleWord>
+<articleWord coord="133,1743,206,1780">Anl</articleWord>
+<articleWord coord="199,1743,336,1782">grasping</articleWord>
+<articleWord coord="322,1744,381,1777">his</articleWord>
+<articleWord coord="372,1742,479,1779">cudgel,</articleWord>
+<articleWord coord="478,1743,573,1779">tough</articleWord>
+<articleWord coord="560,1743,631,1778">and</articleWord>
+<articleWord coord="621,1743,712,1778">thick,</articleWord>
+<articleWord coord="142,1772,235,1809">(Pat&apos;s</articleWord>
+<articleWord coord="224,1774,314,1807">never</articleWord>
+<articleWord coord="305,1769,380,1809">aity</articleWord>
+<articleWord coord="365,1771,484,1808">without</articleWord>
+<articleWord coord="480,1773,513,1807">a</articleWord>
+<articleWord coord="504,1773,590,1808">stick,</articleWord>
+<articleWord coord="130,1799,302,1832">Wherewith</articleWord>
+<articleWord coord="295,1798,376,1832">some</articleWord>
+<articleWord coord="370,1801,464,1832">friend</articleWord>
+<articleWord coord="454,1799,497,1829">or</articleWord>
+<articleWord coord="493,1801,548,1832">foe</articleWord>
+<articleWord coord="544,1803,583,1832">to</articleWord>
+<articleWord coord="579,1797,657,1835">lick),</articleWord>
+<articleWord coord="133,1829,208,1866">And</articleWord>
+<articleWord coord="204,1830,316,1865">roaring</articleWord>
+<articleWord coord="308,1828,366,1865">the</articleWord>
+<articleWord coord="352,1827,444,1865">while</articleWord>
+<articleWord coord="439,1828,480,1865">in</articleWord>
+<articleWord coord="472,1829,617,1865">rapturous</articleWord>
+<articleWord coord="609,1829,708,1864">strain,</articleWord>
+<articleWord coord="171,1858,241,1895">&apos;Ihis</articleWord>
+<articleWord coord="234,1859,396,1894">skrimmage</articleWord>
+<articleWord coord="380,1859,449,1894">will</articleWord>
+<articleWord coord="437,1859,534,1894">make</articleWord>
+<articleWord coord="518,1864,582,1894">me</articleWord>
+<articleWord coord="569,1858,659,1894">quite</articleWord>
+<articleWord coord="647,1858,749,1893">young</articleWord>
+<articleWord coord="733,1856,877,1896">again,&quot;*</articleWord>
+<articleWord coord="132,1888,316,1926">Commenced</articleWord>
+<articleWord coord="306,1890,339,1924">a</articleWord>
+<articleWord coord="329,1888,482,1925">salubrious</articleWord>
+<articleWord coord="474,1889,701,1925">fighting-bout-</articleWord>
+<articleWord coord="132,1919,195,1954">Put</articleWord>
+<articleWord coord="189,1919,236,1954">all</articleWord>
+<articleWord coord="234,1917,292,1954">the</articleWord>
+<articleWord coord="276,1918,384,1953">Tories</articleWord>
+<articleWord coord="380,1918,422,1953">to</articleWord>
+<articleWord coord="418,1918,477,1953">the</articleWord>
+<articleWord coord="469,1917,545,1955">rout,</articleWord>
+<articleWord coord="133,1947,286,1984">Cudgelled</articleWord>
+<articleWord coord="278,1948,369,1983">them</articleWord>
+<articleWord coord="344,1948,429,1983">well,</articleWord>
+<articleWord coord="424,1947,493,1984">and</articleWord>
+<articleWord coord="484,1947,562,1983">then</articleWord>
+<articleWord coord="547,1947,658,1982">kicked</articleWord>
+<articleWord coord="649,1947,739,1982">them</articleWord>
+<articleWord coord="721,1947,783,1982">out</articleWord>
+<articleWord coord="782,1947,795,1982">I</articleWord>
+<articleWord coord="377,1988,463,2023">MlOR</articleWord>
+<articleWord coord="443,1996,506,2021">AL.</articleWord>
+<articleWord coord="132,2023,251,2059">There&apos;s</articleWord>
+<articleWord coord="242,2023,353,2058">nought</articleWord>
+<articleWord coord="351,2023,416,2058">like</articleWord>
+<articleWord coord="406,2023,439,2058">a</articleWord>
+<articleWord coord="431,2022,600,2058">skrimmage,</articleWord>
+<articleWord coord="596,2022,679,2057">deny</articleWord>
+<articleWord coord="671,2022,706,2057">it</articleWord>
+<articleWord coord="692,2022,774,2057">who</articleWord>
+<articleWord coord="762,2021,831,2057">can,</articleWord>
+<articleWord coord="131,2051,192,2089">To</articleWord>
+<articleWord coord="180,2053,256,2088">cure</articleWord>
+<articleWord coord="247,2053,300,2088">an</articleWord>
+<articleWord coord="292,2053,399,2088">invalid</articleWord>
+<articleWord coord="391,2052,529,2089">Irishman</articleWord>
+<articleWord coord="528,2054,537,2088">I</articleWord>
+<articleWord coord="97,2082,193,2124">iiarrah</articleWord>
+<articleWord coord="191,2083,242,2117">for</articleWord>
+<articleWord coord="243,2083,300,2117">this</articleWord>
+<articleWord coord="299,2082,403,2121">conflict</articleWord>
+<articleWord coord="429,2083,466,2117">It</articleWord>
+<articleWord coord="456,2083,556,2117">makes</articleWord>
+<articleWord coord="549,2081,609,2122">me</articleWord>
+<articleWord coord="601,2082,680,2116">quite</articleWord>
+<articleWord coord="674,2082,772,2116">young</articleWord>
+<articleWord coord="759,2082,844,2116">again</articleWord>
+<articleWord coord="837,2081,879,2115">to</articleWord>
+<articleWord coord="25,2113,120,2150">emigage</articleWord>
+<articleWord coord="120,2114,141,2145">ii</articleWord>
+<articleWord coord="148,2115,203,2148">this</articleWord>
+<articleWord coord="194,2114,298,2148">conflict</articleWord>
+<articleWord coord="294,2114,330,2149">!&quot;</articleWord>
+<articleWord coord="337,2114,408,2149">Vide</articleWord>
+<articleWord coord="398,2113,558,2151">O&apos;Counmell&apos;s</articleWord>
+<articleWord coord="559,2113,619,2148">late</articleWord>
+<articleWord coord="620,2113,698,2148">letter</articleWord>
+<articleWord coord="699,2113,740,2148">to</articleWord>
+<articleWord coord="722,2112,768,2151">T.</articleWord>
+<articleWord coord="754,2112,806,2151">M.</articleWord>
+<articleWord coord="798,2112,873,2147">Ray,</articleWord>
+<articleWord coord="24,2145,89,2178">E&quot;Ja</articleWord>
+</articleText>
+</articleImage>
+</image_metadata>
+</BL_article>
+</BL_newspaper>
