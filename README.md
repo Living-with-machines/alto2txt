@@ -19,7 +19,7 @@
 
 ### `pip`
 
-As of verion `v0.3.4` `alto2txt` is available on [`PyPI`](https://pypi.org/project/alto2txt/) and can be installed via
+As of version `v0.3.4`, `alto2txt` is available on [`PyPI`](https://pypi.org/project/alto2txt/) and can be installed via
 
 ```console
 $ pip install alto2txt
@@ -50,6 +50,7 @@ $ pip install -i https://test.pypi.org/simple/ alto2txt==0.3.1a20
 ## Usage
 
 > *Note*: the formatting below is altered for readability
+
 ```
 $ alto2txt -h
 
@@ -77,6 +78,7 @@ optional arguments:
   -n [NUM_CORES], --num-cores [NUM_CORES]
                         Number of cores (Spark only). Default 1")
 ```
+
 To read about downsampling, logs, and using spark see [Advanced Information](https://living-with-machines.github.io/alto2txt/#/advanced).
 
 ## Process Types
@@ -101,6 +103,7 @@ xml_in_dir/
   │     └── year
   └── publication
 ```
+
 Assuming `xml_in_dir` follows this structure, run alto2txt with the following in the terminal:
 
 ```console
@@ -112,7 +115,6 @@ To downsample and only process every 100th edition:
 ```console
 $ alto2txt xml_in_dir txt_out_dir -d 100
 ```
-
 
 ### Process Single Publication
 
@@ -196,4 +198,5 @@ This software has been developed as part of the [Living with Machines](https://l
 This project, funded by the UK Research and Innovation (UKRI) Strategic Priority Fund, is a multidisciplinary collaboration delivered by the Arts and Humanities Research Council (AHRC), with The Alan Turing Institute, the British Library and the Universities of Cambridge, East Anglia, Exeter, and Queen Mary University of London. Grant reference: AH/S01179X/1
 
 > Last updated 2023-02-21
+
 [^1]: For a more detailed description see: https://www.coloradohistoricnewspapers.org/forum/what-is-metsalto/
