@@ -96,8 +96,12 @@ def main():
     parser = ArgumentParser(
         description="Converts XML publications to plaintext articles"
     )
-    parser.add_argument("xml_in_dir", help="Input directory with XML publications")
-    parser.add_argument("txt_out_dir", help="Output directory for plaintext articles")
+    parser.add_argument(
+        "xml_in_dir", help="Input directory with XML publications"
+    )
+    parser.add_argument(
+        "txt_out_dir", help="Output directory for plaintext articles"
+    )
     parser.add_argument(
         "-p",
         "--process-type",

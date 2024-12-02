@@ -3,14 +3,14 @@ import sys
 import pytest
 from icecream import ic
 
-from alto2txt import extract_publications_text as ept
+from alto2txt import extract_publications_text
 
 
 def test_cli_no_args(capsys):
     # Test that not supplying any args should give a usage message
     with pytest.raises(SystemExit):
         sys.argv[1:] = ""
-        ept.main()
+        extract_publications_text.main()
 
     captured = capsys.readouterr()
     assert captured.err.startswith("usage")
@@ -20,14 +20,14 @@ def test_input_dir_args():
     # Test that an error is raised `xml_in_dir` and `txt_out_dir` are the same.
     with pytest.raises(AssertionError) as ae:
         sys.argv[1:] = ["demo-files", "demo-files"]
-        ept.main()
+        extract_publications_text.main()
 
     assert ic(ae.match("should be different"))
 
     # Test that a non-existant `xml_in_dir` if caught
     with pytest.raises(AssertionError) as ae:
         sys.argv[1:] = ["non-existant-input-dir", "demo-output"]
-        ept.main()
+        extract_publications_text.main()
 
     assert ic(ae.match("non-existant-input-dir"))
     assert ic(ae.match("xml_in_dir.+not found"))
@@ -56,7 +56,7 @@ def test_output_dir_args(tmp_path):
     for output_dir in output_dirs_list:
         assert not output_dir.exists()
         sys.argv[1:] = ["demo-files", str(output_dir)]
-        ept.main()
+        extract_publications_text.main()
         assert output_dir.exists()
 
     # Check that passing a existing file (rather than a dir) is caught
@@ -65,7 +65,7 @@ def test_output_dir_args(tmp_path):
 
     with pytest.raises(AssertionError) as ae:
         sys.argv[1:] = ["demo-files", str(file_not_dir)]
-        ept.main()
+        extract_publications_text.main()
 
     assert ae.match("output-file.txt")
     assert ae.match("txt_out_dir.+not a directory")
@@ -81,11 +81,11 @@ def test_non_empty_output_dir(tmp_path):
 
     # Run first time to ensure that there is already content
     sys.argv[1:] = ["demo-files", run_twice_dir]
-    ept.main()
+    extract_publications_text.main()
 
     with pytest.raises(ValueError) as ve:
         sys.argv[1:] = ["demo-files", run_twice_dir]
-        ept.main()
+        extract_publications_text.main()
 
     # TODO: confirm the expected behaviour here. These assert statements are
     # illustrative. (See link to GitHub issue above)
@@ -110,7 +110,7 @@ def test_log_file_args(tmp_path):
     output_dir = str(output_dir)
 
     sys.argv[1:] = ["--l", str(log_file), "demo-files", output_dir]
-    ept.main()
+    extract_publications_text.main()
 
     # It does exist after we run it
     assert log_file.exists()
@@ -120,7 +120,7 @@ def test_log_file_args(tmp_path):
     # This asserts that the correct behaviour is that alto2txt always appends to an existing
     # logfile and does not overwrite it.
     sys.argv[1:] = ["--l", str(log_file), "demo-files", output_dir]
-    ept.main()
+    extract_publications_text.main()
     second_run_size = log_file.stat().st_size
 
     assert (1.9 * first_run_size) < second_run_size

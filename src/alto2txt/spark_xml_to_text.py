@@ -21,8 +21,12 @@ logger = logging.getLogger(__name__)
 
 
 def publication_to_text(
-    publications_dir, publication, txt_out_dir, log_file, downsample=1
-):
+    publications_dir: str,
+    publication: str,
+    txt_out_dir: str,
+    log_file: str,
+    downsample: int = 1,
+) -> None:
     """
     Converts issues of an XML publication to plaintext articles and
     generates minimal metadata.
@@ -41,23 +45,38 @@ def publication_to_text(
     :param downsample: Downsample, converting every Nth issue only
     :type downsample: int
     """
-    # This function will run on Spark worker node so reconfigure
-    # logging.
+    # This function will run on Spark worker node so reconfigure logging.
     configure_logging(log_file)
+
+    # Load a set of XSLT files
     xslts = xml.load_xslts()
+
+    # Set up the publication_dir
     publication_dir = os.path.join(publications_dir, publication)
+
+    # Check if publication_dir is not a directory
     if not os.path.isdir(publication_dir):
         logger.warning("Unexpected file: %s", publication_dir)
         return
+
+    # Construct a path to the output directory
     publication_txt_out_dir = os.path.join(txt_out_dir, publication)
+
+    # Convert the XML files in the publication directory to plaintext articles
+    # using the XSLT files and saves the resulting plaintext articles in the
+    # output directory
     xml_to_text.publication_to_text(
         publication_dir, publication_txt_out_dir, xslts, downsample
     )
 
 
 def publications_to_text(
-    publications_dir, txt_out_dir, log_file, num_cores=1, downsample=1
-):
+    publications_dir: str,
+    txt_out_dir: str,
+    log_file: str,
+    num_cores: int = 1,
+    downsample: int = 1,
+) -> None:
     """
     Converts XML publications to plaintext articles and generates
     minimal metadata.
@@ -105,13 +124,21 @@ def publications_to_text(
     :type downsample: int
     """
     logger.info("Processing: %s", publications_dir)
+
+    # Get publications from list of files in publications_dir
     publications = os.listdir(publications_dir)
+
+    # Set up Spark + its context
     conf = SparkConf()
     conf.setAppName(__name__)
     conf.set("spark.cores.max", num_cores)
     context = SparkContext(conf=conf)
+
+    # Parallelize the publications
     rdd_publications = context.parallelize(publications, num_cores)
     rdd_publications = context.parallelize(publications)
+
+    # Map and run the publication_to_text for each publication
     rdd_publications.map(
         lambda publication: publication_to_text(
             publications_dir, publication, txt_out_dir, log_file, downsample

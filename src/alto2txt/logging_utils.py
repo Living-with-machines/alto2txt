@@ -5,7 +5,7 @@ Logging utilities.
 import logging
 
 
-def configure_logging(log_file):
+def configure_logging(log_file: str) -> None:
     """
     Configure console and file logging.
 
@@ -17,7 +17,9 @@ def configure_logging(log_file):
     formatter = logging.Formatter(format)
 
     logging.basicConfig(level=logging.INFO, format=format)
+
     file_logger = logging.FileHandler(log_file)
     file_logger.setLevel(logging.INFO)
     file_logger.setFormatter(formatter)
+
     logging.getLogger().addHandler(file_logger)
